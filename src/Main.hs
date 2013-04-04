@@ -45,7 +45,7 @@ dist a b
           min3 x y z = if x < y then x else min y z
 
 distT :: T.Text -> T.Text -> Int
-distT t1 t2 = dist (T.unpack t1) (T.unpack t2)
+distT t1 t2 = dist (T.unpack $ T.toLower t1) (T.unpack $ T.toLower t2)
 
 data Variant = Vanilla
              | UnNetHack
