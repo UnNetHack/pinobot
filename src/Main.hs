@@ -133,14 +133,16 @@ ircMonsterInformation mon =
     " | Res: " ++ resistances (MD.moResistances mon) ++
     "| Confers: " ++ confers (MD.moConferred mon) ++
     "| MR: " ++ show (MD.moMR mon) ++
-    " | Genocidable: " ++ yesify (MD.moGenocidable mon) ++
     " | AC: " ++ show (MD.moAC mon) ++
     " | Attacks: " ++ attacks (MD.moAttacks mon) ++
     " | Alignment: " ++ show (MD.moAlign mon) ++
     " | Flags: " ++ flags
         
   where
-    relevantFlags = catMaybes $ map relevantFlag $ MD.moFlags mon
+    relevantFlags 
+        | MD.moGenocidable mon = "genocidable":actualFlags
+        | otherwise = actualFlags
+    actualFlags = catMaybes $ map relevantFlag $ MD.moFlags mon
     flags
         | relevantFlags == [] = "none"
         | tail relevantFlags == [] = head relevantFlags
