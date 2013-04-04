@@ -1,0 +1,26 @@
+name:                pinobot
+version:             0.1.0.0
+synopsis:            NetHack information IRC bot
+description:         See README.md
+homepage:            http://trankesbel.com/
+license:             MIT
+license-file:        LICENSE
+author:              Mikko Juola
+maintainer:          mikjuo@gmail.com
+category:            Network
+build-type:          Simple
+cabal-version:       >=1.8
+
+source-repository head
+    type:     git
+    location: git://github.com/Noeda/pinobot
+
+executable pinobot
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  build-depends:       base ==4.5.*
+                      ,text ==0.11.*
+                      ,ircbot ==0.5.*
+                      ,containers ==0.5.*
+                      ,parsec ==3.1.*
+
