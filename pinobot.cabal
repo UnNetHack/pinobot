@@ -13,7 +13,7 @@ cabal-version:       >=1.8
 
 source-repository head
     type:     git
-    location: git://github.com/Noeda/pinobot
+    location: git://github.com/Noeda/pinobot.git
 
 executable pinobot
   hs-source-dirs:      src
