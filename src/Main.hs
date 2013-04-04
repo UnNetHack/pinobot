@@ -244,7 +244,7 @@ ircMonsterInformation mon =
     monsymbol = "\x03" ++ ircColor (MD.moColor mon) ++ [MD.moSymbol mon] ++
                 "\x03"
     ircColor :: MD.Color -> String
-    ircColor MD.Black = "1"
+    ircColor MD.Black = "14"
     ircColor MD.Red = "5"
     ircColor MD.Blue = "2"
     ircColor MD.BrightBlue = "12"
