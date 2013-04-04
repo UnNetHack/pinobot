@@ -156,7 +156,7 @@ ircMonsterInformation mon =
         show d1 ++ "d" ++ show d2 ++ " " ++ attackTypeName atype ++ " " ++
         attackDamageName dtype
 
-    attackTypeName MD.AtNone = "none"
+    attackTypeName MD.AtNone = "passive"
     attackTypeName MD.AtClaw = "claw"
     attackTypeName MD.AtBite = "bite"
     attackTypeName MD.AtKick = "kick"
