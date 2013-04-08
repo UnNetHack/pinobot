@@ -81,24 +81,28 @@ allMonsters UnNetHack = MD.unAllMonsterNames
 
 monsterPart :: (IRC.BotMonad m) => m ()
 monsterPart = IRC.parsecPart $ do
-       try $ IRC.botPrefix
-       variantStr <-
-           try (string "u?") <|> try (string "v?") <|> try (string "?")
-       let variant = case variantStr of
-                         "u?" -> UnNetHack
-                         "v?" -> Vanilla
-                         "?" -> UnNetHack
-       spaces
-       target <- IRC.maybeZero =<< IRC.replyTo
-       rawMonsterName <- many anyChar
-       let monsterName = (T.strip . T.pack) rawMonsterName
-       when (T.length monsterName <= 0) $ fail "Launching the missiles."
-       let match = mostSimilarMonsterSane variant monsterName
-           results = case match of
-               Nothing -> "No such monster."
-               Just mon -> ircMonsterInformation
-                               (fromJust $ monsterFetcher variant mon)
-       IRC.sendCommand (IRC.PrivMsg Nothing [target] results)
+    try $ IRC.botPrefix
+    variantStr <-
+        try (string "u?") <|> try (string "v?") <|> try (string "?") <|>
+        try (string "")
+    case variantStr of
+        "u?" -> doPart UnNetHack
+        "v?" -> doPart Vanilla
+        "?" -> doPart UnNetHack
+        "" -> return ()
+  where
+    doPart variant = do
+      spaces
+      target <- IRC.maybeZero =<< IRC.replyTo
+      rawMonsterName <- many anyChar
+      let monsterName = (T.strip . T.pack) rawMonsterName
+      when (T.length monsterName <= 0) $ fail "Launching the missiles."
+      let match = mostSimilarMonsterSane variant monsterName
+          results = case match of
+              Nothing -> "No such monster."
+              Just mon -> ircMonsterInformation
+                              (fromJust $ monsterFetcher variant mon)
+      IRC.sendCommand (IRC.PrivMsg Nothing [target] results)
 
 yesify :: Bool -> String
 yesify True = "yes"
