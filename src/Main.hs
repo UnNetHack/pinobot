@@ -137,12 +137,18 @@ ircMonsterInformation mon =
     " | Res: " ++ resistances (MD.moResistances mon) ++
     "| Confers: " ++ confers (MD.moConferred mon) ++
     "| MR: " ++ show (MD.moMR mon) ++
-    " | AC: " ++ show (MD.moAC mon) ++
+    " | Generates: " ++ generates (MD.moGenerationPlaces mon) ++
+    "| AC: " ++ show (MD.moAC mon) ++
     " | Attacks: " ++ attacks (MD.moAttacks mon) ++
     " | Alignment: " ++ show (MD.moAlign mon) ++
     " | Flags: " ++ flags
-        
   where
+    generates [] = "nowhere"
+    generates places = concatMap generationPlace places
+    generationPlace MD.Sheol = "sheol "
+    generationPlace MD.Gehennom = "gehennom "
+    generationPlace MD.Dungeons = "dungeons "
+
     relevantFlags 
         | MD.moGenocidable mon = "genocidable":actualFlags
         | otherwise = actualFlags
