@@ -42,3 +42,6 @@ The NetHack code that was used in the generation of monster data is given as a
 patch in patch/unixmain.patch. You need to patch the file sys/unix/unixmain.c
 with that patch file.
 
+You don't need to mess with the patch file unless you are a developer and want
+to hack with the data for some reason.
+
