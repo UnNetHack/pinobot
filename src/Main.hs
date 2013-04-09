@@ -244,6 +244,8 @@ ircMonsterInformation mon =
     resistanceName MD.RePoison = "poison "
     resistanceName MD.ReAcid = "acid "
     resistanceName MD.RePetrification = "petrification "
+    resistanceName MD.ReDrain = "drain "
+    resistanceName MD.ReMagic = "magic "
 
     monsymbol = "\x03" ++ ircColor (MD.moColor mon) ++ [MD.moSymbol mon] ++
                 "\x03"
