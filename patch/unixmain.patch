@@ -1,0 +1,491 @@
+--- /nethack-3.4.3/sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
++++ unixmain.c	2013-04-09 18:49:36.430436395 +0300
+@@ -44,11 +44,15 @@
+ static boolean wiz_error_flag = FALSE;
+ #endif
+ 
++static int extract_data(int argc, char* argv[]);
++
+ int
+ main(argc,argv)
+ int argc;
+ char *argv[];
+ {
++        return extract_data(argc, argv);
++
+ 	register int fd;
+ #ifdef CHDIR
+ 	register char *dir;
+@@ -538,4 +542,472 @@
+ 	return;
+ }
+ 
++
++
++
++
++/*** EXTRACTOR STUFF ***/
++
++static void extract_monsterdata_to_haskell(FILE* f);
++static void extract_itemdata_to_haskell(FILE* f);
++
++static int extract_data(int argc, char* argv[])
++{
++    FILE* f;
++
++    if (argc <= 1)
++    {
++        printf("Usage:\n");
++        printf("%s [language]\n\n", argv[0]);
++        printf("Where language is one of: \n");
++        printf("  haskell [monster-data-file] [item-data-file]\n\n");
++        printf("Monster data file defaults to MonsterData.hs and \n");
++        printf("item data file defaults to ItemData.hs.\n\n");
++        return 0;
++    }
++
++    if (argc >= 2 && !strcmp(argv[1], "haskell"))
++    {
++        if (argc >= 3)
++            f = fopen(argv[2], "wb");
++        else
++            f = fopen("MonsterData.hs", "wb");
++        if (!f)
++        {
++            perror("fopen");
++            return -1;
++        }
++        extract_monsterdata_to_haskell(f);
++        fclose(f);
++
++        if (argc >= 4)
++            f = fopen(argv[3], "wb");
++        else
++            f = fopen("ItemData.hs", "wb");
++
++        if (!f)
++        {
++            perror("fopen");
++            return -1;
++        }
++
++        extract_itemdata_to_haskell(f);
++        fclose(f);
++    }
++    else
++    {
++        fprintf(stderr,
++               "I don't what %s is. Try running %s without "
++               "parameters to see the valid languages.\n",
++               argv[1], argv[0]);
++        return -1;
++    }
++
++    return 0;
++}
++
++static void extract_monsterdata_to_haskell(FILE* f)
++{
++    int i1, i2;
++    struct permonst* pm;
++    struct monst dummymonst;
++
++    memset(&dummymonst, 0, sizeof(dummymonst));
++
++    /* We want to import everything in this module. */
++    fprintf(f, "-- Automatically generated --\n");
++    fprintf(f, "{-# LANGUAGE OverloadedStrings #-}\n");
++    fprintf(f, "module NetHack.Imported.MonsterData where\n\n");
++    fprintf(f, "import qualified Data.Text as T\n");
++    fprintf(f, "import qualified NetHack.Data.Dice as D\n\n");
++    fprintf(f, "data Place = Dungeons | Gehennom | Sheol\n");
++    fprintf(f, "             deriving (Eq, Show)\n\n");
++    fprintf(f, "data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |\n"
++           "                  AtTouch | AtSting | AtHug | AtSpit |\n"
++           "                  AtEngulf | AtBreath | AtExplode |\n"
++           "                  AtSuicideExplode | AtGaze | AtTentacle |\n"
++           "                  AtWeapon | AtCast deriving (Eq, Show)\n\n");
++    fprintf(f, "data DamageType = AdPhys | AdMagicMissile |\n"
++           "                  AdFire | AdCold | AdSleep |\n"
++           "                  AdDisintegrate | AdElectricity | AdStrDrain |\n"
++           "                  AdAcid | AdSpecial1 | AdSpecial2 | AdBlind |\n"
++           "                  AdStun | AdSlow | AdParalyse | AdLevelDrain |\n"
++           "                  AdMagicDrain | AdLegs | AdStone | AdSticking |\n"
++           "                  AdGoldSteal | AdItemSteal | AdSeduce |\n"
++           "                  AdTeleport | AdRust | AdConfuse | AdDigest |\n"
++           "                  AdHeal | AdWrap | AdWere | AdDexDrain |\n"
++           "                  AdConDrain | AdIntDrain | AdDisease |\n"
++           "                  AdRot | AdSex | AdHallucination | AdDeath |\n"
++           "                  AdPestilence | AdFamine | AdSlime |\n"
++           "                  AdDisenchant | AdCorrode | AdClerical |\n"
++           "                  AdSpell | AdRandomBreath | AdAmuletSteal |\n"
++           "                  AdCurse | AdLevelTeleport |\n"
++           "                  AdBlink | AdFreeze | AdPunisher |\n"
++           "                  AdDecapitate deriving (Eq, Show)\n\n");
++    fprintf(f, "data MonsterSize = Tiny | Small | Medium |\n"
++           "                   Large | Huge | Gigantic deriving (Eq, Show)\n\n");
++    fprintf(f, "data Color = Black | Red | Green | Brown | Blue | Magenta |\n"
++           "             Cyan | Gray | Orange | BrightGreen | Yellow |\n"
++           "             BrightBlue | BrightMagenta | BrightCyan | White\n"
++           "             deriving (Eq, Show)\n\n");
++    fprintf(f, "data Resistance = ReFire | ReCold | ReSleep | ReDisintegrate |\n"
++           "                  ReElectricity | RePoison | ReAcid |\n"
++           "                  RePetrification |\n"
++           "                  -- derived resistances below\n"
++           "                  ReDrain | ReMagic\n"
++           "                  deriving (Eq, Show)\n\n");
++    fprintf(f, "data MonsterFlag = FlFly | FlSwim | FlAmorphous |\n"
++           "                   FlWallwalk | FlCling | FlTunnel |\n"
++           "                   FlNeedPick | FlConceal | FlHide |\n"
++           "                   FlAmphibious | FlBreathless | FlNoTake |\n"
++           "                   FlNoEyes | FlNoHands | FlNoLimbs |\n"
++           "                   FlNoHead | FlMindless | FlHumanoid |\n"
++           "                   FlAnimal | FlSlithy | FlUnSolid |\n"
++           "                   FlThickHide | FlOviparous | FlRegen |\n"
++           "                   FlSeeInvis | FlTeleport | FlTeleportControl |\n"
++           "                   FlAcid | FlPoisonous | FlCarnivore |\n"
++           "                   FlHerbivore | FlMetallivore |\n"
++           "                   FlNoPoly | FlUndead | FlWere | FlHuman |\n"
++           "                   FlElf | FlDwarf | FlGnome | FlOrc | FlDemon |\n"
++           "                   FlMerc | FlLord | FlPrince | FlMinion |\n"
++           "                   FlGiant | FlMale | FlFemale | FlNeuter |\n"
++           "                   FlProperName | FlHostile | FlPeaceful |\n"
++           "                   FlDomestic | FlWander | FlStalk |\n"
++           "                   FlNasty | FlStrong | FlRockThrow |\n"
++           "                   FlGreedy | FlJewels | FlCollect |\n"
++           "                   FlMagicCollect | FlWantsAmulet |\n"
++           "                   FlWantsBell | FlWantsBook | FlWantsCand |\n"
++           "                   FlWantsArti | FlWantsAll | FlWaitsForYou |\n"
++           "                   FlClose | FlCovetous | FlInfra |\n"
++           "                   FlInfravisible |\n"
++           "                   -- derived flags\n"
++           "                   FlHatesSilver | FlPassesBars\n"
++           "                   deriving (Eq, Show)\n\n");
++    fprintf(f, "data Attack = Attack { atType :: AttackType, \n");
++    fprintf(f, "                       atDamageType :: DamageType, \n");
++    fprintf(f, "                       atDice :: D.Dice } deriving (Eq, Show)\n\n");
++    fprintf(f, "data Monster = Monster { moName :: T.Text, \n");
++    fprintf(f, "                         moSymbol :: Char, \n");
++    fprintf(f, "                         moBaseLevel :: Int, \n");
++    fprintf(f, "                         moSpeed :: Int, \n");
++    fprintf(f, "                         moAC :: Int, \n");
++    fprintf(f, "                         moMR :: Int, \n");
++    fprintf(f, "                         moAlign :: Int, \n");
++    fprintf(f, "                         moGenerationPlaces :: [Place], \n");
++    fprintf(f, "                         moLeavesCorpse :: Bool, \n");
++    fprintf(f, "                         moNotGeneratedNormally :: Bool, \n");
++    fprintf(f, "                         moAppearsInSmallGroups :: Bool, \n");
++    fprintf(f, "                         moAppearsInLargeGroups :: Bool, \n");
++    fprintf(f, "                         moGenocidable :: Bool, \n");
++    fprintf(f, "                         moAttacks :: [Attack], \n");
++    fprintf(f, "                         moWeight :: Int, \n");
++    fprintf(f, "                         moNutrition :: Int, \n");
++    fprintf(f, "                         moSize :: MonsterSize, \n");
++    fprintf(f, "                         moResistances :: [Resistance], \n");
++    fprintf(f, "                         moConferred :: [Resistance], \n");
++    fprintf(f, "                         moFlags :: [MonsterFlag], \n");
++    fprintf(f, "                         moColor :: Color } deriving(Eq, Show)\n\n");
++
++    fprintf(f, "monster :: T.Text -> Maybe Monster\n");
++    fprintf(f, "monster name\n");
++    for (i1 = 0; mons[i1].mname[0]; ++i1)
++    {
++        pm = &mons[i1];
++        dummymonst.data = pm;
++
++        fprintf(f, "  | name == \"%s\" = ", pm->mname);
++        fprintf(f, "Just Monster { ");
++        fprintf(f, "moName = \"%s\", ", pm->mname);
++        if (def_monsyms[pm->mlet] != '\'')
++            fprintf(f, "moSymbol = '%c', ", def_monsyms[pm->mlet]);
++        else
++            fprintf(f, "moSymbol = '\\'', ");
++        fprintf(f, "moBaseLevel = %d, ", pm->mlevel);
++        fprintf(f, "moSpeed = %d, ", pm->mmove);
++        fprintf(f, "moAC = %d, ", pm->ac);
++        fprintf(f, "moMR = %d, ", pm->mr);
++        fprintf(f, "moAlign = %d, ", pm->maligntyp);
++        fprintf(f, "moGenerationPlaces = tail [Gehennom");
++#ifdef G_SHEOLONLY
++        if (pm->geno & (G_SHEOLONLY & ~G_SHEOL))
++            fprintf(f, ", Sheol");
++        else
++        {
++            if (pm->geno & G_SHEOL) fprintf(f, ", Sheol");
++#endif
++            if (!(pm->geno & G_NOHELL)) fprintf(f, ", Gehennom");
++            if (!(pm->geno & G_HELL)) fprintf(f, ", Dungeons");
++#ifdef G_SHEOLONLY
++        }
++#endif
++        fprintf(f, "], ");
++        fprintf(f, "moLeavesCorpse = %s, ",
++                (pm->geno & G_NOCORPSE) ? "False" : "True");
++        fprintf(f, "moNotGeneratedNormally = %s, ",
++                (pm->geno & G_NOGEN) ? "True" : "False");
++        fprintf(f, "moAppearsInSmallGroups = %s, ",
++                (pm->geno & G_SGROUP) ? "True" : "False");
++        fprintf(f, "moAppearsInLargeGroups = %s, ",
++                (pm->geno & G_LGROUP) ? "True" : "False");
++        fprintf(f, "moGenocidable = %s, ",
++                (pm->geno & G_GENO) ? "True" : "False");
++        fprintf(f, "moAttacks = [");
++        for (i2 = 0; i2 < NATTK && (pm->mattk[i2].aatyp ||
++                                    pm->mattk[i2].adtyp ||
++                                    pm->mattk[i2].damn ||
++                                    pm->mattk[i2].damd); ++i2)
++        {
++            if (i2 > 0)
++                fprintf(f, ", ");
++
++            fprintf(f, "Attack ");
++#define AT(a, b) else if (pm->mattk[i2].aatyp == a) fprintf(f, "%s ", b);
++            if (1 + 1 == 3) { } /* I hope we won't run this code 
++                                   in a universe where 1+1 is 3. */
++            AT(AT_NONE, "AtNone")
++            AT(AT_CLAW, "AtClaw")
++            AT(AT_BITE, "AtBite")
++            AT(AT_KICK, "AtKick")
++            AT(AT_BUTT, "AtButt")
++            AT(AT_TUCH, "AtTouch")
++            AT(AT_STNG, "AtSting")
++            AT(AT_HUGS, "AtHug")
++            AT(AT_SPIT, "AtSpit")
++            AT(AT_ENGL, "AtEngulf")
++            AT(AT_BREA, "AtBreath")
++            AT(AT_EXPL, "AtExplode")
++            AT(AT_BOOM, "AtSuicideExplode")
++            AT(AT_GAZE, "AtGaze")
++            AT(AT_TENT, "AtTentacle")
++            AT(AT_WEAP, "AtWeapon")
++            AT(AT_MAGC, "AtCast")
++            else { fprintf(stderr,
++                    "I don't know what attack type %d is.\n", pm->mattk[i2].aatyp);
++                   abort(); }
++#undef AT
++#define AT(a, b) else if (pm->mattk[i2].adtyp == a) fprintf(f, "%s ", b);
++            if (1 == 2) { }
++            AT(AD_PHYS, "AdPhys")
++            AT(AD_MAGM, "AdMagicMissile")
++            AT(AD_FIRE, "AdFire")
++            AT(AD_COLD, "AdCold")
++            AT(AD_SLEE, "AdSleep")
++            AT(AD_DISN, "AdDisintegrate")
++            AT(AD_ELEC, "AdElectricity")
++            AT(AD_DRST, "AdStrDrain")
++            AT(AD_ACID, "AdAcid")
++            AT(AD_BLND, "AdBlind")
++            AT(AD_STUN, "AdStun")
++            AT(AD_SLOW, "AdSlow")
++            AT(AD_PLYS, "AdParalyse")
++            AT(AD_DRLI, "AdLevelDrain")
++            AT(AD_DREN, "AdMagicDrain")
++            AT(AD_LEGS, "AdLegs")
++            AT(AD_STON, "AdStone")
++            AT(AD_STCK, "AdSticking")
++            AT(AD_SGLD, "AdGoldSteal")
++            AT(AD_SITM, "AdItemSteal")
++            AT(AD_SEDU, "AdSeduce")
++            AT(AD_TLPT, "AdTeleport")
++            AT(AD_RUST, "AdRust")
++            AT(AD_CONF, "AdConfuse")
++            AT(AD_DGST, "AdDigest")
++            AT(AD_HEAL, "AdHeal")
++            AT(AD_WRAP, "AdWrap")
++            AT(AD_WERE, "AdWere")
++            AT(AD_DRDX, "AdDexDrain")
++            AT(AD_DRCO, "AdConDrain")
++            AT(AD_DRIN, "AdIntDrain")
++            AT(AD_DISE, "AdDisease")
++            AT(AD_DCAY, "AdRot")
++            AT(AD_SSEX, "AdSex")
++            AT(AD_HALU, "AdHallucination")
++            AT(AD_DETH, "AdDeath")
++            AT(AD_PEST, "AdPestilence")
++            AT(AD_FAMN, "AdFamine")
++            AT(AD_SLIM, "AdSlime")
++            AT(AD_ENCH, "AdDisenchant")
++            AT(AD_CORR, "AdCorrode")
++            AT(AD_CLRC, "AdClerical")
++            AT(AD_SPEL, "AdSpell")
++            AT(AD_RBRE, "AdRandomBreath")
++            AT(AD_SAMU, "AdAmuletSteal")
++            AT(AD_CURS, "AdCurse")
++#ifdef AD_LVLT
++            AT(AD_LVLT, "AdLevelTeleport")
++            AT(AD_BLNK, "AdBlink")
++#endif
++#ifdef G_SHEOL
++            AT(AD_FREZ, "AdFreeze")
++            AT(AD_PUNI, "AdPunisher")
++#endif
++#ifdef AD_HEAD
++            AT(AD_HEAD, "AdDecapitate")
++#endif
++            else { fprintf(stderr,
++                    "I don't know what attack damage type %d is.\n",
++                    pm->mattk[i2].adtyp); abort(); }
++#undef AT
++            fprintf(f, "(D.Dice %d %d)", pm->mattk[i2].damn, pm->mattk[i2].damd);
++        }
++        fprintf(f, "], ");
++        fprintf(f, "moWeight = %d, ", pm->cwt);
++        fprintf(f, "moNutrition = %d, ", pm->cnutrit);
++        fprintf(f, "moSize = ");
++        if (pm->msize == MZ_TINY) fprintf(f, "Tiny, ");
++        else if (pm->msize == MZ_SMALL) fprintf(f, "Small, ");
++        else if (pm->msize == MZ_MEDIUM) fprintf(f, "Medium, ");
++        else if (pm->msize == MZ_LARGE) fprintf(f, "Large, ");
++        else if (pm->msize == MZ_HUGE) fprintf(f, "Huge, ");
++        else if (pm->msize == MZ_GIGANTIC) fprintf(f, "Gigantic, ");
++        else { fprintf(stderr,
++                "I don't know what size %d means.\n", pm->msize); abort(); }
++
++        /* 'tail' for simpler generation code (don't have to check if we have
++         * to put in a comma). */
++        fprintf(f, "moResistances = (tail [ReFire");
++        if (pm->mresists & MR_FIRE) fprintf(f, ", ReFire");
++        if (pm->mresists & MR_COLD) fprintf(f, ", ReCold");
++        if (pm->mresists & MR_SLEEP) fprintf(f, ", ReSleep");
++        if (pm->mresists & MR_DISINT) fprintf(f, ", ReDisintegrate");
++        if (pm->mresists & MR_ELEC) fprintf(f, ", ReElectricity");
++        if (pm->mresists & MR_POISON) fprintf(f, ", RePoison");
++        if (pm->mresists & MR_ACID) fprintf(f, ", ReAcid");
++        if (pm->mresists & MR_STONE) fprintf(f, ", RePetrification");
++        if (resists_magm(&dummymonst)) fprintf(f, ", ReMagic");
++        if (resists_drli(&dummymonst)) fprintf(f, ", ReDrain");
++        fprintf(f, "]), ");
++        fprintf(f, "moConferred = (tail [ReFire");
++        if (pm->mconveys & MR_FIRE) fprintf(f, ", ReFire");
++        if (pm->mconveys & MR_COLD) fprintf(f, ", ReCold");
++        if (pm->mconveys & MR_SLEEP) fprintf(f, ", ReSleep");
++        if (pm->mconveys & MR_DISINT) fprintf(f, ", ReDisintegrate");
++        if (pm->mconveys & MR_ELEC) fprintf(f, ", ReElectricity");
++        if (pm->mconveys & MR_POISON) fprintf(f, ", RePoison");
++        if (pm->mconveys & MR_ACID) fprintf(f, ", ReAcid");
++        if (pm->mconveys & MR_STONE) fprintf(f, ", RePetrification");
++        fprintf(f, "]), ");
++
++        fprintf(f, "moFlags = (tail [FlFly");
++#define AT(a, b) if (pm->mflags1 & a) fprintf(f, ", %s", b);
++        AT(M1_FLY, "FlFly");
++        AT(M1_SWIM, "FlSwim");
++        AT(M1_AMORPHOUS, "FlAmorphous");
++        AT(M1_WALLWALK, "FlWallwalk");
++        AT(M1_CLING, "FlCling");
++        AT(M1_TUNNEL, "FlTunnel");
++        AT(M1_NEEDPICK, "FlNeedPick");
++        AT(M1_CONCEAL, "FlConceal");
++        AT(M1_HIDE, "FlHide");
++        AT(M1_AMPHIBIOUS, "FlAmphibious");
++        AT(M1_BREATHLESS, "FlBreathless");
++        AT(M1_NOTAKE, "FlNoTake");
++        AT(M1_NOEYES, "FlNoEyes");
++        AT(M1_NOHANDS, "FlNoHands");
++        AT(M1_NOLIMBS, "FlNoLimbs");
++        AT(M1_NOHEAD, "FlNoHead");
++        AT(M1_MINDLESS, "FlMindless");
++        AT(M1_HUMANOID, "FlHumanoid");
++        AT(M1_ANIMAL, "FlAnimal");
++        AT(M1_SLITHY, "FlSlithy");
++        AT(M1_UNSOLID, "FlUnSolid");
++        AT(M1_THICK_HIDE, "FlThickHide");
++        AT(M1_OVIPAROUS, "FlOviparous");
++        AT(M1_REGEN, "FlRegen");
++        AT(M1_SEE_INVIS, "FlSeeInvis");
++        AT(M1_TPORT, "FlTeleport");
++        AT(M1_TPORT_CNTRL, "FlTeleportControl");
++        AT(M1_ACID, "FlAcid");
++        AT(M1_POIS, "FlPoisonous");
++        AT(M1_CARNIVORE, "FlCarnivore");
++        AT(M1_HERBIVORE, "FlHerbivore");
++        AT(M1_METALLIVORE, "FlMetallivore");
++#undef AT
++#define AT(a, b) if (pm->mflags2 & a) fprintf(f, ", %s", b);
++        AT(M2_NOPOLY, "FlNoPoly");
++        AT(M2_UNDEAD, "FlUndead");
++        AT(M2_WERE, "FlWere");
++        AT(M2_HUMAN, "FlHuman");
++        AT(M2_ELF, "FlElf");
++        AT(M2_DWARF, "FlDwarf");
++        AT(M2_GNOME, "FlGnome");
++        AT(M2_ORC, "FlOrc");
++        AT(M2_DEMON, "FlDemon");
++        AT(M2_MERC, "FlMerc");
++        AT(M2_LORD, "FlLord");
++        AT(M2_PRINCE, "FlPrince");
++        AT(M2_MINION, "FlMinion");
++        AT(M2_GIANT, "FlGiant");
++        AT(M2_MALE, "FlMale");
++        AT(M2_FEMALE, "FlFemale");
++        AT(M2_NEUTER, "FlNeuter");
++        AT(M2_PNAME, "FlProperName");
++        AT(M2_HOSTILE, "FlHostile");
++        AT(M2_PEACEFUL, "FlPeaceful");
++        AT(M2_DOMESTIC, "FlDomestic");
++        AT(M2_WANDER, "FlWander");
++        AT(M2_STALK, "FlStalk");
++        AT(M2_NASTY, "FlNasty");
++        AT(M2_STRONG, "FlStrong");
++        AT(M2_ROCKTHROW, "FlRockThrow");
++        AT(M2_GREEDY, "FlGreedy");
++        AT(M2_JEWELS, "FlJewels");
++        AT(M2_COLLECT, "FlCollect");
++        AT(M2_MAGIC, "FlMagicCollect");
++#undef AT
++#define AT(a, b) if (pm->mflags3 & a) fprintf(f, ", %s", b);
++        AT(M3_WANTSAMUL, "FlWantsAmulet");
++        AT(M3_WANTSBELL, "FlWantsBell");
++        AT(M3_WANTSBOOK, "FlWantsBook");
++        AT(M3_WANTSCAND, "FlWantsCand");
++        AT(M3_WANTSARTI, "FlWantsArti");
++        AT(M3_WANTSALL, "FlWantsAll");
++        AT(M3_WAITFORU, "FlWaitsForYou");
++        AT(M3_CLOSE, "FlClose");
++        AT(M3_COVETOUS, "FlCovetous");
++        if (hates_silver(pm)) fprintf(f, ", FlHatesSilver");
++        if (passes_bars(pm)) fprintf(f, ", FlPassesBars");
++#undef AT
++        fprintf(f, "]), ");
++        fprintf(f, "moColor = ");
++        switch(pm->mcolor)
++        {
++            case CLR_BLACK: fprintf(f, "Black"); break;
++            case CLR_RED: fprintf(f, "Red"); break;
++            case CLR_GREEN: fprintf(f, "Green"); break;
++            case CLR_BROWN: fprintf(f, "Brown"); break;
++            case CLR_BLUE: fprintf(f, "Blue"); break;
++            case CLR_MAGENTA: fprintf(f, "Magenta"); break;
++            case CLR_CYAN: fprintf(f, "Cyan"); break;
++            case CLR_GRAY: fprintf(f, "Gray"); break;
++            case CLR_ORANGE: fprintf(f, "Orange"); break;
++            case CLR_BRIGHT_GREEN: fprintf(f, "BrightGreen"); break;
++            case CLR_BRIGHT_BLUE: fprintf(f, "BrightBlue"); break;
++            case CLR_BRIGHT_CYAN: fprintf(f, "BrightCyan"); break;
++            case CLR_YELLOW: fprintf(f, "Yellow"); break;
++            case CLR_WHITE: fprintf(f, "White"); break;
++            default: fprintf(stderr, "I don't know what color %d is.\n",
++                             pm->mcolor);
++                     abort();
++        }
++        fprintf(f, " }\n");
++    }
++    fprintf(f, "  | otherwise = Nothing\n\n");
++    fprintf(f, "allMonsterNames :: [T.Text]\n");
++    fprintf(f, "allMonsterNames = [");
++    for (i1 = 0; mons[i1].mname[0]; ++i1)
++    {
++        if (i1 > 0)
++            fprintf(f, ", ");
++        fprintf(f, "\"%s\"", mons[i1].mname);
++    }
++    fprintf(f, "]\n\n");
++
++}
++
++static void extract_itemdata_to_haskell(FILE* f)
++{
++}
++
++
+ /*unixmain.c*/

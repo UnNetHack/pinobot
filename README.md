@@ -35,4 +35,10 @@ Add the channel you want the bot join to the quotes. For example:
 Similarly, you can change the IRC server by modifying the source below it. It
 should be simple enough that you do not need to know Haskell.
 
+Patch
+-----
+
+The NetHack code that was used in the generation of monster data is given as a
+patch in patch/unixmain.patch. You need to patch the file sys/unix/unixmain.c
+with that patch file.
 
