@@ -1,5 +1,5 @@
 --- /nethack-3.4.3/sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
-+++ unixmain.c	2013-04-09 18:49:36.430436395 +0300
++++ unixmain.c	2013-04-10 17:20:15.456599691 +0300
 @@ -44,11 +44,15 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -16,7 +16,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +542,472 @@
+@@ -538,4 +542,479 @@
  	return;
  }
  
@@ -98,7 +98,7 @@
 +    fprintf(f, "module NetHack.Imported.MonsterData where\n\n");
 +    fprintf(f, "import qualified Data.Text as T\n");
 +    fprintf(f, "import qualified NetHack.Data.Dice as D\n\n");
-+    fprintf(f, "data Place = Dungeons | Gehennom | Sheol\n");
++    fprintf(f, "data Place = Dungeons | Gehennom | Sheol | Unique\n");
 +    fprintf(f, "             deriving (Eq, Show)\n\n");
 +    fprintf(f, "data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |\n"
 +           "                  AtTouch | AtSting | AtHug | AtSpit |\n"
@@ -206,18 +206,25 @@
 +        fprintf(f, "moMR = %d, ", pm->mr);
 +        fprintf(f, "moAlign = %d, ", pm->maligntyp);
 +        fprintf(f, "moGenerationPlaces = tail [Gehennom");
-+#ifdef G_SHEOLONLY
-+        if (pm->geno & (G_SHEOLONLY & ~G_SHEOL))
-+            fprintf(f, ", Sheol");
++        if (pm->geno & G_UNIQ)
++            fprintf(f, ", Unique");
++        else if (pm->geno & G_NOGEN)
++            fprintf(f, "");
 +        else
 +        {
-+            if (pm->geno & G_SHEOL) fprintf(f, ", Sheol");
-+#endif
-+            if (!(pm->geno & G_NOHELL)) fprintf(f, ", Gehennom");
-+            if (!(pm->geno & G_HELL)) fprintf(f, ", Dungeons");
 +#ifdef G_SHEOLONLY
-+        }
++            if (pm->geno & (G_SHEOLONLY & ~G_SHEOL))
++                fprintf(f, ", Sheol");
++            else
++            {
++                if (pm->geno & G_SHEOL) fprintf(f, ", Sheol");
 +#endif
++                if (!(pm->geno & G_NOHELL)) fprintf(f, ", Gehennom");
++                if (!(pm->geno & G_HELL)) fprintf(f, ", Dungeons");
++#ifdef G_SHEOLONLY
++            }
++#endif
++        }
 +        fprintf(f, "], ");
 +        fprintf(f, "moLeavesCorpse = %s, ",
 +                (pm->geno & G_NOCORPSE) ? "False" : "True");
