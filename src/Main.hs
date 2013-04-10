@@ -143,11 +143,12 @@ ircMonsterInformation mon =
     " | Alignment: " ++ show (MD.moAlign mon) ++
     " | Flags: " ++ flags
   where
-    generates [] = "nowhere"
+    generates [] = "nowhere "
     generates places = concatMap generationPlace places
     generationPlace MD.Sheol = "sheol "
     generationPlace MD.Gehennom = "gehennom "
     generationPlace MD.Dungeons = "dungeons "
+    generationPlace MD.Unique = "unique "
 
     relevantFlags 
         | MD.moGenocidable mon = "genocidable":actualFlags
