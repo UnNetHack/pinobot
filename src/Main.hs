@@ -91,7 +91,7 @@ monsterPart = IRC.parsecPart $ do
         "u?" -> doPart UnNetHack
         "v?" -> doPart Vanilla
         "?" -> doPart UnNetHack
-        "" -> return ()
+        _ -> return ()
   where
     doPart variant = do
       spaces
