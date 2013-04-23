@@ -1,6 +1,8 @@
 module Main where
 
-import qualified NetHack.Imported.MonsterData as MD
+import qualified NetHack.Data.Monster as MD
+import qualified NetHack.Imported.Vanilla as Vanilla
+import qualified NetHack.Imported.UnNetHack as UnNetHack
 import qualified Data.Text as T
 import qualified Network.IRC.Bot.Core as IRC
 import qualified Network.IRC.Bot.Part.Ping as IRC
@@ -72,12 +74,12 @@ mostSimilarMonsterSane variant text
                    in if distance <= 3 then Just result else Nothing
 
 monsterFetcher :: Variant -> T.Text -> Maybe MD.Monster
-monsterFetcher Vanilla = MD.monster
-monsterFetcher UnNetHack = MD.unMonster
+monsterFetcher Vanilla = Vanilla.monster
+monsterFetcher UnNetHack = UnNetHack.monster
 
 allMonsters :: Variant -> [T.Text]
-allMonsters Vanilla = MD.allMonsterNames
-allMonsters UnNetHack = MD.unAllMonsterNames
+allMonsters Vanilla = Vanilla.allMonsterNames
+allMonsters UnNetHack = UnNetHack.allMonsterNames
 
 monsterPart :: (IRC.BotMonad m) => m ()
 monsterPart = IRC.parsecPart $ do
@@ -128,6 +130,8 @@ relevantFlag MD.FlNoPoly = Just "nopoly"
 relevantFlag MD.FlTeleport = Just "teleports"
 relevantFlag MD.FlUndead = Just "undead"
 relevantFlag MD.FlDemon = Just "demon"
+relevantFlag MD.FlVegan = Just "vegan"
+relevantFlag MD.FlVegetarian = Just "vegetarian"
 relevantFlag _ = Nothing
 
 ircMonsterInformation :: MD.Monster -> String
