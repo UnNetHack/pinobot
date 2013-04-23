@@ -1,5 +1,5 @@
---- /nethack-3.4.3/sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
-+++ unixmain.c	2013-04-10 17:20:15.456599691 +0300
+--- /sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
++++ unixmain.c	2013-04-23 23:42:33.322460259 +0300
 @@ -44,11 +44,15 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -16,7 +16,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +542,479 @@
+@@ -538,4 +542,396 @@
  	return;
  }
  
@@ -95,96 +95,10 @@
 +    /* We want to import everything in this module. */
 +    fprintf(f, "-- Automatically generated --\n");
 +    fprintf(f, "{-# LANGUAGE OverloadedStrings #-}\n");
-+    fprintf(f, "module NetHack.Imported.MonsterData where\n\n");
++    fprintf(f, "module NetHack.Imported.ReplaceThisName where\n\n");
 +    fprintf(f, "import qualified Data.Text as T\n");
-+    fprintf(f, "import qualified NetHack.Data.Dice as D\n\n");
-+    fprintf(f, "data Place = Dungeons | Gehennom | Sheol | Unique\n");
-+    fprintf(f, "             deriving (Eq, Show)\n\n");
-+    fprintf(f, "data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |\n"
-+           "                  AtTouch | AtSting | AtHug | AtSpit |\n"
-+           "                  AtEngulf | AtBreath | AtExplode |\n"
-+           "                  AtSuicideExplode | AtGaze | AtTentacle |\n"
-+           "                  AtWeapon | AtCast deriving (Eq, Show)\n\n");
-+    fprintf(f, "data DamageType = AdPhys | AdMagicMissile |\n"
-+           "                  AdFire | AdCold | AdSleep |\n"
-+           "                  AdDisintegrate | AdElectricity | AdStrDrain |\n"
-+           "                  AdAcid | AdSpecial1 | AdSpecial2 | AdBlind |\n"
-+           "                  AdStun | AdSlow | AdParalyse | AdLevelDrain |\n"
-+           "                  AdMagicDrain | AdLegs | AdStone | AdSticking |\n"
-+           "                  AdGoldSteal | AdItemSteal | AdSeduce |\n"
-+           "                  AdTeleport | AdRust | AdConfuse | AdDigest |\n"
-+           "                  AdHeal | AdWrap | AdWere | AdDexDrain |\n"
-+           "                  AdConDrain | AdIntDrain | AdDisease |\n"
-+           "                  AdRot | AdSex | AdHallucination | AdDeath |\n"
-+           "                  AdPestilence | AdFamine | AdSlime |\n"
-+           "                  AdDisenchant | AdCorrode | AdClerical |\n"
-+           "                  AdSpell | AdRandomBreath | AdAmuletSteal |\n"
-+           "                  AdCurse | AdLevelTeleport |\n"
-+           "                  AdBlink | AdFreeze | AdPunisher |\n"
-+           "                  AdDecapitate deriving (Eq, Show)\n\n");
-+    fprintf(f, "data MonsterSize = Tiny | Small | Medium |\n"
-+           "                   Large | Huge | Gigantic deriving (Eq, Show)\n\n");
-+    fprintf(f, "data Color = Black | Red | Green | Brown | Blue | Magenta |\n"
-+           "             Cyan | Gray | Orange | BrightGreen | Yellow |\n"
-+           "             BrightBlue | BrightMagenta | BrightCyan | White\n"
-+           "             deriving (Eq, Show)\n\n");
-+    fprintf(f, "data Resistance = ReFire | ReCold | ReSleep | ReDisintegrate |\n"
-+           "                  ReElectricity | RePoison | ReAcid |\n"
-+           "                  RePetrification |\n"
-+           "                  -- derived resistances below\n"
-+           "                  ReDrain | ReMagic\n"
-+           "                  deriving (Eq, Show)\n\n");
-+    fprintf(f, "data MonsterFlag = FlFly | FlSwim | FlAmorphous |\n"
-+           "                   FlWallwalk | FlCling | FlTunnel |\n"
-+           "                   FlNeedPick | FlConceal | FlHide |\n"
-+           "                   FlAmphibious | FlBreathless | FlNoTake |\n"
-+           "                   FlNoEyes | FlNoHands | FlNoLimbs |\n"
-+           "                   FlNoHead | FlMindless | FlHumanoid |\n"
-+           "                   FlAnimal | FlSlithy | FlUnSolid |\n"
-+           "                   FlThickHide | FlOviparous | FlRegen |\n"
-+           "                   FlSeeInvis | FlTeleport | FlTeleportControl |\n"
-+           "                   FlAcid | FlPoisonous | FlCarnivore |\n"
-+           "                   FlHerbivore | FlMetallivore |\n"
-+           "                   FlNoPoly | FlUndead | FlWere | FlHuman |\n"
-+           "                   FlElf | FlDwarf | FlGnome | FlOrc | FlDemon |\n"
-+           "                   FlMerc | FlLord | FlPrince | FlMinion |\n"
-+           "                   FlGiant | FlMale | FlFemale | FlNeuter |\n"
-+           "                   FlProperName | FlHostile | FlPeaceful |\n"
-+           "                   FlDomestic | FlWander | FlStalk |\n"
-+           "                   FlNasty | FlStrong | FlRockThrow |\n"
-+           "                   FlGreedy | FlJewels | FlCollect |\n"
-+           "                   FlMagicCollect | FlWantsAmulet |\n"
-+           "                   FlWantsBell | FlWantsBook | FlWantsCand |\n"
-+           "                   FlWantsArti | FlWantsAll | FlWaitsForYou |\n"
-+           "                   FlClose | FlCovetous | FlInfra |\n"
-+           "                   FlInfravisible |\n"
-+           "                   -- derived flags\n"
-+           "                   FlHatesSilver | FlPassesBars\n"
-+           "                   deriving (Eq, Show)\n\n");
-+    fprintf(f, "data Attack = Attack { atType :: AttackType, \n");
-+    fprintf(f, "                       atDamageType :: DamageType, \n");
-+    fprintf(f, "                       atDice :: D.Dice } deriving (Eq, Show)\n\n");
-+    fprintf(f, "data Monster = Monster { moName :: T.Text, \n");
-+    fprintf(f, "                         moSymbol :: Char, \n");
-+    fprintf(f, "                         moBaseLevel :: Int, \n");
-+    fprintf(f, "                         moSpeed :: Int, \n");
-+    fprintf(f, "                         moAC :: Int, \n");
-+    fprintf(f, "                         moMR :: Int, \n");
-+    fprintf(f, "                         moAlign :: Int, \n");
-+    fprintf(f, "                         moGenerationPlaces :: [Place], \n");
-+    fprintf(f, "                         moLeavesCorpse :: Bool, \n");
-+    fprintf(f, "                         moNotGeneratedNormally :: Bool, \n");
-+    fprintf(f, "                         moAppearsInSmallGroups :: Bool, \n");
-+    fprintf(f, "                         moAppearsInLargeGroups :: Bool, \n");
-+    fprintf(f, "                         moGenocidable :: Bool, \n");
-+    fprintf(f, "                         moAttacks :: [Attack], \n");
-+    fprintf(f, "                         moWeight :: Int, \n");
-+    fprintf(f, "                         moNutrition :: Int, \n");
-+    fprintf(f, "                         moSize :: MonsterSize, \n");
-+    fprintf(f, "                         moResistances :: [Resistance], \n");
-+    fprintf(f, "                         moConferred :: [Resistance], \n");
-+    fprintf(f, "                         moFlags :: [MonsterFlag], \n");
-+    fprintf(f, "                         moColor :: Color } deriving(Eq, Show)\n\n");
++    fprintf(f, "import qualified NetHack.Data.Dice as D\n");
++    fprintf(f, "import NetHack.Data.Monster\n\n");
 +
 +    fprintf(f, "monster :: T.Text -> Maybe Monster\n");
 +    fprintf(f, "monster name\n");
@@ -452,6 +366,9 @@
 +        AT(M3_COVETOUS, "FlCovetous");
 +        if (hates_silver(pm)) fprintf(f, ", FlHatesSilver");
 +        if (passes_bars(pm)) fprintf(f, ", FlPassesBars");
++        if (vegan(pm)) fprintf(f, ", FlVegan");
++        else if (vegetarian(pm)) fprintf(f, ", FlVegetarian");
++
 +#undef AT
 +        fprintf(f, "]), ");
 +        fprintf(f, "moColor = ");
