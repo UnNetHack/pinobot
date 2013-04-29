@@ -1,5 +1,5 @@
---- /sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
-+++ unixmain.c	2013-04-23 23:42:33.322460259 +0300
+--- /nethack-3.4.3/sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
++++ unixmain.c	2013-04-29 20:42:42.435772853 +0300
 @@ -44,11 +44,15 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -16,7 +16,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +542,396 @@
+@@ -538,4 +542,397 @@
  	return;
  }
  
@@ -284,7 +284,8 @@
 +        if (pm->mconveys & MR_ELEC) fprintf(f, ", ReElectricity");
 +        if (pm->mconveys & MR_POISON) fprintf(f, ", RePoison");
 +        if (pm->mconveys & MR_ACID) fprintf(f, ", ReAcid");
-+        if (pm->mconveys & MR_STONE) fprintf(f, ", RePetrification");
++        /* You can't actually get petrification resistance. */
++        // if (pm->mconveys & MR_STONE) fprintf(f, ", RePetrification");
 +        fprintf(f, "]), ");
 +
 +        fprintf(f, "moFlags = (tail [FlFly");
