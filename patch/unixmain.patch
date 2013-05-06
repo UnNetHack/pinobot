@@ -1,5 +1,5 @@
 --- /nethack-3.4.3/sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
-+++ unixmain.c	2013-04-29 20:42:42.435772853 +0300
++++ unixmain.c	2013-05-06 21:30:52.323523154 +0300
 @@ -44,11 +44,15 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -16,7 +16,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +542,397 @@
+@@ -538,4 +542,398 @@
  	return;
  }
  
@@ -387,6 +387,7 @@
 +            case CLR_BRIGHT_GREEN: fprintf(f, "BrightGreen"); break;
 +            case CLR_BRIGHT_BLUE: fprintf(f, "BrightBlue"); break;
 +            case CLR_BRIGHT_CYAN: fprintf(f, "BrightCyan"); break;
++            case CLR_BRIGHT_MAGENTA: fprintf(f, "BrightMagenta"); break;
 +            case CLR_YELLOW: fprintf(f, "Yellow"); break;
 +            case CLR_WHITE: fprintf(f, "White"); break;
 +            default: fprintf(stderr, "I don't know what color %d is.\n",
