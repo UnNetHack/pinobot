@@ -6,19 +6,12 @@ This is a NetHack monster information IRC bot written by Mikko Juola.
 Bot commands
 --------
 
-    @?monster
+    UnNetHack:      @?<monster>
+    UnNetHack:      @u?<monster>
+    Vanilla:        @v?<monster>
+    UnNetHackPlus:  @u+?<monster>
 
-Gives information about some monster. Replace 'monster' with the actual name.
-The @? form gives information from UnNetHack.
-
-    @v?monster
-
-@v? prefix is the same as @? but the information comes from vanilla NetHack
-3.4.3.
-
-    @u?monster
-
-@u? is the same as @? at the moment.
+Gives information about some monster. Replace <monster> with the actual name.
 
 Configuration
 -------------
