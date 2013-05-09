@@ -10,7 +10,7 @@ data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |
               AtTouch | AtSting | AtHug | AtSpit |
               AtEngulf | AtBreath | AtExplode |
               AtSuicideExplode | AtGaze | AtTentacle |
-              AtWeapon | AtCast
+              AtWeapon | AtCast | AtScre
               deriving (Eq, Show, Ord)
 
 data DamageType = AdPhys | AdMagicMissile |

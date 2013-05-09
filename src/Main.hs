@@ -3,6 +3,7 @@ module Main where
 import qualified NetHack.Data.Monster as MD
 import qualified NetHack.Imported.Vanilla as Vanilla
 import qualified NetHack.Imported.UnNetHack as UnNetHack
+import qualified NetHack.Imported.UnNetHackPlus as UnNetHackPlus
 import qualified Data.Text as T
 import qualified Network.IRC.Bot.Core as IRC
 import qualified Network.IRC.Bot.Part.Ping as IRC
@@ -51,6 +52,7 @@ distT t1 t2 = dist (T.unpack $ T.toLower t1) (T.unpack $ T.toLower t2)
 
 data Variant = Vanilla
              | UnNetHack
+             | UnNetHackPlus
 
 -- Returns the most similar monster name along with its levenshtein distance.
 mostSimilarMonster :: Variant -> T.Text -> (Int, T.Text)
@@ -76,19 +78,23 @@ mostSimilarMonsterSane variant text
 monsterFetcher :: Variant -> T.Text -> Maybe MD.Monster
 monsterFetcher Vanilla = Vanilla.monster
 monsterFetcher UnNetHack = UnNetHack.monster
+monsterFetcher UnNetHackPlus = UnNetHackPlus.monster
 
 allMonsters :: Variant -> [T.Text]
 allMonsters Vanilla = Vanilla.allMonsterNames
 allMonsters UnNetHack = UnNetHack.allMonsterNames
+allMonsters UnNetHackPlus = UnNetHackPlus.allMonsterNames
 
 monsterPart :: (IRC.BotMonad m) => m ()
 monsterPart = IRC.parsecPart $ do
     try $ IRC.botPrefix
     variantStr <-
         try (string "u?") <|> try (string "v?") <|> try (string "?") <|>
+        try (string "u+?") <|>
         try (string "")
     case variantStr of
         "u?" -> doPart UnNetHack
+        "u+?" -> doPart UnNetHackPlus
         "v?" -> doPart Vanilla
         "?" -> doPart UnNetHack
         _ -> return ()
@@ -188,6 +194,7 @@ ircMonsterInformation mon =
     attackTypeName MD.AtTentacle = "tentacle"
     attackTypeName MD.AtWeapon = "weapon"
     attackTypeName MD.AtCast = "cast"
+    attackTypeName MD.AtScre = "scream"
 
     attackDamageName MD.AdPhys = "physical"
     attackDamageName MD.AdMagicMissile = "magic missile"
