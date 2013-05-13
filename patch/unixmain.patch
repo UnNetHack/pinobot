@@ -1,5 +1,5 @@
---- /nethack-3.4.3/sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
-+++ unixmain.c	2013-05-09 22:30:04.976771342 +0300
+--- /home/shannon/gitjutut/nethack-3.4.3/sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
++++ unixmain.c	2013-05-13 18:18:59.100622410 +0300
 @@ -44,11 +44,15 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -16,7 +16,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +542,401 @@
+@@ -538,4 +542,439 @@
  	return;
  }
  
@@ -26,51 +26,42 @@
 +
 +/*** EXTRACTOR STUFF ***/
 +
-+static void extract_monsterdata_to_haskell(FILE* f);
-+static void extract_itemdata_to_haskell(FILE* f);
++#include "date.h"
++static void extract_monsterdata_to_haskell(
++        FILE* f
++      , const char* variant
++      , const char* command_prefix );
++static const char* detect_variant( const char** command_prefix );
 +
 +static int extract_data(int argc, char* argv[])
 +{
 +    FILE* f;
++    char name[300];
++    const char* command_prefix, *variant_str;
 +
 +    if (argc <= 1)
 +    {
 +        printf("Usage:\n");
 +        printf("%s [language]\n\n", argv[0]);
 +        printf("Where language is one of: \n");
-+        printf("  haskell [monster-data-file] [item-data-file]\n\n");
-+        printf("Monster data file defaults to MonsterData.hs and \n");
-+        printf("item data file defaults to ItemData.hs.\n\n");
++        printf("  haskell\n\n");
 +        return 0;
 +    }
 +
++    variant_str = detect_variant( &command_prefix );
++    sprintf( name, "%s.hs", variant_str );
 +    if (argc >= 2 && !strcmp(argv[1], "haskell"))
 +    {
-+        if (argc >= 3)
-+            f = fopen(argv[2], "wb");
-+        else
-+            f = fopen("MonsterData.hs", "wb");
++        fprintf( stderr, "Writing to '%s'...\n", variant_str );
++        f = fopen(name, "wb");
 +        if (!f)
 +        {
 +            perror("fopen");
 +            return -1;
 +        }
-+        extract_monsterdata_to_haskell(f);
++        extract_monsterdata_to_haskell(f, variant_str, command_prefix );
 +        fclose(f);
-+
-+        if (argc >= 4)
-+            f = fopen(argv[3], "wb");
-+        else
-+            f = fopen("ItemData.hs", "wb");
-+
-+        if (!f)
-+        {
-+            perror("fopen");
-+            return -1;
-+        }
-+
-+        extract_itemdata_to_haskell(f);
-+        fclose(f);
++        fprintf( stderr, "Done.\n" );
 +    }
 +    else
 +    {
@@ -84,7 +75,40 @@
 +    return 0;
 +}
 +
-+static void extract_monsterdata_to_haskell(FILE* f)
++static const char* detect_variant( const char** command_prefix )
++{
++    const char* vid = VERSION_ID;
++    if ( strstri( vid, "UnNetHackPlus" ) ) {
++        (*command_prefix) = "u+";
++        return "UnNetHackPlus";
++    }
++    if ( strstri( vid, "UnNetHack" ) ) {
++        (*command_prefix) = "u";
++        return "UnNetHack";
++    }
++    if ( strstri( vid, "SporkHack" ) ) {
++        (*command_prefix) = "s";
++        return "SporkHack";
++    }
++    if ( strstri( vid, "NetHack Version 3.4.3" ) ) {
++        (*command_prefix) = "v";
++        return "Vanilla";
++    }
++
++    fprintf( stderr
++           , "I don't know what variant this is. "
++           "Replace module, data type name and command prefix manually. "
++           "Search for 'ReplaceThisName' in the resulting source file.\n" );
++
++    (*command_prefix) = "ReplaceThisName";
++
++    return "ReplaceThisName";
++}
++
++static void extract_monsterdata_to_haskell(
++        FILE* f
++      , const char* variant
++      , const char* command_prefix )
 +{
 +    int i1, i2;
 +    struct permonst* pm;
@@ -95,10 +119,16 @@
 +    /* We want to import everything in this module. */
 +    fprintf(f, "-- Automatically generated --\n");
 +    fprintf(f, "{-# LANGUAGE OverloadedStrings #-}\n");
-+    fprintf(f, "module NetHack.Imported.ReplaceThisName where\n\n");
++    fprintf(f, "module NetHack.Imported.%s ( variant ) where\n\n"
++           , variant );
 +    fprintf(f, "import qualified Data.Text as T\n");
 +    fprintf(f, "import qualified NetHack.Data.Dice as D\n");
++    fprintf(f, "import qualified NetHack.Data.Variant as V\n");
 +    fprintf(f, "import NetHack.Data.Monster\n\n");
++
++    fprintf(f, "variant :: V.Variant\n");
++    fprintf(f, "variant = V.variant monster allMonsterNames \"%s\"\n\n"
++             , command_prefix );
 +
 +    fprintf(f, "monster :: T.Text -> Maybe Monster\n");
 +    fprintf(f, "monster name\n");
@@ -235,6 +265,12 @@
 +            AT(AD_RBRE, "AdRandomBreath")
 +            AT(AD_SAMU, "AdAmuletSteal")
 +            AT(AD_CURS, "AdCurse")
++#ifdef AD_BHED
++            AT(AD_BHED, "AdBehead")
++#endif
++#ifdef AD_CNCL
++            AT(AD_CNCL, "AdCancellation")
++#endif
 +#ifdef AD_LVLT
 +            AT(AD_LVLT, "AdLevelTeleport")
 +            AT(AD_BLNK, "AdBlink")
@@ -327,7 +363,9 @@
 +        AT(M1_METALLIVORE, "FlMetallivore");
 +#undef AT
 +#define AT(a, b) if (pm->mflags2 & a) fprintf(f, ", %s", b);
++#ifdef M2_NOPOLY
 +        AT(M2_NOPOLY, "FlNoPoly");
++#endif
 +        AT(M2_UNDEAD, "FlUndead");
 +        AT(M2_WERE, "FlWere");
 +        AT(M2_HUMAN, "FlHuman");
