@@ -4,6 +4,8 @@ import qualified NetHack.Data.Monster as MD
 import qualified NetHack.Imported.Vanilla as Vanilla
 import qualified NetHack.Imported.UnNetHack as UnNetHack
 import qualified NetHack.Imported.UnNetHackPlus as UnNetHackPlus
+import qualified NetHack.Imported.SporkHack as SporkHack
+import qualified NetHack.Imported.GruntHack as GruntHack
 import qualified Data.Text as T
 import qualified Network.IRC.Bot.Core as IRC
 import qualified Network.IRC.Bot.Part.Ping as IRC
@@ -14,12 +16,22 @@ import qualified Network.IRC.Bot.BotMonad as IRC
 import qualified Network.IRC.Bot.Commands as IRC
 import qualified Network.IRC.Bot.Parsec as IRC
 import qualified Network.IRC.Bot.Log as IRC
+import qualified NetHack.Data.Variant as V
 import NetHack.Data.Dice ( Dice( .. ) )
 import Data.Maybe ( fromJust, catMaybes )
 import Text.Parsec ( ParsecT, string, (<|>), try, many, anyChar, char, spaces )
 import Control.Concurrent ( threadDelay )
-import Data.List ( sortBy )
+import Data.List ( sortBy, find )
 import Control.Monad ( forever, when )
+import Data.Foldable ( foldlM )
+
+-- Add variants here.
+variants :: [V.Variant]
+variants = [ Vanilla.variant
+           , UnNetHack.variant
+           , UnNetHackPlus.variant
+           , SporkHack.variant
+           , GruntHack.variant ]
 
 -- Shamelessly stolen from HaskellWiki which in turn stole it from Lloyd
 -- Allison:
@@ -50,54 +62,36 @@ dist a b
 distT :: T.Text -> T.Text -> Int
 distT t1 t2 = dist (T.unpack $ T.toLower t1) (T.unpack $ T.toLower t2)
 
-data Variant = Vanilla
-             | UnNetHack
-             | UnNetHackPlus
-
 -- Returns the most similar monster name along with its levenshtein distance.
-mostSimilarMonster :: Variant -> T.Text -> (Int, T.Text)
+mostSimilarMonster :: V.Variant -> T.Text -> (Int, T.Text)
 mostSimilarMonster variant name = head $
     sortBy (\(a1,_) (a2,_) -> a1 `compare` a2) $
         zip (map (distT name) all)
             all
   where
     all :: [T.Text]
-    all = allMonsters variant
+    all = V.allMonsterNames variant
 
 -- Returns the most similar monster name but only if parameters and results are
 -- reasonably "sane".
 --
 -- "Sane" here being: no overly long names allowed and if the Levenshtein
 -- distance is too great, then the result is discarded.
-mostSimilarMonsterSane :: Variant -> T.Text -> Maybe T.Text
+mostSimilarMonsterSane :: V.Variant -> T.Text -> Maybe T.Text
 mostSimilarMonsterSane variant text
     | T.length text >= 50 = Nothing
     | otherwise = let (distance, result) = mostSimilarMonster variant text
                    in if distance <= 3 then Just result else Nothing
 
-monsterFetcher :: Variant -> T.Text -> Maybe MD.Monster
-monsterFetcher Vanilla = Vanilla.monster
-monsterFetcher UnNetHack = UnNetHack.monster
-monsterFetcher UnNetHackPlus = UnNetHackPlus.monster
-
-allMonsters :: Variant -> [T.Text]
-allMonsters Vanilla = Vanilla.allMonsterNames
-allMonsters UnNetHack = UnNetHack.allMonsterNames
-allMonsters UnNetHackPlus = UnNetHackPlus.allMonsterNames
-
 monsterPart :: (IRC.BotMonad m) => m ()
 monsterPart = IRC.parsecPart $ do
     try $ IRC.botPrefix
-    variantStr <-
-        try (string "u?") <|> try (string "v?") <|> try (string "?") <|>
-        try (string "u+?") <|>
-        try (string "")
-    case variantStr of
-        "u?" -> doPart UnNetHack
-        "u+?" -> doPart UnNetHackPlus
-        "v?" -> doPart Vanilla
-        "?" -> doPart UnNetHack
-        _ -> return ()
+    variantStr <- foldl
+                    (\previoustry variant ->
+                      previoustry <|> (try $ string $ V.commandPrefix variant))
+                    (fail "") variants <|> try (string "")
+    try (string "?")
+    doPart $ decideVariant variantStr
   where
     doPart variant = do
       spaces
@@ -109,8 +103,14 @@ monsterPart = IRC.parsecPart $ do
           results = case match of
               Nothing -> "No such monster."
               Just mon -> ircMonsterInformation
-                              (fromJust $ monsterFetcher variant mon)
+                              (fromJust $ V.monster variant mon)
       IRC.sendCommand (IRC.PrivMsg Nothing [target] results)
+
+decideVariant :: String -> V.Variant
+decideVariant name =
+    case find (\var -> V.commandPrefix var == name) variants of
+        Nothing -> UnNetHack.variant
+        Just x -> x
 
 yesify :: Bool -> String
 yesify True = "yes"
@@ -196,6 +196,8 @@ ircMonsterInformation mon =
     attackTypeName MD.AtCast = "cast"
     attackTypeName MD.AtScre = "scream"
 
+    attackDamageName MD.AdBehead = "behead"
+    attackDamageName MD.AdCancellation = "cancellation"
     attackDamageName MD.AdPhys = "physical"
     attackDamageName MD.AdMagicMissile = "magic missile"
     attackDamageName MD.AdFire = "fire"

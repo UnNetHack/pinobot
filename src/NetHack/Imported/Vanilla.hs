@@ -1,10 +1,14 @@
 -- Automatically generated --
 {-# LANGUAGE OverloadedStrings #-}
-module NetHack.Imported.Vanilla where
+module NetHack.Imported.Vanilla ( variant ) where
 
 import qualified Data.Text as T
 import qualified NetHack.Data.Dice as D
+import qualified NetHack.Data.Variant as V
 import NetHack.Data.Monster
+
+variant :: V.Variant
+variant = V.variant monster allMonsterNames "v"
 
 monster :: T.Text -> Maybe Monster
 monster name

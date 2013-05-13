@@ -10,6 +10,8 @@ Bot commands
     UnNetHack:      @u?monster
     Vanilla:        @v?monster
     UnNetHackPlus:  @u+?monster
+    SporkHack:      @s?monster
+    GruntHack:      @g?monster
 
 Gives information about some monster. Replace 'monster' with the actual monster
 name.
