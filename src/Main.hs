@@ -18,10 +18,10 @@ import qualified Network.IRC.Bot.Parsec as IRC
 import qualified Network.IRC.Bot.Log as IRC
 import qualified NetHack.Data.Variant as V
 import NetHack.Data.Dice ( Dice( .. ) )
-import Data.Maybe ( fromJust, catMaybes )
+import Data.Maybe ( fromJust, mapMaybe, fromMaybe )
 import Text.Parsec ( ParsecT, string, (<|>), try, many, anyChar, char, spaces )
 import Control.Concurrent ( threadDelay )
-import Data.List ( sortBy, find )
+import Data.List ( minimumBy, sortBy, find )
 import Control.Monad ( forever, when )
 import Data.Foldable ( foldlM )
 
@@ -49,10 +49,11 @@ dist a b
           eachDiag a [] diags = []
           eachDiag a (bch:bs) (lastDiag:diags) = oneDiag a bs nextDiag lastDiag : eachDiag a bs diags
               where nextDiag = head (tail diags)
+          eachDiag _ _ _ = undefined   -- suppresses warnings
           oneDiag a b diagAbove diagBelow = thisdiag
               where doDiag [] b nw n w = []
                     doDiag a [] nw n w = []
-                    doDiag (ach:as) (bch:bs) nw n w = me : (doDiag as bs me (tail n) (tail w))
+                    doDiag (ach:as) (bch:bs) nw n w = me : doDiag as bs me (tail n) (tail w)
                         where me = if ach == bch then nw else 1 + min3 (head w) nw (head n)
                     firstelt = 1 + head diagBelow
                     thisdiag = firstelt : doDiag a b firstelt diagAbove (tail diagBelow)
@@ -64,10 +65,9 @@ distT t1 t2 = dist (T.unpack $ T.toLower t1) (T.unpack $ T.toLower t2)
 
 -- Returns the most similar monster name along with its levenshtein distance.
 mostSimilarMonster :: V.Variant -> T.Text -> (Int, T.Text)
-mostSimilarMonster variant name = head $
-    sortBy (\(a1,_) (a2,_) -> a1 `compare` a2) $
-        zip (map (distT name) all)
-            all
+mostSimilarMonster variant name =
+    minimumBy (\(a1,_) (a2,_) -> a1 `compare` a2) $
+        zip (map (distT name) all) all
   where
     all :: [T.Text]
     all = V.allMonsterNames variant
@@ -85,10 +85,10 @@ mostSimilarMonsterSane variant text
 
 monsterPart :: (IRC.BotMonad m) => m ()
 monsterPart = IRC.parsecPart $ do
-    try $ IRC.botPrefix
+    try IRC.botPrefix
     variantStr <- foldl
                     (\previoustry variant ->
-                      previoustry <|> (try $ string $ V.commandPrefix variant))
+                      previoustry <|> try (string $ V.commandPrefix variant))
                     (fail "") variants <|> try (string "")
     try (string "?")
     doPart $ decideVariant variantStr
@@ -108,9 +108,9 @@ monsterPart = IRC.parsecPart $ do
 
 decideVariant :: String -> V.Variant
 decideVariant name =
-    case find (\var -> V.commandPrefix var == name) variants of
-        Nothing -> UnNetHack.variant
-        Just x -> x
+    fromMaybe
+        UnNetHack.variant $
+        find (\var -> V.commandPrefix var == name) variants
 
 yesify :: Bool -> String
 yesify True = "yes"
@@ -163,12 +163,12 @@ ircMonsterInformation mon =
     relevantFlags 
         | MD.moGenocidable mon = "genocidable":actualFlags
         | otherwise = actualFlags
-    actualFlags = catMaybes $ map relevantFlag $ MD.moFlags mon
+    actualFlags = mapMaybe relevantFlag $ MD.moFlags mon
     flags
-        | relevantFlags == [] = "none"
-        | tail relevantFlags == [] = head relevantFlags
+        | null relevantFlags = "none"
+        | null $ tail relevantFlags = head relevantFlags
         | otherwise = head relevantFlags ++
-                      (concatMap (\str -> ", " ++ str) $ tail relevantFlags)
+                      concatMap (\str -> ", " ++ str) (tail relevantFlags)
     attacks [] = "none"
     attacks [attack] = attackName attack
     attacks (x:xs) = attackName x ++ concatMap (\atk -> ", " ++ attackName atk)
