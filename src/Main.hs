@@ -90,8 +90,8 @@ monsterPart = IRC.parsecPart $ do
                     (\previoustry variant ->
                       previoustry <|> try (string $ V.commandPrefix variant))
                     (fail "") variants <|> try (string "")
-    try (string "?")
-    doPart $ decideVariant variantStr
+    ignore <- try (string "?") <|> try (string "")
+    when (ignore == "?") $ doPart $ decideVariant variantStr
   where
     doPart variant = do
       spaces
