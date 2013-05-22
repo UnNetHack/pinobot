@@ -1,5 +1,5 @@
---- /home/shannon/gitjutut/nethack-3.4.3/sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
-+++ unixmain.c	2013-05-13 18:18:59.100622410 +0300
+--- /nethack-3.4.3/sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
++++ unixmain.c	2013-05-22 20:34:37.684280126 +0300
 @@ -44,11 +44,15 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -16,7 +16,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +542,439 @@
+@@ -538,4 +542,451 @@
  	return;
  }
  
@@ -210,6 +210,9 @@
 +            AT(AT_TENT, "AtTentacle")
 +            AT(AT_WEAP, "AtWeapon")
 +            AT(AT_MAGC, "AtCast")
++#ifdef AT_MULTIPLY
++            AT(AT_MULTIPLY, "AtMultiply")
++#endif
 +#ifdef AT_SCRE
 +            AT(AT_SCRE, "AtScre")
 +#endif
@@ -265,6 +268,15 @@
 +            AT(AD_RBRE, "AdRandomBreath")
 +            AT(AD_SAMU, "AdAmuletSteal")
 +            AT(AD_CURS, "AdCurse")
++#ifdef AD_CALM
++            AT(AD_CALM, "AdCalm")
++#endif
++#ifdef AD_TCKL
++            AT(AD_TCKL, "AdTickle")
++#endif
++#ifdef AD_POLY
++            AT(AD_POLY, "AdPoly")
++#endif
 +#ifdef AD_BHED
 +            AT(AD_BHED, "AdBehead")
 +#endif
