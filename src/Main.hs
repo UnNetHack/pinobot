@@ -155,7 +155,7 @@ ircMonsterInformation mon =
     " | Alignment: " ++ show (MD.moAlign mon) ++
     " | Flags: " ++ flags
   where
-    generates [] = "nowhere "
+    generates [] = "special "
     generates places = concatMap generationPlace places
     generationPlace MD.Sheol = "sheol "
     generationPlace MD.Gehennom = "gehennom "
