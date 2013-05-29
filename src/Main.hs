@@ -140,6 +140,7 @@ relevantFlag MD.FlUndead = Just "undead"
 relevantFlag MD.FlDemon = Just "demon"
 relevantFlag MD.FlVegan = Just "vegan"
 relevantFlag MD.FlVegetarian = Just "vegetarian"
+relevantFlag MD.FlStalk = Just "stalker"
 relevantFlag _ = Nothing
 
 ircMonsterInformation :: MD.Monster -> String
