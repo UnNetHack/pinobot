@@ -7,6 +7,7 @@ import qualified NetHack.Imported.UnNetHackPlus as UnNetHackPlus
 import qualified NetHack.Imported.SporkHack as SporkHack
 import qualified NetHack.Imported.GruntHack as GruntHack
 import qualified NetHack.Imported.Slashem as Slashem
+import qualified NetHack.Imported.Brass as Brass
 import qualified Data.Text as T
 import qualified Network.IRC.Bot.Core as IRC
 import qualified Network.IRC.Bot.Part.Ping as IRC
@@ -33,7 +34,8 @@ variants = [ Vanilla.variant
            , UnNetHackPlus.variant
            , SporkHack.variant
            , GruntHack.variant
-           , Slashem.variant ]
+           , Slashem.variant
+           , Brass.variant ]
 
 -- Shamelessly stolen from HaskellWiki which in turn stole it from Lloyd
 -- Allison:
@@ -258,6 +260,7 @@ ircMonsterInformation mon =
     attackDamageName MD.AdDecapitate = "decapitate"
     attackDamageName MD.AdFreeze = "freeze"
     attackDamageName MD.AdPunisher = "punisher"
+    attackDamageName MD.AdDrown = "drown"
 
     confers [] = "nothing "
     confers xs = concatMap resistanceName xs

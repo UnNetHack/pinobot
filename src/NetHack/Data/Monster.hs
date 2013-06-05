@@ -30,7 +30,7 @@ data DamageType = AdPhys | AdMagicMissile |
               AdCurse | AdLevelTeleport |
               AdBlink | AdFreeze | AdPunisher |
               AdDecapitate | AdBehead | AdCancellation |
-              AdCalm | AdTickle | AdPoly
+              AdCalm | AdTickle | AdPoly | AdDrown
               deriving (Eq, Show, Ord)
 
 data MonsterSize = Tiny | Small | Medium |
