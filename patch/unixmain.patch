@@ -1,10 +1,14 @@
 --- /nethack-3.4.3/sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
-+++ unixmain.c	2013-05-22 20:34:37.684280126 +0300
-@@ -44,11 +44,15 @@
++++ unixmain.c	2013-06-05 21:20:39.425368247 +0300
+@@ -44,11 +44,19 @@
  static boolean wiz_error_flag = FALSE;
  #endif
  
 +static int extract_data(int argc, char* argv[]);
++#ifdef G_SHEOL
++static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
++        , int inhell, int insheol);
++#endif
 +
  int
  main(argc,argv)
@@ -16,7 +20,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +542,451 @@
+@@ -538,4 +546,492 @@
  	return;
  }
  
@@ -156,17 +160,18 @@
 +            fprintf(f, "");
 +        else
 +        {
-+#ifdef G_SHEOLONLY
-+            if (pm->geno & (G_SHEOLONLY & ~G_SHEOL))
++#ifdef G_SHEOL
++            if ( !pb_prohibited_by_generation_flags( pm, 1, 1 ) )
 +                fprintf(f, ", Sheol");
-+            else
-+            {
-+                if (pm->geno & G_SHEOL) fprintf(f, ", Sheol");
-+#endif
-+                if (!(pm->geno & G_NOHELL)) fprintf(f, ", Gehennom");
-+                if (!(pm->geno & G_HELL)) fprintf(f, ", Dungeons");
-+#ifdef G_SHEOLONLY
-+            }
++            if ( !pb_prohibited_by_generation_flags( pm, 1, 0 ) )
++                fprintf(f, ", Gehennom");
++            if ( !pb_prohibited_by_generation_flags( pm, 0, 0 ) )
++                fprintf(f, ", Dungeons");
++#else
++            if ( (pm->geno & G_HELL ||
++                  !(pm->geno & G_NOHELL)) ) fprintf(f, ", Gehennom");
++            if ( !(pm->geno & G_HELL) )
++                 fprintf(f, ", Dungeons");
 +#endif
 +        }
 +        fprintf(f, "], ");
@@ -466,5 +471,45 @@
 +{
 +}
 +
++#ifdef G_SHEOL
++static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
++        , int inhell, int insheol)
++{
++	if (inhell && !insheol) {
++		/* In Gehennon, outside of the Sheol */
++		if (ptr->geno & G_HELL) {
++			return FALSE;
++		}
++		if (ptr->geno & G_NOHELL) {
++			return TRUE;
++		}
++		if (ptr->geno & G_SHEOL) {
++			return TRUE;
++		}
++		return FALSE;
++	} else if (insheol) {
++		/* In Sheol */
++		if (ptr->geno & G_SHEOL) {
++			return FALSE;
++		}
++		if (ptr->geno & G_NOSHEOL) {
++			return TRUE;
++		}
++		if (ptr->geno & G_HELL) {
++			return TRUE;
++		}
++		return FALSE;
++	} else {
++		/* Outside of Gehennon and Sheol*/
++		if (ptr->geno & G_SHEOL) {
++			return TRUE;
++		}
++		if (ptr->geno & G_HELL) {
++			return TRUE;
++		}
++		return FALSE;
++	}
++}
++#endif
 +
  /*unixmain.c*/
