@@ -14,6 +14,7 @@ Bot commands
     GruntHack:      @g?monster
     Slash'EM:       @l?monster
     NetHack Brass:  @b?monster
+    dNetHack:       @d?monster
 
 Gives information about some monster. Replace 'monster' with the actual monster
 name.

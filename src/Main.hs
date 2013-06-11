@@ -8,6 +8,7 @@ import qualified NetHack.Imported.SporkHack as SporkHack
 import qualified NetHack.Imported.GruntHack as GruntHack
 import qualified NetHack.Imported.Slashem as Slashem
 import qualified NetHack.Imported.Brass as Brass
+import qualified NetHack.Imported.Dnethack as Dnethack
 import qualified Data.Text as T
 import qualified Network.IRC.Bot.Core as IRC
 import qualified Network.IRC.Bot.Part.Ping as IRC
@@ -35,7 +36,8 @@ variants = [ Vanilla.variant
            , SporkHack.variant
            , GruntHack.variant
            , Slashem.variant
-           , Brass.variant ]
+           , Brass.variant
+           , Dnethack.variant ]
 
 -- Shamelessly stolen from HaskellWiki which in turn stole it from Lloyd
 -- Allison:
@@ -201,6 +203,10 @@ ircMonsterInformation mon =
     attackTypeName MD.AtCast = "cast"
     attackTypeName MD.AtScre = "scream"
     attackTypeName MD.AtMultiply = "multiply"
+    attackTypeName MD.AtArrow = "arrow"
+    attackTypeName MD.AtReach = "reach"
+    attackTypeName MD.AtMirror = "mirror"
+    attackTypeName MD.AtWhip = "whip"
 
     attackDamageName MD.AdCalm = "calm"
     attackDamageName MD.AdTickle = "tickle"
@@ -261,6 +267,39 @@ ircMonsterInformation mon =
     attackDamageName MD.AdFreeze = "freeze"
     attackDamageName MD.AdPunisher = "punisher"
     attackDamageName MD.AdDrown = "drown"
+    attackDamageName MD.AdShred = "shred"
+    attackDamageName MD.AdJailer = "jailer"
+    attackDamageName MD.AdBoulderArrow = "boulder-arrow"
+    attackDamageName MD.AdBoulderArrowRandomSpread =
+        "boulder-arrow-random-spread"
+    attackDamageName MD.AdMultiElementCounterAttackThatAngersTons =
+        "multi-elemental-counterattack-that-angers-tons"  -- wtf
+    attackDamageName MD.AdPoison = "poison"
+    attackDamageName MD.AdWisdom = "wisdom"
+    attackDamageName MD.AdVorpal = "vorpal"
+    attackDamageName MD.AdStealQuestArtifact = "steals-quest-artifact"
+    attackDamageName MD.AdSpawnChaos = "spawn-chaos"
+    attackDamageName MD.AdIronBall = "iron-ball"
+    attackDamageName MD.AdGrow = "grow"
+    attackDamageName MD.AdSilver = "silver"
+    attackDamageName MD.AdAbduction = "abduction"
+    attackDamageName MD.AdElementalGaze = "elemental-gaze"
+    attackDamageName MD.AdAsmodeusBlood = "asmodeus-blood"
+    attackDamageName MD.AdMirror = "mirror"
+    attackDamageName MD.AdLeviathan = "leviathan"
+    attackDamageName MD.AdUnknownPriest = "unknown-priest"
+    attackDamageName MD.AdMalk = "immobilizing-destroying"
+    attackDamageName MD.AdTentacle = "tentacle"
+    attackDamageName MD.AdWet = "wet"
+    attackDamageName MD.AdHeadSpike = "head-spike"
+    attackDamageName MD.AdTele = "teleportation"
+    attackDamageName MD.AdLethe = "lethe-wet"
+    attackDamageName MD.AdHorn = "horn"
+    attackDamageName MD.AdSolar = "solar"
+    attackDamageName MD.AdEscalatingDamage = "escalating-damage"
+    attackDamageName MD.AdSoul = "soul"
+    attackDamageName MD.AdMist = "mist"
+    attackDamageName MD.AdSuck = "suck"
 
     confers [] = "nothing "
     confers xs = concatMap resistanceName xs

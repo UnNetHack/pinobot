@@ -1,5 +1,5 @@
---- /nethack-3.4.3/sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
-+++ unixmain.c	2013-06-05 21:26:51.393378208 +0300
+--- /sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
++++ unixmain.c	2013-06-12 02:06:58.213302981 +0300
 @@ -44,11 +44,19 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -20,7 +20,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,495 @@
+@@ -538,4 +546,538 @@
  	return;
  }
  
@@ -215,6 +215,13 @@
 +            AT(AT_TENT, "AtTentacle")
 +            AT(AT_WEAP, "AtWeapon")
 +            AT(AT_MAGC, "AtCast")
++/* dnethack */
++#ifdef AT_ARRW
++            AT(AT_ARRW, "AtArrow")
++            AT(AT_WHIP, "AtWhip")
++            AT(AT_LRCH, "AtReach")
++            AT(AT_HODS, "AtMirror")
++#endif
 +#ifdef AT_MULTIPLY
 +            AT(AT_MULTIPLY, "AtMultiply")
 +#endif
@@ -273,6 +280,42 @@
 +            AT(AD_RBRE, "AdRandomBreath")
 +            AT(AD_SAMU, "AdAmuletSteal")
 +            AT(AD_CURS, "AdCurse")
++/* dnethack, bundled together */
++#ifdef AD_WET
++            AT(AD_VORP, "AdVorpal")
++            AT(AD_WET, "AdWet")
++            AT(AD_LETHE, "AdLethe")
++            AT(AD_BIST, "AdBisectBeak")
++            AT(AD_MIST, "AdMist")
++            AT(AD_SUCK, "AdSuck")
++            AT(AD_GROW, "AdGrow")
++            AT(AD_SOUL, "AdSoul")
++            AT(AD_TELE, "AdTele")
++            AT(AD_CHRN, "AdHorn")
++            AT(AD_SHRD, "AdShred")
++            AT(AD_SOLR, "AdSolar")
++            AT(AD_MALK, "AdMalk")
++            AT(AD_UVUU, "AdHeadSpike")
++            AT(AD_HODS, "AdMirror")
++            AT(AD_CHKH, "AdEscalatingDamage")
++            AT(AD_ABDC, "AdAbduction")
++            AT(AD_SLVR, "AdSilver")
++            AT(AD_BALL, "AdIronBall")
++            AT(AD_RETR, "AdElementalGaze")
++            AT(AD_TENT, "AdTentacle")
++            AT(AD_UNKNWN, "AdUnknownPriest")
++            AT(AD_POSN, "AdPoison")
++            AT(AD_SPNL, "AdLeviathan")
++            AT(AD_HLBD, "AdAsmodeusBlood")
++            AT(AD_SQUE, "AdStealQuestArtifact")
++            AT(AD_KAOS, "AdSpawnChaos")
++            AT(AD_WISD, "AdWisdom")
++            AT(AD_AXUS, "AdMultiElementCounterAttackThatAngersTons")
++            AT(AD_BLDR, "AdBoulderArrow")
++            AT(AD_VBLD, "AdBoulderArrowRandomSpread")
++            AT(AD_JAILER, "AdJailer")
++#endif
++
 +#ifdef AD_CALM
 +            AT(AD_CALM, "AdCalm")
 +#endif

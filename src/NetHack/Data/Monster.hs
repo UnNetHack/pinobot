@@ -10,7 +10,8 @@ data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |
               AtTouch | AtSting | AtHug | AtSpit |
               AtEngulf | AtBreath | AtExplode |
               AtSuicideExplode | AtGaze | AtTentacle |
-              AtWeapon | AtCast | AtScre | AtMultiply
+              AtWeapon | AtCast | AtScre | AtMultiply |
+              AtArrow | AtReach | AtMirror | AtWhip
               deriving (Eq, Show, Ord)
 
 data DamageType = AdPhys | AdMagicMissile |
@@ -30,7 +31,17 @@ data DamageType = AdPhys | AdMagicMissile |
               AdCurse | AdLevelTeleport |
               AdBlink | AdFreeze | AdPunisher |
               AdDecapitate | AdBehead | AdCancellation |
-              AdCalm | AdTickle | AdPoly | AdDrown
+              AdCalm | AdTickle | AdPoly | AdDrown |
+              AdShred | AdJailer | AdBoulderArrow |
+              AdBoulderArrowRandomSpread |
+              AdMultiElementCounterAttackThatAngersTons |
+              AdPoison | AdWisdom | AdVorpal | AdStealQuestArtifact |
+              AdSpawnChaos | AdIronBall | AdGrow | AdSilver |
+              AdAbduction | AdElementalGaze | AdUnknownPriest |
+              AdLeviathan | AdAsmodeusBlood | AdMirror | AdMalk |
+              AdTentacle | AdTele | AdHeadSpike | AdLethe | AdWet |
+              AdHorn | AdSolar | AdEscalatingDamage | AdSoul | AdMist |
+              AdSuck
               deriving (Eq, Show, Ord)
 
 data MonsterSize = Tiny | Small | Medium |
