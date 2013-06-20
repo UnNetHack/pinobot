@@ -2,6 +2,7 @@ module NetHack.Data.Monster where
 
 import qualified Data.Text as T
 import qualified NetHack.Data.Dice as D
+import Data.List ( elem )
 
 data Place = Dungeons | Gehennom | Sheol | Unique
              deriving (Eq, Show, Ord)
@@ -115,4 +116,7 @@ data Monster = Monster { moName :: T.Text,
                          moFlags :: [MonsterFlag],
                          moColor :: Color }
                deriving(Eq, Show, Ord)
+
+hasFlag :: MonsterFlag -> Monster -> Bool
+hasFlag flag = elem flag . moFlags
 

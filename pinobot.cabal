@@ -24,4 +24,5 @@ executable pinobot
                       ,ircbot ==0.5.*
                       ,containers ==0.5.*
                       ,parsec ==3.1.*
+                      ,mtl ==2.1.*
 

@@ -21,11 +21,12 @@ import qualified Network.IRC.Bot.Parsec as IRC
 import qualified Network.IRC.Bot.Log as IRC
 import qualified NetHack.Data.Variant as V
 import NetHack.Data.Dice ( Dice( .. ) )
-import Data.Maybe ( fromJust, mapMaybe, fromMaybe )
+import Data.Maybe ( fromJust, mapMaybe, fromMaybe, catMaybes )
 import Text.Parsec ( ParsecT, string, (<|>), try, many, anyChar, char, spaces )
 import Control.Concurrent ( threadDelay )
 import Data.List ( minimumBy, sortBy, find )
 import Control.Monad ( forever, when )
+import Control.Monad.Writer
 import Data.Foldable ( foldlM )
 
 -- Add variants here.
@@ -167,15 +168,28 @@ ircMonsterInformation mon =
     generationPlace MD.Dungeons = "dungeons "
     generationPlace MD.Unique = "unique "
 
-    relevantFlags 
-        | MD.moGenocidable mon = "genocidable":actualFlags
-        | otherwise = actualFlags
-    actualFlags = mapMaybe relevantFlag $ MD.moFlags mon
+    isCarnivore = MD.hasFlag MD.FlCarnivore mon
+    isHerbivore = MD.hasFlag MD.FlHerbivore mon
+    isOmnivore = isCarnivore && isHerbivore
+
+    relevantFlagsW :: Writer [String] ()
+    relevantFlagsW = do
+        when (MD.moGenocidable mon) $ tell ["genocidable"]
+        if isOmnivore
+          then tell ["omnivore"]
+          else do when isCarnivore $ tell ["carnivore"]
+                  when isHerbivore $ tell ["herbivore"]
+        mapM_ (tell . catMaybes . return . relevantFlag) $ MD.moFlags mon
+
+    relevantFlags = execWriter relevantFlagsW
+
+    flags :: String
     flags
         | null relevantFlags = "none"
         | null $ tail relevantFlags = head relevantFlags
         | otherwise = head relevantFlags ++
                       concatMap (\str -> ", " ++ str) (tail relevantFlags)
+
     attacks [] = "none"
     attacks [attack] = attackName attack
     attacks (x:xs) = attackName x ++ concatMap (\atk -> ", " ++ attackName atk)
