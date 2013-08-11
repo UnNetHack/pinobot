@@ -42,7 +42,7 @@ data DamageType = AdPhys | AdMagicMissile |
               AdLeviathan | AdAsmodeusBlood | AdMirror | AdMalk |
               AdTentacle | AdTele | AdHeadSpike | AdLethe | AdWet |
               AdHorn | AdSolar | AdEscalatingDamage | AdSoul | AdMist |
-              AdSuck
+              AdSuck | AdDrainLuck
               deriving (Eq, Show, Ord)
 
 data MonsterSize = Tiny | Small | Medium |

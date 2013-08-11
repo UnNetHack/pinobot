@@ -1,5 +1,5 @@
 --- /sys/unix/unixmain.c	2003-12-08 01:39:13.000000000 +0200
-+++ unixmain.c	2013-06-12 02:06:58.213302981 +0300
++++ unixmain.c	2013-08-12 01:50:41.353513100 +0300
 @@ -44,11 +44,19 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -20,7 +20,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,538 @@
+@@ -538,4 +546,541 @@
  	return;
  }
  
@@ -344,6 +344,9 @@
 +#endif
 +#ifdef AD_HEAD
 +            AT(AD_HEAD, "AdDecapitate")
++#endif
++#ifdef AD_LUCK
++            AT(AD_LUCK, "AdDrainLuck")
 +#endif
 +            else { fprintf(stderr,
 +                    "I don't know what attack damage type %d is.\n",
