@@ -318,6 +318,7 @@ ircMonsterInformation mon =
     attackDamageName MD.AdSuck = "suck"
     attackDamageName MD.AdDrainLuck = "drain luck"
     attackDamageName MD.AdSpore = "spores"
+    attackDamageName MD.AdLava = "lava"
 
     confers [] = "nothing "
     confers xs = concatMap resistanceName xs
