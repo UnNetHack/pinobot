@@ -172,16 +172,14 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     flags
         | null relevantFlags = "none"
         | null $ tail relevantFlags = head relevantFlags
-        | otherwise = head relevantFlags <>
-                      foldl1 (\accum str -> accum <> ", " <> str)
-                             (tail relevantFlags)
+        | otherwise = foldl1 (\accum str -> accum <> ", " <> str)
+                             relevantFlags
 
     attacks :: [MD.Attack] -> TL.Builder
     attacks [] = "none"
     attacks [attack] = attackName attack
-    attacks (x:xs) = attackName x <>
-                     foldl1 (\accum str -> accum <> ", " <> str)
-                            (fmap attackName xs)
+    attacks xs = foldl1 (\accum str -> accum <> ", " <> str)
+                        (fmap attackName xs)
 
     attackName :: MD.Attack -> TL.Builder
     attackName (MD.Attack atype dtype (Dice d1 d2)) =
