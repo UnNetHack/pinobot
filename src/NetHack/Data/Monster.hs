@@ -2,7 +2,6 @@ module NetHack.Data.Monster where
 
 import qualified Data.Text as T
 import qualified NetHack.Data.Dice as D
-import Data.List ( elem )
 
 data Place = Dungeons | Gehennom | Sheol | Unique
              deriving (Eq, Show, Ord)

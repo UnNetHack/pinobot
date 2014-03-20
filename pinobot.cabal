@@ -18,7 +18,7 @@ source-repository head
 executable pinobot
   hs-source-dirs:      src
   main-is:             Main.hs
-  ghc-options:         -fwarn-incomplete-patterns
+  ghc-options:         -fwarn-incomplete-patterns -Wall
   build-depends:       base >=4.5.0.0 && < 5.0.0.0
                       ,text ==1.1.*
                       ,ircbot ==0.6.*
