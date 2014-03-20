@@ -19,10 +19,12 @@ executable pinobot
   hs-source-dirs:      src
   main-is:             Main.hs
   ghc-options:         -fwarn-incomplete-patterns
-  build-depends:       base >=4.5.0.0 && < 4.7
-                      ,text ==0.11.*
-                      ,ircbot ==0.5.*
+  build-depends:       base >=4.5.0.0 && < 5.0.0.0
+                      ,text ==1.1.*
+                      ,ircbot ==0.6.*
                       ,containers ==0.5.*
                       ,parsec ==3.1.*
-                      ,mtl ==2.1.*
+                      ,transformers ==0.3.*
+                      ,utf8-string ==0.3.*
+                      ,bytestring ==0.10.*
 
