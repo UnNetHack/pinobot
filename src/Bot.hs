@@ -209,6 +209,8 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     attackTypeName MD.AtReach = "reach"
     attackTypeName MD.AtMirror = "mirror"
     attackTypeName MD.AtWhip = "whip"
+    attackTypeName MD.AtMMagical = "mmmmagical"
+    attackTypeName MD.AtReachingBite = "reaching"
 
     attackDamageName MD.AdCalm = "calm"
     attackDamageName MD.AdTickle = "tickle"
@@ -305,6 +307,16 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     attackDamageName MD.AdDrainLuck = "drain luck"
     attackDamageName MD.AdSpore = "spores"
     attackDamageName MD.AdLava = "lava"
+    attackDamageName MD.AdSunflower = "sunflowerpower"
+    attackDamageName MD.AdFernExplosion = "fernxplosion"
+    attackDamageName MD.AdMandrake = "mandrake-shriek"
+    attackDamageName MD.AdPhysRetaliate = "retaliate"
+    attackDamageName MD.AdVamp = "vampire"
+    attackDamageName MD.AdWebs = "vampire-arrr"
+    attackDamageName MD.AdWeeping = "levtele-drain"
+    attackDamageName MD.AdGaro = "rumor-dispense"
+    attackDamageName MD.AdGaroMaster = "oracle-dispense"
+    attackDamageName MD.AdLoadstones = "loadstone-throw"
 
     confers :: [MD.Resistance] -> TL.Builder
     confers [] = "nothing "

@@ -11,7 +11,8 @@ data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |
               AtEngulf | AtBreath | AtExplode |
               AtSuicideExplode | AtGaze | AtTentacle |
               AtWeapon | AtCast | AtScre | AtMultiply |
-              AtArrow | AtReach | AtMirror | AtWhip
+              AtArrow | AtReach | AtMirror | AtWhip |
+              AtMMagical | AtReachingBite
               deriving (Eq, Show, Ord)
 
 data DamageType = AdPhys | AdMagicMissile |
@@ -41,7 +42,10 @@ data DamageType = AdPhys | AdMagicMissile |
               AdLeviathan | AdAsmodeusBlood | AdMirror | AdMalk |
               AdTentacle | AdTele | AdHeadSpike | AdLethe | AdWet |
               AdHorn | AdSolar | AdEscalatingDamage | AdSoul | AdMist |
-              AdSuck | AdDrainLuck | AdSpore | AdLava
+              AdSuck | AdDrainLuck | AdSpore | AdLava |
+              AdSunflower | AdFernExplosion | AdMandrake |
+              AdPhysRetaliate | AdVamp | AdWebs | AdWeeping |
+              AdGaro | AdGaroMaster | AdLoadstones
               deriving (Eq, Show, Ord)
 
 data MonsterSize = Tiny | Small | Medium |

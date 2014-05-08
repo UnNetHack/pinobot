@@ -1,5 +1,5 @@
---- /nethack-3.4.3/sys/unix/unixmain.c	2003-12-08 08:39:13.000000000 +0900
-+++ unixmain.c	2013-11-14 00:06:34.129112576 +0900
+--- /nethack-3.4.3/sys/unix/unixmain.c	2014-05-08 23:51:24.500724134 +0900
++++ unixmain.c	2014-05-08 23:51:20.192861371 +0900
 @@ -44,11 +44,19 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -20,7 +20,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,549 @@
+@@ -538,4 +546,561 @@
  	return;
  }
  
@@ -221,6 +221,8 @@
 +            AT(AT_WHIP, "AtWhip")
 +            AT(AT_LRCH, "AtReach")
 +            AT(AT_HODS, "AtMirror")
++            AT(AT_LNCK, "AtReachingBite")
++            AT(AT_MMGC, "AtMMagical")
 +#endif
 +#ifdef AT_MULTIPLY
 +            AT(AT_MULTIPLY, "AtMultiply")
@@ -314,6 +316,16 @@
 +            AT(AD_BLDR, "AdBoulderArrow")
 +            AT(AD_VBLD, "AdBoulderArrowRandomSpread")
 +            AT(AD_JAILER, "AdJailer")
++            AT(AD_VAMP, "AdVamp")
++            AT(AD_WEBS, "AdWebs")
++            AT(AD_WEEP, "AdWeeping")
++            AT(AD_BARB, "AdPhysRetaliate")
++            AT(AD_GARO, "AdGaro")
++            AT(AD_GARO_MASTER, "AdGaroMaster")
++            AT(AD_SSUN, "AdSunflower")
++            AT(AD_FNEX, "AdFernExplosion")
++            AT(AD_MAND, "AdMandrake")
++            AT(AD_LOAD, "AdLoadstones")
 +#endif
 +#ifdef AD_SPOR
 +            AT(AD_SPOR, "AdSpore")
