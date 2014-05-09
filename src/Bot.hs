@@ -388,11 +388,16 @@ message' input =
   where
     parser :: T.Parser (Maybe T.Text)
     parser = do
-        variantStr <- foldl
+        (variantStr, ignore) <- foldl
                         (\previoustry variant ->
-                          previoustry <|> try (stringT $ V.commandPrefix variant))
-                        (fail "") variants <|> try (stringT "")
-        ignore <- try (stringT "?") <|> try (stringT "")
+                          previoustry <|> try
+                          ( (,) <$>
+                           (stringT $ V.commandPrefix variant) <*>
+                            try (stringT "?") ) )
+                        (fail "") variants <|>
+                        ((,) <$> try (stringT "")
+                             <*> try (stringT "?")) <|>
+                        (return ("", ""))
         if ignore == "?"
           then doPart $ decideVariant variantStr
           else return Nothing
