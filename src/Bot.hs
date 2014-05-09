@@ -17,6 +17,7 @@ import qualified NetHack.Imported.GruntHack as GruntHack
 import qualified NetHack.Imported.Slashem as Slashem
 import qualified NetHack.Imported.Brass as Brass
 import qualified NetHack.Imported.Dnethack as Dnethack
+import qualified NetHack.Imported.SlashemExtended as SlashemExtended
 import NetHack.Data.Dice
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as TL
@@ -41,7 +42,8 @@ variants = [ Vanilla.variant
            , GruntHack.variant
            , Slashem.variant
            , Brass.variant
-           , Dnethack.variant ]
+           , Dnethack.variant
+           , SlashemExtended.variant ]
 
 -- Shamelessly stolen from HaskellWiki which in turn stole it from Lloyd
 -- Allison:
@@ -211,6 +213,9 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     attackTypeName MD.AtWhip = "whip"
     attackTypeName MD.AtMMagical = "mmmmagical"
     attackTypeName MD.AtReachingBite = "reaching"
+    attackTypeName MD.AtLash = "lashing"
+    attackTypeName MD.AtTrample = "trample"
+    attackTypeName MD.AtScratch = "scratch"
 
     attackDamageName MD.AdCalm = "calm"
     attackDamageName MD.AdTickle = "tickle"
@@ -317,6 +322,7 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     attackDamageName MD.AdGaro = "rumor-dispense"
     attackDamageName MD.AdGaroMaster = "oracle-dispense"
     attackDamageName MD.AdLoadstones = "loadstone-throw"
+    attackDamageName MD.AdRemoveEngravings = "remove-engravings"
 
     confers :: [MD.Resistance] -> TL.Builder
     confers [] = "nothing "

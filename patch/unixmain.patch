@@ -1,5 +1,5 @@
---- /nethack-3.4.3/sys/unix/unixmain.c	2014-05-08 23:51:24.500724134 +0900
-+++ unixmain.c	2014-05-08 23:51:20.192861371 +0900
+--- /nethack-3.4.3/sys/unix/unixmain.c	2014-05-09 11:09:48.132521217 +0900
++++ unixmain.c	2014-05-09 11:01:41.984542773 +0900
 @@ -44,11 +44,19 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -20,7 +20,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,561 @@
+@@ -538,4 +546,573 @@
  	return;
  }
  
@@ -215,6 +215,15 @@
 +            AT(AT_TENT, "AtTentacle")
 +            AT(AT_WEAP, "AtWeapon")
 +            AT(AT_MAGC, "AtCast")
++#ifdef AT_SCRA
++            AT(AT_SCRA, "AtScratch")
++#endif
++#ifdef AT_LASH
++            AT(AT_LASH, "AtLash")
++#endif
++#ifdef AT_TRAM
++            AT(AT_TRAM, "AtTrample")
++#endif
 +/* dnethack */
 +#ifdef AT_ARRW
 +            AT(AT_ARRW, "AtArrow")
@@ -282,6 +291,9 @@
 +            AT(AD_RBRE, "AdRandomBreath")
 +            AT(AD_SAMU, "AdAmuletSteal")
 +            AT(AD_CURS, "AdCurse")
++#ifdef AD_NGRA
++            AT(AD_NGRA, "AdRemoveEngravings")
++#endif
 +/* dnethack, bundled together */
 +#ifdef AD_WET
 +            AT(AD_VORP, "AdVorpal")

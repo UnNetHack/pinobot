@@ -6,15 +6,16 @@ This is a NetHack monster information IRC bot written by Mikko Juola.
 Bot commands
 --------
 
-    UnNetHack:      @?monster
-    UnNetHack:      @u?monster
-    Vanilla:        @v?monster
-    UnNetHackPlus:  @u+?monster
-    SporkHack:      @s?monster
-    GruntHack:      @g?monster
-    Slash'EM:       @l?monster
-    NetHack Brass:  @b?monster
-    dNetHack:       @d?monster
+    UnNetHack:          @?monster
+    UnNetHack:          @u?monster
+    Vanilla:            @v?monster
+    UnNetHackPlus:      @u+?monster
+    SporkHack:          @s?monster
+    GruntHack:          @g?monster
+    Slash'EM:           @l?monster
+    Slash'EM extended:  @le?monster
+    NetHack Brass:      @b?monster
+    dNetHack:           @d?monster
 
 Gives information about some monster. Replace 'monster' with the actual monster
 name.
