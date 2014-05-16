@@ -20,11 +20,11 @@ executable pinobot
   main-is:             Main.hs
   ghc-options:         -fwarn-incomplete-patterns -Wall
   build-depends:       base >=4.5.0.0 && < 5.0.0.0
-                      ,text ==1.1.*
-                      ,ircbot ==0.6.*
-                      ,containers ==0.5.*
-                      ,parsec ==3.1.*
+                      ,text >=0.9
+                      ,ircbot >=0.6 && <1.0
+                      ,containers >=0.5 && <1.0
+                      ,parsec >=3.1 && <4.0
                       ,transformers ==0.3.*
-                      ,utf8-string ==0.3.*
-                      ,bytestring ==0.10.*
+                      ,utf8-string >=0.3 && <1.0
+                      ,bytestring >=0.10 && <1.0
 
