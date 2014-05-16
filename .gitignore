@@ -1,3 +1,5 @@
 dist
 pinobot
+.cabal-sandbox/
+cabal.sandbox.config
 
