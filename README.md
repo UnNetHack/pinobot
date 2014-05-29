@@ -20,20 +20,17 @@ Bot commands
 Gives information about some monster. Replace 'monster' with the actual monster
 name.
 
-Configuration
--------------
+How to run
+----------
 
-Edit src/Main.hs. There is a line that looks like this:
+The bot is composed of two operating system processes, pinobot-frontend and
+pinobot-monsterdb. pinobot-frontend talks to the IRC server and has direct
+communication with it and pinobot-monsterdb does all the logic, parsing and
+handing out monster information. The idea is that Pinobot can be upgraded by
+stopping pinobot-monsterdb and running an updated version of it.
 
-    -- Add your channel to the S.fromList part.
-    (_, part) <- IRC.initChannelsPart $ S.fromList [""]
-
-Add the channel you want the bot join to the quotes. For example:
-
-    (_, part) <- IRC.initChannelsPart $ S.fromList ["#unnethack"]
-
-Similarly, you can change the IRC server by modifying the source below it. It
-should be simple enough that you do not need to know Haskell.
+Getting this thing to run should be as simple as just running pinobot-frontend
+first and then pinobot-monsterdb.
 
 Patch
 -----
