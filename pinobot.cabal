@@ -1,5 +1,5 @@
 name:                pinobot
-version:             0.1.0.0
+version:             0.2.0.0
 synopsis:            NetHack information IRC bot
 description:         See README.md
 homepage:            http://trankesbel.com/
@@ -9,22 +9,50 @@ author:              Mikko Juola
 maintainer:          mikjuo@gmail.com
 category:            Network
 build-type:          Simple
-cabal-version:       >=1.8
+cabal-version:       >=1.10
 
 source-repository head
     type:     git
     location: git://github.com/UnNetHack/pinobot.git
 
-executable pinobot
-  hs-source-dirs:      src
-  main-is:             Main.hs
+library
+  exposed-modules:     IRC.Bot
+                       IRC.Types
   ghc-options:         -fwarn-incomplete-patterns -Wall
-  build-depends:       base >=4.5.0.0 && < 5.0.0.0
+  hs-source-dirs:      lib
+  build-depends:      base >=4.5.0.0 && < 5.0.0.0
                       ,text >=0.9
                       ,ircbot >=0.6 && <1.0
+                      ,irc >= 0.6 && <1.0
+                      ,stm >= 2.4 && <3.0
                       ,containers >=0.5 && <1.0
-                      ,parsec >=3.1 && <4.0
-                      ,transformers ==0.3.*
+                      ,transformers >=0.3 && <1.0
                       ,utf8-string >=0.3 && <1.0
                       ,bytestring >=0.10 && <1.0
+                      ,network-simple >=0.4 && <1.0
+                      ,pipes >=4.1 && <5.0
+                      ,pipes-network >=0.6 && <1.0
+                      ,cereal >=0.4 && <1.0
+                      ,cereal-text
+  default-language:    Haskell2010
+
+executable pinobot-frontend
+  hs-source-dirs:      exe
+  main-is:             Main.hs
+  ghc-options:         -fwarn-incomplete-patterns -Wall -threaded
+  build-depends:       base >=4.5.0.0 && < 5.0.0.0
+                      ,pinobot
+                      ,text >=0.9
+  default-language:    Haskell2010
+
+executable pinobot-monsterdb
+  hs-source-dirs:      monsterdb
+  main-is:             Main.hs
+  ghc-options:         -fwarn-incomplete-patterns -Wall -threaded
+  build-depends:       base >=4.5.0.0 && < 5.0.0.0
+                      ,pinobot
+                      ,text >=0.9
+                      ,transformers >=0.3 && <1.0
+                      ,parsec >=3.1 && <4.0
+  default-language:    Haskell2010
 
