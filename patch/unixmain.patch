@@ -1,5 +1,5 @@
 --- /nethack-3.4.3/sys/unix/unixmain.c	2014-05-09 11:09:48.132521217 +0900
-+++ unixmain.c	2014-05-09 11:01:41.984542773 +0900
++++ unixmain.c	2014-06-08 14:40:33.987564792 +0900
 @@ -44,11 +44,19 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -20,7 +20,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,573 @@
+@@ -538,4 +546,587 @@
  	return;
  }
  
@@ -232,6 +232,9 @@
 +            AT(AT_HODS, "AtMirror")
 +            AT(AT_LNCK, "AtReachingBite")
 +            AT(AT_MMGC, "AtMMagical")
++            AT(AT_ILUR, "AtIllurien")
++            AT(AT_HITS, "AtAutoHit")
++            AT(AT_WISP, "AtWispMist")
 +#endif
 +#ifdef AT_MULTIPLY
 +            AT(AT_MULTIPLY, "AtMultiply")
@@ -338,6 +341,17 @@
 +            AT(AD_FNEX, "AdFernExplosion")
 +            AT(AD_MAND, "AdMandrake")
 +            AT(AD_LOAD, "AdLoadstones")
++            AT(AD_ILUR, "AdIllurien")
++            AT(AD_DUNSTAN, "AdDunstan")
++            AT(AD_IRIS, "AdIris")
++            AT(AD_NABERIUS, "AdNaberius")
++            AT(AD_OTIAX, "AdOtiax")
++            AT(AD_SIMURGH, "AdSimurgh")
++            AT(AD_CMSL, "AdColdMissile")
++            AT(AD_FMSL, "AdFireMissile")
++            AT(AD_EMSL, "AdElectricMissile")
++            AT(AD_SMSL, "AdPhysicalShrapnel")
++            AT(AD_WMTG, "AdWarMachineGaze")
 +#endif
 +#ifdef AD_SPOR
 +            AT(AD_SPOR, "AdSpore")
