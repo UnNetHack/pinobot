@@ -126,6 +126,7 @@ relevantFlag MD.FlVegetarian = Just "vegetarian"
 relevantFlag MD.FlStalk = Just "stalker"
 relevantFlag MD.FlMetallivore = Just "metallivore"
 relevantFlag MD.FlPoisonous = Just "poisonous"
+relevantFlag MD.FlLithivore = Just "lithivore"
 relevantFlag _ = Nothing
 
 showB :: Show a => a -> TL.Builder
@@ -325,6 +326,9 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     attackDamageName MD.AdLoadstones = "loadstone-throw"
     attackDamageName MD.AdRemoveEngravings = "remove-engravings"
     attackDamageName MD.AdIllurien = "illurien-swallow"
+    attackDamageName MD.AdLightRay = "light-ray"
+    attackDamageName MD.AdRemoveLight = "remove-light"
+    attackDamageName MD.AdDisarm = "disarm"
 
     confers :: [MD.Resistance] -> TL.Builder
     confers [] = "nothing "

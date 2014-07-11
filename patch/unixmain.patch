@@ -1,5 +1,5 @@
---- /nethack-3.4.3/sys/unix/unixmain.c	2014-05-09 11:09:48.132521217 +0900
-+++ unixmain.c	2014-06-08 14:40:33.987564792 +0900
+--- /nethack-3.4.3/sys/unix/unixmain.c	2014-07-12 02:20:13.552323987 +0900
++++ unixmain.c	2014-07-12 02:26:56.689888434 +0900
 @@ -44,11 +44,19 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -20,7 +20,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,587 @@
+@@ -538,4 +546,620 @@
  	return;
  }
  
@@ -294,8 +294,20 @@
 +            AT(AD_RBRE, "AdRandomBreath")
 +            AT(AD_SAMU, "AdAmuletSteal")
 +            AT(AD_CURS, "AdCurse")
++#ifdef AD_LITE
++            AT(AD_LITE, "AdLightRay")
++#endif
 +#ifdef AD_NGRA
 +            AT(AD_NGRA, "AdRemoveEngravings")
++#endif
++#ifdef AD_GLIB
++            AT(AD_GLIB, "AdDisarm")
++#endif
++#ifdef AD_DARK
++            AT(AD_DARK, "AdRemoveLight")
++#endif
++#ifdef AD_ENDS
++            AT(AD_ENDS, "AdPlaceholder")
 +#endif
 +/* dnethack, bundled together */
 +#ifdef AD_WET
@@ -518,6 +530,27 @@
 +        AT(M3_WAITFORU, "FlWaitsForYou");
 +        AT(M3_CLOSE, "FlClose");
 +        AT(M3_COVETOUS, "FlCovetous");
++#ifdef M3_LITHIVORE
++        AT(M3_LITHIVORE, "FlLithivore");
++#endif
++#ifdef M3_POKEMON
++        AT(M3_POKEMON, "FlPokemon");
++#endif
++#ifdef M3_AVOIDER
++        AT(M3_AVOIDER, "FlAvoider");
++#endif
++#ifdef M3_NOTAME
++        AT(M3_NOTAME, "FlUntameable");
++#endif
++#ifdef M3_TRAITOR
++        AT(M3_TRAITOR, "FlTraitor");
++#endif
++#ifdef M3_INFRAVISIBLE
++        AT(M3_INFRAVISIBLE, "FlInfravisible");
++#endif
++#ifdef M3_INFRAVISION
++        AT(M3_INFRAVISION, "FlInfravision");
++#endif
 +        if (hates_silver(pm)) fprintf(f, ", FlHatesSilver");
 +        if (passes_bars(pm)) fprintf(f, ", FlPassesBars");
 +        if (vegan(pm)) fprintf(f, ", FlVegan");

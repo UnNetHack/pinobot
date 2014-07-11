@@ -47,7 +47,8 @@ data DamageType = AdPhys | AdMagicMissile |
               AdSunflower | AdFernExplosion | AdMandrake |
               AdPhysRetaliate | AdVamp | AdWebs | AdWeeping |
               AdGaro | AdGaroMaster | AdLoadstones |
-              AdRemoveEngravings | AdIllurien
+              AdRemoveEngravings | AdIllurien | AdLightRay |
+              AdRemoveLight | AdDisarm
               deriving (Eq, Show, Ord)
 
 data MonsterSize = Tiny | Small | Medium |
@@ -88,10 +89,12 @@ data MonsterFlag = FlFly | FlSwim | FlAmorphous |
                FlWantsBell | FlWantsBook | FlWantsCand |
                FlWantsArti | FlWantsAll | FlWaitsForYou |
                FlClose | FlCovetous | FlInfra |
-               FlInfravisible |
+               FlInfravisible | FlInfravision | FlTraitor |
+               FlUntameable | FlLithivore |
                -- derived flags
                FlHatesSilver | FlPassesBars |
-               FlVegan | FlVegetarian
+               FlVegan | FlVegetarian | FlPokemon |
+               FlAvoider
                deriving (Eq, Show, Ord)
 
 data Attack = Attack { atType :: AttackType,
