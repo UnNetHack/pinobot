@@ -284,6 +284,9 @@ codeGeneration env = TL.toStrict . TL.toLazyText $ execWriter $ do
 imports :: Writer TL.Builder ()
 imports = do
     tell "import PinobotSafe\n"
+    tell "import qualified Data.Map.Lazy as M\n"
+    tell "import qualified Data.Set as S\n"
+    tell "import qualified Data.Sequence as SQ\n"
     tell "import qualified NetHack.Imported.Vanilla as Vanilla\n"
     tell "import qualified NetHack.Imported.Brass as Brass\n"
     tell "import qualified NetHack.Imported.GruntHack as GruntHack\n"

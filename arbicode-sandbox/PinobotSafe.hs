@@ -90,6 +90,56 @@ module PinobotSafe
     , T.pack
     , T.unpack
     , T.strip
+    , permutations
+    , head
+    , tail
+    , last
+    , init
+    , null
+    , length
+    , reverse
+    , intersperse
+    , transpose
+    , subsequences
+    , scanl
+    , scanl1
+    , scanr
+    , scanr1
+    , iterate
+    , unfoldr
+    , repeat
+    , replicate
+    , cycle
+    , take
+    , drop
+    , splitAt
+    , takeWhile
+    , dropWhile
+    , span
+    , break
+    , group
+    , inits
+    , tails
+    , lookup
+    , (!!)
+    , zip
+    , zip3
+    , zip4
+    , zip5
+    , zip6
+    , zip7
+    , zipWith
+    , zipWith3
+    , zipWith4
+    , zipWith5
+    , zipWith6
+    , zipWith7
+    , unzip
+    , unzip3
+    , unzip4
+    , unzip5
+    , unzip6
+    , unzip7
     , module Ex )
     where
 
@@ -104,10 +154,21 @@ import Data.Typeable
 import Data.Foldable
 import Data.Traversable
 import Data.Semigroup
+import Data.Function ( fix )
+import Data.List hiding ( elem, find, notElem, minimum, minimumBy, maximum, maximumBy, product, concatMap, concat, and, or, any, sum )
 import NetHack.Data.Dice as Ex
 import NetHack.Data.Variant as Ex
 import NetHack.Data.Monster as Ex
-
+import Control.Monad.Fix as Ex
+import Control.Comonad as Ex
+import Control.Monad.Trans.Reader as Ex hiding ( liftCatch, liftCallCC, liftListen )
+import Control.Monad.Trans.State.Lazy as Ex hiding ( liftPass, liftListen, liftCatch, liftCallCC )
+import Control.Monad.Trans.Writer.Lazy as Ex hiding ( liftCatch, liftCallCC )
+import Control.Monad.Trans.Maybe as Ex hiding ( liftListen, liftCallCC, liftPass )
+import Control.Monad.Trans.Except as Ex hiding ( liftListen, liftCallCC, liftPass )
+import Control.Comonad.Trans.Store as Ex
+import Control.Monad.Free as Ex
+import Data.Functor.Identity as Ex
 import qualified Data.Text as T
 
 showType :: Typeable a => a -> T.Text
