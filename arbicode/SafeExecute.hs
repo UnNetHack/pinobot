@@ -1,5 +1,6 @@
 {-# LANGUAGE OverloadedStrings, ViewPatterns, DeriveDataTypeable #-}
 {-# LANGUAGE LambdaCase, TemplateHaskell, ForeignFunctionInterface #-}
+{-# LANGUAGE BangPatterns #-}
 
 module SafeExecute
     ( safeExecute )
@@ -19,7 +20,7 @@ import qualified Data.Map.Strict as M
 import qualified Data.ByteString as B
 import Control.Monad.Trans.Writer.Strict
 import System.IO.Error
-import Data.Attoparsec.Text
+import Data.Attoparsec.Text hiding ( try )
 import Data.Monoid
 import Data.Char
 import System.Process
@@ -172,25 +173,24 @@ attemptRun :: ExecutionEnv -> T.Text -> IO T.Text
 attemptRun env txt = do
     attemptCompilation env (Just txt)
     T.writeFile "arbicode-sandbox/Main.hs" $ runCodeGeneration
-    runGHC ["Env.hs", "Main.hs"]
+    runGHC ["Env.hs", "Main.hs", "-o", "Main"]
     (read_pipe, write_pipe) <- createPipe
-    str <- flip finally (closeFd write_pipe) $ do
+    str <- flip finally (ignoreExceptions $ closeFd write_pipe) $ do
         pid <- forkProcess $ do
             closeFd (Fd 1)
             closeFd (Fd 2)
-            dupTo write_pipe (Fd 1)
-            dupTo write_pipe (Fd 2)
+            void $ dupTo write_pipe (Fd 1)
+            void $ dupTo write_pipe (Fd 2)
             changeWorkingDirectory "./arbicode-sandbox"
             c_masochist
-            executeFile (T.encodeUtf8 "./Main") False [] Nothing
+            void $ executeFile (T.encodeUtf8 "./Main") False [] Nothing
             exitFailure
         result <- timeout 5000000 $ do
             Just status <- getProcessStatus True False pid
             return status
         case result of
             Nothing -> do
-                closeFd read_pipe
-                closeFd write_pipe
+                ignoreExceptions $ closeFd read_pipe
                 signalProcess sigKILL pid
                 void $ getProcessStatus True False pid
                 throwIO $ BailOut "Timeout."
@@ -206,6 +206,12 @@ attemptRun env txt = do
 
     return str
   where
+    ignoreExceptions action = do
+        result <- try action
+        case result of
+            Left (SomeException _) -> return ()
+            Right x -> return x
+
     cmap = T.map (\ch -> if isSpace ch || ord ch < 32 then ' ' else ch)
 
 runCodeGeneration :: T.Text
@@ -220,8 +226,11 @@ withProcessTimeout useconds phandle stderr err_msg = do
     result <- timeout useconds $ do
         code <- waitForProcess phandle
         when (code /= ExitSuccess) $ do
-            errs <- T.hGetContents stderr
-            throwIO $ BailOut $ err_msg <> cmap errs
+            errs <- T.decodeUtf8' <$> drainHandle stderr
+            case errs of
+                Left _ -> throwIO $ BailOut "Output is invalid UTF-8."
+                Right err ->
+                    throwIO $ BailOut $ err_msg <> cmap err
 
     when (isNothing result) $ do
         withProcessHandle phandle $ \case
@@ -234,13 +243,15 @@ withProcessTimeout useconds phandle stderr err_msg = do
 
 runGHC :: [T.Text] -> IO ()
 runGHC file_name = do
-    (_, _, Just stderr, phandle) <- createProcess cproc
+    (_, Just stdout, Just stderr, phandle) <- createProcess cproc
     withProcessTimeout 5000000 phandle stderr "Compilation failed:"
+    void $ drainHandle stdout
+    void $ drainHandle stderr
   where
     cproc = CreateProcess
         { cmdspec = RawCommand "../arbicode-sandbox-bin/ghc"
-                               $ ["--make"] <> fmap T.unpack file_name
-        , cwd = Just "arbicode-sandbox"
+                               $ fmap T.unpack file_name
+        , cwd = Just "/arbicode-sandbox"
         , env = Nothing
         , std_in = Inherit
         , std_out = CreatePipe
@@ -248,6 +259,15 @@ runGHC file_name = do
         , close_fds = True
         , create_group = False
         , delegate_ctlc = False }
+
+drainHandle :: Handle -> IO B.ByteString
+drainHandle h = rec B.empty
+  where
+    rec !accum = do
+        bs <- B.hGetNonBlocking h 1000
+        if B.null bs
+          then return $ accum <> bs
+          else rec $ accum <> bs
 
 attemptCompilation :: ExecutionEnv -> Maybe T.Text -> IO ()
 attemptCompilation env opt_code = do
