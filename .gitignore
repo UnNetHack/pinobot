@@ -7,5 +7,6 @@ pinobot-arbicode
 *.o
 *.hi
 arbicode-sandbox-bin/
-arbicode-sandbox/
+arbicode-sandbox/*
+!arbicode-sandbox/PinobotSafe.hs
 
