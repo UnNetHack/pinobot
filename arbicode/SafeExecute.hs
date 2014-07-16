@@ -199,19 +199,21 @@ attemptRun env txt = do
                 str <- B.hGetNonBlocking hndl 1024
                 if str == ""
                   then throwIO $ BailOut "Expired."
-                  else case T.decodeUtf8' str of
+                  else case fmap cmap (T.decodeUtf8' str) of
                            Left _ -> throwIO $
                                BailOut "Invalid UTF-8 in result."
                            Right x -> return x
 
     return str
+  where
+    cmap = T.map (\ch -> if isSpace ch then ' ' else ch)
 
 runCodeGeneration :: T.Text
 runCodeGeneration = TL.toStrict . TL.toLazyText $ execWriter $ do
     tell "module Main ( main ) where\n"
     tell "import Env (__code)\n"
     tell "main :: IO ()\n"
-    tell $ "main = print $ if length (take 201 __code) /= length (take 200 __code) then take 200 __code ++ \"...\" else __code\n"
+    tell $ "main = putStrLn $ if length (take 201 __code) /= length (take 200 __code) then take 200 __code ++ \"...\" else __code\n"
 
 withProcessTimeout :: Int -> ProcessHandle -> Handle -> T.Text -> IO ()
 withProcessTimeout useconds phandle stderr err_msg = do
