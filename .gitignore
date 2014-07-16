@@ -2,4 +2,10 @@ dist
 pinobot
 .cabal-sandbox/
 cabal.sandbox.config
+arbicode.var
+pinobot-arbicode
+*.o
+*.hi
+arbicode-sandbox-bin/
+arbicode-sandbox/
 
