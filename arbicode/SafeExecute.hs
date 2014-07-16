@@ -206,7 +206,7 @@ attemptRun env txt = do
 
     return str
   where
-    cmap = T.map (\ch -> if isSpace ch then ' ' else ch)
+    cmap = T.map (\ch -> if isSpace ch || ord ch < 32 then ' ' else ch)
 
 runCodeGeneration :: T.Text
 runCodeGeneration = TL.toStrict . TL.toLazyText $ execWriter $ do
