@@ -1,5 +1,5 @@
---- /nethack-3.4.3/sys/unix/unixmain.c	2014-07-12 02:20:13.552323987 +0900
-+++ unixmain.c	2014-07-12 02:26:56.689888434 +0900
+--- ../NetHack/sys/unix/unixmain.c	2014-07-11 20:20:13.552323987 +0300
++++ ./sys/unix/unixmain.c	2014-08-16 22:14:28.603726618 +0300
 @@ -44,11 +44,19 @@
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -20,7 +20,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,620 @@
+@@ -538,4 +546,621 @@
  	return;
  }
  
@@ -354,6 +354,7 @@
 +            AT(AD_MAND, "AdMandrake")
 +            AT(AD_LOAD, "AdLoadstones")
 +            AT(AD_ILUR, "AdIllurien")
++            AT(AD_STDY, "AdStudy")
 +            AT(AD_DUNSTAN, "AdDunstan")
 +            AT(AD_IRIS, "AdIris")
 +            AT(AD_NABERIUS, "AdNaberius")
@@ -546,7 +547,7 @@
 +        AT(M3_TRAITOR, "FlTraitor");
 +#endif
 +#ifdef M3_INFRAVISIBLE
-+        AT(M3_INFRAVISIBLE, "FlInfravisible");
++        AT(M3_INFRAVISIBLE, "FlInfraVisible");
 +#endif
 +#ifdef M3_INFRAVISION
 +        AT(M3_INFRAVISION, "FlInfravision");
