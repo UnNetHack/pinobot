@@ -547,7 +547,7 @@
 +        AT(M3_TRAITOR, "FlTraitor");
 +#endif
 +#ifdef M3_INFRAVISIBLE
-+        AT(M3_INFRAVISIBLE, "FlInfraVisible");
++        AT(M3_INFRAVISIBLE, "FlInfravisible");
 +#endif
 +#ifdef M3_INFRAVISION
 +        AT(M3_INFRAVISION, "FlInfravision");
