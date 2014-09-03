@@ -48,7 +48,7 @@ data DamageType = AdPhys | AdMagicMissile |
               AdPhysRetaliate | AdVamp | AdWebs | AdWeeping |
               AdGaro | AdGaroMaster | AdLoadstones |
               AdRemoveEngravings | AdIllurien | AdLightRay |
-              AdRemoveLight | AdDisarm | AdStudy
+              AdRemoveLight | AdDisarm | AdStudy | AdOona
               deriving (Eq, Show, Ord)
 
 data MonsterSize = Tiny | Small | Medium |

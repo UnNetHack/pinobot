@@ -219,6 +219,7 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     attackTypeName MD.AtScratch = "scratch"
     attackTypeName MD.AtIllurien = "illurien-swallow"
 
+    attackDamageName MD.AdOona = "oona"
     attackDamageName MD.AdStudy = "study"
     attackDamageName MD.AdCalm = "calm"
     attackDamageName MD.AdTickle = "tickle"

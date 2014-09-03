@@ -1,6 +1,8 @@
---- ../NetHack/sys/unix/unixmain.c	2014-07-11 20:20:13.552323987 +0300
-+++ ./sys/unix/unixmain.c	2014-08-16 22:14:28.603726618 +0300
-@@ -44,11 +44,19 @@
+diff --git a/sys/unix/unixmain.c b/sys/unix/unixmain.c
+index a13514f..3828f99 100644
+--- a/sys/unix/unixmain.c
++++ b/sys/unix/unixmain.c
+@@ -44,11 +44,19 @@ static void NDECL(wd_message);
  static boolean wiz_error_flag = FALSE;
  #endif
  
@@ -20,7 +22,7 @@
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,621 @@
+@@ -538,4 +546,624 @@ char *name;
  	return;
  }
  
@@ -403,6 +405,9 @@
 +#endif
 +#ifdef AD_LUCK
 +            AT(AD_LUCK, "AdDrainLuck")
++#endif
++#ifdef AD_OONA
++            AT(AD_OONA, "AdOona")
 +#endif
 +#ifdef AD_SPORE
 +            AT(AD_SPORE, "AdSpore")
