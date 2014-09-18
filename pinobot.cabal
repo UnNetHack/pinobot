@@ -22,6 +22,7 @@ library
                        NetHack.Data.Monster
                        NetHack.Data.Variant
                        NetHack.Imported.Vanilla
+                       NetHack.Imported.Vanilla350
                        NetHack.Imported.Brass
                        NetHack.Imported.GruntHack
                        NetHack.Imported.SlashemExtended

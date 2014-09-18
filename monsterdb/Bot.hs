@@ -10,6 +10,7 @@ import Prelude hiding ( concatMap, foldl, mapM_, foldl1 )
 import qualified NetHack.Data.Variant as V
 import qualified NetHack.Data.Monster as MD
 import qualified NetHack.Imported.Vanilla as Vanilla
+import qualified NetHack.Imported.Vanilla350 as Vanilla350
 import qualified NetHack.Imported.UnNetHack as UnNetHack
 import qualified NetHack.Imported.UnNetHackPlus as UnNetHackPlus
 import qualified NetHack.Imported.SporkHack as SporkHack
@@ -36,6 +37,7 @@ import qualified Text.Parsec.Text as T
 -- Add variants here.
 variants :: [V.Variant]
 variants = [ Vanilla.variant
+           , Vanilla350.variant
            , UnNetHack.variant
            , UnNetHackPlus.variant
            , SporkHack.variant
