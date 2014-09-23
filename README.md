@@ -9,6 +9,7 @@ Bot commands
     UnNetHack:          @?monster
     UnNetHack:          @u?monster
     Vanilla:            @v?monster
+    Leaked Vanilla:     @V?monster
     UnNetHackPlus:      @u+?monster
     SporkHack:          @s?monster
     GruntHack:          @g?monster
