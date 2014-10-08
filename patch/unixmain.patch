@@ -1,7 +1,7 @@
-diff --git a/sys/unix/unixmain.c b/sys/unix/unixmain.c
-index a13514f..3828f99 100644
---- a/sys/unix/unixmain.c
-+++ b/sys/unix/unixmain.c
+diff --git a/dnethack-3.4.3/sys/unix/unixmain.c b/dnethack-3.4.3/sys/unix/unixmain.c
+index a13514f..fadeab6 100644
+--- a/dnethack-3.4.3/sys/unix/unixmain.c
++++ b/dnethack-3.4.3/sys/unix/unixmain.c
 @@ -44,11 +44,19 @@ static void NDECL(wd_message);
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -22,7 +22,7 @@ index a13514f..3828f99 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,624 @@ char *name;
+@@ -538,4 +546,627 @@ char *name;
  	return;
  }
  
@@ -237,6 +237,7 @@ index a13514f..3828f99 100644
 +            AT(AT_ILUR, "AtIllurien")
 +            AT(AT_HITS, "AtAutoHit")
 +            AT(AT_WISP, "AtWispMist")
++            AT(AT_TNKR, "AtTinker")
 +#endif
 +#ifdef AT_MULTIPLY
 +            AT(AT_MULTIPLY, "AtMultiply")
@@ -356,6 +357,8 @@ index a13514f..3828f99 100644
 +            AT(AD_MAND, "AdMandrake")
 +            AT(AD_LOAD, "AdLoadstones")
 +            AT(AD_ILUR, "AdIllurien")
++            AT(AD_TNKR, "AdTinker")
++            AT(AD_FRWK, "AdFireworks")
 +            AT(AD_STDY, "AdStudy")
 +            AT(AD_DUNSTAN, "AdDunstan")
 +            AT(AD_IRIS, "AdIris")

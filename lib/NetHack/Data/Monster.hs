@@ -13,7 +13,7 @@ data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |
               AtWeapon | AtCast | AtScre | AtMultiply |
               AtArrow | AtReach | AtMirror | AtWhip |
               AtMMagical | AtReachingBite |
-              AtLash | AtTrample | AtScratch | AtIllurien
+              AtLash | AtTrample | AtScratch | AtIllurien | AtTinker
               deriving (Eq, Show, Ord)
 
 data DamageType = AdPhys | AdMagicMissile |
@@ -48,7 +48,8 @@ data DamageType = AdPhys | AdMagicMissile |
               AdPhysRetaliate | AdVamp | AdWebs | AdWeeping |
               AdGaro | AdGaroMaster | AdLoadstones |
               AdRemoveEngravings | AdIllurien | AdLightRay |
-              AdRemoveLight | AdDisarm | AdStudy | AdOona
+              AdRemoveLight | AdDisarm | AdStudy | AdOona |
+              AdFireworks | AdTinker
               deriving (Eq, Show, Ord)
 
 data MonsterSize = Tiny | Small | Medium |
