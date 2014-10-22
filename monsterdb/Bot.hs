@@ -426,7 +426,7 @@ message' input =
       return $ Just $ case mostSimilarMonsterSane variant monsterName of
           Nothing -> "No such monster."
           Just mon ->
-              (if monsterName /= mon
+              (if T.toLower monsterName /= T.toLower mon
                  then monsterName <> " ~" <>
                       (T.pack $ show $ distT monsterName mon) <> "~ "
                  else "") <>
