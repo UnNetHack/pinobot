@@ -425,6 +425,11 @@ message' input =
                  "serious international side effects."
       return $ Just $ case mostSimilarMonsterSane variant monsterName of
           Nothing -> "No such monster."
-          Just mon -> lineMonsterInformation
-                          (fromJust $ V.monster variant mon)
+          Just mon ->
+              (if monsterName /= mon
+                 then monsterName <> " ~" <>
+                      (T.pack $ show $ distT monsterName mon) <> "~ "
+                 else "") <>
+              lineMonsterInformation
+                  (fromJust $ V.monster variant mon)
 
