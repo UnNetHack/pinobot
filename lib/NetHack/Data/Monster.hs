@@ -49,7 +49,8 @@ data DamageType = AdPhys | AdMagicMissile |
               AdGaro | AdGaroMaster | AdLoadstones |
               AdRemoveEngravings | AdIllurien | AdLightRay |
               AdRemoveLight | AdDisarm | AdStudy | AdOona |
-              AdFireworks | AdTinker
+              AdFireworks | AdTinker | AdNumb | AdFreezeSolid |
+              AdDisplacement | AdWither | AdBurn
               deriving (Eq, Show, Ord)
 
 data MonsterSize = Tiny | Small | Medium |
@@ -91,7 +92,7 @@ data MonsterFlag = FlFly | FlSwim | FlAmorphous |
                FlWantsArti | FlWantsAll | FlWaitsForYou |
                FlClose | FlCovetous | FlInfra |
                FlInfravisible | FlInfravision | FlTraitor |
-               FlUntameable | FlLithivore |
+               FlUntameable | FlLithivore | FlPhasing |
                -- derived flags
                FlHatesSilver | FlPassesBars |
                FlVegan | FlVegetarian | FlPokemon |

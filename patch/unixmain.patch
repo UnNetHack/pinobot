@@ -1,7 +1,7 @@
-diff --git a/dnethack-3.4.3/sys/unix/unixmain.c b/dnethack-3.4.3/sys/unix/unixmain.c
-index a13514f..fadeab6 100644
---- a/dnethack-3.4.3/sys/unix/unixmain.c
-+++ b/dnethack-3.4.3/sys/unix/unixmain.c
+diff --git a/sys/unix/unixmain.c b/sys/unix/unixmain.c
+index a13514f..c122af9 100644
+--- a/sys/unix/unixmain.c
++++ b/sys/unix/unixmain.c
 @@ -44,11 +44,19 @@ static void NDECL(wd_message);
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -22,7 +22,7 @@ index a13514f..fadeab6 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,627 @@ char *name;
+@@ -538,4 +546,645 @@ char *name;
  	return;
  }
  
@@ -312,6 +312,9 @@ index a13514f..fadeab6 100644
 +#ifdef AD_ENDS
 +            AT(AD_ENDS, "AdPlaceholder")
 +#endif
++#ifdef AD_WTHR
++            AT(AD_WTHR, "AdWither")
++#endif
 +/* dnethack, bundled together */
 +#ifdef AD_WET
 +            AT(AD_VORP, "AdVorpal")
@@ -414,6 +417,18 @@ index a13514f..fadeab6 100644
 +#endif
 +#ifdef AD_SPORE
 +            AT(AD_SPORE, "AdSpore")
++#endif
++#ifdef AD_NUMB
++            AT(AD_NUMB, "AdNumb")
++#endif
++#ifdef AD_FRZE
++            AT(AD_FRZE, "AdFreezeSolid")
++#endif
++#ifdef AD_DISP
++            AT(AD_DISP, "AdDisplacement")
++#endif
++#ifdef AD_BURN
++            AT(AD_BURN, "AdBurn")
 +#endif
 +            else { fprintf(stderr,
 +                    "I don't know what attack damage type %d is.\n",
@@ -529,6 +544,9 @@ index a13514f..fadeab6 100644
 +        AT(M2_COLLECT, "FlCollect");
 +        AT(M2_MAGIC, "FlMagicCollect");
 +#undef AT
++        if (passes_walls(pm)) {
++            fprintf(f, ", FlPhasing");
++        }
 +#define AT(a, b) if (pm->mflags3 & a) fprintf(f, ", %s", b);
 +        AT(M3_WANTSAMUL, "FlWantsAmulet");
 +        AT(M3_WANTSBELL, "FlWantsBell");

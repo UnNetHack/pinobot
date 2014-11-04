@@ -223,6 +223,11 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     attackTypeName MD.AtIllurien = "illurien-swallow"
     attackTypeName MD.AtTinker = "tinker"
 
+    attackDamageName MD.AdNumb = "numb"
+    attackDamageName MD.AdFreezeSolid = "freeze-solid"
+    attackDamageName MD.AdWither = "wither"
+    attackDamageName MD.AdBurn = "burn"
+    attackDamageName MD.AdDisplacement = "displacement"
     attackDamageName MD.AdTinker = "tinker"
     attackDamageName MD.AdFireworks = "fireworks"
     attackDamageName MD.AdOona = "oona"
