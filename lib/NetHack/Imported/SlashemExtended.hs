@@ -8,7 +8,7 @@ import qualified NetHack.Data.Variant as V
 import NetHack.Data.Monster
 
 variant :: V.Variant
-variant = V.variant monster allMonsterNames "sl"
+variant = V.variant monster allMonsterNames "le"
 
 monster :: T.Text -> Maybe Monster
 monster name
