@@ -1,5 +1,5 @@
 diff --git a/sys/unix/unixmain.c b/sys/unix/unixmain.c
-index a13514f..c122af9 100644
+index a13514f..fabdcb2 100644
 --- a/sys/unix/unixmain.c
 +++ b/sys/unix/unixmain.c
 @@ -44,11 +44,19 @@ static void NDECL(wd_message);
@@ -22,7 +22,7 @@ index a13514f..c122af9 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,645 @@ char *name;
+@@ -538,4 +546,654 @@ char *name;
  	return;
  }
  
@@ -414,6 +414,15 @@ index a13514f..c122af9 100644
 +#endif
 +#ifdef AD_OONA
 +            AT(AD_OONA, "AdOona")
++#endif
++#ifdef AD_NTZC
++            AT(AD_NTZC, "AdNetzach")
++#endif
++#ifdef AD_WTCH
++            AT(AD_WTCH, "AdWatcherTentacleGaze")
++#endif
++#ifdef AD_SHDW
++            AT(AD_SHDW, "AdBlackWebShadow")
 +#endif
 +#ifdef AD_SPORE
 +            AT(AD_SPORE, "AdSpore")
