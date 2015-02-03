@@ -51,7 +51,8 @@ data DamageType = AdPhys | AdMagicMissile |
               AdRemoveLight | AdDisarm | AdStudy | AdOona |
               AdFireworks | AdTinker | AdNumb | AdFreezeSolid |
               AdDisplacement | AdWither | AdBurn |
-              AdBlackWebShadow | AdNetzach | AdWatcherTentacleGaze
+              AdBlackWebShadow | AdNetzach | AdWatcherTentacleGaze |
+              AdFear
               deriving (Eq, Show, Ord)
 
 data MonsterSize = Tiny | Small | Medium |
