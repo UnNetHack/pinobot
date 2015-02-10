@@ -1,7 +1,7 @@
-diff --git a/dnethack-3.4.3/sys/unix/unixmain.c b/dnethack-3.4.3/sys/unix/unixmain.c
-index a13514f..dc94979 100644
---- a/dnethack-3.4.3/sys/unix/unixmain.c
-+++ b/dnethack-3.4.3/sys/unix/unixmain.c
+diff --git a/sys/unix/unixmain.c b/sys/unix/unixmain.c
+index a13514f..57c0b6f 100644
+--- a/sys/unix/unixmain.c
++++ b/sys/unix/unixmain.c
 @@ -44,11 +44,19 @@ static void NDECL(wd_message);
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -22,7 +22,7 @@ index a13514f..dc94979 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,657 @@ char *name;
+@@ -538,4 +546,647 @@ char *name;
  	return;
  }
  
@@ -33,7 +33,7 @@ index a13514f..dc94979 100644
 +/*** EXTRACTOR STUFF ***/
 +
 +#include "date.h"
-+static void extract_monsterdata_to_haskell(
++static void extract_monsterdata_to_yaml(
 +        FILE* f
 +      , const char* variant
 +      , const char* command_prefix );
@@ -50,13 +50,13 @@ index a13514f..dc94979 100644
 +        printf("Usage:\n");
 +        printf("%s [language]\n\n", argv[0]);
 +        printf("Where language is one of: \n");
-+        printf("  haskell\n\n");
++        printf("  yaml\n\n");
 +        return 0;
 +    }
 +
 +    variant_str = detect_variant( &command_prefix );
-+    sprintf( name, "%s.hs", variant_str );
-+    if (argc >= 2 && !strcmp(argv[1], "haskell"))
++    sprintf( name, "%s.yaml", variant_str );
++    if (argc >= 2 && !strcmp(argv[1], "yaml"))
 +    {
 +        fprintf( stderr, "Writing to '%s'...\n", variant_str );
 +        f = fopen(name, "wb");
@@ -65,7 +65,7 @@ index a13514f..dc94979 100644
 +            perror("fopen");
 +            return -1;
 +        }
-+        extract_monsterdata_to_haskell(f, variant_str, command_prefix );
++        extract_monsterdata_to_yaml(f, variant_str, command_prefix );
 +        fclose(f);
 +        fprintf( stderr, "Done.\n" );
 +    }
@@ -111,7 +111,7 @@ index a13514f..dc94979 100644
 +    return "ReplaceThisName";
 +}
 +
-+static void extract_monsterdata_to_haskell(
++static void extract_monsterdata_to_yaml(
 +        FILE* f
 +      , const char* variant
 +      , const char* command_prefix )
@@ -123,71 +123,57 @@ index a13514f..dc94979 100644
 +    memset(&dummymonst, 0, sizeof(dummymonst));
 +
 +    /* We want to import everything in this module. */
-+    fprintf(f, "-- Automatically generated --\n");
-+    fprintf(f, "{-# LANGUAGE OverloadedStrings #-}\n");
-+    fprintf(f, "module NetHack.Imported.%s ( variant ) where\n\n"
-+           , variant );
-+    fprintf(f, "import qualified Data.Text as T\n");
-+    fprintf(f, "import qualified NetHack.Data.Dice as D\n");
-+    fprintf(f, "import qualified NetHack.Data.Variant as V\n");
-+    fprintf(f, "import NetHack.Data.Monster\n\n");
++    fprintf(f, "variant: \"%s\"\n", variant );
++    fprintf(f, "prefix: \"%s\"\n\n", command_prefix );
 +
-+    fprintf(f, "variant :: V.Variant\n");
-+    fprintf(f, "variant = V.variant monster allMonsterNames \"%s\"\n\n"
-+             , command_prefix );
++    fprintf(f, "monsters:\n");
 +
-+    fprintf(f, "monster :: T.Text -> Maybe Monster\n");
-+    fprintf(f, "monster name\n");
 +    for (i1 = 0; mons[i1].mname[0]; ++i1)
 +    {
 +        pm = &mons[i1];
 +        dummymonst.data = pm;
 +
-+        fprintf(f, "  | name == \"%s\" = ", pm->mname);
-+        fprintf(f, "Just Monster { ");
-+        fprintf(f, "moName = \"%s\", ", pm->mname);
-+        if (def_monsyms[pm->mlet] != '\'')
-+            fprintf(f, "moSymbol = '%c', ", def_monsyms[pm->mlet]);
-+        else
-+            fprintf(f, "moSymbol = '\\'', ");
-+        fprintf(f, "moBaseLevel = %d, ", pm->mlevel);
-+        fprintf(f, "moSpeed = %d, ", pm->mmove);
-+        fprintf(f, "moAC = %d, ", pm->ac);
-+        fprintf(f, "moMR = %d, ", pm->mr);
-+        fprintf(f, "moAlign = %d, ", pm->maligntyp);
-+        fprintf(f, "moGenerationPlaces = tail [Gehennom");
++        if (i1 > 0) fprintf(f, "\n");
++
++        fprintf(f, " - name: \"%s\"\n", pm->mname);
++        fprintf(f, "   symbol: \"%c\"\n", def_monsyms[pm->mlet]);
++        fprintf(f, "   base-level: %d\n", pm->mlevel);
++        fprintf(f, "   speed: %d\n", pm->mmove);
++        fprintf(f, "   ac: %d\n", pm->ac);
++        fprintf(f, "   mr: %d\n", pm->mr);
++        fprintf(f, "   alignment: %d\n", pm->maligntyp);
++        fprintf(f, "   generates:\n");
 +        if (pm->geno & G_UNIQ)
-+            fprintf(f, ", Unique");
++            fprintf(f, "    - unique\n");
 +        else if (pm->geno & G_NOGEN)
 +            fprintf(f, "");
 +        else
 +        {
 +#ifdef G_SHEOL
 +            if ( !pb_prohibited_by_generation_flags( pm, 1, 1 ) )
-+                fprintf(f, ", Sheol");
++                fprintf(f, "    - sheol\n");
 +            if ( !pb_prohibited_by_generation_flags( pm, 1, 0 ) )
-+                fprintf(f, ", Gehennom");
++                fprintf(f, "    - gehennom\n");
 +            if ( !pb_prohibited_by_generation_flags( pm, 0, 0 ) )
-+                fprintf(f, ", Dungeons");
++                fprintf(f, "    - dungeons\n");
 +#else
 +            if ( (pm->geno & G_HELL ||
-+                  !(pm->geno & G_NOHELL)) ) fprintf(f, ", Gehennom");
++                  !(pm->geno & G_NOHELL)) ) fprintf(f, "    - gehennom\n");
 +            if ( !(pm->geno & G_HELL) )
-+                 fprintf(f, ", Dungeons");
++                 fprintf(f, "    - dungeons\n");
 +#endif
 +        }
-+        fprintf(f, "], ");
-+        fprintf(f, "moLeavesCorpse = %s, ",
-+                (pm->geno & G_NOCORPSE) ? "False" : "True");
-+        fprintf(f, "moNotGeneratedNormally = %s, ",
-+                (pm->geno & G_NOGEN) ? "True" : "False");
-+        fprintf(f, "moAppearsInSmallGroups = %s, ",
-+                (pm->geno & G_SGROUP) ? "True" : "False");
-+        fprintf(f, "moAppearsInLargeGroups = %s, ",
-+                (pm->geno & G_LGROUP) ? "True" : "False");
-+        fprintf(f, "moGenocidable = %s, ",
-+                (pm->geno & G_GENO) ? "True" : "False");
-+        fprintf(f, "moAttacks = [");
++        fprintf(f, "   leaves-corpse: %s\n",
++                (pm->geno & G_NOCORPSE) ? "No" : "Yes");
++        fprintf(f, "   not-generated-normally: %s\n",
++                (pm->geno & G_NOGEN) ? "Yes" : "No");
++        fprintf(f, "   appears-in-small-groups: %s\n",
++                (pm->geno & G_SGROUP) ? "Yes" : "No");
++        fprintf(f, "   appears-in-largeGroups: %s\n",
++                (pm->geno & G_LGROUP) ? "Yes" : "No");
++        fprintf(f, "   genocidable: %s\n",
++                (pm->geno & G_GENO) ? "Yes" : "No");
++        fprintf(f, "   attacks: [");
 +        for (i2 = 0; i2 < NATTK && (pm->mattk[i2].aatyp ||
 +                                    pm->mattk[i2].adtyp ||
 +                                    pm->mattk[i2].damn ||
@@ -196,8 +182,8 @@ index a13514f..dc94979 100644
 +            if (i2 > 0)
 +                fprintf(f, ", ");
 +
-+            fprintf(f, "Attack ");
-+#define AT(a, b) else if (pm->mattk[i2].aatyp == a) fprintf(f, "%s ", b);
++            fprintf(f, "[");
++#define AT(a, b) else if (pm->mattk[i2].aatyp == a) fprintf(f, "%s", b);
 +            if (1 + 1 == 3) { } /* I hope we won't run this code 
 +                                   in a universe where 1+1 is 3. */
 +            AT(AT_NONE, "AtNone")
@@ -249,7 +235,7 @@ index a13514f..dc94979 100644
 +                    "I don't know what attack type %d is.\n", pm->mattk[i2].aatyp);
 +                   abort(); }
 +#undef AT
-+#define AT(a, b) else if (pm->mattk[i2].adtyp == a) fprintf(f, "%s ", b);
++#define AT(a, b) else if (pm->mattk[i2].adtyp == a) fprintf(f, ", %s", b);
 +            if (1 == 2) { }
 +            AT(AD_PHYS, "AdPhys")
 +            AT(AD_MAGM, "AdMagicMissile")
@@ -446,49 +432,51 @@ index a13514f..dc94979 100644
 +                    "I don't know what attack damage type %d is.\n",
 +                    pm->mattk[i2].adtyp); abort(); }
 +#undef AT
-+            fprintf(f, "(D.Dice %d %d)", pm->mattk[i2].damn, pm->mattk[i2].damd);
++            fprintf(f, ", %d, %d]", pm->mattk[i2].damn, pm->mattk[i2].damd);
 +        }
-+        fprintf(f, "], ");
-+        fprintf(f, "moWeight = %d, ", pm->cwt);
-+        fprintf(f, "moNutrition = %d, ", pm->cnutrit);
-+        fprintf(f, "moSize = ");
-+        if (pm->msize == MZ_TINY) fprintf(f, "Tiny, ");
-+        else if (pm->msize == MZ_SMALL) fprintf(f, "Small, ");
-+        else if (pm->msize == MZ_MEDIUM) fprintf(f, "Medium, ");
-+        else if (pm->msize == MZ_LARGE) fprintf(f, "Large, ");
-+        else if (pm->msize == MZ_HUGE) fprintf(f, "Huge, ");
-+        else if (pm->msize == MZ_GIGANTIC) fprintf(f, "Gigantic, ");
++        fprintf(f, "]\n");
++        fprintf(f, "   weight: %d\n", pm->cwt);
++        fprintf(f, "   nutrition: %d\n", pm->cnutrit);
++        fprintf(f, "   size: ");
++        if (pm->msize == MZ_TINY) fprintf(f, "tiny\n");
++        else if (pm->msize == MZ_SMALL) fprintf(f, "small\n");
++        else if (pm->msize == MZ_MEDIUM) fprintf(f, "medium\n");
++        else if (pm->msize == MZ_LARGE) fprintf(f, "large\n");
++        else if (pm->msize == MZ_HUGE) fprintf(f, "huge\n");
++        else if (pm->msize == MZ_GIGANTIC) fprintf(f, "gigantic\n");
 +        else { fprintf(stderr,
 +                "I don't know what size %d means.\n", pm->msize); abort(); }
 +
-+        /* 'tail' for simpler generation code (don't have to check if we have
-+         * to put in a comma). */
-+        fprintf(f, "moResistances = (tail [ReFire");
-+        if (pm->mresists & MR_FIRE) fprintf(f, ", ReFire");
-+        if (pm->mresists & MR_COLD) fprintf(f, ", ReCold");
-+        if (pm->mresists & MR_SLEEP) fprintf(f, ", ReSleep");
-+        if (pm->mresists & MR_DISINT) fprintf(f, ", ReDisintegrate");
-+        if (pm->mresists & MR_ELEC) fprintf(f, ", ReElectricity");
-+        if (pm->mresists & MR_POISON) fprintf(f, ", RePoison");
-+        if (pm->mresists & MR_ACID) fprintf(f, ", ReAcid");
-+        if (pm->mresists & MR_STONE) fprintf(f, ", RePetrification");
-+        if (resists_magm(&dummymonst)) fprintf(f, ", ReMagic");
-+        if (resists_drli(&dummymonst)) fprintf(f, ", ReDrain");
-+        fprintf(f, "]), ");
-+        fprintf(f, "moConferred = (tail [ReFire");
-+        if (pm->mconveys & MR_FIRE) fprintf(f, ", ReFire");
-+        if (pm->mconveys & MR_COLD) fprintf(f, ", ReCold");
-+        if (pm->mconveys & MR_SLEEP) fprintf(f, ", ReSleep");
-+        if (pm->mconveys & MR_DISINT) fprintf(f, ", ReDisintegrate");
-+        if (pm->mconveys & MR_ELEC) fprintf(f, ", ReElectricity");
-+        if (pm->mconveys & MR_POISON) fprintf(f, ", RePoison");
-+        if (pm->mconveys & MR_ACID) fprintf(f, ", ReAcid");
++        fprintf(f, "   resistances:\n");
++        if (pm->mresists & MR_FIRE) fprintf(f, "    - ReFire\n");
++        if (pm->mresists & MR_COLD) fprintf(f, "    - ReCold\n");
++        if (pm->mresists & MR_SLEEP) fprintf(f, "    - ReSleep\n");
++        if (pm->mresists & MR_DISINT) fprintf(f, "    - ReDisintegrate\n");
++        if (pm->mresists & MR_ELEC) fprintf(f, "    - ReElectricity\n");
++        if (pm->mresists & MR_POISON) fprintf(f, "    - RePoison\n");
++        if (pm->mresists & MR_ACID) fprintf(f, "    - ReAcid\n");
++        if (pm->mresists & MR_STONE) fprintf(f, "    - RePetrification\n");
++        if (resists_magm(&dummymonst)) fprintf(f, "    - ReMagic\n");
++        if (resists_drli(&dummymonst)) fprintf(f, "    - ReDrain\n");
++        fprintf(f, "   conferred:\n");
++        if (pm->mconveys & MR_FIRE) fprintf(f, "    - ReFire\n");
++        if (pm->mconveys & MR_COLD) fprintf(f, "    - ReCold\n");
++        if (pm->mconveys & MR_SLEEP) fprintf(f, "    - ReSleep\n");
++        if (pm->mconveys & MR_DISINT) fprintf(f, "    - ReDisintegrate\n");
++        if (pm->mconveys & MR_ELEC) fprintf(f, "    - ReElectricity\n");
++        if (pm->mconveys & MR_POISON) fprintf(f, "    - RePoison\n");
++        if (pm->mconveys & MR_ACID) fprintf(f, "    - ReAcid\n");
 +        /* You can't actually get petrification resistance. */
-+        // if (pm->mconveys & MR_STONE) fprintf(f, ", RePetrification");
-+        fprintf(f, "]), ");
++        // if (pm->mconveys & MR_STONE) fprintf(f, "    - RePetrification\n");
 +
-+        fprintf(f, "moFlags = (tail [FlFly");
-+#define AT(a, b) if (pm->mflags1 & a) fprintf(f, ", %s", b);
++        fprintf(f, "   flags: [");
++        {
++            int comma_set = 0;
++#define AT(a, b) if (pm->mflags1 & a) { \
++    if ( comma_set ) fprintf(f, ", "); \
++    comma_set = 1;\
++    fprintf(f, "%s", b); \
++}
 +        AT(M1_FLY, "FlFly");
 +        AT(M1_SWIM, "FlSwim");
 +        AT(M1_AMORPHOUS, "FlAmorphous");
@@ -522,7 +510,11 @@ index a13514f..dc94979 100644
 +        AT(M1_HERBIVORE, "FlHerbivore");
 +        AT(M1_METALLIVORE, "FlMetallivore");
 +#undef AT
-+#define AT(a, b) if (pm->mflags2 & a) fprintf(f, ", %s", b);
++#define AT(a, b) if (pm->mflags2 & a) { \
++    if ( comma_set ) fprintf(f, ", "); \
++    comma_set = 1;\
++    fprintf(f, "%s", b); \
++}
 +#ifdef M2_NOPOLY
 +        AT(M2_NOPOLY, "FlNoPoly");
 +#endif
@@ -559,7 +551,11 @@ index a13514f..dc94979 100644
 +        if (passes_walls(pm)) {
 +            fprintf(f, ", FlPhasing");
 +        }
-+#define AT(a, b) if (pm->mflags3 & a) fprintf(f, ", %s", b);
++#define AT(a, b) if (pm->mflags3 & a) { \
++    if ( comma_set ) fprintf(f, ", "); \
++    comma_set = 1;\
++    fprintf(f, "%s", b); \
++}
 +        AT(M3_WANTSAMUL, "FlWantsAmulet");
 +        AT(M3_WANTSBELL, "FlWantsBell");
 +        AT(M3_WANTSBOOK, "FlWantsBook");
@@ -596,8 +592,9 @@ index a13514f..dc94979 100644
 +        else if (vegetarian(pm)) fprintf(f, ", FlVegetarian");
 +
 +#undef AT
-+        fprintf(f, "]), ");
-+        fprintf(f, "moColor = ");
++        }
++        fprintf(f, "]\n");
++        fprintf(f, "   color: ");
 +        switch(pm->mcolor)
 +        {
 +            case CLR_BLACK: fprintf(f, "Black"); break;
@@ -619,11 +616,9 @@ index a13514f..dc94979 100644
 +                             pm->mcolor);
 +                     abort();
 +        }
-+        fprintf(f, " }\n");
++        fprintf(f, "\n");
 +    }
-+    fprintf(f, "  | otherwise = Nothing\n\n");
-+    fprintf(f, "allMonsterNames :: [T.Text]\n");
-+    fprintf(f, "allMonsterNames = [");
++    fprintf(f, "all-monster-names: [");
 +    for (i1 = 0; mons[i1].mname[0]; ++i1)
 +    {
 +        if (i1 > 0)
@@ -631,11 +626,6 @@ index a13514f..dc94979 100644
 +        fprintf(f, "\"%s\"", mons[i1].mname);
 +    }
 +    fprintf(f, "]\n\n");
-+
-+}
-+
-+static void extract_itemdata_to_haskell(FILE* f)
-+{
 +}
 +
 +#ifdef G_SHEOL
