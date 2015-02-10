@@ -1,10 +1,26 @@
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedLists #-}
+{-# LANGUAGE DeriveGeneric #-}
+
 module NetHack.Data.Monster where
 
+import Control.Applicative
+import Control.Monad
 import qualified Data.Text as T
+import Data.Yaml
+import Debug.Trace
+import GHC.Generics
 import qualified NetHack.Data.Dice as D
 
 data Place = Dungeons | Gehennom | Sheol | Unique
              deriving (Eq, Show, Ord)
+
+instance FromJSON Place where
+    parseJSON (String "dungeons") = pure Dungeons
+    parseJSON (String "gehennom") = pure Gehennom
+    parseJSON (String "sheol") = pure Sheol
+    parseJSON (String "unique") = pure Unique
+    parseJSON _ = empty
 
 data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |
               AtTouch | AtSting | AtHug | AtSpit |
@@ -14,7 +30,9 @@ data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |
               AtArrow | AtReach | AtMirror | AtWhip |
               AtMMagical | AtReachingBite |
               AtLash | AtTrample | AtScratch | AtIllurien | AtTinker
-              deriving (Eq, Show, Ord)
+              deriving (Eq, Show, Ord, Generic)
+
+instance FromJSON AttackType
 
 data DamageType = AdPhys | AdMagicMissile |
               AdFire | AdCold | AdSleep |
@@ -53,22 +71,38 @@ data DamageType = AdPhys | AdMagicMissile |
               AdDisplacement | AdWither | AdBurn |
               AdBlackWebShadow | AdNetzach | AdWatcherTentacleGaze |
               AdFear
-              deriving (Eq, Show, Ord)
+              deriving (Eq, Show, Ord, Generic)
+
+instance FromJSON DamageType
+instance ToJSON DamageType
 
 data MonsterSize = Tiny | Small | Medium |
-                   Large | Huge | Gigantic deriving (Eq, Show, Ord)
+                   Large | Huge | Gigantic deriving (Eq, Show, Ord, Generic)
+
+instance FromJSON MonsterSize where
+    parseJSON (String "tiny") = pure Tiny
+    parseJSON (String "small") = pure Small
+    parseJSON (String "medium") = pure Medium
+    parseJSON (String "large") = pure Large
+    parseJSON (String "huge") = pure Huge
+    parseJSON (String "gigantic") = pure Gigantic
+    parseJSON _ = empty
 
 data Color = Black | Red | Green | Brown | Blue | Magenta |
              Cyan | Gray | Orange | BrightGreen | Yellow |
              BrightBlue | BrightMagenta | BrightCyan | White
-             deriving (Eq, Show, Ord)
+             deriving (Eq, Show, Ord, Generic)
+
+instance FromJSON Color
 
 data Resistance = ReFire | ReCold | ReSleep | ReDisintegrate |
               ReElectricity | RePoison | ReAcid |
               RePetrification |
               -- derived resistances below
               ReDrain | ReMagic
-              deriving (Eq, Show, Ord)
+              deriving (Eq, Show, Ord, Generic)
+
+instance FromJSON Resistance
 
 data MonsterFlag = FlFly | FlSwim | FlAmorphous |
                FlWallwalk | FlCling | FlTunnel |
@@ -99,12 +133,25 @@ data MonsterFlag = FlFly | FlSwim | FlAmorphous |
                FlHatesSilver | FlPassesBars |
                FlVegan | FlVegetarian | FlPokemon |
                FlAvoider
-               deriving (Eq, Show, Ord)
+               deriving (Eq, Show, Ord, Generic)
+
+instance FromJSON MonsterFlag
 
 data Attack = Attack { atType :: AttackType,
                        atDamageType :: DamageType,
                        atDice :: D.Dice }
-              deriving (Eq, Show, Ord)
+              deriving (Eq, Show, Ord, Generic)
+
+instance FromJSON Attack where
+    parseJSON (Array [val1, val2, val3, val4]) = do
+        atype <- parseJSON val1
+        dtype <- parseJSON val2
+        dice_top <- parseJSON val3
+        dice_bottom <- parseJSON val4
+        return $ Attack { atType = atype
+                        , atDamageType = dtype
+                        , atDice = D.Dice dice_top dice_bottom }
+    parseJSON _ = empty
 
 data Monster = Monster { moName :: T.Text,
                          moSymbol :: Char,
@@ -127,8 +174,59 @@ data Monster = Monster { moName :: T.Text,
                          moConferred :: [Resistance],
                          moFlags :: [MonsterFlag],
                          moColor :: Color }
-               deriving(Eq, Show, Ord)
+               deriving(Eq, Show, Ord, Generic)
 
 hasFlag :: MonsterFlag -> Monster -> Bool
 hasFlag flag = elem flag . moFlags
+
+instance FromJSON Monster where
+    parseJSON (Object v) = do
+        name <- v .: "name"
+        symb <- v .: "symbol"
+        when (symb == "") $ fail "Must have a symbol."
+        baselevel <- v .: "base-level"
+        speed <- v .: "speed"
+        ac <- v .: "ac"
+        mr <- v .: "mr"
+        align <- v .: "alignment"
+        generates <- v .: "generates" <|> pure []
+        corpse <- v .: "leaves-corpse"
+        notnormallygenerated <- v .: "not-generated-normally"
+        smallgroups <- v .: "appears-in-small-groups"
+        largegroups <- v .: "appears-in-large-groups"
+        genocidable <- v .: "genocidable"
+        attacks <- v .: "attacks"
+        weight <- v .: "weight"
+        nutr <- v .: "nutrition"
+        size <- v .: "size"
+        resis <- v .: "resistances" <|> pure []
+        confers <- v .: "conferred" <|> pure []
+        flags <- v .: "flags"
+        color <- v .: "color"
+        return Monster
+            {
+                moName = name
+              , moSymbol = T.head symb
+              , moBaseLevel = baselevel
+              , moSpeed = speed
+              , moAC = ac
+              , moAlign = align
+              , moMR = mr
+              , moGenerationPlaces = generates
+              , moLeavesCorpse = corpse
+              , moNotGeneratedNormally = notnormallygenerated
+              , moAppearsInSmallGroups = smallgroups
+              , moAppearsInLargeGroups = largegroups
+              , moGenocidable = genocidable
+              , moAttacks = attacks
+              , moSize = size
+              , moNutrition = nutr
+              , moWeight = weight
+              , moResistances = resis
+              , moConferred = confers
+              , moFlags = flags
+              , moColor = color
+            }
+
+    parseJSON _ = empty
 

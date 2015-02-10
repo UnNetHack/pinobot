@@ -21,22 +21,12 @@ library
                        NetHack.Data.Dice
                        NetHack.Data.Monster
                        NetHack.Data.Variant
-                       NetHack.Imported.Vanilla
-                       NetHack.Imported.Vanilla350
-                       NetHack.Imported.Brass
-                       NetHack.Imported.GruntHack
-                       NetHack.Imported.SlashemExtended
-                       NetHack.Imported.SporkHack
-                       NetHack.Imported.UnNetHackPlus
-                       NetHack.Imported.Dnethack
-                       NetHack.Imported.Slashem
-                       NetHack.Imported.UnNetHack
   ghc-options:         -fwarn-incomplete-patterns -Wall
   hs-source-dirs:      lib
-  build-depends:      base >=4.5.0.0 && < 5.0.0.0
+  build-depends:       base >=4.7.0.0 && < 5.0.0.0
                       ,text >=0.9
-                      ,ircbot >=0.6 && <1.0
-                      ,irc >= 0.6 && <1.0
+                      ,ircbot >=0.6.2 && <1.0
+                      ,irc >= 0.6.1 && <1.0
                       ,stm >= 2.4 && <3.0
                       ,containers >=0.5 && <1.0
                       ,transformers >=0.3 && <1.0
@@ -45,8 +35,9 @@ library
                       ,network-simple >=0.4 && <1.0
                       ,pipes >=4.1 && <5.0
                       ,pipes-network >=0.6 && <1.0
-                      ,cereal >=0.4 && <1.0
+                      ,cereal >=0.4.1.1 && <1.0
                       ,cereal-text
+                      ,yaml >=0.8.10.1 && <1.0
   default-language:    Haskell2010
 
 executable pinobot-frontend
@@ -67,24 +58,5 @@ executable pinobot-monsterdb
                       ,text >=0.9
                       ,transformers >=0.3 && <1.0
                       ,parsec >=3.1 && <4.0
-  default-language:    Haskell2010
-
-executable pinobot-arbicode
-  hs-source-dirs:      arbicode
-  main-is:             Main.hs
-  ghc-options:         -fwarn-incomplete-patterns -Wall -threaded
-                       -fno-warn-name-shadowing
-  c-sources:           arbicode/c/masochist.c
-  build-depends:       base >=4.5.0.0 && < 5.0.0.0
-                      ,pinobot
-                      ,text >=0.9
-                      ,containers >=0.5 && <1.0
-                      ,transformers >=0.3 && <1.0
-                      ,safe >= 0.3 && <1.0
-                      ,lens >= 4.2 && <5.0
-                      ,attoparsec >=0.12 && <1.0
-                      ,process >=1.2 && <2.0
-                      ,unix >=2.7 && <3.0
-                      ,bytestring >=0.10 && <1.0
   default-language:    Haskell2010
 
