@@ -9,16 +9,6 @@ import Prelude hiding ( concatMap, foldl, mapM_, foldl1 )
 
 import qualified NetHack.Data.Variant as V
 import qualified NetHack.Data.Monster as MD
-import qualified NetHack.Imported.Vanilla as Vanilla
-import qualified NetHack.Imported.Vanilla350 as Vanilla350
-import qualified NetHack.Imported.UnNetHack as UnNetHack
-import qualified NetHack.Imported.UnNetHackPlus as UnNetHackPlus
-import qualified NetHack.Imported.SporkHack as SporkHack
-import qualified NetHack.Imported.GruntHack as GruntHack
-import qualified NetHack.Imported.Slashem as Slashem
-import qualified NetHack.Imported.Brass as Brass
-import qualified NetHack.Imported.Dnethack as Dnethack
-import qualified NetHack.Imported.SlashemExtended as SlashemExtended
 import NetHack.Data.Dice
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as TL
@@ -35,17 +25,20 @@ import Text.Parsec
 import qualified Text.Parsec.Text as T
 
 -- Add variants here.
-variants :: [V.Variant]
-variants = [ Vanilla.variant
-           , Vanilla350.variant
-           , UnNetHack.variant
-           , UnNetHackPlus.variant
-           , SporkHack.variant
-           , GruntHack.variant
-           , Slashem.variant
-           , Brass.variant
-           , Dnethack.variant
-           , SlashemExtended.variant ]
+variants :: IO [V.Variant]
+variants = sequence $ variantify $
+    [ "UnNetHack"        -- first one is used by default
+    , "Vanilla"
+    , "Vanilla350"
+    , "UnNetHackPlus"
+    , "SporkHack"
+    , "GruntHack"
+    , "Slashem"
+    , "Brass"
+    , "Dnethack"
+    , "SlashemExtended" ]
+  where
+    variantify = fmap $ \name -> V.loadVariant $ "variants/" ++ name ++ ".yaml"
 
 -- Shamelessly stolen from HaskellWiki which in turn stole it from Lloyd
 -- Allison:
@@ -97,10 +90,10 @@ mostSimilarMonsterSane variant text
     | otherwise = let (distance, result) = mostSimilarMonster variant text
                    in if distance <= 3 then Just result else Nothing
 
-decideVariant :: T.Text -> V.Variant
-decideVariant name =
+decideVariant :: [V.Variant] -> T.Text -> V.Variant
+decideVariant variants name =
     fromMaybe
-        UnNetHack.variant $
+        (head variants) $
         find (\var -> V.commandPrefix var == name) variants
 
 relevantFlag :: MD.MonsterFlag -> Maybe T.Text
@@ -389,11 +382,15 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     ircColor MD.Yellow = "08"
 
 
-message :: T.Text -> Maybe T.Text
-message input
-    | T.null input        = Nothing
-    | T.head input /= '@' = Nothing
-    | otherwise           = message' (T.tail input)
+message :: IO (T.Text -> Maybe T.Text)
+message = do
+    vars <- variants
+    return $ messager vars
+  where
+    messager vars input
+        | T.null input        = Nothing
+        | T.head input /= '@' = Nothing
+        | otherwise           = message' vars (T.tail input)
 
 filterNewLines :: String -> String
 filterNewLines = fmap (\ch -> if ch == '\n' || ch == '\r' then ' ' else ch)
@@ -402,8 +399,8 @@ filterNewLines = fmap (\ch -> if ch == '\n' || ch == '\r' then ' ' else ch)
 stringT :: Stream s m Char => T.Text -> ParsecT s u m T.Text
 stringT txt = T.pack <$> string (T.unpack txt)
 
-message' :: T.Text -> Maybe T.Text
-message' input =
+message' :: [V.Variant] -> T.Text -> Maybe T.Text
+message' variants input =
     case runParser parser () "line" input of
         Left errmsg -> Just $ T.pack $ filterNewLines $ show errmsg
         Right okay  -> okay
@@ -422,7 +419,7 @@ message' input =
                              <*> try (stringT "?")) <|>
                         (return ("", ""))
         if ignore == "?"
-          then doPart $ decideVariant variantStr
+          then doPart $ decideVariant variants variantStr
           else return Nothing
 
     doPart variant = do
