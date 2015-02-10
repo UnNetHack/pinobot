@@ -2,6 +2,8 @@
 -- should implement. See `Variant`.
 --
 
+{-# LANGUAGE OverloadedStrings #-}
+
 module NetHack.Data.Variant
     ( Variant()
     , monster
