@@ -18,7 +18,6 @@ import Data.List ( find )
 import qualified Data.Text as T
 import Data.Yaml
 import qualified NetHack.Data.Monster as MD
-import Debug.Trace
 
 -- | Export a function that returns one of these to add a variant to the bot.
 -- See `variant`.
@@ -30,7 +29,7 @@ instance FromJSON Variant where
     parseJSON (Object v) = do
         prefix <- v .: "prefix"
         monsters <- v .: "monsters"
-        traceShow monsters $ return Variant
+        return Variant
             {
             commandPrefix = prefix
           , allMonsterNames = fmap MD.moName monsters

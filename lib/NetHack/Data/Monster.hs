@@ -8,7 +8,6 @@ import Control.Applicative
 import Control.Monad
 import qualified Data.Text as T
 import Data.Yaml
-import Debug.Trace
 import GHC.Generics
 import qualified NetHack.Data.Dice as D
 
