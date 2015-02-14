@@ -1,5 +1,5 @@
 diff --git a/sys/unix/unixmain.c b/sys/unix/unixmain.c
-index a13514f..45ef085 100644
+index a13514f..c1dc2c9 100644
 --- a/sys/unix/unixmain.c
 +++ b/sys/unix/unixmain.c
 @@ -44,11 +44,19 @@ static void NDECL(wd_message);
@@ -22,7 +22,7 @@ index a13514f..45ef085 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,651 @@ char *name;
+@@ -538,4 +546,653 @@ char *name;
  	return;
  }
  
@@ -515,9 +515,11 @@ index a13514f..45ef085 100644
 +    comma_set = 1;\
 +    fprintf(f, "%s", b); \
 +}
-+#ifdef M2_NOPOLY
-+        AT(M2_NOPOLY, "FlNoPoly");
-+#endif
++        if (!polyok(pm)) {
++            if ( comma_set ) fprintf(f, ", ");
++            comma_set = 1;
++            fprintf(f, "FlNoPoly");
++        }
 +        AT(M2_UNDEAD, "FlUndead");
 +        AT(M2_WERE, "FlWere");
 +        AT(M2_HUMAN, "FlHuman");
