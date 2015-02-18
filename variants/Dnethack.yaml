@@ -332,7 +332,7 @@ monsters:
     - RePetrification
    conferred:
     - RePoison
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHerbivore, FlHostile, FlInfravisible, FlPassesBars]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHerbivore, FlTouchPetrifies, FlHostile, FlInfravisible, FlPassesBars]
    color: Brown
 
  - name: "cockatrice"
@@ -359,7 +359,7 @@ monsters:
     - RePetrification
    conferred:
     - RePoison
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHerbivore, FlHostile, FlInfravisible]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHerbivore, FlTouchPetrifies, FlHostile, FlInfravisible]
    color: Yellow
 
  - name: "pyrolisk"
@@ -4276,7 +4276,7 @@ monsters:
     - ReAcid
     - RePetrification
    conferred:
-   flags: [FlFly, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlSeeInvis, FlNeuter, FlHostile, FlPassesBars, FlVegan]
+   flags: [FlFly, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlSeeInvis, FlInvisible, FlNeuter, FlHostile, FlPassesBars, FlVegan]
    color: Black
 
  - name: "zruty"
@@ -4377,7 +4377,7 @@ monsters:
     - RePoison
    conferred:
     - ReSleep
-   flags: [FlFly, FlHumanoid, FlSeeInvis, FlCarnivore, FlHerbivore, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlSeeInvis, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
    color: Red
 
  - name: "weeping angel"
@@ -4433,7 +4433,7 @@ monsters:
     - RePoison
    conferred:
     - ReSleep
-   flags: [FlFly, FlHumanoid, FlSeeInvis, FlCarnivore, FlHerbivore, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlSeeInvis, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
    color: Cyan
 
  - name: "Angel"
@@ -4511,7 +4511,7 @@ monsters:
     - RePoison
    conferred:
     - ReSleep
-   flags: [FlFly, FlHumanoid, FlSeeInvis, FlCarnivore, FlHerbivore, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlSeeInvis, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
    color: BrightBlue
 
  - name: "ki-rin"
@@ -4563,7 +4563,7 @@ monsters:
     - ReMagic
    conferred:
     - ReSleep
-   flags: [FlFly, FlHumanoid, FlSeeInvis, FlCarnivore, FlHerbivore, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlSeeInvis, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
    color: BrightMagenta
 
  - name: "Oona"
@@ -4591,7 +4591,7 @@ monsters:
     - ReElectricity
    conferred:
     - ReSleep
-   flags: [FlAmphibious, FlBreathless, FlHumanoid, FlSeeInvis, FlCarnivore, FlHerbivore, FlElf, FlPrince, FlFemale, FlProperName, FlStrong, FlInfravisible, FlInfravision]
+   flags: [FlHumanoid, FlSeeInvis, FlCarnivore, FlHerbivore, FlElf, FlPrince, FlFemale, FlProperName, FlStrong, FlInfravisible, FlInfravision]
    color: White
 
  - name: "Archon"
@@ -5580,7 +5580,7 @@ monsters:
    size: large
    resistances:
    conferred:
-   flags: [FlFly, FlAnimal, FlSeeInvis, FlHostile, FlWander, FlStalk, FlStrong, FlInfravision]
+   flags: [FlFly, FlAnimal, FlSeeInvis, FlInvisible, FlHostile, FlWander, FlStalk, FlStrong, FlInfravision]
    color: White
 
  - name: "air elemental"
@@ -5698,8 +5698,9 @@ monsters:
    mr: 66
    alignment: -10
    generates:
+    - gehennom
    leaves-corpse: No
-   not-generated-normally: Yes
+   not-generated-normally: No
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: No
@@ -6003,7 +6004,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlVegan]
+   flags: [FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlInvisible, FlNeuter, FlHostile, FlVegan]
    color: BrightMagenta
 
  - name: "migo queen"
@@ -6288,7 +6289,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: No
-   attacks: [[AtClaw, AdPhys, 1, 13], [AtGaze, AdDrainLuck, 0, 0]]
+   attacks: [[AtClaw, AdPhys, 1, 13], [AtClaw, AdPhys, 1, 13], [AtGaze, AdDrainLuck, 0, 0]]
    weight: 90
    nutrition: 0
    size: small
@@ -7978,7 +7979,7 @@ monsters:
     - ReElectricity
     - RePoison
     - ReAcid
-   flags: [FlAmorphous, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlAcid, FlCarnivore, FlHerbivore, FlNeuter, FlHostile, FlTraitor, FlPassesBars]
+   flags: [FlAmorphous, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlAcid, FlCarnivore, FlHerbivore, FlInvisible, FlNeuter, FlHostile, FlTraitor, FlPassesBars]
    color: Gray
 
  - name: "quantum mechanic"
@@ -11382,7 +11383,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlWallwalk, FlHumanoid, FlSeeInvis, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlPhasing, FlInfravision, FlHatesSilver, FlPassesBars]
+   flags: [FlFly, FlWallwalk, FlHumanoid, FlSeeInvis, FlPoisonous, FlInvisible, FlDemon, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlPhasing, FlInfravision, FlHatesSilver, FlPassesBars]
    color: Black
 
  - name: "balrog"
@@ -14426,7 +14427,7 @@ monsters:
    symbol: "@"
    base-level: 24
    speed: 12
-   ac: 10
+   ac: 0
    mr: 10
    alignment: 20
    generates:
@@ -15154,7 +15155,7 @@ monsters:
     - ReElectricity
     - RePoison
    conferred:
-   flags: [FlBreathless, FlMindless, FlHumanoid, FlThickHide, FlPoisonous, FlNoPoly, FlNeuter, FlProperName, FlHostile, FlStrong, FlCollect, FlVegan]
+   flags: [FlBreathless, FlMindless, FlHumanoid, FlThickHide, FlPoisonous, FlNoPoly, FlInvisible, FlNeuter, FlProperName, FlHostile, FlStrong, FlCollect, FlVegan]
    color: Magenta
 
  - name: "alhoon"
