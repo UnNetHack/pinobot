@@ -131,7 +131,7 @@ data MonsterFlag = FlFly | FlSwim | FlAmorphous |
                -- derived flags
                FlHatesSilver | FlPassesBars |
                FlVegan | FlVegetarian | FlPokemon |
-               FlAvoider
+               FlAvoider | FlTouchPetrifies | FlInvisible
                deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON MonsterFlag

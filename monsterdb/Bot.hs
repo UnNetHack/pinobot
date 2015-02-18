@@ -97,6 +97,8 @@ decideVariant variants name =
         find (\var -> V.commandPrefix var == name) variants
 
 relevantFlag :: MD.MonsterFlag -> Maybe T.Text
+relevantFlag MD.FlTouchPetrifies = Just "touch petrifies"
+relevantFlag MD.FlInvisible = Just "invisible"
 relevantFlag MD.FlWallwalk = Just "phases"
 relevantFlag MD.FlFly = Just "flies"
 relevantFlag MD.FlSwim = Just "swims"
@@ -131,6 +133,7 @@ showB = TL.fromString . show
 lineMonsterInformation :: MD.Monster -> T.Text
 lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     (TL.fromText $ MD.moName mon) <> " (" <> monsymbol <> ")" <>
+    " | Lvl: " <> showB (MD.moBaseLevel mon) <>
     " | Spd: " <> showB (MD.moSpeed mon) <>
     " | Res: " <> resistances (MD.moResistances mon) <>
     "| Confers: " <> confers (MD.moConferred mon) <>

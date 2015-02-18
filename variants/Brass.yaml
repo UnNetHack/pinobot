@@ -291,7 +291,7 @@ monsters:
     - RePetrification
    conferred:
     - RePoison
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHerbivore, FlHostile, FlInfravisible, FlPassesBars]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHerbivore, FlTouchPetrifies, FlHostile, FlInfravisible, FlPassesBars]
    color: Brown
 
  - name: "cockatrice"
@@ -318,7 +318,7 @@ monsters:
     - RePetrification
    conferred:
     - RePoison
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHerbivore, FlHostile, FlInfravisible]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHerbivore, FlTouchPetrifies, FlHostile, FlInfravisible]
    color: Yellow
 
  - name: "pyrolisk"
@@ -3037,7 +3037,7 @@ monsters:
     - ReAcid
     - RePetrification
    conferred:
-   flags: [FlFly, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlSeeInvis, FlMale, FlFemale, FlNeuter, FlHostile, FlPassesBars, FlVegan]
+   flags: [FlFly, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlSeeInvis, FlInvisible, FlMale, FlFemale, FlNeuter, FlHostile, FlPassesBars, FlVegan]
    color: Black
 
  - name: "zruty"
@@ -3936,7 +3936,7 @@ monsters:
    size: large
    resistances:
    conferred:
-   flags: [FlFly, FlAnimal, FlSeeInvis, FlHostile, FlWander, FlStalk, FlStrong, FlInfravision]
+   flags: [FlFly, FlAnimal, FlSeeInvis, FlInvisible, FlHostile, FlWander, FlStalk, FlStrong, FlInfravision]
    color: White
 
  - name: "air elemental"

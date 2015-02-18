@@ -760,7 +760,7 @@ monsters:
     - RePetrification
    conferred:
     - RePoison
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHerbivore, FlHostile, FlInfravisible, FlPassesBars]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHerbivore, FlTouchPetrifies, FlHostile, FlInfravisible, FlPassesBars]
    color: Brown
 
  - name: "cockatrice"
@@ -787,7 +787,7 @@ monsters:
     - RePetrification
    conferred:
     - RePoison
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHerbivore, FlHostile, FlInfravisible]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHerbivore, FlTouchPetrifies, FlHostile, FlInfravisible]
    color: Yellow
 
  - name: "pyrolisk"
@@ -5496,7 +5496,7 @@ monsters:
     - ReAcid
     - RePetrification
    conferred:
-   flags: [FlFly, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlSeeInvis, FlNeuter, FlHostile, FlPassesBars, FlVegan]
+   flags: [FlFly, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlSeeInvis, FlInvisible, FlNeuter, FlHostile, FlPassesBars, FlVegan]
    color: Black
 
  - name: "echidna"
@@ -6930,7 +6930,7 @@ monsters:
    size: large
    resistances:
    conferred:
-   flags: [FlFly, FlAnimal, FlSeeInvis, FlHostile, FlWander, FlStalk, FlStrong, FlTraitor, FlInfravision]
+   flags: [FlFly, FlAnimal, FlSeeInvis, FlInvisible, FlHostile, FlWander, FlStalk, FlStrong, FlTraitor, FlInfravision]
    color: White
 
  - name: "air elemental"
@@ -9223,7 +9223,7 @@ monsters:
     - RePetrification
    conferred:
     - RePoison
-   flags: [FlSwim, FlConceal, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlSwim, FlConceal, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlTouchPetrifies, FlHostile, FlPassesBars]
    color: Black
 
  - name: "troll"
@@ -9540,7 +9540,7 @@ monsters:
     - ReSleep
     - RePoison
    conferred:
-   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlNeuter, FlHostile, FlStalk, FlNasty, FlStrong, FlTraitor, FlInfravisible, FlHatesSilver]
+   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlInvisible, FlNeuter, FlHostile, FlStalk, FlNasty, FlStrong, FlTraitor, FlInfravisible, FlHatesSilver]
    color: White
 
  - name: "vampire mage"
@@ -13213,7 +13213,7 @@ monsters:
     - RePetrification
    conferred:
     - RePoison
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlThickHide, FlOviparous, FlCarnivore, FlHostile, FlStrong]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlThickHide, FlOviparous, FlCarnivore, FlTouchPetrifies, FlHostile, FlStrong]
    color: Black
 
  - name: "komodo dragon"
