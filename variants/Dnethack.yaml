@@ -3971,12 +3971,11 @@ monsters:
    mr: 30
    alignment: -7
    generates:
-    - gehennom
    leaves-corpse: No
-   not-generated-normally: No
+   not-generated-normally: Yes
    appears-in-small-groups: No
    appears-in-large-groups: No
-   genocidable: Yes
+   genocidable: No
    attacks: [[AtTouch, AdFire, 3, 6], [AtTouch, AdFire, 3, 6], [AtNone, AdFire, 0, 4]]
    weight: 0
    nutrition: 0
@@ -4377,7 +4376,7 @@ monsters:
     - RePoison
    conferred:
     - ReSleep
-   flags: [FlFly, FlHumanoid, FlSeeInvis, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlSeeInvis, FlCarnivore, FlHerbivore, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
    color: Red
 
  - name: "weeping angel"
@@ -4433,7 +4432,7 @@ monsters:
     - RePoison
    conferred:
     - ReSleep
-   flags: [FlFly, FlHumanoid, FlSeeInvis, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlSeeInvis, FlCarnivore, FlHerbivore, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
    color: Cyan
 
  - name: "Angel"
@@ -4511,7 +4510,7 @@ monsters:
     - RePoison
    conferred:
     - ReSleep
-   flags: [FlFly, FlHumanoid, FlSeeInvis, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlSeeInvis, FlCarnivore, FlHerbivore, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
    color: BrightBlue
 
  - name: "ki-rin"
@@ -4563,7 +4562,7 @@ monsters:
     - ReMagic
    conferred:
     - ReSleep
-   flags: [FlFly, FlHumanoid, FlSeeInvis, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlSeeInvis, FlCarnivore, FlHerbivore, FlElf, FlMinion, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
    color: BrightMagenta
 
  - name: "Oona"
@@ -4591,7 +4590,7 @@ monsters:
     - ReElectricity
    conferred:
     - ReSleep
-   flags: [FlHumanoid, FlSeeInvis, FlCarnivore, FlHerbivore, FlElf, FlPrince, FlFemale, FlProperName, FlStrong, FlInfravisible, FlInfravision]
+   flags: [FlAmphibious, FlBreathless, FlHumanoid, FlSeeInvis, FlCarnivore, FlHerbivore, FlElf, FlPrince, FlFemale, FlProperName, FlStrong, FlInfravisible, FlInfravision]
    color: White
 
  - name: "Archon"
@@ -5698,9 +5697,8 @@ monsters:
    mr: 66
    alignment: -10
    generates:
-    - gehennom
    leaves-corpse: No
-   not-generated-normally: No
+   not-generated-normally: Yes
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: No
@@ -6289,7 +6287,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: No
-   attacks: [[AtClaw, AdPhys, 1, 13], [AtClaw, AdPhys, 1, 13], [AtGaze, AdDrainLuck, 0, 0]]
+   attacks: [[AtClaw, AdPhys, 1, 13], [AtGaze, AdDrainLuck, 0, 0]]
    weight: 90
    nutrition: 0
    size: small
@@ -10049,7 +10047,7 @@ monsters:
     - ReSleep
    conferred:
     - ReSleep
-   flags: [FlHumanoid, FlCarnivore, FlHerbivore, FlElf, FlMale, FlHostile, FlStrong, FlCollect, FlTraitor, FlInfravisible]
+   flags: [FlHumanoid, FlCarnivore, FlHerbivore, FlElf, FlMale, FlHostile, FlNasty, FlStrong, FlCollect, FlTraitor, FlInfravisible]
    color: Black
 
  - name: "elf-lord"
@@ -10228,7 +10226,7 @@ monsters:
     - ReSleep
    conferred:
     - ReSleep
-   flags: [FlHumanoid, FlCarnivore, FlHerbivore, FlElf, FlPrince, FlFemale, FlHostile, FlStrong, FlCollect, FlTraitor, FlInfravisible]
+   flags: [FlHumanoid, FlCarnivore, FlHerbivore, FlElf, FlPrince, FlFemale, FlHostile, FlNasty, FlStrong, FlCollect, FlTraitor, FlInfravisible]
    color: Black
 
  - name: "embraced drowess"
@@ -11124,7 +11122,7 @@ monsters:
    symbol: "&"
    base-level: 9
    speed: 6
-   ac: -12
+   ac: -2
    mr: 55
    alignment: -10
    generates:
@@ -11150,7 +11148,7 @@ monsters:
    symbol: "&"
    base-level: 9
    speed: 15
-   ac: -11
+   ac: -1
    mr: 40
    alignment: 9
    generates:
@@ -11176,7 +11174,7 @@ monsters:
    symbol: "&"
    base-level: 10
    speed: 12
-   ac: -4
+   ac: 4
    mr: 0
    alignment: 0
    generates:
@@ -11203,7 +11201,7 @@ monsters:
    symbol: "&"
    base-level: 11
    speed: 6
-   ac: -14
+   ac: -4
    mr: 55
    alignment: 12
    generates:
@@ -11230,7 +11228,7 @@ monsters:
    symbol: "&"
    base-level: 11
    speed: 9
-   ac: -11
+   ac: -1
    mr: 65
    alignment: -11
    generates:
@@ -11282,7 +11280,7 @@ monsters:
    symbol: "&"
    base-level: 13
    speed: 6
-   ac: -23
+   ac: -13
    mr: 65
    alignment: 13
    generates:
@@ -11308,7 +11306,7 @@ monsters:
    symbol: "&"
    base-level: 14
    speed: 10
-   ac: -24
+   ac: -14
    mr: 55
    alignment: 12
    generates:
@@ -11336,7 +11334,7 @@ monsters:
    symbol: "&"
    base-level: 15
    speed: 8
-   ac: -24
+   ac: -14
    mr: 88
    alignment: 14
    generates:
@@ -11390,7 +11388,7 @@ monsters:
    symbol: "&"
    base-level: 16
    speed: 5
-   ac: -22
+   ac: -12
    mr: 75
    alignment: -14
    generates:
@@ -11416,7 +11414,7 @@ monsters:
    symbol: "&"
    base-level: 16
    speed: 12
-   ac: -39
+   ac: -29
    mr: 99
    alignment: 19
    generates:
@@ -11441,7 +11439,7 @@ monsters:
    symbol: "&"
    base-level: 18
    speed: 18
-   ac: -36
+   ac: -26
    mr: 66
    alignment: -16
    generates:
@@ -11467,7 +11465,7 @@ monsters:
    symbol: "&"
    base-level: 25
    speed: 20
-   ac: -20
+   ac: -10
    mr: 94
    alignment: 14
    generates:
@@ -11493,7 +11491,7 @@ monsters:
    symbol: "&"
    base-level: 40
    speed: 8
-   ac: -29
+   ac: -19
    mr: 54
    alignment: 18
    generates:
@@ -11519,7 +11517,7 @@ monsters:
    symbol: "&"
    base-level: 50
    speed: 6
-   ac: -37
+   ac: -27
    mr: 65
    alignment: -15
    generates:
@@ -11547,7 +11545,7 @@ monsters:
    symbol: "&"
    base-level: 50
    speed: 6
-   ac: -27
+   ac: -17
    mr: 65
    alignment: -15
    generates:
@@ -11575,7 +11573,7 @@ monsters:
    symbol: "&"
    base-level: 50
    speed: 12
-   ac: -23
+   ac: -13
    mr: 10
    alignment: -15
    generates:
@@ -11601,7 +11599,7 @@ monsters:
    symbol: "&"
    base-level: 56
    speed: 14
-   ac: -25
+   ac: -15
    mr: 80
    alignment: -15
    generates:
@@ -11627,7 +11625,7 @@ monsters:
    symbol: "&"
    base-level: 56
    speed: 18
-   ac: -25
+   ac: -15
    mr: 80
    alignment: -15
    generates:
@@ -11654,7 +11652,7 @@ monsters:
    symbol: "&"
    base-level: 57
    speed: 12
-   ac: -20
+   ac: -10
    mr: 94
    alignment: 14
    generates:
@@ -11680,7 +11678,7 @@ monsters:
    symbol: "&"
    base-level: 60
    speed: 6
-   ac: -23
+   ac: -13
    mr: 75
    alignment: 15
    generates:
@@ -11706,7 +11704,7 @@ monsters:
    symbol: "&"
    base-level: 63
    speed: 13
-   ac: -27
+   ac: -17
    mr: 77
    alignment: -19
    generates:
@@ -11758,7 +11756,7 @@ monsters:
    symbol: "&"
    base-level: 63
    speed: 13
-   ac: -37
+   ac: -27
    mr: 77
    alignment: 20
    generates:
@@ -11784,7 +11782,7 @@ monsters:
    symbol: "&"
    base-level: 64
    speed: 10
-   ac: -30
+   ac: -20
    mr: 44
    alignment: 17
    generates:
@@ -11810,17 +11808,16 @@ monsters:
    symbol: "&"
    base-level: 66
    speed: 15
-   ac: -32
+   ac: 0
    mr: 10
    alignment: -18
    generates:
-    - gehennom
-    - dungeons
+    - unique
    leaves-corpse: Yes
-   not-generated-normally: No
+   not-generated-normally: Yes
    appears-in-small-groups: No
    appears-in-large-groups: No
-   genocidable: Yes
+   genocidable: No
    attacks: [[AtBite, AdSex, 1, 1], [AtWeapon, AdPhys, 2, 10], [AtWeapon, AdPhys, 2, 10], [AtTouch, AdCurse, 1, 1], [AtCast, AdClerical, 0, 8]]
    weight: 2550
    nutrition: 500
@@ -11835,7 +11832,7 @@ monsters:
    symbol: "&"
    base-level: 66
    speed: 18
-   ac: -36
+   ac: -26
    mr: 66
    alignment: -15
    generates:
@@ -11861,7 +11858,7 @@ monsters:
    symbol: "&"
    base-level: 66
    speed: 9
-   ac: -39
+   ac: -29
    mr: 99
    alignment: -20
    generates:
@@ -11887,7 +11884,7 @@ monsters:
    symbol: "&"
    base-level: 69
    speed: 7
-   ac: -33
+   ac: -23
    mr: 93
    alignment: 16
    generates:
@@ -11939,7 +11936,7 @@ monsters:
    symbol: "&"
    base-level: 74
    speed: 9
-   ac: -29
+   ac: -19
    mr: 54
    alignment: 15
    generates:
@@ -11965,7 +11962,7 @@ monsters:
    symbol: "&"
    base-level: 78
    speed: 15
-   ac: -32
+   ac: -22
    mr: 80
    alignment: 15
    generates:
@@ -11991,7 +11988,7 @@ monsters:
    symbol: "&"
    base-level: 89
    speed: 9
-   ac: -35
+   ac: -25
    mr: 85
    alignment: 20
    generates:
@@ -12017,7 +12014,7 @@ monsters:
    symbol: "&"
    base-level: 90
    speed: 8
-   ac: -24
+   ac: -14
    mr: 100
    alignment: 20
    generates:
@@ -12074,7 +12071,7 @@ monsters:
    symbol: "&"
    base-level: 98
    speed: 8
-   ac: -38
+   ac: -28
    mr: 108
    alignment: 20
    generates:
@@ -12101,7 +12098,7 @@ monsters:
    symbol: "&"
    base-level: 99
    speed: 3
-   ac: -29
+   ac: -19
    mr: 99
    alignment: 19
    generates:
@@ -12126,7 +12123,7 @@ monsters:
    symbol: "&"
    base-level: 100
    speed: 13
-   ac: -35
+   ac: -25
    mr: 100
    alignment: -20
    generates:
@@ -12180,7 +12177,7 @@ monsters:
    symbol: "&"
    base-level: 108
    speed: 18
-   ac: -36
+   ac: -26
    mr: 95
    alignment: -20
    generates:
@@ -12208,7 +12205,7 @@ monsters:
    symbol: "&"
    base-level: 30
    speed: 12
-   ac: -25
+   ac: -15
    mr: 100
    alignment: 0
    generates:
@@ -12238,7 +12235,7 @@ monsters:
    symbol: "&"
    base-level: 30
    speed: 12
-   ac: -25
+   ac: -15
    mr: 100
    alignment: 0
    generates:
@@ -12267,7 +12264,7 @@ monsters:
    symbol: "&"
    base-level: 30
    speed: 12
-   ac: -25
+   ac: -15
    mr: 100
    alignment: 0
    generates:
@@ -14427,7 +14424,7 @@ monsters:
    symbol: "@"
    base-level: 24
    speed: 12
-   ac: 0
+   ac: 10
    mr: 10
    alignment: 20
    generates:
@@ -15200,7 +15197,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: No
-   attacks: [[AtClaw, AdPhys, 144, 1], [AtGaze, AdWisdom, 1, 10], [AtNone, AdPoison, 8, 8]]
+   attacks: [[AtClaw, AdPhys, 100, 4], [AtGaze, AdWisdom, 1, 10], [AtNone, AdPoison, 8, 8]]
    weight: 10000
    nutrition: 4000
    size: gigantic
