@@ -113835,7 +113835,7 @@ monsters:
    color: Green
 
  - name: "whiny Mary-Sue"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 1
    speed: 12
    ac: 10
@@ -113860,7 +113860,7 @@ monsters:
    color: White
 
  - name: "Rebel Ringfailure"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 14
    speed: 16
    ac: 10
@@ -113885,7 +113885,7 @@ monsters:
    color: Magenta
 
  - name: "adventurous wizard"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 14
    speed: 12
    ac: 10
@@ -113910,7 +113910,7 @@ monsters:
    color: BrightBlue
 
  - name: "militant paladin"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 14
    speed: 12
    ac: 10
@@ -113935,7 +113935,7 @@ monsters:
    color: White
 
  - name: "full-elf ranger"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 14
    speed: 16
    ac: 10
@@ -113960,7 +113960,7 @@ monsters:
    color: BrightGreen
 
  - name: "criminal scumbag"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 13
    ac: -4
@@ -113985,7 +113985,7 @@ monsters:
    color: Yellow
 
  - name: "Whitebeard's Ghost"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: -5
@@ -114015,7 +114015,7 @@ monsters:
    color: Magenta
 
  - name: "Rock-N-Roll King"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: -5
@@ -114045,7 +114045,7 @@ monsters:
    color: Magenta
 
  - name: "Goblin Sub King"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: 10
@@ -114070,7 +114070,7 @@ monsters:
    color: Magenta
 
  - name: "Crabbius"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: 10
@@ -114097,7 +114097,7 @@ monsters:
    color: Magenta
 
  - name: "Demimaster Assassin"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: 0
@@ -114122,7 +114122,7 @@ monsters:
    color: Magenta
 
  - name: "Osayo Narakami"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: 0
@@ -114147,7 +114147,7 @@ monsters:
    color: Magenta
 
  - name: "Lord Sultur"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: 2
@@ -114174,7 +114174,7 @@ monsters:
    color: Magenta
 
  - name: "Simon Belmont"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: 2
@@ -114201,7 +114201,7 @@ monsters:
    color: Red
 
  - name: "APEC Worker"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: 0
@@ -114226,7 +114226,7 @@ monsters:
    color: Green
 
  - name: "Kiddy Kong"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: 0
@@ -114251,7 +114251,7 @@ monsters:
    color: Yellow
 
  - name: "Light One"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: 0
@@ -114276,7 +114276,7 @@ monsters:
    color: Black
 
  - name: "wally with the brolly"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: 4
@@ -114301,7 +114301,7 @@ monsters:
    color: Cyan
 
  - name: "incapable male nurse"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: 4
@@ -114326,7 +114326,7 @@ monsters:
    color: Cyan
 
  - name: "cloned New Vegas NPC"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: 0
@@ -114351,7 +114351,7 @@ monsters:
    color: Magenta
 
  - name: "Xixot"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 15
    speed: 12
    ac: -1
@@ -114378,7 +114378,7 @@ monsters:
    color: Red
 
  - name: "Zalnok"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 16
    speed: 12
    ac: -2
@@ -114406,7 +114406,7 @@ monsters:
    color: Red
 
  - name: "Minion of Quetzalcoatl"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 16
    speed: 12
    ac: -2
@@ -114434,7 +114434,7 @@ monsters:
    color: Red
 
  - name: "Thoth Amun"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 16
    speed: 12
    ac: 0
@@ -114460,7 +114460,7 @@ monsters:
    color: Magenta
 
  - name: "Octarine Dragon"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 16
    speed: 12
    ac: 0
@@ -114499,7 +114499,7 @@ monsters:
    color: Magenta
 
  - name: "Maugneshnaagar"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 16
    speed: 10
    ac: -10
@@ -114527,7 +114527,7 @@ monsters:
    color: Black
 
  - name: "Pseudo-Gollum"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 16
    speed: 10
    ac: -5
@@ -114554,7 +114554,7 @@ monsters:
    color: Black
 
  - name: "Smaug the ADOM Hurthling"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 16
    speed: 10
    ac: 0
@@ -114581,7 +114581,7 @@ monsters:
    color: Red
 
  - name: "Skylla"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 17
    speed: 9
    ac: -4
@@ -114608,7 +114608,7 @@ monsters:
    color: Magenta
 
  - name: "Pylops"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 18
    speed: 12
    ac: 0
@@ -114633,7 +114633,7 @@ monsters:
    color: Gray
 
  - name: "Ghost of Heel"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 18
    ac: -8
@@ -114663,7 +114663,7 @@ monsters:
    color: Magenta
 
  - name: "oblivion daedra"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 12
    ac: -6
@@ -114691,7 +114691,7 @@ monsters:
    color: Brown
 
  - name: "failed sorceror"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 12
    ac: 10
@@ -114716,7 +114716,7 @@ monsters:
    color: White
 
  - name: "greedy Scottish barkeeper"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 10
    ac: 8
@@ -114742,7 +114742,7 @@ monsters:
    color: Gray
 
  - name: "Jauffre"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 10
    ac: 8
@@ -114767,7 +114767,7 @@ monsters:
    color: Black
 
  - name: "Colonel B. Astard"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 10
    ac: 5
@@ -114793,7 +114793,7 @@ monsters:
    color: Magenta
 
  - name: "Lord Insidious"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 10
    ac: 5
@@ -114820,7 +114820,7 @@ monsters:
    color: Magenta
 
  - name: "Master of Desaster"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 12
    ac: 0
@@ -114845,7 +114845,7 @@ monsters:
    color: Magenta
 
  - name: "Fleecy Whitney"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 12
    ac: 0
@@ -114870,7 +114870,7 @@ monsters:
    color: Orange
 
  - name: "tufted asian girl"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 12
    ac: 0
@@ -114895,7 +114895,7 @@ monsters:
    color: Orange
 
  - name: "dude who thinks he's cool"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 16
    ac: -20
@@ -114921,7 +114921,7 @@ monsters:
    color: Brown
 
  - name: "sweet blonde"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 12
    ac: 0
@@ -114946,7 +114946,7 @@ monsters:
    color: White
 
  - name: "burly woman"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 12
    ac: 0
@@ -114971,7 +114971,7 @@ monsters:
    color: Brown
 
  - name: "violet beauty"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 12
    ac: 0
@@ -114996,7 +114996,7 @@ monsters:
    color: BrightMagenta
 
  - name: "soft wench"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 12
    ac: 0
@@ -115021,7 +115021,7 @@ monsters:
    color: BrightBlue
 
  - name: "Oberon Worker"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 10
    ac: 10
@@ -115046,7 +115046,7 @@ monsters:
    color: White
 
  - name: "Gill Bates"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 10
    ac: 10
@@ -115071,7 +115071,7 @@ monsters:
    color: Magenta
 
  - name: "Warden Brianna"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 20
    speed: 12
    ac: 0
@@ -115098,7 +115098,7 @@ monsters:
    color: Magenta
 
  - name: "Parry Hotter"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 24
    speed: 18
    ac: -10
@@ -115124,7 +115124,7 @@ monsters:
    color: Magenta
 
  - name: "Hermione Granger"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 24
    speed: 9
    ac: -10
@@ -115152,7 +115152,7 @@ monsters:
    color: Orange
 
  - name: "Spearfish of Sorrow"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 24
    speed: 12
    ac: -12
@@ -115177,7 +115177,7 @@ monsters:
    color: Orange
 
  - name: "Recerarak"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 9
    ac: -9
@@ -115210,7 +115210,7 @@ monsters:
    color: Magenta
 
  - name: "Scratching Maria"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 12
    ac: -20
@@ -115238,7 +115238,7 @@ monsters:
    color: Red
 
  - name: "fucked-up person"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 12
    ac: -10
@@ -115265,7 +115265,7 @@ monsters:
    color: Black
 
  - name: "pseudo elf thief"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 15
    ac: 0
@@ -115292,7 +115292,7 @@ monsters:
    color: Black
 
  - name: "Team Fortress pyro"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 12
    ac: 5
@@ -115319,7 +115319,7 @@ monsters:
    color: Orange
 
  - name: "Ancano"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 12
    ac: -10
@@ -115347,7 +115347,7 @@ monsters:
    color: Brown
 
  - name: "Transformator"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 10
    ac: -10
@@ -115380,7 +115380,7 @@ monsters:
    color: Magenta
 
  - name: "Air Spirit"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 10
    ac: -10
@@ -115407,7 +115407,7 @@ monsters:
    color: Magenta
 
  - name: "Glareth"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 15
    ac: 0
@@ -115434,7 +115434,7 @@ monsters:
    color: Black
 
  - name: "Digging Mage"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 10
    ac: -10
@@ -115461,7 +115461,7 @@ monsters:
    color: Magenta
 
  - name: "Walduin"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 18
    ac: -1
@@ -115491,7 +115491,7 @@ monsters:
    color: Red
 
  - name: "Giacomo Casanova"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 12
    ac: 0
@@ -115516,7 +115516,7 @@ monsters:
    color: BrightGreen
 
  - name: "Marija the Wench"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 16
    ac: 0
@@ -115542,7 +115542,7 @@ monsters:
    color: Gray
 
  - name: "Amy BSOD"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 16
    ac: 0
@@ -115567,7 +115567,7 @@ monsters:
    color: Magenta
 
  - name: "PHIX"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 30
    ac: -15
@@ -115597,7 +115597,7 @@ monsters:
    color: Magenta
 
  - name: "mythical dawn agent"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 11
    ac: 0
@@ -115623,7 +115623,7 @@ monsters:
    color: Brown
 
  - name: "team bullies"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 12
    ac: -25
@@ -115650,7 +115650,7 @@ monsters:
    color: Red
 
  - name: "big flying baby"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 12
    ac: 4
@@ -115677,7 +115677,7 @@ monsters:
    color: Brown
 
  - name: "Count Urcula"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 18
    ac: -8
@@ -115705,7 +115705,7 @@ monsters:
    color: Magenta
 
  - name: "Sir Lorimer"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 15
    ac: -10
@@ -115730,7 +115730,7 @@ monsters:
    color: Magenta
 
  - name: "Kaster Maen"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 12
    ac: -10
@@ -115757,7 +115757,7 @@ monsters:
    color: Magenta
 
  - name: "Sabrain"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 12
    ac: -10
@@ -115784,7 +115784,7 @@ monsters:
    color: BrightMagenta
 
  - name: "Emperor Nero"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 12
    ac: -10
@@ -115813,7 +115813,7 @@ monsters:
    color: Cyan
 
  - name: "Denwy"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 16
    ac: 0
@@ -115841,7 +115841,7 @@ monsters:
    color: Magenta
 
  - name: "Femen warlord"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 18
    ac: -3
@@ -115870,7 +115870,7 @@ monsters:
    color: Orange
 
  - name: "God of Speed Metal"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 25
    speed: 16
    ac: 0
@@ -115895,7 +115895,7 @@ monsters:
    color: Black
 
  - name: "Moby Digger"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 29
    speed: 12
    ac: -20
@@ -115920,7 +115920,7 @@ monsters:
    color: Gray
 
  - name: "inadvertent troll"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 18
    ac: -15
@@ -115947,7 +115947,7 @@ monsters:
    color: Black
 
  - name: "Rodney's Sister"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 12
    ac: -8
@@ -115976,7 +115976,7 @@ monsters:
    color: Magenta
 
  - name: "random black mage"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 16
    ac: -10
@@ -116005,7 +116005,7 @@ monsters:
    color: Black
 
  - name: "crashbug causer"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 16
    ac: -10
@@ -116030,7 +116030,7 @@ monsters:
    color: BrightMagenta
 
  - name: "wildwest gunman"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 15
    ac: -10
@@ -116055,7 +116055,7 @@ monsters:
    color: Black
 
  - name: "highway sharpshooter"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 15
    ac: -10
@@ -116080,7 +116080,7 @@ monsters:
    color: BrightCyan
 
  - name: "worm anchorite"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 16
    ac: -10
@@ -116108,7 +116108,7 @@ monsters:
    color: Black
 
  - name: "out-of-jail convict"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 15
    ac: -10
@@ -116133,7 +116133,7 @@ monsters:
    color: BrightBlue
 
  - name: "ash clannfear"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 15
    ac: -25
@@ -116158,7 +116158,7 @@ monsters:
    color: Brown
 
  - name: "Dynamo"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 1
    ac: -25
@@ -116183,7 +116183,7 @@ monsters:
    color: Yellow
 
  - name: "Eternal Evil"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 12
    ac: -15
@@ -116210,7 +116210,7 @@ monsters:
    color: BrightGreen
 
  - name: "Idiot Brain"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 12
    ac: -15
@@ -116237,7 +116237,7 @@ monsters:
    color: Red
 
  - name: "Mad Bucking Fastard"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 30
    speed: 10
    ac: -20
@@ -116266,7 +116266,7 @@ monsters:
    color: Brown
 
  - name: "Frieza"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 32
    speed: 12
    ac: -10
@@ -116291,7 +116291,7 @@ monsters:
    color: Orange
 
  - name: "Mehrunes Dagon"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 35
    speed: 15
    ac: -8
@@ -116319,7 +116319,7 @@ monsters:
    color: Red
 
  - name: "Sheorogath"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 35
    speed: 10
    ac: -9
@@ -116347,7 +116347,7 @@ monsters:
    color: Gray
 
  - name: "god-forsaken bitch"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 35
    speed: 12
    ac: -40
@@ -116375,7 +116375,7 @@ monsters:
    color: Cyan
 
  - name: "Uberjaquio"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 36
    speed: 12
    ac: -6
@@ -116404,7 +116404,7 @@ monsters:
    color: BrightMagenta
 
  - name: "student on strike"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 36
    speed: 15
    ac: -22
@@ -116434,7 +116434,7 @@ monsters:
    color: Cyan
 
  - name: "princess-kidnapping dragon"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 40
    speed: 16
    ac: -30
@@ -116473,7 +116473,7 @@ monsters:
    color: BrightGreen
 
  - name: "scarlet devil"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 40
    speed: 18
    ac: -35
@@ -116502,7 +116502,7 @@ monsters:
    color: Red
 
  - name: "spam-mail demon"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 56
    speed: 24
    ac: 10
@@ -116532,7 +116532,7 @@ monsters:
    color: BrightBlue
 
  - name: "Dudley's Dungeon Terminator"
-   symbol: "§"
+   symbol: "Â§"
    base-level: 107
    speed: 6
    ac: -78
@@ -117219,7 +117219,7 @@ monsters:
    color: White
 
  - name: "novice light wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 0
    speed: 2
    ac: 10
@@ -117243,7 +117243,7 @@ monsters:
    color: White
 
  - name: "novice medium wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 0
    speed: 2
    ac: 10
@@ -117267,7 +117267,7 @@ monsters:
    color: Gray
 
  - name: "novice dark wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 0
    speed: 2
    ac: 10
@@ -117291,7 +117291,7 @@ monsters:
    color: Black
 
  - name: "apprentice light wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 5
    speed: 3
    ac: 6
@@ -117315,7 +117315,7 @@ monsters:
    color: White
 
  - name: "apprentice medium wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 5
    speed: 3
    ac: 6
@@ -117339,7 +117339,7 @@ monsters:
    color: Gray
 
  - name: "apprentice dark wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 5
    speed: 3
    ac: 6
@@ -117363,7 +117363,7 @@ monsters:
    color: Black
 
  - name: "empire state building"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 5
    speed: 12
    ac: 0
@@ -117390,7 +117390,7 @@ monsters:
    color: BrightBlue
 
  - name: "wall beast"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 8
    speed: 3
    ac: 4
@@ -117414,7 +117414,7 @@ monsters:
    color: Black
 
  - name: "sand wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 8
    speed: 4
    ac: 6
@@ -117438,7 +117438,7 @@ monsters:
    color: Yellow
 
  - name: "ramming wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 9
    speed: 3
    ac: 4
@@ -117462,7 +117462,7 @@ monsters:
    color: Red
 
  - name: "journeyman light wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 10
    speed: 3
    ac: 3
@@ -117486,7 +117486,7 @@ monsters:
    color: White
 
  - name: "journeyman medium wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 10
    speed: 3
    ac: 3
@@ -117510,7 +117510,7 @@ monsters:
    color: Gray
 
  - name: "journeyman dark wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 10
    speed: 3
    ac: 3
@@ -117534,7 +117534,7 @@ monsters:
    color: Black
 
  - name: "shifting sand wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 12
    speed: 4
    ac: 6
@@ -117558,7 +117558,7 @@ monsters:
    color: Brown
 
  - name: "unequipping wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 14
    speed: 4
    ac: 2
@@ -117582,7 +117582,7 @@ monsters:
    color: Magenta
 
  - name: "empty wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 15
    speed: 0
    ac: -8
@@ -117606,7 +117606,7 @@ monsters:
    color: Red
 
  - name: "kalashnikov wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 16
    speed: 3
    ac: 3
@@ -117630,7 +117630,7 @@ monsters:
    color: BrightBlue
 
  - name: "petty kalashnikov wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 16
    speed: 3
    ac: 3
@@ -117654,7 +117654,7 @@ monsters:
    color: BrightBlue
 
  - name: "tentacle wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 17
    speed: 4
    ac: 6
@@ -117678,7 +117678,7 @@ monsters:
    color: Green
 
  - name: "living wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 18
    speed: 3
    ac: 3
@@ -117702,7 +117702,7 @@ monsters:
    color: Black
 
  - name: "green wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 20
    speed: 0
    ac: -8
@@ -117728,7 +117728,7 @@ monsters:
    color: BrightGreen
 
  - name: "siege door"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 20
    speed: 0
    ac: 5
@@ -117753,7 +117753,7 @@ monsters:
    color: Gray
 
  - name: "barricade"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 20
    speed: 0
    ac: 0
@@ -117779,7 +117779,7 @@ monsters:
    color: Gray
 
  - name: "expert light wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 20
    speed: 4
    ac: 0
@@ -117803,7 +117803,7 @@ monsters:
    color: White
 
  - name: "expert medium wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 20
    speed: 4
    ac: 0
@@ -117827,7 +117827,7 @@ monsters:
    color: Gray
 
  - name: "expert dark wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 20
    speed: 4
    ac: 0
@@ -117851,7 +117851,7 @@ monsters:
    color: Black
 
  - name: "sand barrier"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 24
    speed: 3
    ac: -2
@@ -117875,7 +117875,7 @@ monsters:
    color: Yellow
 
  - name: "humanlike construct"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 24
    speed: 5
    ac: 0
@@ -117899,7 +117899,7 @@ monsters:
    color: BrightMagenta
 
  - name: "barricaded door"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 25
    speed: 0
    ac: 4
@@ -117924,7 +117924,7 @@ monsters:
    color: Gray
 
  - name: "lightning-proof wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 25
    speed: 0
    ac: -15
@@ -117950,7 +117950,7 @@ monsters:
    color: Yellow
 
  - name: "firewall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 25
    speed: 0
    ac: -15
@@ -117976,7 +117976,7 @@ monsters:
    color: Orange
 
  - name: "ice wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 25
    speed: 0
    ac: -15
@@ -118002,7 +118002,7 @@ monsters:
    color: BrightCyan
 
  - name: "frost wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 25
    speed: 0
    ac: -15
@@ -118028,7 +118028,7 @@ monsters:
    color: BrightCyan
 
  - name: "burning wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 25
    speed: 0
    ac: -15
@@ -118054,7 +118054,7 @@ monsters:
    color: Red
 
  - name: "holed wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 25
    speed: 0
    ac: -15
@@ -118078,7 +118078,7 @@ monsters:
    color: BrightBlue
 
  - name: "corrosive wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 25
    speed: 0
    ac: -15
@@ -118104,7 +118104,7 @@ monsters:
    color: BrightGreen
 
  - name: "shifting sand barrier"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 28
    speed: 3
    ac: -2
@@ -118128,7 +118128,7 @@ monsters:
    color: Brown
 
  - name: "master light wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 30
    speed: 4
    ac: -5
@@ -118152,7 +118152,7 @@ monsters:
    color: White
 
  - name: "master medium wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 30
    speed: 4
    ac: -5
@@ -118176,7 +118176,7 @@ monsters:
    color: Gray
 
  - name: "master dark wall"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 30
    speed: 4
    ac: -5
@@ -118200,7 +118200,7 @@ monsters:
    color: Black
 
  - name: "black hole"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 35
    speed: 0
    ac: -15
@@ -118225,7 +118225,7 @@ monsters:
    color: Black
 
  - name: "supernova leftovers"
-   symbol: "°"
+   symbol: "Â°"
    base-level: 35
    speed: 0
    ac: -15
@@ -119852,7 +119852,7 @@ monsters:
    color: Magenta
 
  - name: "small turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 0
    speed: 12
    ac: 10
@@ -119876,7 +119876,7 @@ monsters:
    color: White
 
  - name: "crude turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 1
    speed: 12
    ac: 10
@@ -119900,7 +119900,7 @@ monsters:
    color: Black
 
  - name: "slowing turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 2
    speed: 12
    ac: 10
@@ -119924,7 +119924,7 @@ monsters:
    color: Green
 
  - name: "arrow turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 2
    speed: 12
    ac: 10
@@ -119948,7 +119948,7 @@ monsters:
    color: Cyan
 
  - name: "dart turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 2
    speed: 12
    ac: 10
@@ -119972,7 +119972,7 @@ monsters:
    color: Cyan
 
  - name: "prehistoric turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 2
    speed: 12
    ac: 10
@@ -119996,7 +119996,7 @@ monsters:
    color: Gray
 
  - name: "dagger turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 3
    speed: 12
    ac: 10
@@ -120020,7 +120020,7 @@ monsters:
    color: Gray
 
  - name: "large arrow turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 4
    speed: 12
    ac: 10
@@ -120044,7 +120044,7 @@ monsters:
    color: Cyan
 
  - name: "flame turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 4
    speed: 12
    ac: 10
@@ -120070,7 +120070,7 @@ monsters:
    color: Red
 
  - name: "ice turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 4
    speed: 12
    ac: 10
@@ -120096,7 +120096,7 @@ monsters:
    color: BrightCyan
 
  - name: "shock turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 4
    speed: 12
    ac: 10
@@ -120122,7 +120122,7 @@ monsters:
    color: Yellow
 
  - name: "acid turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 4
    speed: 12
    ac: 10
@@ -120148,7 +120148,7 @@ monsters:
    color: Green
 
  - name: "gargoyle trap"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 4
    speed: 9
    ac: 6
@@ -120174,7 +120174,7 @@ monsters:
    color: Gray
 
  - name: "spear turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 5
    speed: 12
    ac: 10
@@ -120198,7 +120198,7 @@ monsters:
    color: White
 
  - name: "unlight turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 5
    speed: 12
    ac: 10
@@ -120222,7 +120222,7 @@ monsters:
    color: Black
 
  - name: "warding turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 5
    speed: 12
    ac: 10
@@ -120246,7 +120246,7 @@ monsters:
    color: BrightBlue
 
  - name: "neolithic turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 6
    speed: 12
    ac: 10
@@ -120270,7 +120270,7 @@ monsters:
    color: Gray
 
  - name: "gas turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 6
    speed: 12
    ac: 10
@@ -120296,7 +120296,7 @@ monsters:
    color: Cyan
 
  - name: "poison turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 8
    speed: 12
    ac: 9
@@ -120322,7 +120322,7 @@ monsters:
    color: BrightGreen
 
  - name: "disarming turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 8
    speed: 12
    ac: 9
@@ -120346,7 +120346,7 @@ monsters:
    color: BrightGreen
 
  - name: "gun turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 8
    speed: 12
    ac: 9
@@ -120370,7 +120370,7 @@ monsters:
    color: Cyan
 
  - name: "elven turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 9
    speed: 12
    ac: 7
@@ -120394,7 +120394,7 @@ monsters:
    color: Green
 
  - name: "watch turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 10
    speed: 12
    ac: 5
@@ -120418,7 +120418,7 @@ monsters:
    color: Brown
 
  - name: "thrusting turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 10
    speed: 12
    ac: 5
@@ -120442,7 +120442,7 @@ monsters:
    color: Brown
 
  - name: "scything turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 10
    speed: 12
    ac: 5
@@ -120466,7 +120466,7 @@ monsters:
    color: Red
 
  - name: "ninja turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 10
    speed: 12
    ac: 5
@@ -120490,7 +120490,7 @@ monsters:
    color: Black
 
  - name: "machine turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 10
    speed: 12
    ac: 5
@@ -120514,7 +120514,7 @@ monsters:
    color: BrightCyan
 
  - name: "big turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 10
    speed: 12
    ac: 10
@@ -120538,7 +120538,7 @@ monsters:
    color: White
 
  - name: "scratch turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 10
    speed: 12
    ac: 5
@@ -120562,7 +120562,7 @@ monsters:
    color: Red
 
  - name: "samu turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 10
    speed: 12
    ac: 5
@@ -120586,7 +120586,7 @@ monsters:
    color: Brown
 
  - name: "shooter turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 11
    speed: 12
    ac: 5
@@ -120610,7 +120610,7 @@ monsters:
    color: Brown
 
  - name: "coin turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 12
    speed: 12
    ac: 5
@@ -120634,7 +120634,7 @@ monsters:
    color: Yellow
 
  - name: "droven turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 12
    speed: 12
    ac: 5
@@ -120658,7 +120658,7 @@ monsters:
    color: Black
 
  - name: "wake of fire sentry"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 12
    speed: 10
    ac: 5
@@ -120682,7 +120682,7 @@ monsters:
    color: Red
 
  - name: "charged bolt sentry"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 12
    speed: 10
    ac: 5
@@ -120706,7 +120706,7 @@ monsters:
    color: Cyan
 
  - name: "magic turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 12
    speed: 12
    ac: 5
@@ -120730,7 +120730,7 @@ monsters:
    color: BrightBlue
 
  - name: "celestial turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 13
    speed: 12
    ac: 5
@@ -120754,7 +120754,7 @@ monsters:
    color: White
 
  - name: "rust turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 13
    speed: 12
    ac: 5
@@ -120778,7 +120778,7 @@ monsters:
    color: Brown
 
  - name: "rot turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 13
    speed: 12
    ac: 5
@@ -120802,7 +120802,7 @@ monsters:
    color: Brown
 
  - name: "corroded turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 13
    speed: 12
    ac: 5
@@ -120826,7 +120826,7 @@ monsters:
    color: Green
 
  - name: "water turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 13
    speed: 12
    ac: 5
@@ -120850,7 +120850,7 @@ monsters:
    color: BrightBlue
 
  - name: "taser turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 13
    speed: 12
    ac: 5
@@ -120874,7 +120874,7 @@ monsters:
    color: Brown
 
  - name: "glare turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 13
    speed: 12
    ac: 5
@@ -120898,7 +120898,7 @@ monsters:
    color: Black
 
  - name: "confusing turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 13
    speed: 12
    ac: 5
@@ -120922,7 +120922,7 @@ monsters:
    color: Brown
 
  - name: "multicolor turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 13
    speed: 12
    ac: 5
@@ -120946,7 +120946,7 @@ monsters:
    color: BrightMagenta
 
  - name: "rubber turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 13
    speed: 12
    ac: 5
@@ -120970,7 +120970,7 @@ monsters:
    color: Red
 
  - name: "cuntgun turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 14
    speed: 12
    ac: 5
@@ -120994,7 +120994,7 @@ monsters:
    color: Cyan
 
  - name: "para turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 14
    speed: 12
    ac: 5
@@ -121018,7 +121018,7 @@ monsters:
    color: Orange
 
  - name: "obsidian turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 14
    speed: 12
    ac: 5
@@ -121042,7 +121042,7 @@ monsters:
    color: Black
 
  - name: "glass turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 14
    speed: 12
    ac: 5
@@ -121066,7 +121066,7 @@ monsters:
    color: Black
 
  - name: "disrupter turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 15
    speed: 12
    ac: 4
@@ -121090,7 +121090,7 @@ monsters:
    color: Brown
 
  - name: "darkness turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 15
    speed: 12
    ac: 4
@@ -121114,7 +121114,7 @@ monsters:
    color: Black
 
  - name: "dark elven turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 15
    speed: 12
    ac: 3
@@ -121138,7 +121138,7 @@ monsters:
    color: Gray
 
  - name: "sentry turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 15
    speed: 12
    ac: 3
@@ -121162,7 +121162,7 @@ monsters:
    color: Gray
 
  - name: "lightning spire"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 15
    speed: 12
    ac: 2
@@ -121189,7 +121189,7 @@ monsters:
    color: Cyan
 
  - name: "lightning point"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 15
    speed: 12
    ac: 2
@@ -121216,7 +121216,7 @@ monsters:
    color: Cyan
 
  - name: "burner turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 15
    speed: 12
    ac: 3
@@ -121242,7 +121242,7 @@ monsters:
    color: Red
 
  - name: "grim ward turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 15
    speed: 12
    ac: 3
@@ -121266,7 +121266,7 @@ monsters:
    color: Gray
 
  - name: "pellet turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 16
    speed: 12
    ac: 3
@@ -121290,7 +121290,7 @@ monsters:
    color: Red
 
  - name: "debuff turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 16
    speed: 12
    ac: 2
@@ -121314,7 +121314,7 @@ monsters:
    color: Green
 
  - name: "drain turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 16
    speed: 12
    ac: 2
@@ -121338,7 +121338,7 @@ monsters:
    color: Black
 
  - name: "fire turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 16
    speed: 12
    ac: 0
@@ -121364,7 +121364,7 @@ monsters:
    color: Red
 
  - name: "cooling turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 16
    speed: 12
    ac: 0
@@ -121390,7 +121390,7 @@ monsters:
    color: BrightCyan
 
  - name: "electro turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 16
    speed: 12
    ac: 0
@@ -121416,7 +121416,7 @@ monsters:
    color: Yellow
 
  - name: "corroding turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 16
    speed: 12
    ac: 0
@@ -121442,7 +121442,7 @@ monsters:
    color: Green
 
  - name: "missile turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 16
    speed: 12
    ac: 0
@@ -121467,7 +121467,7 @@ monsters:
    color: BrightBlue
 
  - name: "powergas turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 16
    speed: 12
    ac: 0
@@ -121493,7 +121493,7 @@ monsters:
    color: BrightCyan
 
  - name: "targetting turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 17
    speed: 12
    ac: 0
@@ -121517,7 +121517,7 @@ monsters:
    color: Magenta
 
  - name: "hardload turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 18
    speed: 12
    ac: 0
@@ -121541,7 +121541,7 @@ monsters:
    color: Black
 
  - name: "freezer turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 18
    speed: 12
    ac: 0
@@ -121567,7 +121567,7 @@ monsters:
    color: BrightCyan
 
  - name: "poison gas turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 18
    speed: 12
    ac: 0
@@ -121593,7 +121593,7 @@ monsters:
    color: BrightGreen
 
  - name: "sturdy turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 18
    speed: 12
    ac: 0
@@ -121619,7 +121619,7 @@ monsters:
    color: Gray
 
  - name: "nimble turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 18
    speed: 12
    ac: 0
@@ -121645,7 +121645,7 @@ monsters:
    color: Red
 
  - name: "shoo turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 18
    speed: 12
    ac: 0
@@ -121669,7 +121669,7 @@ monsters:
    color: Magenta
 
  - name: "sniper turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 19
    speed: 12
    ac: 0
@@ -121693,7 +121693,7 @@ monsters:
    color: BrightCyan
 
  - name: "withering turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 20
    speed: 12
    ac: 0
@@ -121717,7 +121717,7 @@ monsters:
    color: Gray
 
  - name: "smg turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 20
    speed: 12
    ac: 0
@@ -121741,7 +121741,7 @@ monsters:
    color: Black
 
  - name: "stitched abomination"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 20
    speed: 12
    ac: -2
@@ -121766,7 +121766,7 @@ monsters:
    color: Orange
 
  - name: "fire tower"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 20
    speed: 16
    ac: 0
@@ -121793,7 +121793,7 @@ monsters:
    color: Brown
 
  - name: "antimagic turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 20
    speed: 12
    ac: 0
@@ -121817,7 +121817,7 @@ monsters:
    color: BrightBlue
 
  - name: "hunger turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 20
    speed: 12
    ac: 0
@@ -121841,7 +121841,7 @@ monsters:
    color: Red
 
  - name: "festering appendages"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 20
    speed: 12
    ac: 0
@@ -121866,7 +121866,7 @@ monsters:
    color: Brown
 
  - name: "baal tentacle"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 20
    speed: 12
    ac: 0
@@ -121892,7 +121892,7 @@ monsters:
    color: Red
 
  - name: "guard turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 22
    speed: 13
    ac: -1
@@ -121916,7 +121916,7 @@ monsters:
    color: Red
 
  - name: "dementia turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 22
    speed: 13
    ac: -1
@@ -121940,7 +121940,7 @@ monsters:
    color: Black
 
  - name: "robo turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 22
    speed: 13
    ac: -1
@@ -121964,7 +121964,7 @@ monsters:
    color: Orange
 
  - name: "solar turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 23
    speed: 12
    ac: 0
@@ -121988,7 +121988,7 @@ monsters:
    color: Yellow
 
  - name: "megaload turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 23
    speed: 12
    ac: 0
@@ -122012,7 +122012,7 @@ monsters:
    color: Black
 
  - name: "bewitched turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 23
    speed: 12
    ac: 0
@@ -122036,7 +122036,7 @@ monsters:
    color: BrightBlue
 
  - name: "black turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 24
    speed: 12
    ac: 0
@@ -122061,7 +122061,7 @@ monsters:
    color: Black
 
  - name: "stupefying turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 24
    speed: 12
    ac: 0
@@ -122085,7 +122085,7 @@ monsters:
    color: Magenta
 
  - name: "inferno sentry"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 24
    speed: 11
    ac: 0
@@ -122110,7 +122110,7 @@ monsters:
    color: Red
 
  - name: "lightning sentry"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 24
    speed: 11
    ac: 0
@@ -122135,7 +122135,7 @@ monsters:
    color: BrightCyan
 
  - name: "lag defense tower"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 25
    speed: 12
    ac: 2
@@ -122162,7 +122162,7 @@ monsters:
    color: Cyan
 
  - name: "bacterioid turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 25
    speed: 12
    ac: 0
@@ -122186,7 +122186,7 @@ monsters:
    color: BrightGreen
 
  - name: "automatic turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 25
    speed: 12
    ac: 0
@@ -122210,7 +122210,7 @@ monsters:
    color: Orange
 
  - name: "rocket turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 25
    speed: 12
    ac: 0
@@ -122234,7 +122234,7 @@ monsters:
    color: Orange
 
  - name: "gl turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 25
    speed: 12
    ac: 0
@@ -122258,7 +122258,7 @@ monsters:
    color: Red
 
  - name: "siege tower"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 25
    speed: 12
    ac: -2
@@ -122284,7 +122284,7 @@ monsters:
    color: Gray
 
  - name: "spell turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 25
    speed: 13
    ac: -1
@@ -122308,7 +122308,7 @@ monsters:
    color: Gray
 
  - name: "consecrated turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 26
    speed: 13
    ac: -1
@@ -122332,7 +122332,7 @@ monsters:
    color: Brown
 
  - name: "aqua turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 26
    speed: 12
    ac: -1
@@ -122356,7 +122356,7 @@ monsters:
    color: BrightBlue
 
  - name: "sexual turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 28
    speed: 13
    ac: -1
@@ -122380,7 +122380,7 @@ monsters:
    color: BrightMagenta
 
  - name: "gloppy turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 30
    speed: 12
    ac: -3
@@ -122404,7 +122404,7 @@ monsters:
    color: BrightGreen
 
  - name: "pitchblack turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 30
    speed: 12
    ac: -3
@@ -122428,7 +122428,7 @@ monsters:
    color: Black
 
  - name: "barricade tower"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 30
    speed: 12
    ac: -5
@@ -122454,7 +122454,7 @@ monsters:
    color: Gray
 
  - name: "unknown turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 30
    speed: 12
    ac: -7
@@ -122478,7 +122478,7 @@ monsters:
    color: White
 
  - name: "death sentry"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 30
    speed: 12
    ac: -4
@@ -122503,7 +122503,7 @@ monsters:
    color: Black
 
  - name: "ballistic turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 32
    speed: 6
    ac: -6
@@ -122527,7 +122527,7 @@ monsters:
    color: Yellow
 
  - name: "citykiller turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 32
    speed: 12
    ac: -6
@@ -122551,7 +122551,7 @@ monsters:
    color: BrightGreen
 
  - name: "manavoid turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 35
    speed: 12
    ac: 0
@@ -122575,7 +122575,7 @@ monsters:
    color: BrightBlue
 
  - name: "gatling turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 35
    speed: 12
    ac: -6
@@ -122599,7 +122599,7 @@ monsters:
    color: Yellow
 
  - name: "ironclad turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 37
    speed: 12
    ac: -6
@@ -122623,7 +122623,7 @@ monsters:
    color: BrightGreen
 
  - name: "petrified turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 40
    speed: 9
    ac: -10
@@ -122647,7 +122647,7 @@ monsters:
    color: Black
 
  - name: "death turret"
-   symbol: "±"
+   symbol: "Â±"
    base-level: 60
    speed: 12
    ac: -10
