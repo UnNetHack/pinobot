@@ -90,6 +90,14 @@ mostSimilarMonsterSane variant text
     | otherwise = let (distance, result) = mostSimilarMonster variant text
                    in if distance <= 3 then Just result else Nothing
 
+-- | Same as above, but with less assurances.
+mostSimilarMonsterHalfSane :: V.Variant -> T.Text -> Maybe T.Text
+mostSimilarMonsterHalfSane variant text
+    | T.length text >= 50 = Nothing
+    | otherwise = let (_, result) = mostSimilarMonster variant text
+                   in Just result
+
+
 decideVariant :: [V.Variant] -> T.Text -> V.Variant
 decideVariant variants name =
     fromMaybe
@@ -403,14 +411,16 @@ stringT :: Stream s m Char => T.Text -> ParsecT s u m T.Text
 stringT txt = T.pack <$> string (T.unpack txt)
 
 message' :: [V.Variant] -> T.Text -> Maybe T.Text
-message' variants input =
-    case runParser parser () "line" input of
+message' variants input'
+    | T.head input' == '@' = next (T.tail input') True
+    | otherwise = next input' False
+  where
+    next input maximum_lev = case runParser (parser maximum_lev) () "line" input of
         Left errmsg -> Just $ T.pack $ filterNewLines $ show errmsg
         Right okay  -> okay
 
-  where
-    parser :: T.Parser (Maybe T.Text)
-    parser = do
+    parser :: Bool -> T.Parser (Maybe T.Text)
+    parser maximum_lev = do
         (variantStr, ignore) <- foldl
                         (\previoustry variant ->
                           previoustry <|> try
@@ -422,17 +432,17 @@ message' variants input =
                              <*> try (stringT "?")) <|>
                         (return ("", ""))
         if ignore == "?"
-          then doPart $ decideVariant variants variantStr
+          then doPart maximum_lev $ decideVariant variants variantStr
           else return Nothing
 
-    doPart variant = do
+    doPart maximum_lev variant = do
       spaces
       rawMonsterName <- many anyChar
       let monsterName = (T.strip . T.pack) rawMonsterName
       when (T.length monsterName <= 0) $
           fail $ ";I shall now launch the missiles that will cause " <>
                  "serious international side effects."
-      return $ Just $ case mostSimilarMonsterSane variant monsterName of
+      return $ Just $ case msms variant monsterName of
           Nothing -> "No such monster."
           Just mon ->
               (if T.toLower monsterName /= T.toLower mon
@@ -441,4 +451,6 @@ message' variants input =
                  else "") <>
               lineMonsterInformation
                   (fromJust $ V.monster variant mon)
+      where
+        msms = if maximum_lev then mostSimilarMonsterSane else mostSimilarMonsterHalfSane
 
