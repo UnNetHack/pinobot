@@ -452,5 +452,5 @@ message' variants input'
               lineMonsterInformation
                   (fromJust $ V.monster variant mon)
       where
-        msms = if maximum_lev then mostSimilarMonsterSane else mostSimilarMonsterHalfSane
+        msms = if maximum_lev then mostSimilarMonsterHalfSane else mostSimilarMonsterSane
 
