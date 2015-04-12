@@ -127,7 +127,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlPoisonous, FlCarnivore, FlHostile]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlPoisonous, FlCarnivore, FlHostile]
    color: Black
 
  - name: "queen bee"
@@ -2285,7 +2285,7 @@ monsters:
    resistances:
     - RePoison
    conferred:
-   flags: [FlHumanoid, FlPoisonous, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlHumanoid, FlOviparous, FlPoisonous, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlInfravisible, FlInfravision]
    color: Brown
 
  - name: "large kobold"
@@ -2310,7 +2310,7 @@ monsters:
    resistances:
     - RePoison
    conferred:
-   flags: [FlHumanoid, FlPoisonous, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlHumanoid, FlOviparous, FlPoisonous, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlInfravisible, FlInfravision]
    color: Red
 
  - name: "kobold lord"
@@ -2335,7 +2335,7 @@ monsters:
    resistances:
     - RePoison
    conferred:
-   flags: [FlHumanoid, FlPoisonous, FlCarnivore, FlHerbivore, FlLord, FlMale, FlHostile, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlHumanoid, FlOviparous, FlPoisonous, FlCarnivore, FlHerbivore, FlLord, FlMale, FlHostile, FlCollect, FlInfravisible, FlInfravision]
    color: Magenta
 
  - name: "kobold shaman"
@@ -4183,7 +4183,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlFly, FlNoHands, FlNoLimbs, FlAnimal, FlPoisonous, FlHostile, FlInfravisible, FlPassesBars]
+   flags: [FlFly, FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlPoisonous, FlHostile, FlInfravisible, FlPassesBars]
    color: Red
 
  - name: "bebelith"
@@ -4749,7 +4749,7 @@ monsters:
    size: small
    resistances:
    conferred:
-   flags: [FlFly, FlNoHands, FlNoLimbs, FlAnimal, FlHerbivore, FlHostile, FlWander, FlInfravisible]
+   flags: [FlFly, FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlHerbivore, FlHostile, FlWander, FlInfravisible]
    color: Green
 
  - name: "crow"
@@ -4773,7 +4773,7 @@ monsters:
    size: small
    resistances:
    conferred:
-   flags: [FlFly, FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile, FlWander, FlInfravisible]
+   flags: [FlFly, FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHostile, FlWander, FlInfravisible]
    color: Black
 
  - name: "vampire bat"
@@ -4823,7 +4823,7 @@ monsters:
    size: small
    resistances:
    conferred:
-   flags: [FlFly, FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile, FlWander, FlInfravisible]
+   flags: [FlFly, FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHostile, FlWander, FlInfravisible]
    color: Black
 
  - name: "byakhee"
@@ -9323,6 +9323,35 @@ monsters:
    flags: [FlBreathless, FlMindless, FlHumanoid, FlPoisonous, FlUndead, FlHostile, FlWander, FlInfravision]
    color: Black
 
+ - name: "dread seraph"
+   symbol: "Z"
+   base-level: 30
+   speed: 16
+   ac: -10
+   mr: 125
+   alignment: 20
+   generates:
+    - dungeons
+   leaves-corpse: No
+   not-generated-normally: No
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtReach, AdPhys, 12, 8], [AtReach, AdPhys, 12, 8]]
+   weight: 2300
+   nutrition: 900
+   size: huge
+   resistances:
+    - ReCold
+    - ReSleep
+    - ReDisintegrate
+    - RePoison
+    - RePetrification
+    - ReDrain
+   conferred:
+   flags: [FlFly, FlBreathless, FlMindless, FlHumanoid, FlRegen, FlSeeInvis, FlTeleport, FlPoisonous, FlNoPoly, FlUndead, FlPrince, FlHostile, FlWander, FlNasty, FlStrong, FlWaitsForYou, FlInfravision]
+   color: Magenta
+
  - name: "straw golem"
    symbol: "'"
    base-level: 3
@@ -10882,7 +10911,7 @@ monsters:
  - name: "broken shadow"
    symbol: " "
    base-level: 10
-   speed: 10
+   speed: 3
    ac: 10
    mr: 0
    alignment: -10
@@ -12559,7 +12588,7 @@ monsters:
    size: tiny
    resistances:
    conferred:
-   flags: [FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHostile, FlPassesBars]
    color: Yellow
 
  - name: "gecko"
@@ -12583,7 +12612,7 @@ monsters:
    size: tiny
    resistances:
    conferred:
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHostile, FlPassesBars]
    color: Green
 
  - name: "iguana"
@@ -12607,7 +12636,7 @@ monsters:
    size: tiny
    resistances:
    conferred:
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHostile, FlPassesBars]
    color: Brown
 
  - name: "baby crocodile"
@@ -12631,7 +12660,7 @@ monsters:
    size: small
    resistances:
    conferred:
-   flags: [FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile]
+   flags: [FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHostile]
    color: Brown
 
  - name: "small cave lizard"
@@ -12680,7 +12709,7 @@ monsters:
    resistances:
     - RePetrification
    conferred:
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHostile, FlPassesBars]
    color: Green
 
  - name: "cave lizard"
@@ -12728,7 +12757,7 @@ monsters:
    size: tiny
    resistances:
    conferred:
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlNoPoly, FlHostile, FlPassesBars]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlNoPoly, FlHostile, FlPassesBars]
    color: Brown
 
  - name: "crocodile"
@@ -12800,7 +12829,7 @@ monsters:
    size: huge
    resistances:
    conferred:
-   flags: [FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile]
+   flags: [FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlCarnivore, FlHostile]
    color: Green
 
  - name: "salamander"
@@ -14500,8 +14529,8 @@ monsters:
    flags: [FlHumanoid, FlCarnivore, FlHerbivore, FlNoPoly, FlGiant, FlMale, FlHostile, FlStalk, FlNasty, FlStrong, FlRockThrow, FlJewels, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision]
    color: Gray
 
- - name: "Ixoth"
-   symbol: "D"
+ - name: "Nimune"
+   symbol: "n"
    base-level: 15
    speed: 12
    ac: -1
@@ -14514,17 +14543,14 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: No
-   attacks: [[AtBreath, AdFire, 8, 6], [AtBite, AdPhys, 4, 8], [AtCast, AdSpell, 0, 0], [AtClaw, AdPhys, 2, 4], [AtClaw, AdStealQuestArtifact, 2, 4]]
-   weight: 4500
-   nutrition: 1600
-   size: gigantic
+   attacks: [[AtCast, AdSpell, 0, 0], [AtClaw, AdSeduce, 0, 0]]
+   weight: 600
+   nutrition: 300
+   size: medium
    resistances:
-    - ReFire
-    - RePetrification
    conferred:
-    - ReFire
-   flags: [FlFly, FlNoHands, FlNoLimbs, FlThickHide, FlSeeInvis, FlCarnivore, FlNoPoly, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlGreedy, FlJewels, FlMagicCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible]
-   color: Red
+   flags: [FlFly, FlHumanoid, FlSeeInvis, FlTeleport, FlFemale, FlHostile, FlGreedy, FlJewels, FlCollect, FlMagicCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible]
+   color: Magenta
 
  - name: "Master Kaen"
    symbol: "@"
@@ -15977,5 +16003,5 @@ monsters:
    conferred:
    flags: [FlHumanoid, FlCarnivore, FlHerbivore, FlNoPoly, FlHuman, FlPeaceful, FlStrong, FlCollect, FlMagicCollect, FlInfravisible]
    color: White
-all-monster-names: ["giant ant", "killer bee", "soldier ant", "fire ant", "giant beetle", "queen bee", "acid blob", "quivering blob", "gelatinous cube", "blood bloater", "shoggoth", "chickatrice", "cockatrice", "pyrolisk", "jackal", "fox", "coyote", "werejackal", "little dog", "dog", "large dog", "dingo", "wolf", "werewolf", "warg", "winter wolf cub", "winter wolf", "hell hound pup", "hell hound", "Cerberus", "anuban jackal", "gas spore", "floating eye", "monoton", "duton", "triton", "quaton", "quinon", "freezing sphere", "flaming sphere", "shocking sphere", "beholder", "ball of light", "ball of radiance", "kitten", "housecat", "jaguar", "lynx", "panther", "large cat", "tiger", "displacer beast", "son of Typhon", "grimlock", "gremlin", "gargoyle", "winged gargoyle", "nightgaunt", "hobbit", "dwarf", "bugbear", "dwarf lord", "dwarf king", "deep one", "mind flayer", "edderkop", "master mind flayer", "gnoll", "githyanki pirate", "deeper one", "anubite", "manes", "homunculus", "imp", "lemure", "quasit", "tengu", "uranium imp", "legion devil grunt", "legion devil soldier", "legion devil sergeant", "legion devil captain", "Glasya", "blue jelly", "spotted jelly", "ochre jelly", "aoa droplet", "aoa", "kobold", "large kobold", "kobold lord", "kobold shaman", "leprechaun", "small mimic", "large mimic", "giant mimic", "dryad", "naiad", "oread", "swamp nymph", "goblin", "hobgoblin", "orc", "hill orc", "Mordor orc", "Uruk-hai", "orc shaman", "orc-captain", "rock piercer", "iron piercer", "glass piercer", "heaven piercer", "rothe", "mumak", "leocrotta", "wumpus", "titanothere", "baluchitherium", "mastodon", "sewer rat", "giant rat", "rabid rat", "wererat", "enormous rat", "rodent of unusual size", "rock mole", "woodchuck", "cave spider", "centipede", "giant spider", "scorpion", "mirkwood spider", "phase spider", "mirkwood elder", "baby metroid", "metroid", "alpha metroid", "lurker above", "trapper", "gamma metroid", "zeta metroid", "omega metroid", "metroid queen", "white unicorn", "gray unicorn", "black unicorn", "pony", "horse", "warhorse", "Nightmare", "fog cloud", "dust vortex", "ice vortex", "energy vortex", "steam vortex", "fire vortex", "dancing flame", "luminous cloud", "baby long worm", "baby purple worm", "long worm", "purple worm", "hunting horror", "grid bug", "xan", "bebelith", "yellow light", "black light", "zruty", "couatl", "Aleax", "Firre", "weeping angel", "Shiere", "Angel", "lillend", "Ghaele", "ki-rin", "Tulani", "Oona", "Archon", "Solar", "god", "bat", "giant bat", "parrot", "crow", "vampire bat", "raven", "byakhee", "plains centaur", "forest centaur", "mountain centaur", "sprow", "drider", "baby gray dragon", "baby silver dragon", "baby mercurial dragon", "baby shimmering dragon", "baby deep dragon", "baby red dragon", "baby white dragon", "baby orange dragon", "baby black dragon", "baby blue dragon", "baby green dragon", "baby yellow dragon", "gray dragon", "silver dragon", "mercurial dragon", "shimmering dragon", "deep dragon", "red dragon", "white dragon", "orange dragon", "black dragon", "blue dragon", "green dragon", "yellow dragon", "stalker", "air elemental", "fire elemental", "earth elemental", "water elemental", "lethe elemental", "lichen", "brown mold", "yellow mold", "green mold", "red mold", "shrieker", "violet fungus", "migo worker", "migo soldier", "migo philosopher", "phantom fungus", "migo queen", "clockwork soldier", "clockwork dwarf", "faberge sphere", "firework cart", "gnome", "gnome lord", "tinker gnome", "gnomish wizard", "gnome king", "clockwork factory", "golden heart", "juggernaut", "id juggernaut", "scrap titan", "hellfire colossus", "hellfire orb", "clockwork automaton", "giant", "stone giant", "hill giant", "fire giant", "frost giant", "gnoll matriarch", "storm giant", "ettin", "titan", "minotaur", "minotaur priestess", "deepest one", "tove", "jubjub bird", "bandersnatch", "jabberwock", "malkuth sephirah", "yesod sephirah", "daat sephirah", "hod sephirah", "netzach sephirah", "gevurah sephirah", "binah sephirah", "chokhmah sephirah", "lich", "demilich", "master lich", "baelnorn", "death knight", "arch-lich", "kobold mummy", "gnome mummy", "orc mummy", "dwarf mummy", "elf mummy", "human mummy", "drow mummy", "ettin mummy", "giant mummy", "red naga hatchling", "black naga hatchling", "golden naga hatchling", "guardian naga hatchling", "red naga", "black naga", "golden naga", "guardian naga", "ogre", "ogre mage", "ogre lord", "ogre king", "siege ogre", "gray ooze", "brown pudding", "black pudding", "green slime", "flux slime", "darkness given hunger", "quantum mechanic", "rust monster", "disenchanter", "garter snake", "snake", "water moccasin", "pit viper", "python", "cobra", "troll", "ice troll", "rock troll", "water troll", "Olog-hai", "wood troll", "umber hulk", "hooloovoo", "shambling horror", "stumbling horror", "wandering horror", "uvuudaum", "vampire", "vampire lord", "Mina Harker", "Ilona Szilagy", "Carmilla", "Vlad the Impaler", "barrow wight", "wraith", "phantasm", "Nazgul", "xorn", "monkey", "ape", "owlbear", "yeti", "carnivorous ape", "sasquatch", "gug", "kobold zombie", "gnome zombie", "orc zombie", "dwarf zombie", "elf zombie", "human zombie", "drow zombie", "ettin zombie", "giant zombie", "ghoul", "skeletal pirate", "skeleton", "gnoll ghoul", "straw golem", "paper golem", "rope golem", "gold golem", "leather golem", "wood golem", "flesh golem", "spell golem", "living lecturn", "clay golem", "treasury golem", "stone golem", "glass golem", "iron golem", "argentum golem", "retriever", "human", "peasant", "miner", "prison guard", "wererat", "werejackal", "werewolf", "elf", "drow", "Woodland-elf", "Green-elf", "Grey-elf", "hedrow warrior", "elf-lord", "hedrow wizard", "doppelganger", "nurse", "maid", "Elvenking", "drow matron", "embraced drowess", "hedrow blademaster", "shopkeeper", "guard", "prisoner", "mindless thrall", "Oracle", "aligned priest", "high priest", "elder priest", "priest of an unknown god", "soldier", "sergeant", "lieutenant", "captain", "watchman", "watch captain", "Medusa", "Illurien of the Myriad Glimpses", "Wizard of Yendor", "Croesus", "Daemon", "garo", "ghost", "garo master", "broken shadow", "shade", "water demon", "lava demon", "horned devil", "succubus", "incubus", "erinys", "barbed devil", "vrock", "hezrou", "bone devil", "damned pirate", "ice devil", "nalfeshnee", "marilith", "pit fiend", "fallen angel", "ancient of ice", "ancient of death", "balrog", "nessian pit fiend", "shayateen", "Fierna", "Bael", "Juiblex", "Zuggtmoy", "Kostchtchie", "Baphomet", "Yeenoghu", "Daughter Lilith", "Mammon", "Malcanthet", "Shaktari", "Mother Lilith", "Belial", "Avatar of Lolth", "Graz'zt", "Orcus", "Crone Lilith", "creature in the ice", "Leviathan", "Dispater", "Baalzebub", "Mephistopheles", "Pale Night", "Baalphegor", "Verier", "Dagon", "Asmodeus", "Demogorgon", "Death", "Pestilence", "Famine", "mail daemon", "djinni", "sandestin", "jellyfish", "piranha", "shark", "giant eel", "electric eel", "kraken", "newt", "gecko", "iguana", "baby crocodile", "small cave lizard", "lizard", "cave lizard", "chameleon", "crocodile", "giant turtle", "large cave lizard", "salamander", "razorvine", "weeping willow", "sunflower", "dreadblossom swarm", "viper tree", "dungeon fern", "dungeon fern sprout", "dungeon fern spore", "swamp fern", "swamp fern sprout", "swamp fern spore", "mandrake", "devil's snare", "long worm tail", "hunting horror tail", "archeologist", "barbarian", "exile", "caveman", "cavewoman", "convict", "healer", "knight", "monk", "nobleman", "noblewoman", "priest", "priestess", "pirate", "ranger", "rogue", "samurai", "tourist", "valkyrie", "incantifier", "worm that walks", "wizard", "Lord Carnarvon", "Pelias", "strange corpse", "Shaman Karnov", "Robert the Lifer", "Eclavdra", "Galadriel", "Hippocrates", "King Arthur", "Grand Master", "old Gypsy woman", "Thorin II Oakenshield", "Dain II Ironfoot", "Mother", "drow novice", "Arch Priest", "Mayor Cummerbund", "Orion", "Master of Thieves", "Lord Sato", "Twoflower", "Norn", "Neferet the Green", "Minion of Huhetotl", "Thoth Amon", "Acererak", "Chromatic Dragon", "Warden Arianna", "Necromancer", "Seyll Auzkovyn", "Daruth Xaxox", "Cyclops", "Ixoth", "Master Kaen", "Rebel Ringleader", "adventuring wizard", "militant cleric", "half-elf ranger", "Durin's Bane", "Watcher in the Water", "swarm of snaking tentacles", "long sinuous tentacle", "Smaug", "Bolg", "elder brain", "A'gone", "A'salom", "Blackbeard's Ghost", "Nalzok", "Scorpius", "Master Assassin", "Ashikaga Takauji", "Lord Surtur", "Dark One", "Tiamat", "Sir Garland", "Garland", "Chaos", "Center of All", "alhoon", "Great Cthulhu", "Axus", "Arsenal", "Apollyon", "Lucifer", "student", "chieftain", "neanderthal", "inmate", "drow matron-mother", "hedrow master-wizard", "drow alienist", "Gromph", "Dantrag", "Celeborn", "High-elf", "stjarna-alfar", "attendant", "page", "abbot", "servant", "dwarf warrior", "sister", "acolyte", "pirate brother", "hunter", "thug", "ninja", "roshi", "guide", "warrior", "apprentice"]
+all-monster-names: ["giant ant", "killer bee", "soldier ant", "fire ant", "giant beetle", "queen bee", "acid blob", "quivering blob", "gelatinous cube", "blood bloater", "shoggoth", "chickatrice", "cockatrice", "pyrolisk", "jackal", "fox", "coyote", "werejackal", "little dog", "dog", "large dog", "dingo", "wolf", "werewolf", "warg", "winter wolf cub", "winter wolf", "hell hound pup", "hell hound", "Cerberus", "anuban jackal", "gas spore", "floating eye", "monoton", "duton", "triton", "quaton", "quinon", "freezing sphere", "flaming sphere", "shocking sphere", "beholder", "ball of light", "ball of radiance", "kitten", "housecat", "jaguar", "lynx", "panther", "large cat", "tiger", "displacer beast", "son of Typhon", "grimlock", "gremlin", "gargoyle", "winged gargoyle", "nightgaunt", "hobbit", "dwarf", "bugbear", "dwarf lord", "dwarf king", "deep one", "mind flayer", "edderkop", "master mind flayer", "gnoll", "githyanki pirate", "deeper one", "anubite", "manes", "homunculus", "imp", "lemure", "quasit", "tengu", "uranium imp", "legion devil grunt", "legion devil soldier", "legion devil sergeant", "legion devil captain", "Glasya", "blue jelly", "spotted jelly", "ochre jelly", "aoa droplet", "aoa", "kobold", "large kobold", "kobold lord", "kobold shaman", "leprechaun", "small mimic", "large mimic", "giant mimic", "dryad", "naiad", "oread", "swamp nymph", "goblin", "hobgoblin", "orc", "hill orc", "Mordor orc", "Uruk-hai", "orc shaman", "orc-captain", "rock piercer", "iron piercer", "glass piercer", "heaven piercer", "rothe", "mumak", "leocrotta", "wumpus", "titanothere", "baluchitherium", "mastodon", "sewer rat", "giant rat", "rabid rat", "wererat", "enormous rat", "rodent of unusual size", "rock mole", "woodchuck", "cave spider", "centipede", "giant spider", "scorpion", "mirkwood spider", "phase spider", "mirkwood elder", "baby metroid", "metroid", "alpha metroid", "lurker above", "trapper", "gamma metroid", "zeta metroid", "omega metroid", "metroid queen", "white unicorn", "gray unicorn", "black unicorn", "pony", "horse", "warhorse", "Nightmare", "fog cloud", "dust vortex", "ice vortex", "energy vortex", "steam vortex", "fire vortex", "dancing flame", "luminous cloud", "baby long worm", "baby purple worm", "long worm", "purple worm", "hunting horror", "grid bug", "xan", "bebelith", "yellow light", "black light", "zruty", "couatl", "Aleax", "Firre", "weeping angel", "Shiere", "Angel", "lillend", "Ghaele", "ki-rin", "Tulani", "Oona", "Archon", "Solar", "god", "bat", "giant bat", "parrot", "crow", "vampire bat", "raven", "byakhee", "plains centaur", "forest centaur", "mountain centaur", "sprow", "drider", "baby gray dragon", "baby silver dragon", "baby mercurial dragon", "baby shimmering dragon", "baby deep dragon", "baby red dragon", "baby white dragon", "baby orange dragon", "baby black dragon", "baby blue dragon", "baby green dragon", "baby yellow dragon", "gray dragon", "silver dragon", "mercurial dragon", "shimmering dragon", "deep dragon", "red dragon", "white dragon", "orange dragon", "black dragon", "blue dragon", "green dragon", "yellow dragon", "stalker", "air elemental", "fire elemental", "earth elemental", "water elemental", "lethe elemental", "lichen", "brown mold", "yellow mold", "green mold", "red mold", "shrieker", "violet fungus", "migo worker", "migo soldier", "migo philosopher", "phantom fungus", "migo queen", "clockwork soldier", "clockwork dwarf", "faberge sphere", "firework cart", "gnome", "gnome lord", "tinker gnome", "gnomish wizard", "gnome king", "clockwork factory", "golden heart", "juggernaut", "id juggernaut", "scrap titan", "hellfire colossus", "hellfire orb", "clockwork automaton", "giant", "stone giant", "hill giant", "fire giant", "frost giant", "gnoll matriarch", "storm giant", "ettin", "titan", "minotaur", "minotaur priestess", "deepest one", "tove", "jubjub bird", "bandersnatch", "jabberwock", "malkuth sephirah", "yesod sephirah", "daat sephirah", "hod sephirah", "netzach sephirah", "gevurah sephirah", "binah sephirah", "chokhmah sephirah", "lich", "demilich", "master lich", "baelnorn", "death knight", "arch-lich", "kobold mummy", "gnome mummy", "orc mummy", "dwarf mummy", "elf mummy", "human mummy", "drow mummy", "ettin mummy", "giant mummy", "red naga hatchling", "black naga hatchling", "golden naga hatchling", "guardian naga hatchling", "red naga", "black naga", "golden naga", "guardian naga", "ogre", "ogre mage", "ogre lord", "ogre king", "siege ogre", "gray ooze", "brown pudding", "black pudding", "green slime", "flux slime", "darkness given hunger", "quantum mechanic", "rust monster", "disenchanter", "garter snake", "snake", "water moccasin", "pit viper", "python", "cobra", "troll", "ice troll", "rock troll", "water troll", "Olog-hai", "wood troll", "umber hulk", "hooloovoo", "shambling horror", "stumbling horror", "wandering horror", "uvuudaum", "vampire", "vampire lord", "Mina Harker", "Ilona Szilagy", "Carmilla", "Vlad the Impaler", "barrow wight", "wraith", "phantasm", "Nazgul", "xorn", "monkey", "ape", "owlbear", "yeti", "carnivorous ape", "sasquatch", "gug", "kobold zombie", "gnome zombie", "orc zombie", "dwarf zombie", "elf zombie", "human zombie", "drow zombie", "ettin zombie", "giant zombie", "ghoul", "skeletal pirate", "skeleton", "gnoll ghoul", "dread seraph", "straw golem", "paper golem", "rope golem", "gold golem", "leather golem", "wood golem", "flesh golem", "spell golem", "living lecturn", "clay golem", "treasury golem", "stone golem", "glass golem", "iron golem", "argentum golem", "retriever", "human", "peasant", "miner", "prison guard", "wererat", "werejackal", "werewolf", "elf", "drow", "Woodland-elf", "Green-elf", "Grey-elf", "hedrow warrior", "elf-lord", "hedrow wizard", "doppelganger", "nurse", "maid", "Elvenking", "drow matron", "embraced drowess", "hedrow blademaster", "shopkeeper", "guard", "prisoner", "mindless thrall", "Oracle", "aligned priest", "high priest", "elder priest", "priest of an unknown god", "soldier", "sergeant", "lieutenant", "captain", "watchman", "watch captain", "Medusa", "Illurien of the Myriad Glimpses", "Wizard of Yendor", "Croesus", "Daemon", "garo", "ghost", "garo master", "broken shadow", "shade", "water demon", "lava demon", "horned devil", "succubus", "incubus", "erinys", "barbed devil", "vrock", "hezrou", "bone devil", "damned pirate", "ice devil", "nalfeshnee", "marilith", "pit fiend", "fallen angel", "ancient of ice", "ancient of death", "balrog", "nessian pit fiend", "shayateen", "Fierna", "Bael", "Juiblex", "Zuggtmoy", "Kostchtchie", "Baphomet", "Yeenoghu", "Daughter Lilith", "Mammon", "Malcanthet", "Shaktari", "Mother Lilith", "Belial", "Avatar of Lolth", "Graz'zt", "Orcus", "Crone Lilith", "creature in the ice", "Leviathan", "Dispater", "Baalzebub", "Mephistopheles", "Pale Night", "Baalphegor", "Verier", "Dagon", "Asmodeus", "Demogorgon", "Death", "Pestilence", "Famine", "mail daemon", "djinni", "sandestin", "jellyfish", "piranha", "shark", "giant eel", "electric eel", "kraken", "newt", "gecko", "iguana", "baby crocodile", "small cave lizard", "lizard", "cave lizard", "chameleon", "crocodile", "giant turtle", "large cave lizard", "salamander", "razorvine", "weeping willow", "sunflower", "dreadblossom swarm", "viper tree", "dungeon fern", "dungeon fern sprout", "dungeon fern spore", "swamp fern", "swamp fern sprout", "swamp fern spore", "mandrake", "devil's snare", "long worm tail", "hunting horror tail", "archeologist", "barbarian", "exile", "caveman", "cavewoman", "convict", "healer", "knight", "monk", "nobleman", "noblewoman", "priest", "priestess", "pirate", "ranger", "rogue", "samurai", "tourist", "valkyrie", "incantifier", "worm that walks", "wizard", "Lord Carnarvon", "Pelias", "strange corpse", "Shaman Karnov", "Robert the Lifer", "Eclavdra", "Galadriel", "Hippocrates", "King Arthur", "Grand Master", "old Gypsy woman", "Thorin II Oakenshield", "Dain II Ironfoot", "Mother", "drow novice", "Arch Priest", "Mayor Cummerbund", "Orion", "Master of Thieves", "Lord Sato", "Twoflower", "Norn", "Neferet the Green", "Minion of Huhetotl", "Thoth Amon", "Acererak", "Chromatic Dragon", "Warden Arianna", "Necromancer", "Seyll Auzkovyn", "Daruth Xaxox", "Cyclops", "Nimune", "Master Kaen", "Rebel Ringleader", "adventuring wizard", "militant cleric", "half-elf ranger", "Durin's Bane", "Watcher in the Water", "swarm of snaking tentacles", "long sinuous tentacle", "Smaug", "Bolg", "elder brain", "A'gone", "A'salom", "Blackbeard's Ghost", "Nalzok", "Scorpius", "Master Assassin", "Ashikaga Takauji", "Lord Surtur", "Dark One", "Tiamat", "Sir Garland", "Garland", "Chaos", "Center of All", "alhoon", "Great Cthulhu", "Axus", "Arsenal", "Apollyon", "Lucifer", "student", "chieftain", "neanderthal", "inmate", "drow matron-mother", "hedrow master-wizard", "drow alienist", "Gromph", "Dantrag", "Celeborn", "High-elf", "stjarna-alfar", "attendant", "page", "abbot", "servant", "dwarf warrior", "sister", "acolyte", "pirate brother", "hunter", "thug", "ninja", "roshi", "guide", "warrior", "apprentice"]
 
