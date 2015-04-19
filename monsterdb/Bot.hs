@@ -227,6 +227,7 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     attackTypeName MD.AtIllurien = "illurien-swallow"
     attackTypeName MD.AtTinker = "tinker"
 
+    attackDamageName MD.AdStealByTeleportation = "steal-by-teleportation"
     attackDamageName MD.AdFear = "fear"
     attackDamageName MD.AdBlackWebShadow = "black-web-shadow"
     attackDamageName MD.AdNetzach = "netzach"
