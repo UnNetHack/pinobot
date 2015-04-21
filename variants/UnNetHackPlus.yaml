@@ -5,6 +5,7 @@ monsters:
  - name: "giant ant"
    symbol: "a"
    base-level: 2
+   difficulty: 4
    speed: 18
    ac: 3
    mr: 0
@@ -29,6 +30,7 @@ monsters:
  - name: "killer bee"
    symbol: "a"
    base-level: 1
+   difficulty: 5
    speed: 18
    ac: -1
    mr: 0
@@ -55,6 +57,7 @@ monsters:
  - name: "soldier ant"
    symbol: "a"
    base-level: 3
+   difficulty: 6
    speed: 18
    ac: 3
    mr: 0
@@ -81,6 +84,7 @@ monsters:
  - name: "fire ant"
    symbol: "a"
    base-level: 3
+   difficulty: 6
    speed: 18
    ac: 3
    mr: 10
@@ -107,6 +111,7 @@ monsters:
  - name: "snow ant"
    symbol: "a"
    base-level: 3
+   difficulty: 6
    speed: 18
    ac: 3
    mr: 10
@@ -132,6 +137,7 @@ monsters:
  - name: "giant beetle"
    symbol: "a"
    base-level: 5
+   difficulty: 6
    speed: 6
    ac: 4
    mr: 0
@@ -158,6 +164,7 @@ monsters:
  - name: "queen bee"
    symbol: "a"
    base-level: 9
+   difficulty: 12
    speed: 24
    ac: -4
    mr: 0
@@ -182,6 +189,7 @@ monsters:
  - name: "acid blob"
    symbol: "b"
    base-level: 1
+   difficulty: 2
    speed: 3
    ac: 8
    mr: 0
@@ -210,6 +218,7 @@ monsters:
  - name: "quivering blob"
    symbol: "b"
    base-level: 5
+   difficulty: 6
    speed: 1
    ac: 8
    mr: 0
@@ -237,6 +246,7 @@ monsters:
  - name: "gelatinous cube"
    symbol: "b"
    base-level: 6
+   difficulty: 8
    speed: 6
    ac: 8
    mr: 0
@@ -272,6 +282,7 @@ monsters:
  - name: "chickatrice"
    symbol: "c"
    base-level: 4
+   difficulty: 7
    speed: 4
    ac: 8
    mr: 30
@@ -299,6 +310,7 @@ monsters:
  - name: "cockatrice"
    symbol: "c"
    base-level: 5
+   difficulty: 8
    speed: 6
    ac: 6
    mr: 30
@@ -326,6 +338,7 @@ monsters:
  - name: "pyrolisk"
    symbol: "c"
    base-level: 6
+   difficulty: 8
    speed: 6
    ac: 6
    mr: 30
@@ -354,6 +367,7 @@ monsters:
  - name: "jackal"
    symbol: "d"
    base-level: 0
+   difficulty: 1
    speed: 12
    ac: 7
    mr: 0
@@ -378,6 +392,7 @@ monsters:
  - name: "fox"
    symbol: "d"
    base-level: 0
+   difficulty: 1
    speed: 15
    ac: 7
    mr: 0
@@ -402,6 +417,7 @@ monsters:
  - name: "coyote"
    symbol: "d"
    base-level: 1
+   difficulty: 2
    speed: 12
    ac: 7
    mr: 0
@@ -426,6 +442,7 @@ monsters:
  - name: "werejackal"
    symbol: "d"
    base-level: 2
+   difficulty: 4
    speed: 12
    ac: 7
    mr: 10
@@ -450,6 +467,7 @@ monsters:
  - name: "little dog"
    symbol: "d"
    base-level: 2
+   difficulty: 3
    speed: 18
    ac: 6
    mr: 0
@@ -474,6 +492,7 @@ monsters:
  - name: "dog"
    symbol: "d"
    base-level: 4
+   difficulty: 5
    speed: 16
    ac: 5
    mr: 0
@@ -498,6 +517,7 @@ monsters:
  - name: "large dog"
    symbol: "d"
    base-level: 6
+   difficulty: 7
    speed: 15
    ac: 4
    mr: 0
@@ -522,6 +542,7 @@ monsters:
  - name: "dingo"
    symbol: "d"
    base-level: 4
+   difficulty: 5
    speed: 16
    ac: 5
    mr: 0
@@ -546,6 +567,7 @@ monsters:
  - name: "wolf"
    symbol: "d"
    base-level: 5
+   difficulty: 6
    speed: 12
    ac: 4
    mr: 0
@@ -570,6 +592,7 @@ monsters:
  - name: "werewolf"
    symbol: "d"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 4
    mr: 20
@@ -594,6 +617,7 @@ monsters:
  - name: "warg"
    symbol: "d"
    base-level: 7
+   difficulty: 8
    speed: 12
    ac: 4
    mr: 0
@@ -618,6 +642,7 @@ monsters:
  - name: "winter wolf cub"
    symbol: "d"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 4
    mr: 0
@@ -643,6 +668,7 @@ monsters:
  - name: "winter wolf"
    symbol: "d"
    base-level: 7
+   difficulty: 9
    speed: 12
    ac: 4
    mr: 20
@@ -668,6 +694,7 @@ monsters:
  - name: "hell hound pup"
    symbol: "d"
    base-level: 7
+   difficulty: 9
    speed: 12
    ac: 4
    mr: 20
@@ -693,6 +720,7 @@ monsters:
  - name: "hell hound"
    symbol: "d"
    base-level: 12
+   difficulty: 14
    speed: 14
    ac: 2
    mr: 20
@@ -718,6 +746,7 @@ monsters:
  - name: "gas spore"
    symbol: "e"
    base-level: 1
+   difficulty: 2
    speed: 3
    ac: 10
    mr: 0
@@ -742,6 +771,7 @@ monsters:
  - name: "floating eye"
    symbol: "e"
    base-level: 2
+   difficulty: 3
    speed: 1
    ac: 9
    mr: 10
@@ -766,6 +796,7 @@ monsters:
  - name: "freezing sphere"
    symbol: "e"
    base-level: 6
+   difficulty: 8
    speed: 13
    ac: 4
    mr: 0
@@ -791,6 +822,7 @@ monsters:
  - name: "flaming sphere"
    symbol: "e"
    base-level: 6
+   difficulty: 8
    speed: 13
    ac: 4
    mr: 0
@@ -817,6 +849,7 @@ monsters:
  - name: "shocking sphere"
    symbol: "e"
    base-level: 6
+   difficulty: 8
    speed: 13
    ac: 4
    mr: 0
@@ -843,6 +876,7 @@ monsters:
  - name: "kitten"
    symbol: "f"
    base-level: 2
+   difficulty: 3
    speed: 18
    ac: 6
    mr: 0
@@ -867,6 +901,7 @@ monsters:
  - name: "housecat"
    symbol: "f"
    base-level: 4
+   difficulty: 5
    speed: 16
    ac: 5
    mr: 0
@@ -891,6 +926,7 @@ monsters:
  - name: "jaguar"
    symbol: "f"
    base-level: 4
+   difficulty: 6
    speed: 15
    ac: 6
    mr: 0
@@ -915,6 +951,7 @@ monsters:
  - name: "lynx"
    symbol: "f"
    base-level: 5
+   difficulty: 7
    speed: 15
    ac: 6
    mr: 0
@@ -939,6 +976,7 @@ monsters:
  - name: "panther"
    symbol: "f"
    base-level: 5
+   difficulty: 7
    speed: 15
    ac: 6
    mr: 0
@@ -963,6 +1001,7 @@ monsters:
  - name: "large cat"
    symbol: "f"
    base-level: 6
+   difficulty: 7
    speed: 15
    ac: 4
    mr: 0
@@ -987,6 +1026,7 @@ monsters:
  - name: "tiger"
    symbol: "f"
    base-level: 6
+   difficulty: 8
    speed: 12
    ac: 6
    mr: 0
@@ -1011,6 +1051,7 @@ monsters:
  - name: "gremlin"
    symbol: "g"
    base-level: 5
+   difficulty: 8
    speed: 12
    ac: 2
    mr: 25
@@ -1037,6 +1078,7 @@ monsters:
  - name: "gargoyle"
    symbol: "g"
    base-level: 6
+   difficulty: 8
    speed: 10
    ac: -4
    mr: 0
@@ -1062,6 +1104,7 @@ monsters:
  - name: "winged gargoyle"
    symbol: "g"
    base-level: 9
+   difficulty: 11
    speed: 15
    ac: -2
    mr: 0
@@ -1087,6 +1130,7 @@ monsters:
  - name: "hobbit"
    symbol: "h"
    base-level: 1
+   difficulty: 2
    speed: 9
    ac: 10
    mr: 0
@@ -1111,6 +1155,7 @@ monsters:
  - name: "dwarf"
    symbol: "h"
    base-level: 2
+   difficulty: 4
    speed: 6
    ac: 10
    mr: 10
@@ -1135,6 +1180,7 @@ monsters:
  - name: "bugbear"
    symbol: "h"
    base-level: 3
+   difficulty: 5
    speed: 9
    ac: 5
    mr: 0
@@ -1159,6 +1205,7 @@ monsters:
  - name: "dwarf lord"
    symbol: "h"
    base-level: 4
+   difficulty: 6
    speed: 6
    ac: 10
    mr: 10
@@ -1183,6 +1230,7 @@ monsters:
  - name: "dwarf king"
    symbol: "h"
    base-level: 6
+   difficulty: 8
    speed: 6
    ac: 10
    mr: 20
@@ -1207,6 +1255,7 @@ monsters:
  - name: "mind flayer"
    symbol: "h"
    base-level: 9
+   difficulty: 13
    speed: 12
    ac: 5
    mr: 90
@@ -1231,6 +1280,7 @@ monsters:
  - name: "master mind flayer"
    symbol: "h"
    base-level: 13
+   difficulty: 19
    speed: 12
    ac: 0
    mr: 90
@@ -1255,6 +1305,7 @@ monsters:
  - name: "manes"
    symbol: "i"
    base-level: 1
+   difficulty: 3
    speed: 3
    ac: 7
    mr: 0
@@ -1281,6 +1332,7 @@ monsters:
  - name: "homunculus"
    symbol: "i"
    base-level: 2
+   difficulty: 3
    speed: 12
    ac: 6
    mr: 10
@@ -1309,6 +1361,7 @@ monsters:
  - name: "imp"
    symbol: "i"
    base-level: 3
+   difficulty: 4
    speed: 12
    ac: 2
    mr: 20
@@ -1333,6 +1386,7 @@ monsters:
  - name: "lemure"
    symbol: "i"
    base-level: 3
+   difficulty: 5
    speed: 3
    ac: 7
    mr: 0
@@ -1359,6 +1413,7 @@ monsters:
  - name: "quasit"
    symbol: "i"
    base-level: 3
+   difficulty: 7
    speed: 15
    ac: 2
    mr: 20
@@ -1385,6 +1440,7 @@ monsters:
  - name: "tengu"
    symbol: "i"
    base-level: 6
+   difficulty: 7
    speed: 13
    ac: 5
    mr: 30
@@ -1411,6 +1467,7 @@ monsters:
  - name: "blue jelly"
    symbol: "j"
    base-level: 4
+   difficulty: 5
    speed: 0
    ac: 8
    mr: 10
@@ -1439,6 +1496,7 @@ monsters:
  - name: "spotted jelly"
    symbol: "j"
    base-level: 5
+   difficulty: 6
    speed: 0
    ac: 8
    mr: 10
@@ -1465,6 +1523,7 @@ monsters:
  - name: "ochre jelly"
    symbol: "j"
    base-level: 6
+   difficulty: 8
    speed: 3
    ac: 8
    mr: 20
@@ -1491,6 +1550,7 @@ monsters:
  - name: "kobold"
    symbol: "k"
    base-level: 0
+   difficulty: 1
    speed: 6
    ac: 10
    mr: 0
@@ -1516,6 +1576,7 @@ monsters:
  - name: "large kobold"
    symbol: "k"
    base-level: 1
+   difficulty: 2
    speed: 6
    ac: 10
    mr: 0
@@ -1541,6 +1602,7 @@ monsters:
  - name: "kobold lord"
    symbol: "k"
    base-level: 2
+   difficulty: 3
    speed: 6
    ac: 10
    mr: 0
@@ -1566,6 +1628,7 @@ monsters:
  - name: "kobold shaman"
    symbol: "k"
    base-level: 2
+   difficulty: 4
    speed: 6
    ac: 6
    mr: 10
@@ -1591,6 +1654,7 @@ monsters:
  - name: "leprechaun"
    symbol: "l"
    base-level: 5
+   difficulty: 4
    speed: 15
    ac: 8
    mr: 20
@@ -1615,6 +1679,7 @@ monsters:
  - name: "small mimic"
    symbol: "m"
    base-level: 7
+   difficulty: 8
    speed: 3
    ac: 7
    mr: 0
@@ -1640,6 +1705,7 @@ monsters:
  - name: "large mimic"
    symbol: "m"
    base-level: 8
+   difficulty: 9
    speed: 3
    ac: 7
    mr: 10
@@ -1665,6 +1731,7 @@ monsters:
  - name: "giant mimic"
    symbol: "m"
    base-level: 9
+   difficulty: 11
    speed: 3
    ac: 7
    mr: 20
@@ -1690,6 +1757,7 @@ monsters:
  - name: "wood nymph"
    symbol: "n"
    base-level: 3
+   difficulty: 5
    speed: 12
    ac: 9
    mr: 20
@@ -1714,6 +1782,7 @@ monsters:
  - name: "water nymph"
    symbol: "n"
    base-level: 3
+   difficulty: 5
    speed: 12
    ac: 9
    mr: 20
@@ -1738,6 +1807,7 @@ monsters:
  - name: "mountain nymph"
    symbol: "n"
    base-level: 3
+   difficulty: 5
    speed: 12
    ac: 9
    mr: 20
@@ -1762,6 +1832,7 @@ monsters:
  - name: "Aphrodite"
    symbol: "n"
    base-level: 10
+   difficulty: 13
    speed: 15
    ac: -5
    mr: 20
@@ -1785,6 +1856,7 @@ monsters:
  - name: "goblin"
    symbol: "o"
    base-level: 0
+   difficulty: 1
    speed: 6
    ac: 10
    mr: 0
@@ -1809,6 +1881,7 @@ monsters:
  - name: "hobgoblin"
    symbol: "o"
    base-level: 1
+   difficulty: 3
    speed: 9
    ac: 10
    mr: 0
@@ -1833,6 +1906,7 @@ monsters:
  - name: "orc"
    symbol: "o"
    base-level: 1
+   difficulty: 3
    speed: 9
    ac: 10
    mr: 0
@@ -1855,6 +1929,7 @@ monsters:
  - name: "hill orc"
    symbol: "o"
    base-level: 2
+   difficulty: 4
    speed: 9
    ac: 10
    mr: 0
@@ -1879,6 +1954,7 @@ monsters:
  - name: "Mordor orc"
    symbol: "o"
    base-level: 3
+   difficulty: 5
    speed: 5
    ac: 10
    mr: 0
@@ -1903,6 +1979,7 @@ monsters:
  - name: "Uruk-hai"
    symbol: "o"
    base-level: 3
+   difficulty: 5
    speed: 7
    ac: 10
    mr: 0
@@ -1927,6 +2004,7 @@ monsters:
  - name: "orc shaman"
    symbol: "o"
    base-level: 3
+   difficulty: 5
    speed: 9
    ac: 5
    mr: 10
@@ -1951,6 +2029,7 @@ monsters:
  - name: "orc-captain"
    symbol: "o"
    base-level: 5
+   difficulty: 7
    speed: 5
    ac: 10
    mr: 0
@@ -1975,6 +2054,7 @@ monsters:
  - name: "rock piercer"
    symbol: "p"
    base-level: 3
+   difficulty: 4
    speed: 1
    ac: 3
    mr: 0
@@ -1999,6 +2079,7 @@ monsters:
  - name: "iron piercer"
    symbol: "p"
    base-level: 5
+   difficulty: 6
    speed: 1
    ac: 0
    mr: 0
@@ -2023,6 +2104,7 @@ monsters:
  - name: "glass piercer"
    symbol: "p"
    base-level: 7
+   difficulty: 9
    speed: 1
    ac: 0
    mr: 0
@@ -2048,6 +2130,7 @@ monsters:
  - name: "rothe"
    symbol: "q"
    base-level: 2
+   difficulty: 4
    speed: 9
    ac: 7
    mr: 0
@@ -2072,6 +2155,7 @@ monsters:
  - name: "mumak"
    symbol: "q"
    base-level: 5
+   difficulty: 7
    speed: 9
    ac: 0
    mr: 0
@@ -2096,6 +2180,7 @@ monsters:
  - name: "leocrotta"
    symbol: "q"
    base-level: 6
+   difficulty: 8
    speed: 18
    ac: 4
    mr: 10
@@ -2120,6 +2205,7 @@ monsters:
  - name: "wumpus"
    symbol: "q"
    base-level: 8
+   difficulty: 9
    speed: 3
    ac: 2
    mr: 10
@@ -2144,6 +2230,7 @@ monsters:
  - name: "titanothere"
    symbol: "q"
    base-level: 12
+   difficulty: 13
    speed: 12
    ac: 6
    mr: 0
@@ -2168,6 +2255,7 @@ monsters:
  - name: "baluchitherium"
    symbol: "q"
    base-level: 14
+   difficulty: 15
    speed: 12
    ac: 5
    mr: 0
@@ -2192,6 +2280,7 @@ monsters:
  - name: "mastodon"
    symbol: "q"
    base-level: 20
+   difficulty: 22
    speed: 12
    ac: 5
    mr: 0
@@ -2216,6 +2305,7 @@ monsters:
  - name: "sewer rat"
    symbol: "r"
    base-level: 0
+   difficulty: 1
    speed: 12
    ac: 7
    mr: 0
@@ -2240,6 +2330,7 @@ monsters:
  - name: "giant rat"
    symbol: "r"
    base-level: 1
+   difficulty: 2
    speed: 10
    ac: 7
    mr: 0
@@ -2264,6 +2355,7 @@ monsters:
  - name: "rabid rat"
    symbol: "r"
    base-level: 2
+   difficulty: 4
    speed: 12
    ac: 6
    mr: 0
@@ -2289,6 +2381,7 @@ monsters:
  - name: "wererat"
    symbol: "r"
    base-level: 2
+   difficulty: 4
    speed: 12
    ac: 6
    mr: 10
@@ -2313,6 +2406,7 @@ monsters:
  - name: "rock mole"
    symbol: "r"
    base-level: 3
+   difficulty: 4
    speed: 3
    ac: 0
    mr: 20
@@ -2337,6 +2431,7 @@ monsters:
  - name: "woodchuck"
    symbol: "r"
    base-level: 3
+   difficulty: 4
    speed: 3
    ac: 0
    mr: 20
@@ -2359,6 +2454,7 @@ monsters:
  - name: "cave spider"
    symbol: "s"
    base-level: 1
+   difficulty: 3
    speed: 12
    ac: 3
    mr: 0
@@ -2385,6 +2481,7 @@ monsters:
  - name: "centipede"
    symbol: "s"
    base-level: 2
+   difficulty: 4
    speed: 4
    ac: 3
    mr: 0
@@ -2411,6 +2508,7 @@ monsters:
  - name: "giant spider"
    symbol: "s"
    base-level: 5
+   difficulty: 7
    speed: 15
    ac: 4
    mr: 0
@@ -2437,6 +2535,7 @@ monsters:
  - name: "scorpion"
    symbol: "s"
    base-level: 5
+   difficulty: 8
    speed: 15
    ac: 3
    mr: 0
@@ -2463,6 +2562,7 @@ monsters:
  - name: "lurker above"
    symbol: "t"
    base-level: 10
+   difficulty: 12
    speed: 3
    ac: 3
    mr: 0
@@ -2487,6 +2587,7 @@ monsters:
  - name: "trapper"
    symbol: "t"
    base-level: 12
+   difficulty: 14
    speed: 3
    ac: 3
    mr: 0
@@ -2511,6 +2612,7 @@ monsters:
  - name: "white unicorn"
    symbol: "u"
    base-level: 4
+   difficulty: 6
    speed: 24
    ac: 2
    mr: 70
@@ -2537,6 +2639,7 @@ monsters:
  - name: "gray unicorn"
    symbol: "u"
    base-level: 4
+   difficulty: 6
    speed: 24
    ac: 2
    mr: 70
@@ -2563,6 +2666,7 @@ monsters:
  - name: "black unicorn"
    symbol: "u"
    base-level: 4
+   difficulty: 6
    speed: 24
    ac: 2
    mr: 70
@@ -2589,6 +2693,7 @@ monsters:
  - name: "pony"
    symbol: "u"
    base-level: 3
+   difficulty: 4
    speed: 16
    ac: 6
    mr: 0
@@ -2613,6 +2718,7 @@ monsters:
  - name: "horse"
    symbol: "u"
    base-level: 5
+   difficulty: 7
    speed: 20
    ac: 5
    mr: 0
@@ -2637,6 +2743,7 @@ monsters:
  - name: "warhorse"
    symbol: "u"
    base-level: 7
+   difficulty: 9
    speed: 24
    ac: 4
    mr: 0
@@ -2661,6 +2768,7 @@ monsters:
  - name: "fog cloud"
    symbol: "v"
    base-level: 3
+   difficulty: 4
    speed: 1
    ac: 0
    mr: 0
@@ -2688,6 +2796,7 @@ monsters:
  - name: "dust vortex"
    symbol: "v"
    base-level: 4
+   difficulty: 6
    speed: 20
    ac: 2
    mr: 30
@@ -2715,6 +2824,7 @@ monsters:
  - name: "ice vortex"
    symbol: "v"
    base-level: 5
+   difficulty: 7
    speed: 20
    ac: 2
    mr: 30
@@ -2742,6 +2852,7 @@ monsters:
  - name: "energy vortex"
    symbol: "v"
    base-level: 6
+   difficulty: 9
    speed: 20
    ac: 2
    mr: 30
@@ -2771,6 +2882,7 @@ monsters:
  - name: "steam vortex"
    symbol: "v"
    base-level: 7
+   difficulty: 9
    speed: 22
    ac: 2
    mr: 30
@@ -2798,6 +2910,7 @@ monsters:
  - name: "fire vortex"
    symbol: "v"
    base-level: 8
+   difficulty: 10
    speed: 22
    ac: 2
    mr: 30
@@ -2825,6 +2938,7 @@ monsters:
  - name: "baby long worm"
    symbol: "w"
    base-level: 8
+   difficulty: 9
    speed: 3
    ac: 5
    mr: 0
@@ -2849,6 +2963,7 @@ monsters:
  - name: "baby purple worm"
    symbol: "w"
    base-level: 8
+   difficulty: 9
    speed: 3
    ac: 5
    mr: 0
@@ -2873,6 +2988,7 @@ monsters:
  - name: "long worm"
    symbol: "w"
    base-level: 8
+   difficulty: 9
    speed: 3
    ac: 5
    mr: 10
@@ -2897,6 +3013,7 @@ monsters:
  - name: "purple worm"
    symbol: "w"
    base-level: 15
+   difficulty: 17
    speed: 9
    ac: 6
    mr: 20
@@ -2921,6 +3038,7 @@ monsters:
  - name: "grid bug"
    symbol: "x"
    base-level: 0
+   difficulty: 1
    speed: 12
    ac: 9
    mr: 0
@@ -2947,6 +3065,7 @@ monsters:
  - name: "xan"
    symbol: "x"
    base-level: 7
+   difficulty: 9
    speed: 18
    ac: -4
    mr: 0
@@ -2973,6 +3092,7 @@ monsters:
  - name: "yellow light"
    symbol: "y"
    base-level: 3
+   difficulty: 5
    speed: 15
    ac: 0
    mr: 0
@@ -3005,6 +3125,7 @@ monsters:
  - name: "black light"
    symbol: "y"
    base-level: 5
+   difficulty: 7
    speed: 15
    ac: 0
    mr: 0
@@ -3037,6 +3158,7 @@ monsters:
  - name: "zruty"
    symbol: "z"
    base-level: 9
+   difficulty: 11
    speed: 8
    ac: 3
    mr: 0
@@ -3061,6 +3183,7 @@ monsters:
  - name: "couatl"
    symbol: "A"
    base-level: 8
+   difficulty: 11
    speed: 10
    ac: 5
    mr: 30
@@ -3085,6 +3208,7 @@ monsters:
  - name: "Aleax"
    symbol: "A"
    base-level: 10
+   difficulty: 12
    speed: 8
    ac: 0
    mr: 30
@@ -3112,6 +3236,7 @@ monsters:
  - name: "Angel"
    symbol: "A"
    base-level: 14
+   difficulty: 19
    speed: 10
    ac: -4
    mr: 55
@@ -3140,6 +3265,7 @@ monsters:
  - name: "ki-rin"
    symbol: "A"
    base-level: 16
+   difficulty: 21
    speed: 18
    ac: -5
    mr: 90
@@ -3163,6 +3289,7 @@ monsters:
  - name: "Archon"
    symbol: "A"
    base-level: 19
+   difficulty: 26
    speed: 16
    ac: -6
    mr: 80
@@ -3191,6 +3318,7 @@ monsters:
  - name: "bat"
    symbol: "B"
    base-level: 0
+   difficulty: 2
    speed: 22
    ac: 8
    mr: 0
@@ -3215,6 +3343,7 @@ monsters:
  - name: "giant bat"
    symbol: "B"
    base-level: 2
+   difficulty: 3
    speed: 22
    ac: 7
    mr: 0
@@ -3239,6 +3368,7 @@ monsters:
  - name: "raven"
    symbol: "B"
    base-level: 4
+   difficulty: 6
    speed: 20
    ac: 6
    mr: 0
@@ -3263,6 +3393,7 @@ monsters:
  - name: "vampire bat"
    symbol: "B"
    base-level: 5
+   difficulty: 7
    speed: 20
    ac: 6
    mr: 0
@@ -3289,6 +3420,7 @@ monsters:
  - name: "plains centaur"
    symbol: "C"
    base-level: 4
+   difficulty: 6
    speed: 18
    ac: 4
    mr: 0
@@ -3313,6 +3445,7 @@ monsters:
  - name: "forest centaur"
    symbol: "C"
    base-level: 5
+   difficulty: 8
    speed: 18
    ac: 3
    mr: 10
@@ -3337,6 +3470,7 @@ monsters:
  - name: "mountain centaur"
    symbol: "C"
    base-level: 6
+   difficulty: 9
    speed: 20
    ac: 2
    mr: 10
@@ -3361,6 +3495,7 @@ monsters:
  - name: "baby tatzelworm"
    symbol: "D"
    base-level: 12
+   difficulty: 13
    speed: 9
    ac: 2
    mr: 10
@@ -3386,6 +3521,7 @@ monsters:
  - name: "baby amphitere"
    symbol: "D"
    base-level: 12
+   difficulty: 13
    speed: 9
    ac: 2
    mr: 10
@@ -3410,6 +3546,7 @@ monsters:
  - name: "baby draken"
    symbol: "D"
    base-level: 12
+   difficulty: 13
    speed: 9
    ac: 2
    mr: 10
@@ -3435,6 +3572,7 @@ monsters:
  - name: "baby lindworm"
    symbol: "D"
    base-level: 12
+   difficulty: 13
    speed: 9
    ac: 2
    mr: 10
@@ -3460,6 +3598,7 @@ monsters:
  - name: "baby sarkany"
    symbol: "D"
    base-level: 12
+   difficulty: 13
    speed: 9
    ac: 2
    mr: 10
@@ -3485,6 +3624,7 @@ monsters:
  - name: "baby sirrush"
    symbol: "D"
    base-level: 12
+   difficulty: 13
    speed: 9
    ac: 2
    mr: 10
@@ -3510,6 +3650,7 @@ monsters:
  - name: "baby leviathan"
    symbol: "D"
    base-level: 12
+   difficulty: 13
    speed: 9
    ac: 2
    mr: 10
@@ -3535,6 +3676,7 @@ monsters:
  - name: "baby wyvern"
    symbol: "D"
    base-level: 12
+   difficulty: 13
    speed: 9
    ac: 2
    mr: 10
@@ -3560,6 +3702,7 @@ monsters:
  - name: "baby glowing dragon"
    symbol: "D"
    base-level: 12
+   difficulty: 13
    speed: 9
    ac: 2
    mr: 10
@@ -3585,6 +3728,7 @@ monsters:
  - name: "baby guivre"
    symbol: "D"
    base-level: 12
+   difficulty: 13
    speed: 9
    ac: 2
    mr: 10
@@ -3611,6 +3755,7 @@ monsters:
  - name: "tatzelworm"
    symbol: "D"
    base-level: 15
+   difficulty: 20
    speed: 9
    ac: -1
    mr: 20
@@ -3636,6 +3781,7 @@ monsters:
  - name: "amphitere"
    symbol: "D"
    base-level: 15
+   difficulty: 20
    speed: 9
    ac: -1
    mr: 20
@@ -3661,6 +3807,7 @@ monsters:
  - name: "draken"
    symbol: "D"
    base-level: 15
+   difficulty: 20
    speed: 9
    ac: -1
    mr: 20
@@ -3687,6 +3834,7 @@ monsters:
  - name: "lindworm"
    symbol: "D"
    base-level: 15
+   difficulty: 20
    speed: 9
    ac: -1
    mr: 20
@@ -3713,6 +3861,7 @@ monsters:
  - name: "sarkany"
    symbol: "D"
    base-level: 15
+   difficulty: 20
    speed: 9
    ac: -1
    mr: 20
@@ -3739,6 +3888,7 @@ monsters:
  - name: "sirrush"
    symbol: "D"
    base-level: 15
+   difficulty: 20
    speed: 9
    ac: -1
    mr: 20
@@ -3765,6 +3915,7 @@ monsters:
  - name: "leviathan"
    symbol: "D"
    base-level: 15
+   difficulty: 20
    speed: 9
    ac: -1
    mr: 20
@@ -3791,6 +3942,7 @@ monsters:
  - name: "wyvern"
    symbol: "D"
    base-level: 15
+   difficulty: 20
    speed: 9
    ac: -1
    mr: 20
@@ -3817,6 +3969,7 @@ monsters:
  - name: "glowing dragon"
    symbol: "D"
    base-level: 15
+   difficulty: 20
    speed: 9
    ac: -1
    mr: 20
@@ -3843,6 +3996,7 @@ monsters:
  - name: "guivre"
    symbol: "D"
    base-level: 15
+   difficulty: 20
    speed: 9
    ac: -1
    mr: 20
@@ -3869,6 +4023,7 @@ monsters:
  - name: "chromatic dragon"
    symbol: "D"
    base-level: 16
+   difficulty: 21
    speed: 10
    ac: 0
    mr: 25
@@ -3907,6 +4062,7 @@ monsters:
  - name: "stalker"
    symbol: "E"
    base-level: 8
+   difficulty: 9
    speed: 12
    ac: 3
    mr: 0
@@ -3931,6 +4087,7 @@ monsters:
  - name: "air elemental"
    symbol: "E"
    base-level: 8
+   difficulty: 10
    speed: 36
    ac: 2
    mr: 30
@@ -3957,6 +4114,7 @@ monsters:
  - name: "fire elemental"
    symbol: "E"
    base-level: 8
+   difficulty: 10
    speed: 12
    ac: 2
    mr: 30
@@ -3984,6 +4142,7 @@ monsters:
  - name: "earth elemental"
    symbol: "E"
    base-level: 8
+   difficulty: 10
    speed: 6
    ac: 2
    mr: 30
@@ -4012,6 +4171,7 @@ monsters:
  - name: "water elemental"
    symbol: "E"
    base-level: 8
+   difficulty: 10
    speed: 6
    ac: 2
    mr: 30
@@ -4038,6 +4198,7 @@ monsters:
  - name: "lichen"
    symbol: "F"
    base-level: 0
+   difficulty: 1
    speed: 1
    ac: 9
    mr: 0
@@ -4062,6 +4223,7 @@ monsters:
  - name: "brown mold"
    symbol: "F"
    base-level: 1
+   difficulty: 2
    speed: 0
    ac: 9
    mr: 0
@@ -4090,6 +4252,7 @@ monsters:
  - name: "yellow mold"
    symbol: "F"
    base-level: 1
+   difficulty: 2
    speed: 0
    ac: 9
    mr: 0
@@ -4116,6 +4279,7 @@ monsters:
  - name: "green mold"
    symbol: "F"
    base-level: 1
+   difficulty: 2
    speed: 0
    ac: 9
    mr: 0
@@ -4142,6 +4306,7 @@ monsters:
  - name: "red mold"
    symbol: "F"
    base-level: 1
+   difficulty: 2
    speed: 0
    ac: 9
    mr: 0
@@ -4170,6 +4335,7 @@ monsters:
  - name: "shrieker"
    symbol: "F"
    base-level: 3
+   difficulty: 2
    speed: 1
    ac: 7
    mr: 0
@@ -4196,6 +4362,7 @@ monsters:
  - name: "violet fungus"
    symbol: "F"
    base-level: 3
+   difficulty: 5
    speed: 1
    ac: 7
    mr: 0
@@ -4222,6 +4389,7 @@ monsters:
  - name: "gnome"
    symbol: "G"
    base-level: 1
+   difficulty: 3
    speed: 6
    ac: 10
    mr: 4
@@ -4246,6 +4414,7 @@ monsters:
  - name: "gnome lord"
    symbol: "G"
    base-level: 3
+   difficulty: 4
    speed: 8
    ac: 10
    mr: 4
@@ -4270,6 +4439,7 @@ monsters:
  - name: "gnomish wizard"
    symbol: "G"
    base-level: 3
+   difficulty: 5
    speed: 10
    ac: 4
    mr: 10
@@ -4294,6 +4464,7 @@ monsters:
  - name: "gnome king"
    symbol: "G"
    base-level: 5
+   difficulty: 6
    speed: 10
    ac: 10
    mr: 20
@@ -4318,6 +4489,7 @@ monsters:
  - name: "giant"
    symbol: "H"
    base-level: 6
+   difficulty: 8
    speed: 6
    ac: 0
    mr: 0
@@ -4340,6 +4512,7 @@ monsters:
  - name: "stone giant"
    symbol: "H"
    base-level: 6
+   difficulty: 8
    speed: 6
    ac: 0
    mr: 0
@@ -4364,6 +4537,7 @@ monsters:
  - name: "hill giant"
    symbol: "H"
    base-level: 8
+   difficulty: 10
    speed: 10
    ac: 6
    mr: 0
@@ -4388,6 +4562,7 @@ monsters:
  - name: "fire giant"
    symbol: "H"
    base-level: 9
+   difficulty: 11
    speed: 12
    ac: 4
    mr: 5
@@ -4414,6 +4589,7 @@ monsters:
  - name: "frost giant"
    symbol: "H"
    base-level: 10
+   difficulty: 13
    speed: 12
    ac: 3
    mr: 10
@@ -4439,6 +4615,7 @@ monsters:
  - name: "storm giant"
    symbol: "H"
    base-level: 16
+   difficulty: 19
    speed: 12
    ac: 3
    mr: 10
@@ -4465,6 +4642,7 @@ monsters:
  - name: "ettin"
    symbol: "H"
    base-level: 10
+   difficulty: 13
    speed: 12
    ac: 3
    mr: 0
@@ -4489,6 +4667,7 @@ monsters:
  - name: "titan"
    symbol: "H"
    base-level: 16
+   difficulty: 20
    speed: 18
    ac: -3
    mr: 70
@@ -4513,6 +4692,7 @@ monsters:
  - name: "minotaur"
    symbol: "H"
    base-level: 15
+   difficulty: 17
    speed: 15
    ac: 6
    mr: 0
@@ -4535,6 +4715,7 @@ monsters:
  - name: "jabberwock"
    symbol: "J"
    base-level: 15
+   difficulty: 18
    speed: 12
    ac: -2
    mr: 50
@@ -4559,6 +4740,7 @@ monsters:
  - name: "vorpal jabberwock"
    symbol: "J"
    base-level: 20
+   difficulty: 26
    speed: 12
    ac: -2
    mr: 50
@@ -4583,6 +4765,7 @@ monsters:
  - name: "Keystone Kop"
    symbol: "K"
    base-level: 1
+   difficulty: 3
    speed: 6
    ac: 10
    mr: 10
@@ -4605,6 +4788,7 @@ monsters:
  - name: "Kop Sergeant"
    symbol: "K"
    base-level: 2
+   difficulty: 4
    speed: 8
    ac: 10
    mr: 10
@@ -4627,6 +4811,7 @@ monsters:
  - name: "Kop Lieutenant"
    symbol: "K"
    base-level: 3
+   difficulty: 5
    speed: 10
    ac: 10
    mr: 20
@@ -4649,6 +4834,7 @@ monsters:
  - name: "Kop Kaptain"
    symbol: "K"
    base-level: 4
+   difficulty: 6
    speed: 12
    ac: 10
    mr: 20
@@ -4671,6 +4857,7 @@ monsters:
  - name: "lich"
    symbol: "L"
    base-level: 11
+   difficulty: 14
    speed: 6
    ac: 0
    mr: 30
@@ -4700,6 +4887,7 @@ monsters:
  - name: "demilich"
    symbol: "L"
    base-level: 14
+   difficulty: 18
    speed: 9
    ac: -2
    mr: 60
@@ -4729,6 +4917,7 @@ monsters:
  - name: "master lich"
    symbol: "L"
    base-level: 17
+   difficulty: 21
    speed: 9
    ac: -4
    mr: 90
@@ -4757,6 +4946,7 @@ monsters:
  - name: "arch-lich"
    symbol: "L"
    base-level: 25
+   difficulty: 29
    speed: 9
    ac: -6
    mr: 90
@@ -4786,6 +4976,7 @@ monsters:
  - name: "kobold mummy"
    symbol: "M"
    base-level: 3
+   difficulty: 4
    speed: 8
    ac: 6
    mr: 20
@@ -4814,6 +5005,7 @@ monsters:
  - name: "gnome mummy"
    symbol: "M"
    base-level: 4
+   difficulty: 5
    speed: 10
    ac: 6
    mr: 20
@@ -4842,6 +5034,7 @@ monsters:
  - name: "orc mummy"
    symbol: "M"
    base-level: 5
+   difficulty: 6
    speed: 10
    ac: 5
    mr: 20
@@ -4870,6 +5063,7 @@ monsters:
  - name: "dwarf mummy"
    symbol: "M"
    base-level: 5
+   difficulty: 6
    speed: 10
    ac: 5
    mr: 20
@@ -4898,6 +5092,7 @@ monsters:
  - name: "elf mummy"
    symbol: "M"
    base-level: 6
+   difficulty: 7
    speed: 12
    ac: 4
    mr: 30
@@ -4926,6 +5121,7 @@ monsters:
  - name: "human mummy"
    symbol: "M"
    base-level: 6
+   difficulty: 7
    speed: 12
    ac: 4
    mr: 30
@@ -4954,6 +5150,7 @@ monsters:
  - name: "ettin mummy"
    symbol: "M"
    base-level: 7
+   difficulty: 8
    speed: 12
    ac: 4
    mr: 30
@@ -4982,6 +5179,7 @@ monsters:
  - name: "giant mummy"
    symbol: "M"
    base-level: 8
+   difficulty: 10
    speed: 14
    ac: 3
    mr: 30
@@ -5010,6 +5208,7 @@ monsters:
  - name: "red naga hatchling"
    symbol: "N"
    base-level: 3
+   difficulty: 4
    speed: 10
    ac: 6
    mr: 0
@@ -5038,6 +5237,7 @@ monsters:
  - name: "black naga hatchling"
    symbol: "N"
    base-level: 3
+   difficulty: 4
    speed: 10
    ac: 6
    mr: 0
@@ -5066,6 +5266,7 @@ monsters:
  - name: "golden naga hatchling"
    symbol: "N"
    base-level: 3
+   difficulty: 4
    speed: 10
    ac: 6
    mr: 0
@@ -5092,6 +5293,7 @@ monsters:
  - name: "guardian naga hatchling"
    symbol: "N"
    base-level: 3
+   difficulty: 4
    speed: 10
    ac: 6
    mr: 0
@@ -5118,6 +5320,7 @@ monsters:
  - name: "red naga"
    symbol: "N"
    base-level: 6
+   difficulty: 8
    speed: 12
    ac: 4
    mr: 0
@@ -5146,6 +5349,7 @@ monsters:
  - name: "black naga"
    symbol: "N"
    base-level: 8
+   difficulty: 10
    speed: 14
    ac: 2
    mr: 10
@@ -5174,6 +5378,7 @@ monsters:
  - name: "golden naga"
    symbol: "N"
    base-level: 10
+   difficulty: 13
    speed: 14
    ac: 2
    mr: 70
@@ -5200,6 +5405,7 @@ monsters:
  - name: "guardian naga"
    symbol: "N"
    base-level: 12
+   difficulty: 16
    speed: 16
    ac: 0
    mr: 50
@@ -5226,6 +5432,7 @@ monsters:
  - name: "ogre"
    symbol: "O"
    base-level: 5
+   difficulty: 7
    speed: 10
    ac: 5
    mr: 0
@@ -5250,6 +5457,7 @@ monsters:
  - name: "ogre lord"
    symbol: "O"
    base-level: 7
+   difficulty: 9
    speed: 12
    ac: 3
    mr: 30
@@ -5274,6 +5482,7 @@ monsters:
  - name: "ogre king"
    symbol: "O"
    base-level: 9
+   difficulty: 11
    speed: 14
    ac: 4
    mr: 60
@@ -5298,6 +5507,7 @@ monsters:
  - name: "gray ooze"
    symbol: "P"
    base-level: 3
+   difficulty: 4
    speed: 1
    ac: 8
    mr: 0
@@ -5330,6 +5540,7 @@ monsters:
  - name: "brown pudding"
    symbol: "P"
    base-level: 5
+   difficulty: 6
    speed: 3
    ac: 8
    mr: 0
@@ -5362,6 +5573,7 @@ monsters:
  - name: "black pudding"
    symbol: "P"
    base-level: 10
+   difficulty: 12
    speed: 6
    ac: 6
    mr: 0
@@ -5394,6 +5606,7 @@ monsters:
  - name: "green slime"
    symbol: "P"
    base-level: 6
+   difficulty: 8
    speed: 6
    ac: 6
    mr: 0
@@ -5422,6 +5635,7 @@ monsters:
  - name: "quantum mechanic"
    symbol: "Q"
    base-level: 7
+   difficulty: 9
    speed: 12
    ac: 3
    mr: 10
@@ -5447,6 +5661,7 @@ monsters:
  - name: "rust monster"
    symbol: "R"
    base-level: 5
+   difficulty: 8
    speed: 18
    ac: 2
    mr: 0
@@ -5471,6 +5686,7 @@ monsters:
  - name: "disenchanter"
    symbol: "R"
    base-level: 12
+   difficulty: 14
    speed: 12
    ac: -10
    mr: 0
@@ -5494,6 +5710,7 @@ monsters:
  - name: "disintegrator"
    symbol: "R"
    base-level: 18
+   difficulty: 20
    speed: 8
    ac: 0
    mr: 20
@@ -5519,6 +5736,7 @@ monsters:
  - name: "garter snake"
    symbol: "S"
    base-level: 1
+   difficulty: 3
    speed: 8
    ac: 8
    mr: 0
@@ -5543,6 +5761,7 @@ monsters:
  - name: "snake"
    symbol: "S"
    base-level: 4
+   difficulty: 6
    speed: 15
    ac: 3
    mr: 0
@@ -5569,6 +5788,7 @@ monsters:
  - name: "water moccasin"
    symbol: "S"
    base-level: 4
+   difficulty: 7
    speed: 15
    ac: 3
    mr: 0
@@ -5593,6 +5813,7 @@ monsters:
  - name: "pit viper"
    symbol: "S"
    base-level: 6
+   difficulty: 9
    speed: 15
    ac: 2
    mr: 0
@@ -5619,6 +5840,7 @@ monsters:
  - name: "python"
    symbol: "S"
    base-level: 6
+   difficulty: 8
    speed: 3
    ac: 5
    mr: 0
@@ -5643,6 +5865,7 @@ monsters:
  - name: "cobra"
    symbol: "S"
    base-level: 6
+   difficulty: 10
    speed: 18
    ac: 2
    mr: 0
@@ -5669,6 +5892,7 @@ monsters:
  - name: "troll"
    symbol: "T"
    base-level: 7
+   difficulty: 9
    speed: 12
    ac: 4
    mr: 0
@@ -5693,6 +5917,7 @@ monsters:
  - name: "ice troll"
    symbol: "T"
    base-level: 9
+   difficulty: 12
    speed: 10
    ac: 2
    mr: 20
@@ -5718,6 +5943,7 @@ monsters:
  - name: "rock troll"
    symbol: "T"
    base-level: 9
+   difficulty: 12
    speed: 12
    ac: 0
    mr: 0
@@ -5742,6 +5968,7 @@ monsters:
  - name: "water troll"
    symbol: "T"
    base-level: 11
+   difficulty: 13
    speed: 14
    ac: 4
    mr: 40
@@ -5764,6 +5991,7 @@ monsters:
  - name: "Olog-hai"
    symbol: "T"
    base-level: 13
+   difficulty: 16
    speed: 12
    ac: -4
    mr: 0
@@ -5788,6 +6016,7 @@ monsters:
  - name: "umber hulk"
    symbol: "U"
    base-level: 9
+   difficulty: 12
    speed: 6
    ac: 2
    mr: 25
@@ -5812,6 +6041,7 @@ monsters:
  - name: "vampire"
    symbol: "V"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 1
    mr: 25
@@ -5839,6 +6069,7 @@ monsters:
  - name: "vampire lord"
    symbol: "V"
    base-level: 12
+   difficulty: 14
    speed: 14
    ac: 0
    mr: 50
@@ -5866,6 +6097,7 @@ monsters:
  - name: "Vlad the Impaler"
    symbol: "V"
    base-level: 28
+   difficulty: 32
    speed: 24
    ac: -6
    mr: 80
@@ -5892,6 +6124,7 @@ monsters:
  - name: "barrow wight"
    symbol: "W"
    base-level: 3
+   difficulty: 7
    speed: 12
    ac: 5
    mr: 5
@@ -5920,6 +6153,7 @@ monsters:
  - name: "wraith"
    symbol: "W"
    base-level: 6
+   difficulty: 8
    speed: 12
    ac: 4
    mr: 15
@@ -5949,6 +6183,7 @@ monsters:
  - name: "Nazgul"
    symbol: "W"
    base-level: 13
+   difficulty: 18
    speed: 12
    ac: 0
    mr: 25
@@ -5977,6 +6212,7 @@ monsters:
  - name: "xorn"
    symbol: "X"
    base-level: 8
+   difficulty: 11
    speed: 9
    ac: -2
    mr: 20
@@ -6004,6 +6240,7 @@ monsters:
  - name: "monkey"
    symbol: "Y"
    base-level: 2
+   difficulty: 4
    speed: 12
    ac: 6
    mr: 0
@@ -6028,6 +6265,7 @@ monsters:
  - name: "ape"
    symbol: "Y"
    base-level: 4
+   difficulty: 6
    speed: 12
    ac: 6
    mr: 0
@@ -6052,6 +6290,7 @@ monsters:
  - name: "owlbear"
    symbol: "Y"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 5
    mr: 0
@@ -6076,6 +6315,7 @@ monsters:
  - name: "yeti"
    symbol: "Y"
    base-level: 5
+   difficulty: 7
    speed: 15
    ac: 6
    mr: 0
@@ -6102,6 +6342,7 @@ monsters:
  - name: "carnivorous ape"
    symbol: "Y"
    base-level: 6
+   difficulty: 8
    speed: 12
    ac: 6
    mr: 0
@@ -6126,6 +6367,7 @@ monsters:
  - name: "sasquatch"
    symbol: "Y"
    base-level: 7
+   difficulty: 9
    speed: 15
    ac: 6
    mr: 0
@@ -6150,6 +6392,7 @@ monsters:
  - name: "kobold zombie"
    symbol: "Z"
    base-level: 0
+   difficulty: 1
    speed: 6
    ac: 10
    mr: 0
@@ -6178,6 +6421,7 @@ monsters:
  - name: "gnome zombie"
    symbol: "Z"
    base-level: 1
+   difficulty: 2
    speed: 6
    ac: 10
    mr: 0
@@ -6206,6 +6450,7 @@ monsters:
  - name: "orc zombie"
    symbol: "Z"
    base-level: 2
+   difficulty: 3
    speed: 6
    ac: 9
    mr: 0
@@ -6234,6 +6479,7 @@ monsters:
  - name: "dwarf zombie"
    symbol: "Z"
    base-level: 2
+   difficulty: 3
    speed: 6
    ac: 9
    mr: 0
@@ -6262,6 +6508,7 @@ monsters:
  - name: "elf zombie"
    symbol: "Z"
    base-level: 3
+   difficulty: 4
    speed: 6
    ac: 9
    mr: 0
@@ -6290,6 +6537,7 @@ monsters:
  - name: "human zombie"
    symbol: "Z"
    base-level: 4
+   difficulty: 5
    speed: 6
    ac: 8
    mr: 0
@@ -6318,6 +6566,7 @@ monsters:
  - name: "ettin zombie"
    symbol: "Z"
    base-level: 6
+   difficulty: 7
    speed: 8
    ac: 6
    mr: 0
@@ -6346,6 +6595,7 @@ monsters:
  - name: "giant zombie"
    symbol: "Z"
    base-level: 8
+   difficulty: 9
    speed: 8
    ac: 6
    mr: 0
@@ -6374,6 +6624,7 @@ monsters:
  - name: "ghoul"
    symbol: "Z"
    base-level: 3
+   difficulty: 5
    speed: 6
    ac: 10
    mr: 0
@@ -6402,6 +6653,7 @@ monsters:
  - name: "skeleton"
    symbol: "Z"
    base-level: 12
+   difficulty: 14
    speed: 8
    ac: 4
    mr: 0
@@ -6429,6 +6681,7 @@ monsters:
  - name: "straw golem"
    symbol: "'"
    base-level: 3
+   difficulty: 4
    speed: 12
    ac: 10
    mr: 0
@@ -6455,6 +6708,7 @@ monsters:
  - name: "paper golem"
    symbol: "'"
    base-level: 3
+   difficulty: 4
    speed: 12
    ac: 10
    mr: 0
@@ -6481,6 +6735,7 @@ monsters:
  - name: "wax golem"
    symbol: "'"
    base-level: 3
+   difficulty: 5
    speed: 12
    ac: 9
    mr: 0
@@ -6507,6 +6762,7 @@ monsters:
  - name: "rope golem"
    symbol: "'"
    base-level: 4
+   difficulty: 6
    speed: 9
    ac: 8
    mr: 0
@@ -6533,6 +6789,7 @@ monsters:
  - name: "gold golem"
    symbol: "'"
    base-level: 5
+   difficulty: 6
    speed: 9
    ac: 6
    mr: 0
@@ -6560,6 +6817,7 @@ monsters:
  - name: "leather golem"
    symbol: "'"
    base-level: 6
+   difficulty: 7
    speed: 6
    ac: 6
    mr: 0
@@ -6586,6 +6844,7 @@ monsters:
  - name: "wood golem"
    symbol: "'"
    base-level: 7
+   difficulty: 8
    speed: 3
    ac: 4
    mr: 0
@@ -6612,6 +6871,7 @@ monsters:
  - name: "flesh golem"
    symbol: "'"
    base-level: 9
+   difficulty: 10
    speed: 8
    ac: 9
    mr: 30
@@ -6646,6 +6906,7 @@ monsters:
  - name: "clay golem"
    symbol: "'"
    base-level: 11
+   difficulty: 12
    speed: 7
    ac: 7
    mr: 40
@@ -6672,6 +6933,7 @@ monsters:
  - name: "stone golem"
    symbol: "'"
    base-level: 14
+   difficulty: 15
    speed: 6
    ac: 5
    mr: 50
@@ -6699,6 +6961,7 @@ monsters:
  - name: "glass golem"
    symbol: "'"
    base-level: 16
+   difficulty: 18
    speed: 6
    ac: 1
    mr: 50
@@ -6726,6 +6989,7 @@ monsters:
  - name: "iron golem"
    symbol: "'"
    base-level: 18
+   difficulty: 22
    speed: 6
    ac: 3
    mr: 60
@@ -6755,6 +7019,7 @@ monsters:
  - name: "human"
    symbol: "@"
    base-level: 0
+   difficulty: 2
    speed: 12
    ac: 10
    mr: 0
@@ -6777,6 +7042,7 @@ monsters:
  - name: "wererat"
    symbol: "@"
    base-level: 2
+   difficulty: 3
    speed: 12
    ac: 10
    mr: 10
@@ -6803,6 +7069,7 @@ monsters:
  - name: "werejackal"
    symbol: "@"
    base-level: 2
+   difficulty: 3
    speed: 12
    ac: 10
    mr: 10
@@ -6829,6 +7096,7 @@ monsters:
  - name: "werewolf"
    symbol: "@"
    base-level: 5
+   difficulty: 6
    speed: 12
    ac: 10
    mr: 20
@@ -6855,6 +7123,7 @@ monsters:
  - name: "elf"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 2
@@ -6879,6 +7148,7 @@ monsters:
  - name: "Woodland-elf"
    symbol: "@"
    base-level: 4
+   difficulty: 6
    speed: 12
    ac: 10
    mr: 10
@@ -6905,6 +7175,7 @@ monsters:
  - name: "Green-elf"
    symbol: "@"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 10
    mr: 10
@@ -6931,6 +7202,7 @@ monsters:
  - name: "Grey-elf"
    symbol: "@"
    base-level: 6
+   difficulty: 8
    speed: 12
    ac: 10
    mr: 10
@@ -6957,6 +7229,7 @@ monsters:
  - name: "elf-lord"
    symbol: "@"
    base-level: 8
+   difficulty: 11
    speed: 12
    ac: 10
    mr: 20
@@ -6983,6 +7256,7 @@ monsters:
  - name: "Elvenking"
    symbol: "@"
    base-level: 9
+   difficulty: 11
    speed: 12
    ac: 10
    mr: 25
@@ -7009,6 +7283,7 @@ monsters:
  - name: "doppelganger"
    symbol: "@"
    base-level: 9
+   difficulty: 11
    speed: 12
    ac: 5
    mr: 20
@@ -7034,6 +7309,7 @@ monsters:
  - name: "mugger"
    symbol: "@"
    base-level: 2
+   difficulty: 4
    speed: 12
    ac: 10
    mr: 0
@@ -7056,6 +7332,7 @@ monsters:
  - name: "nurse"
    symbol: "@"
    base-level: 11
+   difficulty: 13
    speed: 6
    ac: 0
    mr: 0
@@ -7082,6 +7359,7 @@ monsters:
  - name: "shopkeeper"
    symbol: "@"
    base-level: 12
+   difficulty: 15
    speed: 18
    ac: 0
    mr: 50
@@ -7104,6 +7382,7 @@ monsters:
  - name: "black marketeer"
    symbol: "@"
    base-level: 25
+   difficulty: 28
    speed: 24
    ac: -8
    mr: 50
@@ -7132,6 +7411,7 @@ monsters:
  - name: "guard"
    symbol: "@"
    base-level: 12
+   difficulty: 14
    speed: 12
    ac: 10
    mr: 40
@@ -7154,6 +7434,7 @@ monsters:
  - name: "prisoner"
    symbol: "@"
    base-level: 12
+   difficulty: 14
    speed: 12
    ac: 10
    mr: 0
@@ -7176,6 +7457,7 @@ monsters:
  - name: "Oracle"
    symbol: "@"
    base-level: 12
+   difficulty: 13
    speed: 0
    ac: 0
    mr: 50
@@ -7200,6 +7482,7 @@ monsters:
  - name: "aligned priest"
    symbol: "@"
    base-level: 12
+   difficulty: 15
    speed: 12
    ac: 10
    mr: 50
@@ -7223,6 +7506,7 @@ monsters:
  - name: "high priest"
    symbol: "@"
    base-level: 25
+   difficulty: 30
    speed: 15
    ac: 7
    mr: 70
@@ -7250,6 +7534,7 @@ monsters:
  - name: "soldier"
    symbol: "@"
    base-level: 6
+   difficulty: 8
    speed: 10
    ac: 10
    mr: 0
@@ -7274,6 +7559,7 @@ monsters:
  - name: "sergeant"
    symbol: "@"
    base-level: 8
+   difficulty: 10
    speed: 10
    ac: 10
    mr: 5
@@ -7298,6 +7584,7 @@ monsters:
  - name: "lieutenant"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 10
    ac: 10
    mr: 15
@@ -7322,6 +7609,7 @@ monsters:
  - name: "captain"
    symbol: "@"
    base-level: 12
+   difficulty: 14
    speed: 10
    ac: 10
    mr: 15
@@ -7346,6 +7634,7 @@ monsters:
  - name: "watchman"
    symbol: "@"
    base-level: 6
+   difficulty: 8
    speed: 10
    ac: 10
    mr: 0
@@ -7368,6 +7657,7 @@ monsters:
  - name: "watch captain"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 10
    ac: 10
    mr: 15
@@ -7390,6 +7680,7 @@ monsters:
  - name: "Medusa"
    symbol: "@"
    base-level: 20
+   difficulty: 25
    speed: 12
    ac: 2
    mr: 50
@@ -7416,6 +7707,7 @@ monsters:
  - name: "Wizard of Yendor"
    symbol: "@"
    base-level: 30
+   difficulty: 34
    speed: 12
    ac: -8
    mr: 100
@@ -7443,6 +7735,7 @@ monsters:
  - name: "Croesus"
    symbol: "@"
    base-level: 20
+   difficulty: 22
    speed: 15
    ac: 0
    mr: 40
@@ -7466,6 +7759,7 @@ monsters:
  - name: "ghost"
    symbol: " "
    base-level: 10
+   difficulty: 12
    speed: 3
    ac: -5
    mr: 50
@@ -7494,6 +7788,7 @@ monsters:
  - name: "shade"
    symbol: " "
    base-level: 12
+   difficulty: 14
    speed: 10
    ac: 10
    mr: 0
@@ -7522,6 +7817,7 @@ monsters:
  - name: "water demon"
    symbol: "&"
    base-level: 8
+   difficulty: 11
    speed: 12
    ac: -4
    mr: 30
@@ -7547,6 +7843,7 @@ monsters:
  - name: "horned devil"
    symbol: "&"
    base-level: 6
+   difficulty: 9
    speed: 9
    ac: -5
    mr: 50
@@ -7573,6 +7870,7 @@ monsters:
  - name: "succubus"
    symbol: "&"
    base-level: 6
+   difficulty: 8
    speed: 12
    ac: 0
    mr: 70
@@ -7600,6 +7898,7 @@ monsters:
  - name: "incubus"
    symbol: "&"
    base-level: 6
+   difficulty: 8
    speed: 12
    ac: 0
    mr: 70
@@ -7627,6 +7926,7 @@ monsters:
  - name: "erinys"
    symbol: "&"
    base-level: 7
+   difficulty: 10
    speed: 12
    ac: 2
    mr: 30
@@ -7653,6 +7953,7 @@ monsters:
  - name: "barbed devil"
    symbol: "&"
    base-level: 8
+   difficulty: 10
    speed: 12
    ac: 0
    mr: 35
@@ -7679,6 +7980,7 @@ monsters:
  - name: "marilith"
    symbol: "&"
    base-level: 7
+   difficulty: 11
    speed: 12
    ac: -6
    mr: 80
@@ -7705,6 +8007,7 @@ monsters:
  - name: "vrock"
    symbol: "&"
    base-level: 8
+   difficulty: 11
    speed: 12
    ac: 0
    mr: 50
@@ -7731,6 +8034,7 @@ monsters:
  - name: "hezrou"
    symbol: "&"
    base-level: 9
+   difficulty: 12
    speed: 6
    ac: -2
    mr: 55
@@ -7757,6 +8061,7 @@ monsters:
  - name: "bone devil"
    symbol: "&"
    base-level: 9
+   difficulty: 13
    speed: 15
    ac: -1
    mr: 40
@@ -7783,6 +8088,7 @@ monsters:
  - name: "ice devil"
    symbol: "&"
    base-level: 11
+   difficulty: 14
    speed: 6
    ac: -4
    mr: 55
@@ -7810,6 +8116,7 @@ monsters:
  - name: "nalfeshnee"
    symbol: "&"
    base-level: 11
+   difficulty: 15
    speed: 9
    ac: -1
    mr: 65
@@ -7836,6 +8143,7 @@ monsters:
  - name: "pit fiend"
    symbol: "&"
    base-level: 13
+   difficulty: 16
    speed: 6
    ac: -3
    mr: 65
@@ -7862,6 +8170,7 @@ monsters:
  - name: "balrog"
    symbol: "&"
    base-level: 16
+   difficulty: 20
    speed: 5
    ac: -2
    mr: 75
@@ -7888,6 +8197,7 @@ monsters:
  - name: "Juiblex"
    symbol: "&"
    base-level: 50
+   difficulty: 27
    speed: 3
    ac: -25
    mr: 65
@@ -7916,6 +8226,7 @@ monsters:
  - name: "Yeenoghu"
    symbol: "&"
    base-level: 56
+   difficulty: 31
    speed: 18
    ac: -5
    mr: 80
@@ -7943,6 +8254,7 @@ monsters:
  - name: "Orcus"
    symbol: "&"
    base-level: 66
+   difficulty: 36
    speed: 9
    ac: -6
    mr: 85
@@ -7969,6 +8281,7 @@ monsters:
  - name: "Geryon"
    symbol: "&"
    base-level: 72
+   difficulty: 36
    speed: 3
    ac: -3
    mr: 75
@@ -7995,6 +8308,7 @@ monsters:
  - name: "Dispater"
    symbol: "&"
    base-level: 78
+   difficulty: 40
    speed: 15
    ac: -2
    mr: 80
@@ -8021,6 +8335,7 @@ monsters:
  - name: "Baalzebub"
    symbol: "&"
    base-level: 89
+   difficulty: 45
    speed: 9
    ac: -5
    mr: 85
@@ -8047,6 +8362,7 @@ monsters:
  - name: "Asmodeus"
    symbol: "&"
    base-level: 105
+   difficulty: 53
    speed: 12
    ac: -7
    mr: 90
@@ -8074,6 +8390,7 @@ monsters:
  - name: "Demogorgon"
    symbol: "&"
    base-level: 106
+   difficulty: 57
    speed: 15
    ac: -8
    mr: 95
@@ -8100,6 +8417,7 @@ monsters:
  - name: "Cthulhu"
    symbol: "h"
    base-level: 106
+   difficulty: 58
    speed: 15
    ac: -8
    mr: 95
@@ -8128,6 +8446,7 @@ monsters:
  - name: "Death"
    symbol: "&"
    base-level: 30
+   difficulty: 34
    speed: 12
    ac: -5
    mr: 100
@@ -8158,6 +8477,7 @@ monsters:
  - name: "Pestilence"
    symbol: "&"
    base-level: 30
+   difficulty: 34
    speed: 12
    ac: -5
    mr: 100
@@ -8187,6 +8507,7 @@ monsters:
  - name: "Famine"
    symbol: "&"
    base-level: 30
+   difficulty: 34
    speed: 12
    ac: -5
    mr: 100
@@ -8216,6 +8537,7 @@ monsters:
  - name: "mail daemon"
    symbol: "&"
    base-level: 56
+   difficulty: 26
    speed: 24
    ac: 10
    mr: 127
@@ -8244,6 +8566,7 @@ monsters:
  - name: "djinni"
    symbol: "&"
    base-level: 7
+   difficulty: 8
    speed: 12
    ac: 4
    mr: 30
@@ -8268,6 +8591,7 @@ monsters:
  - name: "sandestin"
    symbol: "&"
    base-level: 13
+   difficulty: 15
    speed: 12
    ac: 4
    mr: 60
@@ -8292,6 +8616,7 @@ monsters:
  - name: "jellyfish"
    symbol: ";"
    base-level: 3
+   difficulty: 5
    speed: 3
    ac: 6
    mr: 0
@@ -8316,6 +8641,7 @@ monsters:
  - name: "piranha"
    symbol: ";"
    base-level: 5
+   difficulty: 6
    speed: 12
    ac: 4
    mr: 0
@@ -8338,6 +8664,7 @@ monsters:
  - name: "shark"
    symbol: ";"
    base-level: 7
+   difficulty: 9
    speed: 12
    ac: 2
    mr: 0
@@ -8360,6 +8687,7 @@ monsters:
  - name: "giant eel"
    symbol: ";"
    base-level: 5
+   difficulty: 7
    speed: 9
    ac: -1
    mr: 0
@@ -8382,6 +8710,7 @@ monsters:
  - name: "electric eel"
    symbol: ";"
    base-level: 7
+   difficulty: 10
    speed: 10
    ac: -3
    mr: 0
@@ -8406,6 +8735,7 @@ monsters:
  - name: "kraken"
    symbol: ";"
    base-level: 20
+   difficulty: 22
    speed: 3
    ac: 6
    mr: 0
@@ -8428,6 +8758,7 @@ monsters:
  - name: "newt"
    symbol: ":"
    base-level: 0
+   difficulty: 1
    speed: 6
    ac: 8
    mr: 0
@@ -8452,6 +8783,7 @@ monsters:
  - name: "gecko"
    symbol: ":"
    base-level: 1
+   difficulty: 2
    speed: 6
    ac: 8
    mr: 0
@@ -8476,6 +8808,7 @@ monsters:
  - name: "iguana"
    symbol: ":"
    base-level: 2
+   difficulty: 3
    speed: 6
    ac: 7
    mr: 0
@@ -8500,6 +8833,7 @@ monsters:
  - name: "baby crocodile"
    symbol: ":"
    base-level: 3
+   difficulty: 4
    speed: 6
    ac: 7
    mr: 0
@@ -8524,6 +8858,7 @@ monsters:
  - name: "giant turtle"
    symbol: ":"
    base-level: 7
+   difficulty: 9
    speed: 2
    ac: -5
    mr: 10
@@ -8549,6 +8884,7 @@ monsters:
  - name: "lizard"
    symbol: ":"
    base-level: 5
+   difficulty: 6
    speed: 6
    ac: 6
    mr: 10
@@ -8574,6 +8910,7 @@ monsters:
  - name: "chameleon"
    symbol: ":"
    base-level: 6
+   difficulty: 7
    speed: 5
    ac: 6
    mr: 10
@@ -8598,6 +8935,7 @@ monsters:
  - name: "crocodile"
    symbol: ":"
    base-level: 6
+   difficulty: 7
    speed: 9
    ac: 5
    mr: 0
@@ -8622,6 +8960,7 @@ monsters:
  - name: "salamander"
    symbol: ":"
    base-level: 8
+   difficulty: 12
    speed: 12
    ac: -1
    mr: 0
@@ -8648,6 +8987,7 @@ monsters:
  - name: "long worm tail"
    symbol: "~"
    base-level: 0
+   difficulty: 1
    speed: 0
    ac: 0
    mr: 0
@@ -8671,6 +9011,7 @@ monsters:
  - name: "archeologist"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 1
@@ -8693,6 +9034,7 @@ monsters:
  - name: "barbarian"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 1
@@ -8716,6 +9058,7 @@ monsters:
  - name: "caveman"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 0
@@ -8738,6 +9081,7 @@ monsters:
  - name: "cavewoman"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 0
@@ -8760,6 +9104,7 @@ monsters:
  - name: "healer"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 1
@@ -8783,6 +9128,7 @@ monsters:
  - name: "knight"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 1
@@ -8805,6 +9151,7 @@ monsters:
  - name: "monk"
    symbol: "@"
    base-level: 10
+   difficulty: 11
    speed: 12
    ac: 10
    mr: 2
@@ -8827,6 +9174,7 @@ monsters:
  - name: "priest"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 2
@@ -8849,6 +9197,7 @@ monsters:
  - name: "priestess"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 2
@@ -8871,6 +9220,7 @@ monsters:
  - name: "ranger"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 2
@@ -8893,6 +9243,7 @@ monsters:
  - name: "rogue"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 1
@@ -8915,6 +9266,7 @@ monsters:
  - name: "samurai"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 1
@@ -8937,6 +9289,7 @@ monsters:
  - name: "tourist"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 1
@@ -8959,6 +9312,7 @@ monsters:
  - name: "valkyrie"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 1
@@ -8982,6 +9336,7 @@ monsters:
  - name: "wizard"
    symbol: "@"
    base-level: 10
+   difficulty: 12
    speed: 12
    ac: 10
    mr: 3
@@ -9004,6 +9359,7 @@ monsters:
  - name: "Lord Carnarvon"
    symbol: "@"
    base-level: 20
+   difficulty: 22
    speed: 12
    ac: 0
    mr: 30
@@ -9027,6 +9383,7 @@ monsters:
  - name: "Pelias"
    symbol: "@"
    base-level: 20
+   difficulty: 22
    speed: 12
    ac: 0
    mr: 30
@@ -9051,6 +9408,7 @@ monsters:
  - name: "Shaman Karnov"
    symbol: "@"
    base-level: 20
+   difficulty: 22
    speed: 12
    ac: 0
    mr: 30
@@ -9074,6 +9432,7 @@ monsters:
  - name: "Hippocrates"
    symbol: "@"
    base-level: 20
+   difficulty: 22
    speed: 12
    ac: 0
    mr: 40
@@ -9098,6 +9457,7 @@ monsters:
  - name: "King Arthur"
    symbol: "@"
    base-level: 20
+   difficulty: 23
    speed: 12
    ac: 0
    mr: 40
@@ -9121,6 +9481,7 @@ monsters:
  - name: "Grand Master"
    symbol: "@"
    base-level: 25
+   difficulty: 30
    speed: 12
    ac: 0
    mr: 70
@@ -9148,6 +9509,7 @@ monsters:
  - name: "Arch Priest"
    symbol: "@"
    base-level: 25
+   difficulty: 30
    speed: 12
    ac: 7
    mr: 70
@@ -9175,6 +9537,7 @@ monsters:
  - name: "Orion"
    symbol: "@"
    base-level: 20
+   difficulty: 22
    speed: 12
    ac: 0
    mr: 30
@@ -9198,6 +9561,7 @@ monsters:
  - name: "Master of Thieves"
    symbol: "@"
    base-level: 20
+   difficulty: 24
    speed: 12
    ac: 0
    mr: 30
@@ -9222,6 +9586,7 @@ monsters:
  - name: "Lord Sato"
    symbol: "@"
    base-level: 20
+   difficulty: 23
    speed: 12
    ac: 0
    mr: 30
@@ -9245,6 +9610,7 @@ monsters:
  - name: "Twoflower"
    symbol: "@"
    base-level: 20
+   difficulty: 22
    speed: 12
    ac: 10
    mr: 20
@@ -9268,6 +9634,7 @@ monsters:
  - name: "Norn"
    symbol: "@"
    base-level: 20
+   difficulty: 23
    speed: 12
    ac: 0
    mr: 80
@@ -9292,6 +9659,7 @@ monsters:
  - name: "Neferet the Green"
    symbol: "@"
    base-level: 20
+   difficulty: 23
    speed: 12
    ac: 0
    mr: 60
@@ -9315,6 +9683,7 @@ monsters:
  - name: "Minion of Huhetotl"
    symbol: "&"
    base-level: 16
+   difficulty: 23
    speed: 12
    ac: -2
    mr: 75
@@ -9342,6 +9711,7 @@ monsters:
  - name: "Thoth Amon"
    symbol: "@"
    base-level: 16
+   difficulty: 22
    speed: 12
    ac: 0
    mr: 10
@@ -9367,6 +9737,7 @@ monsters:
  - name: "Tiamat"
    symbol: "D"
    base-level: 17
+   difficulty: 24
    speed: 12
    ac: 0
    mr: 30
@@ -9405,6 +9776,7 @@ monsters:
  - name: "Cyclops"
    symbol: "H"
    base-level: 18
+   difficulty: 23
    speed: 12
    ac: 0
    mr: 0
@@ -9429,6 +9801,7 @@ monsters:
  - name: "Ixoth"
    symbol: "D"
    base-level: 15
+   difficulty: 22
    speed: 12
    ac: -1
    mr: 20
@@ -9455,6 +9828,7 @@ monsters:
  - name: "Master Kaen"
    symbol: "@"
    base-level: 25
+   difficulty: 31
    speed: 12
    ac: -10
    mr: 10
@@ -9481,6 +9855,7 @@ monsters:
  - name: "Nalzok"
    symbol: "&"
    base-level: 16
+   difficulty: 23
    speed: 12
    ac: -2
    mr: 85
@@ -9508,6 +9883,7 @@ monsters:
  - name: "Scorpius"
    symbol: "s"
    base-level: 15
+   difficulty: 17
    speed: 12
    ac: 10
    mr: 0
@@ -9534,6 +9910,7 @@ monsters:
  - name: "Master Assassin"
    symbol: "@"
    base-level: 15
+   difficulty: 20
    speed: 12
    ac: 0
    mr: 30
@@ -9560,6 +9937,7 @@ monsters:
  - name: "Ashikaga Takauji"
    symbol: "@"
    base-level: 15
+   difficulty: 19
    speed: 12
    ac: 0
    mr: 40
@@ -9584,6 +9962,7 @@ monsters:
  - name: "Lord Surtur"
    symbol: "H"
    base-level: 15
+   difficulty: 19
    speed: 12
    ac: 2
    mr: 50
@@ -9610,6 +9989,7 @@ monsters:
  - name: "Dark One"
    symbol: "@"
    base-level: 15
+   difficulty: 20
    speed: 12
    ac: 0
    mr: 80
@@ -9634,6 +10014,7 @@ monsters:
  - name: "student"
    symbol: "@"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 10
    mr: 10
@@ -9656,6 +10037,7 @@ monsters:
  - name: "chieftain"
    symbol: "@"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 10
    mr: 10
@@ -9679,6 +10061,7 @@ monsters:
  - name: "neanderthal"
    symbol: "@"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 10
    mr: 10
@@ -9701,6 +10084,7 @@ monsters:
  - name: "attendant"
    symbol: "@"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 10
    mr: 10
@@ -9724,6 +10108,7 @@ monsters:
  - name: "page"
    symbol: "@"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 10
    mr: 10
@@ -9746,6 +10131,7 @@ monsters:
  - name: "abbot"
    symbol: "@"
    base-level: 5
+   difficulty: 8
    speed: 12
    ac: 10
    mr: 20
@@ -9768,6 +10154,7 @@ monsters:
  - name: "acolyte"
    symbol: "@"
    base-level: 5
+   difficulty: 8
    speed: 12
    ac: 10
    mr: 20
@@ -9790,6 +10177,7 @@ monsters:
  - name: "hunter"
    symbol: "@"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 10
    mr: 10
@@ -9812,6 +10200,7 @@ monsters:
  - name: "thug"
    symbol: "@"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 10
    mr: 10
@@ -9834,6 +10223,7 @@ monsters:
  - name: "ninja"
    symbol: "@"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 10
    mr: 10
@@ -9856,6 +10246,7 @@ monsters:
  - name: "roshi"
    symbol: "@"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 10
    mr: 10
@@ -9878,6 +10269,7 @@ monsters:
  - name: "guide"
    symbol: "@"
    base-level: 5
+   difficulty: 8
    speed: 12
    ac: 10
    mr: 20
@@ -9900,6 +10292,7 @@ monsters:
  - name: "warrior"
    symbol: "@"
    base-level: 5
+   difficulty: 7
    speed: 12
    ac: 10
    mr: 10
@@ -9922,6 +10315,7 @@ monsters:
  - name: "apprentice"
    symbol: "@"
    base-level: 5
+   difficulty: 8
    speed: 12
    ac: 10
    mr: 30

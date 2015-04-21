@@ -1,5 +1,5 @@
 diff --git a/dnethack-3.4.3/sys/unix/unixmain.c b/dnethack-3.4.3/sys/unix/unixmain.c
-index a13514f..b4897b0 100644
+index a13514f..655e8c5 100644
 --- a/dnethack-3.4.3/sys/unix/unixmain.c
 +++ b/dnethack-3.4.3/sys/unix/unixmain.c
 @@ -44,11 +44,19 @@ static void NDECL(wd_message);
@@ -22,7 +22,7 @@ index a13514f..b4897b0 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,666 @@ char *name;
+@@ -538,4 +546,669 @@ char *name;
  	return;
  }
  
@@ -111,6 +111,8 @@ index a13514f..b4897b0 100644
 +    return "ReplaceThisName";
 +}
 +
++extern const int monstr[];
++
 +static void extract_monsterdata_to_yaml(
 +        FILE* f
 +      , const char* variant
@@ -138,6 +140,7 @@ index a13514f..b4897b0 100644
 +        fprintf(f, " - name: \"%s\"\n", pm->mname);
 +        fprintf(f, "   symbol: \"%c\"\n", def_monsyms[pm->mlet]);
 +        fprintf(f, "   base-level: %d\n", pm->mlevel);
++        fprintf(f, "   difficulty: %d\n", monstr[(monsndx(pm))]);
 +        fprintf(f, "   speed: %d\n", pm->mmove);
 +        fprintf(f, "   ac: %d\n", pm->ac);
 +        fprintf(f, "   mr: %d\n", pm->mr);
