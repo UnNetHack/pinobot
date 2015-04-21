@@ -142,6 +142,7 @@ lineMonsterInformation :: MD.Monster -> T.Text
 lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     (TL.fromText $ MD.moName mon) <> " (" <> monsymbol <> ")" <>
     " | Lvl: " <> showB (MD.moBaseLevel mon) <>
+    " | Diff: " <> showB (MD.moDifficulty mon) <>
     " | Spd: " <> showB (MD.moSpeed mon) <>
     " | Res: " <> resistances (MD.moResistances mon) <>
     "| Confers: " <> confers (MD.moConferred mon) <>

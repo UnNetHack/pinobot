@@ -155,6 +155,7 @@ instance FromJSON Attack where
 data Monster = Monster { moName :: T.Text,
                          moSymbol :: Char,
                          moBaseLevel :: Int,
+                         moDifficulty :: Int,
                          moSpeed :: Int,
                          moAC :: Int,
                          moMR :: Int,
@@ -187,6 +188,7 @@ instance FromJSON Monster where
         speed <- v .: "speed"
         ac <- v .: "ac"
         mr <- v .: "mr"
+        diff <- v .: "difficulty"
         align <- v .: "alignment"
         generates <- v .: "generates" <|> pure []
         corpse <- v .: "leaves-corpse"
@@ -206,6 +208,7 @@ instance FromJSON Monster where
             {
                 moName = name
               , moSymbol = T.head symb
+              , moDifficulty = diff
               , moBaseLevel = baselevel
               , moSpeed = speed
               , moAC = ac
