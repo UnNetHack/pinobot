@@ -36,7 +36,8 @@ variants = sequence $ variantify $
     , "Slashem"
     , "Brass"
     , "Dnethack"
-    , "SlashemExtended" ]
+    , "SlashemExtended"
+    , "SlashTHEM" ]
   where
     variantify = fmap $ \name -> V.loadVariant $ "variants/" ++ name ++ ".yaml"
 
