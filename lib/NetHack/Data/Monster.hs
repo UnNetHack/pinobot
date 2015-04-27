@@ -28,7 +28,8 @@ data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |
               AtWeapon | AtCast | AtScre | AtMultiply |
               AtArrow | AtReach | AtMirror | AtWhip |
               AtMMagical | AtReachingBite |
-              AtLash | AtTrample | AtScratch | AtIllurien | AtTinker
+              AtLash | AtTrample | AtScratch | AtIllurien | AtTinker |
+              AtPhaseNonContact | AtBeamNonContact
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON AttackType
@@ -69,7 +70,7 @@ data DamageType = AdPhys | AdMagicMissile |
               AdFireworks | AdTinker | AdNumb | AdFreezeSolid |
               AdDisplacement | AdWither | AdBurn |
               AdBlackWebShadow | AdNetzach | AdWatcherTentacleGaze |
-              AdFear | AdStealByTeleportation
+              AdFear | AdStealByTeleportation | AdHalfDragon
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON DamageType

@@ -1,5 +1,5 @@
 diff --git a/dnethack-3.4.3/sys/unix/unixmain.c b/dnethack-3.4.3/sys/unix/unixmain.c
-index a13514f..655e8c5 100644
+index a13514f..dd08e4a 100644
 --- a/dnethack-3.4.3/sys/unix/unixmain.c
 +++ b/dnethack-3.4.3/sys/unix/unixmain.c
 @@ -44,11 +44,19 @@ static void NDECL(wd_message);
@@ -22,7 +22,7 @@ index a13514f..655e8c5 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,669 @@ char *name;
+@@ -538,4 +546,678 @@ char *name;
  	return;
  }
  
@@ -228,6 +228,12 @@ index a13514f..655e8c5 100644
 +            AT(AT_WISP, "AtWispMist")
 +            AT(AT_TNKR, "AtTinker")
 +#endif
++#ifdef AT_SHDW
++            AT(AT_SHDW, "AtPhaseNonContact")
++#endif
++#ifdef AT_BEAM
++            AT(AT_BEAM, "AtBeamNonContact")
++#endif
 +#ifdef AT_MULTIPLY
 +            AT(AT_MULTIPLY, "AtMultiply")
 +#endif
@@ -412,6 +418,9 @@ index a13514f..655e8c5 100644
 +#endif
 +#ifdef AD_STTP
 +            AT(AD_STTP, "AdStealByTeleportation")
++#endif
++#ifdef AD_HDRG
++            AT(AD_HDRG, "AdHalfDragon")
 +#endif
 +#ifdef AD_SHDW
 +            AT(AD_SHDW, "AdBlackWebShadow")
