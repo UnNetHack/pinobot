@@ -1,5 +1,5 @@
 diff --git a/dnethack-3.4.3/sys/unix/unixmain.c b/dnethack-3.4.3/sys/unix/unixmain.c
-index a13514f..dd08e4a 100644
+index a13514f..a74a171 100644
 --- a/dnethack-3.4.3/sys/unix/unixmain.c
 +++ b/dnethack-3.4.3/sys/unix/unixmain.c
 @@ -44,11 +44,19 @@ static void NDECL(wd_message);
@@ -22,7 +22,7 @@ index a13514f..dd08e4a 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,678 @@ char *name;
+@@ -538,4 +546,679 @@ char *name;
  	return;
  }
  
@@ -290,6 +290,7 @@ index a13514f..dd08e4a 100644
 +            AT(AD_CLRC, "AdClerical")
 +            AT(AD_SPEL, "AdSpell")
 +            AT(AD_RBRE, "AdRandomBreath")
++            AT(AD_RGAZ, "AdRandomGaze")
 +            AT(AD_SAMU, "AdAmuletSteal")
 +            AT(AD_CURS, "AdCurse")
 +#ifdef AD_LITE

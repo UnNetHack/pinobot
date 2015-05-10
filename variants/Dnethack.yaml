@@ -1128,7 +1128,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: Yes
-   attacks: [[AtGaze, AdRandomBreath, 4, 6], [AtGaze, AdRandomBreath, 4, 6], [AtNone, AdParalyse, 1, 100]]
+   attacks: [[AtGaze, AdRandomGaze, 4, 6], [AtGaze, AdRandomGaze, 4, 6], [AtNone, AdParalyse, 1, 100]]
    weight: 1000
    nutrition: 1000
    size: medium
@@ -1136,7 +1136,6 @@ monsters:
     - ReFire
     - ReCold
     - ReElectricity
-    - ReMagic
    conferred:
    flags: [FlFly, FlBreathless, FlNoHands, FlNoLimbs, FlNoHead, FlPoisonous, FlNoPoly, FlNeuter, FlHostile, FlInfravisible]
    color: Gray
@@ -5209,10 +5208,8 @@ monsters:
    mr: 0
    alignment: -5
    generates:
-    - gehennom
-    - dungeons
    leaves-corpse: Yes
-   not-generated-normally: No
+   not-generated-normally: Yes
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: Yes
@@ -5223,7 +5220,7 @@ monsters:
    resistances:
    conferred:
    flags: [FlNoHands, FlNoLimbs, FlCarnivore, FlDomestic, FlWander, FlGreedy, FlJewels, FlInfravisible, FlPassesBars]
-   color: Cyan
+   color: Brown
 
  - name: "pseudodragon"
    symbol: "D"
@@ -5246,7 +5243,7 @@ monsters:
    resistances:
    conferred:
    flags: [FlNoHands, FlNoLimbs, FlCarnivore, FlDomestic, FlWander, FlGreedy, FlJewels, FlInfravisible]
-   color: Cyan
+   color: Brown
 
  - name: "riding pseudodragon"
    symbol: "D"
@@ -5269,7 +5266,7 @@ monsters:
    resistances:
    conferred:
    flags: [FlNoHands, FlNoLimbs, FlCarnivore, FlDomestic, FlWander, FlGreedy, FlJewels, FlInfravisible]
-   color: Cyan
+   color: Brown
 
  - name: "large pseudodragon"
    symbol: "D"
@@ -5292,7 +5289,7 @@ monsters:
    resistances:
    conferred:
    flags: [FlNoHands, FlNoLimbs, FlCarnivore, FlDomestic, FlWander, FlGreedy, FlJewels, FlInfravisible]
-   color: Cyan
+   color: Brown
 
  - name: "winged pseudodragon"
    symbol: "D"
@@ -5315,7 +5312,7 @@ monsters:
    resistances:
    conferred:
    flags: [FlFly, FlNoHands, FlNoLimbs, FlCarnivore, FlDomestic, FlWander, FlGreedy, FlJewels, FlInfravisible]
-   color: Cyan
+   color: BrightBlue
 
  - name: "huge pseudodragon"
    symbol: "D"
@@ -5338,7 +5335,7 @@ monsters:
    resistances:
    conferred:
    flags: [FlFly, FlNoHands, FlNoLimbs, FlCarnivore, FlDomestic, FlWander, FlGreedy, FlJewels, FlInfravisible]
-   color: Cyan
+   color: BrightBlue
 
  - name: "gigantic pseudodragon"
    symbol: "D"
@@ -5361,7 +5358,7 @@ monsters:
    resistances:
    conferred:
    flags: [FlFly, FlNoHands, FlNoLimbs, FlCarnivore, FlDomestic, FlWander, FlGreedy, FlJewels, FlInfravisible]
-   color: Cyan
+   color: BrightBlue
 
  - name: "baby gray dragon"
    symbol: "D"
@@ -7899,7 +7896,7 @@ monsters:
     - ReDrain
    conferred:
    flags: [FlBreathless, FlMindless, FlHumanoid, FlPoisonous, FlUndead, FlHostile]
-   color: Cyan
+   color: BrightBlue
 
  - name: "ettin mummy"
    symbol: "M"
@@ -9763,7 +9760,7 @@ monsters:
     - ReDrain
    conferred:
    flags: [FlBreathless, FlMindless, FlHumanoid, FlUndead, FlMale, FlHostile, FlStalk]
-   color: Cyan
+   color: BrightBlue
 
  - name: "ettin zombie"
    symbol: "Z"
@@ -13036,7 +13033,7 @@ monsters:
     - RePetrification
     - ReDrain
    conferred:
-   flags: [FlFly, FlNoHands, FlNoLimbs, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlRockThrow, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
+   flags: [FlFly, FlNoHands, FlNoLimbs, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlFemale, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlRockThrow, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Magenta
 
  - name: "Demogorgon"
@@ -16357,7 +16354,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: No
-   attacks: [[AtWeapon, AdShred, 2, 8], [AtWeapon, AdShred, 2, 8], [AtWeapon, AdPhys, 2, 8], [AtWeapon, AdPhys, 2, 8], [AtClaw, AdStealQuestArtifact, 2, 8], [AtGaze, AdRandomBreath, 8, 8]]
+   attacks: [[AtWeapon, AdShred, 2, 8], [AtWeapon, AdShred, 2, 8], [AtWeapon, AdPhys, 2, 8], [AtWeapon, AdPhys, 2, 8], [AtClaw, AdStealQuestArtifact, 2, 8], [AtGaze, AdRandomGaze, 8, 8]]
    weight: 2000
    nutrition: 0
    size: large
@@ -16368,7 +16365,6 @@ monsters:
     - ReElectricity
     - RePoison
     - RePetrification
-    - ReMagic
    conferred:
    flags: [FlBreathless, FlHumanoid, FlThickHide, FlPoisonous, FlNoPoly, FlMale, FlProperName, FlHostile, FlStrong, FlTraitor, FlInfravision]
    color: Magenta

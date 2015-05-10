@@ -231,6 +231,7 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     attackTypeName MD.AtPhaseNonContact = "non-contacting-phase"
     attackTypeName MD.AtBeamNonContact = "non-contacting-beam"
 
+    attackDamageName MD.AdRandomGaze = "random gaze"
     attackDamageName MD.AdHalfDragon = "half-dragon"
     attackDamageName MD.AdStealByTeleportation = "steal-by-teleportation"
     attackDamageName MD.AdFear = "fear"
