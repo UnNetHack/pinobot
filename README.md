@@ -14,7 +14,8 @@ Bot commands
     SporkHack:          @s?monster
     GruntHack:          @g?monster
     Slash'EM:           @l?monster
-    Slash'EM extended:  @le?monster
+    Slash'EM Extended:  @le?monster
+    SlashTHEM:          @lt?monster
     NetHack Brass:      @b?monster
     dNetHack:           @d?monster
 
