@@ -399,16 +399,19 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     ircColor MD.White = "00"
     ircColor MD.Yellow = "08"
 
-
-message :: IO (T.Text -> Maybe T.Text)
+message :: IO (T.Text -> IO (Maybe T.Text))
 message = do
     vars <- variants
     return $ messager vars
   where
     messager vars input
-        | T.null input        = Nothing
-        | T.head input /= '@' = Nothing
-        | otherwise           = message' vars (T.tail input)
+        | T.null input        = return Nothing
+        | T.head input /= '@' = return Nothing
+        | otherwise           = do
+            case message' vars (T.tail input) of
+              Right (Just ok) -> return (Just ok)
+              Right Nothing -> return Nothing
+              Left NoMonster -> return $ Just "No such monster."
 
 filterNewLines :: String -> String
 filterNewLines = fmap (\ch -> if ch == '\n' || ch == '\r' then ' ' else ch)
@@ -417,16 +420,19 @@ filterNewLines = fmap (\ch -> if ch == '\n' || ch == '\r' then ' ' else ch)
 stringT :: Stream s m Char => T.Text -> ParsecT s u m T.Text
 stringT txt = T.pack <$> string (T.unpack txt)
 
-message' :: [V.Variant] -> T.Text -> Maybe T.Text
+data NoMonster = NoMonster
+  deriving ( Eq, Ord, Show, Read )
+
+message' :: [V.Variant] -> T.Text -> Either NoMonster (Maybe T.Text)
 message' variants input'
     | T.head input' == '@' = next (T.tail input') True
     | otherwise = next input' False
   where
     next input maximum_lev = case runParser (parser maximum_lev) () "line" input of
-        Left errmsg -> Just $ T.pack $ filterNewLines $ show errmsg
+        Left errmsg -> Right $ Just $ T.pack $ filterNewLines $ show errmsg
         Right okay  -> okay
 
-    parser :: Bool -> T.Parser (Maybe T.Text)
+    parser :: Bool -> T.Parser (Either NoMonster (Maybe T.Text))
     parser maximum_lev = do
         (variantStr, ignore) <- foldl
                         (\previoustry variant ->
@@ -440,7 +446,7 @@ message' variants input'
                         (return ("", ""))
         if ignore == "?"
           then doPart maximum_lev $ decideVariant variants variantStr
-          else return Nothing
+          else return (Right Nothing)
 
     doPart maximum_lev variant = do
       spaces
@@ -449,9 +455,9 @@ message' variants input'
       when (T.length monsterName <= 0) $
           fail $ ";I shall now launch the missiles that will cause " <>
                  "serious international side effects."
-      return $ Just $ case msms variant monsterName of
-          Nothing -> "No such monster."
-          Just mon ->
+      return $ case msms variant monsterName of
+          Nothing -> Left NoMonster
+          Just mon -> Right $ Just $
               (if T.toLower monsterName /= T.toLower mon
                  then monsterName <> " ~" <>
                       (T.pack $ show $ distT monsterName mon) <> "~ "

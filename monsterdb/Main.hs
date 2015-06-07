@@ -1,4 +1,5 @@
 {-# LANGUAGE RecordWildCards, OverloadedStrings #-}
+{-# LANGUAGE LambdaCase #-}
 
 module Main ( main ) where
 
@@ -14,7 +15,7 @@ main = do
         thing <- recv
         case thing of
             Just (PrivateMessage {..}) ->
-                case messager content of
+                messager content >>= \case
                     Just answer -> send $ PrivateMessage
                         { who = "Pinobot"
                         , target = reply
