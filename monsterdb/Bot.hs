@@ -407,6 +407,7 @@ message = do
     messager vars input
         | T.null input        = return Nothing
         | T.head input /= '@' = return Nothing
+        | input == "@" = return Nothing
         | otherwise           = do
             case message' vars (T.tail input) of
               Right (Just ok) -> return (Just ok)
