@@ -106,6 +106,7 @@ decideVariant variants name =
         find (\var -> V.commandPrefix var == name) variants
 
 relevantFlag :: MD.MonsterFlag -> Maybe T.Text
+relevantFlag MD.FlOviparous = Just "oviparous"
 relevantFlag MD.FlTouchPetrifies = Just "touch petrifies"
 relevantFlag MD.FlInvisible = Just "invisible"
 relevantFlag MD.FlWallwalk = Just "phases"
