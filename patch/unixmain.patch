@@ -1,7 +1,7 @@
-diff --git a/dnethack-3.4.3/sys/unix/unixmain.c b/dnethack-3.4.3/sys/unix/unixmain.c
-index a13514f..a74a171 100644
---- a/dnethack-3.4.3/sys/unix/unixmain.c
-+++ b/dnethack-3.4.3/sys/unix/unixmain.c
+diff --git a/sys/unix/unixmain.c b/sys/unix/unixmain.c
+index a13514f..0c5b856 100644
+--- a/sys/unix/unixmain.c
++++ b/sys/unix/unixmain.c
 @@ -44,11 +44,19 @@ static void NDECL(wd_message);
  static boolean wiz_error_flag = FALSE;
  #endif
@@ -22,7 +22,7 @@ index a13514f..a74a171 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,679 @@ char *name;
+@@ -538,4 +546,682 @@ char *name;
  	return;
  }
  
@@ -422,6 +422,9 @@ index a13514f..a74a171 100644
 +#endif
 +#ifdef AD_HDRG
 +            AT(AD_HDRG, "AdHalfDragon")
++#endif
++#ifdef AD_STAR
++            AT(AD_STAR, "AdSilverStarlightRapier")
 +#endif
 +#ifdef AD_SHDW
 +            AT(AD_SHDW, "AdBlackWebShadow")

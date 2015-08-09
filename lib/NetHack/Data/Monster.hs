@@ -71,7 +71,7 @@ data DamageType = AdPhys | AdMagicMissile |
               AdDisplacement | AdWither | AdBurn |
               AdBlackWebShadow | AdNetzach | AdWatcherTentacleGaze |
               AdFear | AdStealByTeleportation | AdHalfDragon |
-              AdRandomGaze
+              AdRandomGaze | AdSilverStarlightRapier
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON DamageType
