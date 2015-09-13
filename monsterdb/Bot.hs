@@ -381,7 +381,7 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
 
     -- TODO: get rid of IRCisms from this module. We are supposed to be
     -- higher-level and not care whether we are on IRC or somewhere else.
-    monsymbol = "\x03" <> ircColor (MD.moColor mon) <>
+    monsymbol = "\x03" <> ircColor (MD.moColor mon) <> ",01" <>
                 TLB.singleton (MD.moSymbol mon) <>
                 "\x03"
     ircColor :: MD.Color -> TL.Builder
