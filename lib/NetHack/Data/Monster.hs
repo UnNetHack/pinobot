@@ -29,7 +29,7 @@ data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |
               AtArrow | AtReach | AtMirror | AtWhip |
               AtMMagical | AtReachingBite |
               AtLash | AtTrample | AtScratch | AtIllurien | AtTinker |
-              AtPhaseNonContact | AtBeamNonContact
+              AtPhaseNonContact | AtBeamNonContact | AtMillionArms
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON AttackType
