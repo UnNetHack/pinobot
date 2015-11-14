@@ -384,7 +384,7 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     -- higher-level and not care whether we are on IRC or somewhere else.
     monsymbol = "\x03" <> ircColor (MD.moColor mon) <> ",01" <>
                 TLB.singleton (MD.moSymbol mon) <>
-                "\x03"
+                "\x0f"
     ircColor :: MD.Color -> TL.Builder
     ircColor MD.Black = "14"
     ircColor MD.Red = "05"
