@@ -29,7 +29,7 @@ variants :: IO [V.Variant]
 variants = sequence $ variantify $
     [ "UnNetHack"        -- first one is used by default
     , "Vanilla"
-    , "Vanilla350"
+    , "Vanilla343"
     , "UnNetHackPlus"
     , "SporkHack"
     , "GruntHack"

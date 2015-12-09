@@ -8,8 +8,8 @@ Bot commands
 
     UnNetHack:          @?monster
     UnNetHack:          @u?monster
-    Vanilla:            @v?monster
-    Leaked Vanilla:     @V?monster
+    NetHack:            @v?monster
+    NetHack 3.4.3:      @V?monster
     UnNetHackPlus:      @u+?monster
     SporkHack:          @s?monster
     GruntHack:          @g?monster
@@ -19,9 +19,6 @@ Bot commands
     NetHack Brass:      @b?monster
     dNetHack:           @d?monster
 
-Gives information about some monster. Replace 'monster' with the actual monster
-name.
-
 How to run
 ----------
 
@@ -29,7 +26,8 @@ The bot is composed of two operating system processes, pinobot-frontend and
 pinobot-monsterdb. pinobot-frontend talks to the IRC server and has direct
 communication with it and pinobot-monsterdb does all the logic, parsing and
 handing out monster information. The idea is that Pinobot can be upgraded by
-stopping pinobot-monsterdb and running an updated version of it.
+stopping pinobot-monsterdb and running an updated version of it, without having
+the IRC bot disconnect from any networks.
 
 Getting this thing to run should be as simple as just running pinobot-frontend
 first and then pinobot-monsterdb.
