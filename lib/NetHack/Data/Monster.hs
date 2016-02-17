@@ -78,7 +78,7 @@ data DamageType = AdPhys | AdMagicMissile |
               AdFakeMessages | AdVampireDrain | AdDepression |
               AdCharisma | AdNegativeProtection | AdLazyness |
               AdBanishment | AdWrath | AdDrainLifeOrStats |
-              AdInertia | AdThirsty | AdMana
+              AdInertia | AdThirsty | AdMana | AdDeadGaze
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON DamageType

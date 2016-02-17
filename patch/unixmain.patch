@@ -1,5 +1,5 @@
 diff --git a/sys/unix/unixmain.c b/sys/unix/unixmain.c
-index a13514f..cf2381f 100644
+index a13514f..a4f87eb 100644
 --- a/sys/unix/unixmain.c
 +++ b/sys/unix/unixmain.c
 @@ -44,11 +44,19 @@ static void NDECL(wd_message);
@@ -22,7 +22,7 @@ index a13514f..cf2381f 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,775 @@ char *name;
+@@ -538,4 +546,778 @@ char *name;
  	return;
  }
  
@@ -297,6 +297,9 @@ index a13514f..cf2381f 100644
 +            AT(AD_CURS, "AdCurse")
 +#ifdef AD_VAMP
 +            AT(AD_VAMP, "AdVampireDrain")
++#endif
++#ifdef AD_DEAD
++            AT(AD_DEAD, "AdDeadGaze")
 +#endif
 +#ifdef AD_SUCK
 +            AT(AD_SUCK, "AdSuckEquipment")
