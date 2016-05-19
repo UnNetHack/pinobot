@@ -37,7 +37,8 @@ variants = sequence $ variantify $
     , "Brass"
     , "Dnethack"
     , "SlashemExtended"
-    , "SlashTHEM" ]
+    , "SlashTHEM"
+    , "Fourk" ]
   where
     variantify = fmap $ \name -> V.loadVariant $ "variants/" ++ name ++ ".yaml"
 
@@ -106,6 +107,11 @@ decideVariant variants name =
         find (\var -> V.commandPrefix var == name) variants
 
 relevantFlag :: MD.MonsterFlag -> Maybe T.Text
+relevantFlag MD.FlDisplaces = Just "displaces"
+relevantFlag MD.FlVanDmgRduc = Just "damage reduction"
+relevantFlag MD.FlBlinkAway = Just "blinks away"
+relevantFlag MD.FlFairy = Just "fairy"
+relevantFlag MD.FlScentTracker = Just "tracks scents"
 relevantFlag MD.FlOviparous = Just "oviparous"
 relevantFlag MD.FlTouchPetrifies = Just "touch petrifies"
 relevantFlag MD.FlInvisible = Just "invisible"
@@ -232,7 +238,12 @@ lineMonsterInformation mon = TL.toStrict $ TL.toLazyText $
     attackTypeName MD.AtPhaseNonContact = "non-contacting-phase"
     attackTypeName MD.AtBeamNonContact = "non-contacting-beam"
     attackTypeName MD.AtMillionArms = "million-weaponized-arms"
+    attackTypeName MD.AtSpin = "spin"
 
+    attackDamageName MD.AdPits = "pits"
+    attackDamageName MD.AdIceBlock = "iceblock"
+    attackDamageName MD.AdStinkingCloud = "stinking-cloud"
+    attackDamageName MD.AdFeelPain = "feel-pain"
     attackDamageName MD.AdDeadGaze = "deadly-gaze"
     attackDamageName MD.AdGravity = "gravity"
     attackDamageName MD.AdSound = "sound"

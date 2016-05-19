@@ -6,6 +6,7 @@ module NetHack.Data.Monster where
 
 import Control.Applicative
 import Control.Monad
+import Data.Maybe
 import qualified Data.Text as T
 import Data.Yaml
 import GHC.Generics
@@ -29,7 +30,8 @@ data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |
               AtArrow | AtReach | AtMirror | AtWhip |
               AtMMagical | AtReachingBite |
               AtLash | AtTrample | AtScratch | AtIllurien | AtTinker |
-              AtPhaseNonContact | AtBeamNonContact | AtMillionArms
+              AtPhaseNonContact | AtBeamNonContact | AtMillionArms |
+              AtSpin
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON AttackType
@@ -78,7 +80,8 @@ data DamageType = AdPhys | AdMagicMissile |
               AdFakeMessages | AdVampireDrain | AdDepression |
               AdCharisma | AdNegativeProtection | AdLazyness |
               AdBanishment | AdWrath | AdDrainLifeOrStats |
-              AdInertia | AdThirsty | AdMana | AdDeadGaze
+              AdInertia | AdThirsty | AdMana | AdDeadGaze |
+              AdFeelPain | AdStinkingCloud | AdIceBlock | AdPits
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON DamageType
@@ -140,7 +143,9 @@ data MonsterFlag = FlFly | FlSwim | FlAmorphous |
                -- derived flags
                FlHatesSilver | FlPassesBars |
                FlVegan | FlVegetarian | FlPokemon |
-               FlAvoider | FlTouchPetrifies | FlInvisible
+               FlAvoider | FlTouchPetrifies | FlInvisible |
+               FlScentTracker | FlFairy | FlBlinkAway |
+               FlVanDmgRduc | FlDisplaces
                deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON MonsterFlag
@@ -197,7 +202,7 @@ instance FromJSON Monster where
         speed <- v .: "speed"
         ac <- v .: "ac"
         mr <- v .: "mr"
-        diff <- v .: "difficulty"
+        diff <- fromMaybe 0 <$> (v .:? "difficulty")
         align <- v .: "alignment"
         generates <- v .: "generates" <|> pure []
         corpse <- v .: "leaves-corpse"
