@@ -1,13 +1,21 @@
 diff --git a/sys/unix/unixmain.c b/sys/unix/unixmain.c
-index a13514f..a4f87eb 100644
+index a13514f..e1123cd 100644
 --- a/sys/unix/unixmain.c
 +++ b/sys/unix/unixmain.c
-@@ -44,11 +44,19 @@ static void NDECL(wd_message);
+@@ -44,11 +44,27 @@ static void NDECL(wd_message);
  static boolean wiz_error_flag = FALSE;
  #endif
  
-+static int extract_data(int argc, char* argv[]);
 +#ifdef G_SHEOL
++#ifdef G_HELL
++#ifdef G_NOHELL
++#define HASSHEOL
++#endif
++#endif
++#endif
++
++static int extract_data(int argc, char* argv[]);
++#ifdef HASSHEOL
 +static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 +        , int inhell, int insheol);
 +#endif
@@ -22,7 +30,7 @@ index a13514f..a4f87eb 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +546,778 @@ char *name;
+@@ -538,4 +554,812 @@ char *name;
  	return;
  }
  
@@ -152,7 +160,7 @@ index a13514f..a4f87eb 100644
 +            fprintf(f, "");
 +        else
 +        {
-+#ifdef G_SHEOL
++#ifdef HASSHEOL
 +            if ( !pb_prohibited_by_generation_flags( pm, 1, 1 ) )
 +                fprintf(f, "    - sheol\n");
 +            if ( !pb_prohibited_by_generation_flags( pm, 1, 0 ) )
@@ -160,10 +168,14 @@ index a13514f..a4f87eb 100644
 +            if ( !pb_prohibited_by_generation_flags( pm, 0, 0 ) )
 +                fprintf(f, "    - dungeons\n");
 +#else
++#ifdef G_HELL
++#ifdef G_NOHELL
 +            if ( (pm->geno & G_HELL ||
 +                  !(pm->geno & G_NOHELL)) ) fprintf(f, "    - gehennom\n");
 +            if ( !(pm->geno & G_HELL) )
 +                 fprintf(f, "    - dungeons\n");
++#endif
++#endif
 +#endif
 +        }
 +        fprintf(f, "   leaves-corpse: %s\n",
@@ -543,6 +555,36 @@ index a13514f..a4f87eb 100644
 +#ifdef AD_FEAR
 +            AT(AD_FEAR, "AdFear")
 +#endif
++#ifdef AD_NAST
++            AT(AD_NAST, "AdNastyTrap")
++#endif
++#ifdef AD_SKIL
++            AT(AD_SKIL, "AdSkillCapReduce")
++#endif
++#ifdef AD_DREA
++            AT(AD_DREA, "AdDreamAttack")
++#endif
++#ifdef AD_BADE
++            AT(AD_BADE, "AdBadRandomEffect")
++#endif
++#ifdef AD_FUMB
++            AT(AD_FUMB, "AdFumble")
++#endif
++#ifdef AD_VENO
++            AT(AD_VENO, "AdVenomous")
++#endif
++#ifdef AD_VULN
++            AT(AD_VULN, "AdVulnerability")
++#endif
++#ifdef AD_ICUR
++            AT(AD_ICUR, "AdCurseItems")
++#endif
++#ifdef AD_SLUD
++            AT(AD_SLUD, "AdSludge")
++#endif
++#ifdef AD_SPC2
++            AT(AD_SPC2, "AdMasterBlaster")
++#endif
 +            else { fprintf(stderr,
 +                    "I don't know what attack damage type %d is. (%s)\n",
 +                    pm->mattk[i2].adtyp, pm->mname); abort(); }
@@ -759,7 +801,7 @@ index a13514f..a4f87eb 100644
 +    fprintf(f, "]\n\n");
 +}
 +
-+#ifdef G_SHEOL
++#ifdef HASSHEOL
 +static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 +        , int inhell, int insheol)
 +{
