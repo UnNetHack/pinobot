@@ -9,4 +9,5 @@ pinobot-arbicode
 arbicode-sandbox-bin/
 arbicode-sandbox/*
 !arbicode-sandbox/PinobotSafe.hs
+.stack-work/
 

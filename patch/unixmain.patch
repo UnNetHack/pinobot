@@ -1,5 +1,5 @@
 diff --git a/sys/unix/unixmain.c b/sys/unix/unixmain.c
-index a13514f..e1123cd 100644
+index a13514f..1673226 100644
 --- a/sys/unix/unixmain.c
 +++ b/sys/unix/unixmain.c
 @@ -44,11 +44,27 @@ static void NDECL(wd_message);
@@ -30,7 +30,7 @@ index a13514f..e1123cd 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +554,812 @@ char *name;
+@@ -538,4 +554,863 @@ char *name;
  	return;
  }
  
@@ -570,6 +570,15 @@ index a13514f..e1123cd 100644
 +#ifdef AD_FUMB
 +            AT(AD_FUMB, "AdFumble")
 +#endif
++#ifdef AD_DIMN
++            AT(AD_DIMN, "AdDimness")
++#endif
++#ifdef AD_AMNE
++            AT(AD_AMNE, "AdMapAmnesia")
++#endif
++#ifdef AD_WGHT
++            AT(AD_WGHT, "AdIncreaseWeight")
++#endif
 +#ifdef AD_VENO
 +            AT(AD_VENO, "AdVenomous")
 +#endif
@@ -578,6 +587,48 @@ index a13514f..e1123cd 100644
 +#endif
 +#ifdef AD_ICUR
 +            AT(AD_ICUR, "AdCurseItems")
++#endif
++#ifdef AD_CAST
++            AT(AD_CAST, "AdCast")
++#endif
++#ifdef AD_CHAO
++            AT(AD_CHAO, "AdChaos")
++#endif
++#ifdef AD_VOMT
++            AT(AD_VOMT, "AdVomitInducing")
++#endif
++#ifdef AD_NGEN
++            AT(AD_NGEN, "AdNegativeEnchantment")
++#endif
++#ifdef AD_VAPO
++            AT(AD_VAPO, "AdVaporization")
++#endif
++#ifdef AD_EDGE
++            AT(AD_EDGE, "AdStoneEdge")
++#endif
++#ifdef AD_LITT
++            AT(AD_LITT, "AdLitterBlob")
++#endif
++#ifdef AD_TRAP
++            AT(AD_TRAP, "AdCreateTrap")
++#endif
++#ifdef AD_RNG
++            AT(AD_RNG, "AdRngIntervention")
++#endif
++#ifdef AD_MIDI
++            AT(AD_MIDI, "AdIdentityAttack")
++#endif
++#ifdef AD_ICEB
++            AT(AD_ICEB, "AdIceBlock")
++#endif
++#ifdef AD_FREN
++            AT(AD_FREN, "AdFrenzy")
++#endif
++#ifdef AD_NTHR
++            AT(AD_NTHR, "AdNether")
++#endif
++#ifdef AD_INSA
++            AT(AD_INSA, "AdInsanity")
 +#endif
 +#ifdef AD_SLUD
 +            AT(AD_SLUD, "AdSludge")
