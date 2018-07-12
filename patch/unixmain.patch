@@ -1,5 +1,5 @@
 diff --git a/sys/unix/unixmain.c b/sys/unix/unixmain.c
-index a13514f..1673226 100644
+index a13514f..452f63c 100644
 --- a/sys/unix/unixmain.c
 +++ b/sys/unix/unixmain.c
 @@ -44,11 +44,27 @@ static void NDECL(wd_message);
@@ -30,7 +30,7 @@ index a13514f..1673226 100644
  	register int fd;
  #ifdef CHDIR
  	register char *dir;
-@@ -538,4 +554,863 @@ char *name;
+@@ -538,4 +554,917 @@ char *name;
  	return;
  }
  
@@ -632,6 +632,60 @@ index a13514f..1673226 100644
 +#endif
 +#ifdef AD_SLUD
 +            AT(AD_SLUD, "AdSludge")
++#endif
++#ifdef AD_MINA
++            AT(AD_MINA, "AdIdentityNastiness")
++#endif
++#ifdef AD_IDAM
++            AT(AD_IDAM, "AdItemDamager")
++#endif
++#ifdef AD_ANTI
++            AT(AD_ANTI, "AdAntimatter")
++#endif
++#ifdef AD_PAIN
++            AT(AD_PAIN, "AdPain")
++#endif
++#ifdef AD_TECH
++            AT(AD_TECH, "AdTech")
++#endif
++#ifdef AD_MEMO
++            AT(AD_MEMO, "AdMemoryReduce")
++#endif
++#ifdef AD_TRAI
++            AT(AD_TRAI, "AdSkillReduce")
++#endif
++#ifdef AD_STAT
++            AT(AD_STAT, "AdStatDamage")
++#endif
++#ifdef AD_DAMA
++            AT(AD_DAMA, "AdGearDamage")
++#endif
++#ifdef AD_THIE
++            AT(AD_THIE, "AdThievery")
++#endif
++#ifdef AD_RAGN
++            AT(AD_RAGN, "AdLavaTiles")
++#endif
++#ifdef AD_DATA
++            AT(AD_DATA, "AdDeletesYourGame")
++#endif
++#ifdef AD_ALIN
++            AT(AD_ALIN, "AdDrainAlignment")
++#endif
++#ifdef AD_SIN
++            AT(AD_SIN, "AdAddSins")
++#endif
++#ifdef AD_CONT
++            AT(AD_CONT, "AdContamination")
++#endif
++#ifdef AD_AGGR
++            AT(AD_AGGR, "AdAggravateMonster")
++#endif
++#ifdef AD_DEST
++            AT(AD_DEST, "AdDestroyEq")
++#endif
++#ifdef AD_TREM
++            AT(AD_TREM, "AdTrembling")
 +#endif
 +#ifdef AD_SPC2
 +            AT(AD_SPC2, "AdMasterBlaster")
