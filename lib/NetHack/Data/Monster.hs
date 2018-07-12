@@ -89,7 +89,13 @@ data DamageType = AdPhys | AdMagicMissile |
               AdChaos | AdVomitInducing | AdNegativeEnchantment |
               AdVaporization | AdStoneEdge | AdLitterBlob |
               AdCreateTrap | AdRngIntervention | AdIdentityAttack |
-              AdIceBlock | AdFrenzy | AdNether | AdInsanity
+              AdIceBlock | AdFrenzy | AdNether | AdInsanity |
+              AdIdentityNastiness | AdItemDamager | AdAntimatter |
+              AdPain | AdTech | AdMemoryReduce | AdSkillReduce |
+              AdStatDamage | AdGearDamage | AdThievery |
+              AdLavaTiles | AdDeletesYourGame | AdDrainAlignment |
+              AdAddSins | AdContamination | AdAggravateMonster |
+              AdDestroyEq | AdTrembling
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON DamageType
