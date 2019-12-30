@@ -1,37 +1,18 @@
 diff --git a/sys/unix/unixmain.c b/sys/unix/unixmain.c
-index a13514f..452f63c 100644
+index 372895c70..04fbffecf 100644
 --- a/sys/unix/unixmain.c
 +++ b/sys/unix/unixmain.c
-@@ -44,11 +44,27 @@ static void NDECL(wd_message);
- static boolean wiz_error_flag = FALSE;
- #endif
+@@ -8,6 +8,8 @@
+ #include "hack.h"
+ #include "dlb.h"
  
-+#ifdef G_SHEOL
-+#ifdef G_HELL
-+#ifdef G_NOHELL
-+#define HASSHEOL
-+#endif
-+#endif
-+#endif
++#define main not_main
 +
-+static int extract_data(int argc, char* argv[]);
-+#ifdef HASSHEOL
-+static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
-+        , int inhell, int insheol);
-+#endif
-+
- int
- main(argc,argv)
- int argc;
- char *argv[];
- {
-+        return extract_data(argc, argv);
-+
- 	register int fd;
- #ifdef CHDIR
- 	register char *dir;
-@@ -538,4 +554,917 @@ char *name;
- 	return;
+ #include <ctype.h>
+ #include <sys/stat.h>
+ #include <signal.h>
+@@ -808,4 +810,980 @@ sys_random_seed()
+     return seed;
  }
  
 +
@@ -47,7 +28,22 @@ index a13514f..452f63c 100644
 +      , const char* command_prefix );
 +static const char* detect_variant( const char** command_prefix );
 +
-+static int extract_data(int argc, char* argv[])
++#ifdef G_SHEOL
++#ifdef G_HELL
++#ifdef G_NOHELL
++#define HASSHEOL
++#endif
++#endif
++#endif
++
++#ifdef HASSHEOL
++static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
++        , int inhell, int insheol);
++#endif
++
++#undef main
++
++int main(int argc, char* argv[])
 +{
 +    FILE* f;
 +    char name[300];
@@ -254,6 +250,12 @@ index a13514f..452f63c 100644
 +#endif
 +#ifdef AT_SCRE
 +            AT(AT_SCRE, "AtScre")
++#endif
++#ifdef AT_ANY
++            AT(AT_ANY, "AtAny")
++#endif
++#ifdef AT_RATH
++            AT(AT_RATH, "AtRangedThorns")
 +#endif
 +            else { fprintf(stderr,
 +                    "I don't know what attack type %d is.\n", pm->mattk[i2].aatyp);
@@ -689,6 +691,48 @@ index a13514f..452f63c 100644
 +#endif
 +#ifdef AD_SPC2
 +            AT(AD_SPC2, "AdMasterBlaster")
++#endif
++#ifdef AD_ANY
++            AT(AD_ANY, "AdAny")
++#endif
++#ifdef AD_NACU
++            AT(AD_NACU, "AdCurseArmor")
++#endif
++#ifdef AD_SANI
++            AT(AD_SANI, "AdIncreaseSanity")
++#endif
++#ifdef AD_RBAD
++            AT(AD_RBAD, "AdReallyBadEffect")
++#endif
++#ifdef AD_BLEE
++            AT(AD_BLEE, "AdBleedout")
++#endif
++#ifdef AD_SHAN
++            AT(AD_SHAN, "AdShank")
++#endif
++#ifdef AD_SCOR
++            AT(AD_SCOR, "AdDrainScore")
++#endif
++#ifdef AD_TERR
++            AT(AD_TERR, "AdTerrainTerror")
++#endif
++#ifdef AD_FEMI
++            AT(AD_FEMI, "AdFeminism")
++#endif
++#ifdef AD_LEVI
++            AT(AD_LEVI, "AdLevitation")
++#endif
++#ifdef AD_MCRE
++            AT(AD_MCRE, "AdReduceMagicCancellation")
++#endif
++#ifdef AD_ILLU
++            AT(AD_ILLU, "AdIllusion")
++#endif
++#ifdef AD_PART
++            AT(AD_PART, "AdSpecificRegularAttack")
++#endif
++#ifdef AD_RUNS
++            AT(AD_RUNS, "AdSpecificNastyTrap")
 +#endif
 +            else { fprintf(stderr,
 +                    "I don't know what attack damage type %d is. (%s)\n",
