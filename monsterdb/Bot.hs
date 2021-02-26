@@ -36,9 +36,9 @@ variants :: IO [V.Variant]
 variants =
   sequence
     $ variantify
-    $ [ "UnNetHack"        -- first one is used by default
+    $ [ "Vanilla"        -- first one is used by default
       , "Vanilla343"
-      , "Vanilla"
+      , "UnNetHack"
       , "UnNetHackPlus"
       , "SporkHack"
       , "GruntHack"
@@ -541,15 +541,29 @@ message = do
   vars <- variants
   return $ messager vars
  where
+  -- This code matches @? or @x? (where x is variant) anywhere on an IRC line.
+  -- This makes it possible for people who are using "IRC connectors" (like the
+  -- one that makes Discord users appear on IRC through an IRC bot) to use
+  -- Pinobot.
+  --
+  -- E.g.
+  --
+  -- @v?test
+  --
+  -- Or
+  --
+  -- <@some_person_on_discord> @v?test
+  --
   messager vars input
     | T.null input = return Nothing
-    | T.head input /= '@' = return Nothing
+    | T.head input /= '@' = messager vars (T.tail input)
     | input == "@" = return Nothing
-    | otherwise = do
+    | T.head input == '@' = do
       case message' vars (T.tail input) of
         Right (Just ok) -> return (Just ok)
-        Right Nothing   -> return Nothing
+        Right Nothing   -> messager vars (T.tail input)
         Left  NoMonster -> return $ Just "No such monster."
+    | otherwise = return Nothing
 
 filterNewLines :: String -> String
 filterNewLines = fmap (\ch -> if ch == '\n' || ch == '\r' then ' ' else ch)

@@ -18,12 +18,14 @@ source-repository head
 library
   exposed-modules:     IRC.Bot
                        IRC.Types
+                       IRC.Socket
                        NetHack.Data.Dice
                        NetHack.Data.Monster
                        NetHack.Data.Variant
   ghc-options:         -fwarn-incomplete-patterns -Wall
   hs-source-dirs:      lib
   build-depends:       base >=4.7.0.0 && < 5.0.0.0
+                      ,exceptions
                       ,text >=0.9
                       ,irc >= 0.6.1 && <1.0
                       ,ircbot >=0.6 && <1.0
@@ -31,9 +33,8 @@ library
                       ,containers >=0.5 && <1.0
                       ,transformers >=0.3 && <1.0
                       ,bytestring >=0.10 && <1.0
-                      ,network-simple >=0.4 && <1.0
+                      ,network >=3 && <4
                       ,pipes >=4.1 && <5.0
-                      ,pipes-network
                       ,cereal >=0.4.1.1 && <1.0
                       ,cereal-text
                       ,utf8-string
@@ -49,8 +50,23 @@ executable pinobot-frontend
                       ,text >=0.9
   default-language:    Haskell2010
 
+executable pinobot-join
+  hs-source-dirs:      commands
+  main-is:             Join.hs
+  ghc-options:         -fwarn-incomplete-patterns -Wall
+  build-depends:       base, pinobot, text
+  default-language:    Haskell2010
+
+executable pinobot-part
+  hs-source-dirs:      commands
+  main-is:             Part.hs
+  ghc-options:         -fwarn-incomplete-patterns -Wall
+  build-depends:       base, pinobot, text
+  default-language:    Haskell2010
+
 executable pinobot-monsterdb
   hs-source-dirs:      monsterdb
+  other-modules:       Bot
   main-is:             Main.hs
   ghc-options:         -fwarn-incomplete-patterns -Wall -threaded
   build-depends:       base >=4.5.0.0 && < 5.0.0.0

@@ -15,14 +15,14 @@ import Data.Typeable
 import Data.Word
 import Data.IORef
 import GHC.Generics
-import Network.Simple.TCP
 import Control.Monad
 import Control.Concurrent hiding ( yield )
 import Control.Concurrent.STM
 import Control.Exception
 import qualified Data.ByteString as B
 import Pipes
-import Pipes.Network.TCP
+
+import IRC.Socket
 
 data IRCMessage =
     PrivateMessage
@@ -51,12 +51,12 @@ connectToBot host port = mask $ \restore -> do
   where
     connector chan mvar =
         flip finally (atomically $ writeTChan chan Nothing) $
-        connect (T.unpack host) (show port) $ \(conn, addr) -> do
+        connect (T.unpack host) (show port) $ \conn addr -> do
             putStrLn $ "Connected to " <> show addr
             lock <- newMVar ()
             putMVar mvar (\x -> withMVar lock $ \_ -> send conn $ encode x)
             runEffect $
-                fromSocket conn 4096 >->
+                fromSocket conn >->
                 receiveIRCMessages >->
                 chansender chan
 

@@ -1,14 +1,14 @@
 Pinobot
 =======
 
-This is a NetHack monster information IRC bot written by Mikko Juola.
+This is a NetHack monster information IRC bot.
 
 Bot commands
 --------
 
-    UnNetHack:          @?monster
+    NetHack:            @?monster
+    NetHack:            @v?monster   (alias for just @?)
     UnNetHack:          @u?monster
-    NetHack:            @v?monster
     NetHack 3.4.3:      @V?monster
     UnNetHackPlus:      @u+?monster
     SporkHack:          @s?monster
@@ -22,15 +22,37 @@ Bot commands
 How to run
 ----------
 
-The bot is composed of two operating system processes, pinobot-frontend and
-pinobot-monsterdb. pinobot-frontend talks to the IRC server and has direct
-communication with it and pinobot-monsterdb does all the logic, parsing and
-handing out monster information. The idea is that Pinobot can be upgraded by
-stopping pinobot-monsterdb and running an updated version of it, without having
-the IRC bot disconnect from any networks.
+Pinobot is made up of two components:
 
-Getting this thing to run should be as simple as just running pinobot-frontend
-first and then pinobot-monsterdb.
+  * `pinobot-frontend` : This part connect to Freenode.
+  * `pinobot-monsterdb` : This part connects to `pinobot-frontend`.
+
+This design allows you to independently upgrade `pinobot-monsterdb`, without
+needing to disconnect Pinobot from IRC.
+
+The bot is hard-coded to connect irc.freenode.org with the nickname `Pinobot`.
+Modify the code if you need to change this.
+
+```shell
+# Assuming cabal and ghc are installed.
+
+# Terminal 1
+$ cabal new-run pinobot-frontend
+
+# Terminal 2, after `pinobot-frontend` has launched
+$ cabal new-run pinobot-monsterdb
+```
+
+How to make Pinobot join and leave channels
+-------------------------------------------
+
+```shell
+cabal new-run pinobot-join '#foobar'
+```
+
+```shell
+cabal new-run pinobot-part '#foobar'
+```
 
 Patch
 -----

@@ -14,10 +14,10 @@ import qualified Data.ByteString.UTF8 as Utf8
 import qualified Data.Text.Encoding as T
 import qualified Data.ByteString as B
 import Pipes
-import Pipes.Network.TCP
 
 import Data.Maybe
 
+import IRC.Socket
 import IRC.Types
 
 import Data.Serialize
@@ -80,11 +80,11 @@ communicatorPart mvar tvar tchan = do
 listener :: MVar (IRCMessage -> IO ()) -> TChan IRCMessage -> IO ()
 listener mvar chan = do
     sender <- takeMVar mvar
-    serve (Host "127.0.0.1") "27315" $ \(sock, _) -> mask $ \restore -> do
+    serve "127.0.0.1" "27315" $ \sock _ -> mask $ \restore -> do
         bcast <- atomically $ dupTChan chan
         tid <- forkIO $ restore $ do
             runEffect $
-                fromSocket sock 4096 >->
+                fromSocket sock >->
                 receiveIRCMessages >->
                 (forever $ await >>= liftIO . sender)
         flip finally (killThread tid) $ restore $ forever $ do
