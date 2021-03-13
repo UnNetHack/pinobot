@@ -99,7 +99,10 @@ data DamageType = AdPhys | AdMagicMissile |
               AdIncreaseSanity | AdReallyBadEffect | AdBleedout |
               AdShank | AdDrainScore | AdTerrainTerror | AdFeminism |
               AdLevitation | AdReduceMagicCancellation | AdIllusion |
-              AdSpecificRegularAttack | AdSpecificNastyTrap
+              AdSpecificRegularAttack | AdSpecificNastyTrap |
+              AdDebuff | AdNivellation | AdTechDrain | AdBlasphemy |
+              AdDropItems | AdRemoveErosionProof | AdFlame |
+              AdPsionic | AdLoud | AdKnockback | AdWater
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON DamageType

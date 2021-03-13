@@ -48,6 +48,7 @@ variants =
       , "SlashemExtended"
       , "SlashTHEM"
       , "Fourk"
+      , "EvilHack"
       ]
  where
   variantify = fmap $ \name -> V.loadVariant $ "variants/" ++ name ++ ".yaml"
@@ -490,6 +491,17 @@ lineMonsterInformation mon =
   attackDamageName MD.AdIllusion                = "illusion"
   attackDamageName MD.AdSpecificRegularAttack   = "specific-regular-attack"
   attackDamageName MD.AdSpecificNastyTrap       = "specific-nasty-trap"
+  attackDamageName MD.AdDebuff                  = "debuff"
+  attackDamageName MD.AdNivellation             = "nivellation"
+  attackDamageName MD.AdTechDrain               = "technique-drain"
+  attackDamageName MD.AdBlasphemy               = "makes-your-god-angry-at-you"
+  attackDamageName MD.AdDropItems               = "drop-items"
+  attackDamageName MD.AdRemoveErosionProof      = "remove-erosion-proof"
+  attackDamageName MD.AdFlame                   = "flame"
+  attackDamageName MD.AdPsionic                 = "psionic"
+  attackDamageName MD.AdLoud                    = "loud"
+  attackDamageName MD.AdKnockback               = "knockback"
+  attackDamageName MD.AdWater                   = "water"
 
 
   confers :: [MD.Resistance] -> TL.Builder

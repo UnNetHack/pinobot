@@ -18,6 +18,7 @@ Bot commands
     SlashTHEM:          @lt?monster
     NetHack Brass:      @b?monster
     dNetHack:           @d?monster
+    EvilHack:           @e?monster
 
 How to run
 ----------
