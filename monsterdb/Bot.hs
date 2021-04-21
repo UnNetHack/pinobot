@@ -107,7 +107,7 @@ mostSimilarMonster variant name =
 -- distance is too great, then the result is discarded.
 mostSimilarMonsterSane :: V.Variant -> T.Text -> Maybe T.Text
 mostSimilarMonsterSane variant text
-  | T.length text >= 50
+  | T.length text >= 60
   = Nothing
   | otherwise
   = let (distance, result) = mostSimilarMonster variant text
@@ -116,7 +116,7 @@ mostSimilarMonsterSane variant text
 -- | Same as above, but with less assurances.
 mostSimilarMonsterHalfSane :: V.Variant -> T.Text -> Maybe T.Text
 mostSimilarMonsterHalfSane variant text
-  | T.length text >= 50
+  | T.length text >= 60
   = Nothing
   | otherwise
   = let (_, result) = mostSimilarMonster variant text in Just result
