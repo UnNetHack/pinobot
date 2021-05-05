@@ -362,6 +362,12 @@ static void extract_monsterdata_to_yaml(
 #ifdef AD_WTHR
             AT(AD_WTHR, "AdWither")
 #endif
+#ifdef AD_DRCO
+            AT(AD_DRCO, "AdDrainConstitution")
+#endif
+#ifdef AD_PITS
+            AT(AD_PITS, "AdPitAttack")
+#endif
 #ifdef AD_SHRD
             AT(AD_SHRD, "AdShred")
 #endif

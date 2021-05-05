@@ -502,6 +502,8 @@ lineMonsterInformation mon =
   attackDamageName MD.AdLoud                    = "loud"
   attackDamageName MD.AdKnockback               = "knockback"
   attackDamageName MD.AdWater                   = "water"
+  attackDamageName MD.AdPitAttack               = "create-pit"
+  attackDamageName MD.AdDrainConstitution       = "drain-constitution"
 
 
   confers :: [MD.Resistance] -> TL.Builder
