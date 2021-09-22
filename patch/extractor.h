@@ -26,10 +26,15 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 #undef main
 
 //#define HAS_RACEBOOLEAN_BITFLAGS    // Has 'mhflags' in permonst
-#define HAS_MONST_GLOBALS_INIT
-#define GENDERED_NAMES   // Has pmnames instead of mname
-//#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
+//#define HAS_MONST_GLOBALS_INIT
+//#define GENDERED_NAMES   // Has pmnames instead of mname
+#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
+//#define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
 
+#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
+
+#define DNETHACK_ACS        // game has three different ACs for monsters, rather than one.
+#define HAS_DNETHACK_ID_PERMONST
 
 #ifdef GENDERED_NAMES
 #define is_valid_monster(str) ((str).pmnames[0] || (str).pmnames[1] || (str).pmnames[2])
@@ -143,6 +148,16 @@ static void extract_monsterdata_to_yaml(
 #ifdef HAS_MONST_GLOBALS_INIT
     monst_globals_init();
 #endif
+#ifdef HAS_DNETHACK_ID_PERMONST
+    // This fills in 'difficulty' values for all permonst structures
+    id_permonst();
+#endif
+
+    int num_monsters = -1;
+    for (i1 = 0; is_valid_monster(mons[i1]); ++i1) {
+        num_monsters = i1;
+    }
+    num_monsters++;
 
     for (i1 = 0; is_valid_monster(mons[i1]); ++i1)
     {
@@ -157,8 +172,17 @@ static void extract_monsterdata_to_yaml(
 
         fprintf(f, " - name: \"%s\"\n", get_gender_name(mons[i1], gender));
         // NetHack 3.6+ changed how symbols work
-        fprintf(f, "   symbol: \"%c\"\n", def_monsyms[pm->mlet].sym);
-        //fprintf(f, "   symbol: \"%c\"\n", def_monsyms[pm->mlet]);
+        char sym = ' ';
+#ifdef MONSYMS_IS_STRUCT
+        sym = def_monsyms[pm->mlet].sym;
+#else
+        sym = def_monsyms[(int) pm->mlet];
+#endif
+        if (sym == '\"') {
+            fprintf(f, "   symbol: \"\\\"\"\n");
+        } else {
+            fprintf(f, "   symbol: \"%c\"\n", sym);
+        }
         fprintf(f, "   base-level: %d\n", pm->mlevel);
 #ifdef HAS_MONSTR
         fprintf(f, "   difficulty: %d\n", monstr[(monsndx(pm))]);
@@ -166,7 +190,13 @@ static void extract_monsterdata_to_yaml(
         fprintf(f, "   difficulty: %d\n", pm->difficulty);
 #endif
         fprintf(f, "   speed: %d\n", pm->mmove);
+#ifndef DNETHACK_ACS
         fprintf(f, "   ac: %d\n", pm->ac);
+#else
+        char acs_str[100];
+        sprintf(acs_str, "Nat %d/Dodge %d/Prot %d", pm->nac, pm->dac, pm->pac);
+        fprintf(f, "   ac: \"%s\"\n", acs_str);
+#endif
         fprintf(f, "   mr: %d\n", pm->mr);
         fprintf(f, "   alignment: %d\n", pm->maligntyp);
         fprintf(f, "   generates:\n");
@@ -234,6 +264,15 @@ static void extract_monsterdata_to_yaml(
             AT(AT_TENT, "AtTentacle")
             AT(AT_WEAP, "AtWeapon")
             AT(AT_MAGC, "AtCast")
+#ifdef AT_BRSH
+            AT(AT_BRSH, "AtCloseRangeBreath")
+#endif
+#ifdef AT_XWEP
+            AT(AT_XWEP, "AtOffhandedWeapon")
+#endif
+#ifdef AT_MARI
+            AT(AT_MARI, "AtOffOffhandedWeapon")
+#endif
 #ifdef AT_SCRA
             AT(AT_SCRA, "AtScratch")
 #endif
@@ -242,6 +281,9 @@ static void extract_monsterdata_to_yaml(
 #endif
 #ifdef AT_TRAM
             AT(AT_TRAM, "AtTrample")
+#endif
+#ifdef AT_SRPR
+            AT(AT_SRPR, "AtNonContactAttack")
 #endif
 /* dnethack */
 #ifdef AT_ARRW
@@ -255,6 +297,17 @@ static void extract_monsterdata_to_yaml(
             AT(AT_HITS, "AtAutoHit")
             AT(AT_WISP, "AtWispMist")
             AT(AT_TNKR, "AtTinker")
+            AT(AT_5SQR, "AtReachTouch")
+            AT(AT_5SBT, "AtReachBite")
+            AT(AT_WDGZ, "AtPassiveWideGaze")
+            AT(AT_REND, "AtHitsIfTwoPreviousHitsConnect")
+            AT(AT_VINE, "AtLashingVine")
+            AT(AT_BKGT, "AtBlackGoat")
+            AT(AT_BKG2, "AtBlackGoat")
+            AT(AT_XSPR, "AtNonContactAttack")
+            AT(AT_MSPR, "AtNonContactAttack")
+            AT(AT_DSPR, "AtNonContactAttack")
+            AT(AT_ESPR, "AtNonContactAttack")
 #endif
 #ifdef AT_SHDW
             AT(AT_SHDW, "AtPhaseNonContact")
@@ -355,6 +408,27 @@ static void extract_monsterdata_to_yaml(
 #endif
 #ifdef AD_DARK
             AT(AD_DARK, "AdRemoveLight")
+#endif
+#ifdef AD_LRVA
+            AT(AD_LRVA, "AdImplantEgg")
+#endif
+#ifdef AD_NPDS
+            AT(AD_NPDS, "AdDrainStrength")
+#endif
+#ifdef AD_NPDD
+            AT(AD_NPDD, "AdDrainDexterity")
+#endif
+#ifdef AD_NPDR
+            AT(AD_NPDR, "AdDrainCharisma")
+#endif
+#ifdef AD_NPDA
+            AT(AD_NPDA, "AdDrainsAllSortsOfStuff")
+#endif
+#ifdef AD_HOOK
+            AT(AD_HOOK, "AdFleshHook")
+#endif
+#ifdef AD_MDWP
+            AT(AD_MDWP, "AdMindWipe")
 #endif
 #ifdef AD_ENDS
             AT(AD_ENDS, "AdPlaceholder")
@@ -467,6 +541,27 @@ static void extract_monsterdata_to_yaml(
 #ifdef AD_BLAS
             AT(AD_BLAS, "AdBlasphemy")
 #endif
+#ifdef AD_SSTN
+            AT(AD_SSTN, "AdSlowStoning")
+#endif
+#ifdef AD_DOBT
+            AT(AD_DOBT, "AdInflictDoubt")
+#endif
+#ifdef AD_APCS
+            AT(AD_APCS, "AdRevelatoryWhisper")
+#endif
+#ifdef AD_PULL
+            AT(AD_PULL, "AdPull")
+#endif
+#ifdef AD_MERC
+            AT(AD_MERC, "AdMercuryBlade")
+#endif
+#ifdef AD_BDFN
+            AT(AD_BDFN, "AdBloodFrenzy")
+#endif
+#ifdef AD_SESN
+            AT(AD_SESN, "AdFourSeasons")
+#endif
 #ifdef AD_DROP
             AT(AD_DROP, "AdDropItems")
 #endif
@@ -475,6 +570,9 @@ static void extract_monsterdata_to_yaml(
 #endif
 #ifdef AD_FLAM
             AT(AD_FLAM, "AdFlame")
+#endif
+#ifdef AD_SPHR
+            AT(AD_SPHR, "AdCreateSphere")
 #endif
 /* dnethack, bundled together */
 #ifdef AD_UNKNWN
@@ -539,6 +637,9 @@ static void extract_monsterdata_to_yaml(
 #ifdef AD_POLY
             AT(AD_POLY, "AdPoly")
 #endif
+#ifdef AD_PSON
+            AT(AD_PSON, "AdPsionic")
+#endif
 #ifdef AD_BHED
             AT(AD_BHED, "AdBehead")
 #endif
@@ -589,8 +690,53 @@ static void extract_monsterdata_to_yaml(
 #ifdef AD_HDRG
             AT(AD_HDRG, "AdHalfDragon")
 #endif
+#ifdef AD_NPDC
+            AT(AD_NPDC, "AdDrainConstitution")
+#endif
+#ifdef AD_EACD
+            AT(AD_EACD, "AdElementalAcid")
+#endif
+#ifdef AD_CNFT
+            AT(AD_CNFT, "AdConflictTouch")
+#endif
+#ifdef AD_ECLD
+            AT(AD_ECLD, "AdElementalCold")
+#endif
+#ifdef AD_EDRC
+            AT(AD_EDRC, "AdElementalPoison")
+#endif
+#ifdef AD_EFIR
+            AT(AD_EFIR, "AdElementalFire")
+#endif
+#ifdef AD_EELC
+            AT(AD_EELC, "AdElementalElectric")
+#endif
+#ifdef AD_ACFR
+            AT(AD_ACFR, "AdArchonFire")
+#endif
+#ifdef AD_DESC
+            AT(AD_DESC, "AdDessicate")
+#endif
+#ifdef AD_SURY
+            AT(AD_SURY, "AdArrowOfSlaying")
+#endif
+#ifdef AD_BLUD
+            AT(AD_BLUD, "AdAntiBloodAttack")
+#endif
 #ifdef AD_STAR
             AT(AD_STAR, "AdSilverStarlightRapier")
+#endif
+#ifdef AD_PYCL
+            AT(AD_PYCL, "AdFirePoisonPhysicalBlindness")
+#endif
+#ifdef AD_POLN
+            AT(AD_POLN, "AdPollen")
+#endif
+#ifdef AD_GOLD
+            AT(AD_GOLD, "AdGoldify")
+#endif
+#ifdef AD_MOON
+            AT(AD_MOON, "AdMoonlightRapier")
 #endif
 #ifdef AD_SHDW
             AT(AD_SHDW, "AdBlackWebShadow")
@@ -706,6 +852,9 @@ static void extract_monsterdata_to_yaml(
 #ifdef AD_PAIN
             AT(AD_PAIN, "AdPain")
 #endif
+#ifdef AD_MROT
+            AT(AD_MROT, "AdMummyRot")
+#endif
 #ifdef AD_TECH
             AT(AD_TECH, "AdTech")
 #endif
@@ -794,8 +943,8 @@ static void extract_monsterdata_to_yaml(
             AT(AD_RUNS, "AdSpecificNastyTrap")
 #endif
             else { fprintf(stderr,
-                    "I don't know what attack damage type %d is. (%s)\n",
-                    pm->mattk[i2].adtyp, get_gender_name(mons[i1], gender)); abort(); }
+                    "I don't know what attack damage type %d is. (%s) (%d/%d)\n",
+                    pm->mattk[i2].adtyp, get_gender_name(mons[i1], gender), i1, num_monsters); abort(); }
 #undef AT
             fprintf(f, ", %d, %d]", pm->mattk[i2].damn, pm->mattk[i2].damd);
         }
@@ -837,6 +986,7 @@ static void extract_monsterdata_to_yaml(
         fprintf(f, "   flags: [");
         {
             int comma_set = 0;
+#ifndef DNETHACK_MONFLAGS
 #define AT(a, b) if (pm->mflags1 & a) { \
     if ( comma_set ) fprintf(f, ", "); \
     comma_set = 1;\
@@ -875,16 +1025,7 @@ static void extract_monsterdata_to_yaml(
         AT(M1_HERBIVORE, "FlHerbivore");
         AT(M1_METALLIVORE, "FlMetallivore");
 #undef AT
-#define AT(a, b) if (pm->mflags2 & a) { \
-    if ( comma_set ) fprintf(f, ", "); \
-    comma_set = 1;\
-    fprintf(f, "%s", b); \
-}
-#define MH(a, b) if (pm->mhflags & (a)) { \
-    if ( comma_set ) fprintf(f, ", "); \
-    comma_set = 1;\
-    fprintf(f, "%s", b); \
-}
+
         if (!polyok(pm)) {
             if ( comma_set ) fprintf(f, ", ");
             comma_set = 1;
@@ -900,15 +1041,12 @@ static void extract_monsterdata_to_yaml(
             comma_set = 1;
             fprintf(f, "FlInvisible");
         }
-#ifdef HAS_RACEBOOLEAN_BITFLAGS
-        MH(MH_GIANT, "FlGiant")
-        MH(MH_UNDEAD, "FlUndead")
-        MH(MH_HUMAN, "FlHuman")
-        MH(MH_GNOME, "FlGnome")
-        MH(MH_ORC, "FlOrc")
-        MH(MH_WERE, "FlWere")
-        MH(MH_DEMON, "FlDemon")
-#endif
+
+#define AT(a, b) if (pm->mflags2 & a) { \
+    if ( comma_set ) fprintf(f, ", "); \
+    comma_set = 1;\
+    fprintf(f, "%s", b); \
+}
 #ifdef M2_UNDEAD
         AT(M2_UNDEAD, "FlUndead");
 #endif
@@ -1007,6 +1145,201 @@ static void extract_monsterdata_to_yaml(
         else if (vegetarian(pm)) fprintf(f, ", FlVegetarian");
 
 #undef AT
+#endif // #ifdef DNETHACK_MONFLAGS
+
+#ifdef DNETHACK_MONFLAGS
+        if (!polyok(pm)) {
+            if ( comma_set ) fprintf(f, ", ");
+            comma_set = 1;
+            fprintf(f, "FlNoPoly");
+        }
+        if (touch_petrifies(pm)) {
+            if ( comma_set ) fprintf(f, ", ");
+            comma_set = 1;
+            fprintf(f, "FlTouchPetrifies");
+        }
+        if (pm_invisible(pm)) {
+            if ( comma_set ) fprintf(f, ", ");
+            comma_set = 1;
+            fprintf(f, "FlInvisible");
+        }
+
+        // Mobility flags
+#define AT(a, b) if (pm->mflagsm & a) { \
+    if ( comma_set ) fprintf(f, ", "); \
+    comma_set = 1;\
+    fprintf(f, "%s", b); \
+}
+        AT(MM_FLY, "FlFly");
+        AT(MM_SWIM, "FlSwim");
+        AT(MM_AMORPHOUS, "FlAmorphous");
+        AT(MM_WALLWALK, "FlWallwalk");
+        AT(MM_CLING, "FlCling");
+        AT(MM_TUNNEL, "FlTunnel");
+        AT(MM_NEEDPICK, "FlNeedPick");
+        AT(MM_AMPHIBIOUS, "FlAmphibious");
+        AT(MM_BREATHLESS, "FlBreathless");
+        AT(MM_TPORT, "FlTeleport");
+        AT(MM_TPORT_CNTRL, "FlTeleportControl");
+#undef AT
+#define AT(a, b) if (pm->mflagst & a) { \
+    if ( comma_set ) fprintf(f, ", "); \
+    comma_set = 1;\
+    fprintf(f, "%s", b); \
+}
+        AT(MT_CARNIVORE, "FlCarnivore");
+        AT(MT_HERBIVORE, "FlHerbivore");
+        AT(MT_METALLIVORE, "FlMetallivore");
+        AT(MT_CONCEAL, "FlConceal");
+        AT(MT_HIDE, "FlHide");
+        AT(MT_NOTAKE, "FlNoTake");
+        AT(MT_MINDLESS, "FlMindless");
+        AT(MT_HOSTILE, "FlHostile");
+        AT(MT_PEACEFUL, "FlPeaceful");
+        AT(MT_DOMESTIC, "FlDomestic");
+        AT(MT_WANDER, "FlWander");
+        AT(MT_STALK, "FlStalk");
+        AT(MT_ROCKTHROW, "FlRockThrow");
+        AT(MT_GREEDY, "FlGreedy");
+        AT(MT_JEWELS, "FlJewels");
+        AT(MT_COLLECT, "FlCollect");
+        AT(MT_MAGIC, "FlMagicCollect");
+        AT(MT_WANTSAMUL, "FlWantsAmulet");
+        AT(MT_WANTSBELL, "FlWantsBell");
+        AT(MT_WANTSBOOK, "FlWantsBook");
+        AT(MT_WANTSCAND, "FlWantsCand");
+        AT(MT_WANTSARTI, "FlWantsArti");
+        AT(MT_WANTSALL, "FlWantsAll");
+        AT(MT_WAITFORU, "FlWaitsForYou");
+        AT(MT_CLOSE, "FlClose");
+        AT(MT_COVETOUS, "FlCovetous");
+#ifdef MT_TRAITOR
+        AT(MT_TRAITOR, "FlTraitor");
+#endif
+#undef AT
+#define AT(a, b) if (pm->mflagsb & a) { \
+    if ( comma_set ) fprintf(f, ", "); \
+    comma_set = 1;\
+    fprintf(f, "%s", b); \
+}
+        AT(MB_ACID, "FlAcid");
+        AT(MB_POIS, "FlPoisonous");
+        AT(MB_NOEYES, "FlNoEyes");
+        AT(MB_NOHANDS, "FlNoHands");
+        AT(MB_NOLIMBS, "FlNoLimbs");
+        AT(MB_NOHEAD, "FlNoHead");
+        AT(MB_HUMANOID, "FlHumanoid");
+        AT(MB_ANIMAL, "FlAnimal");
+        AT(MB_SLITHY, "FlSlithy");
+        AT(MB_UNSOLID, "FlUnSolid");
+        AT(MB_THICK_HIDE, "FlThickHide");
+        AT(MB_OVIPAROUS, "FlOviparous");
+        AT(MB_MALE, "FlMale");
+        AT(MB_FEMALE, "FlFemale");
+        AT(MB_NEUTER, "FlNeuter");
+        AT(MB_STRONG, "FlStrong");
+#undef AT
+
+#define AT(a, b) if (pm->mflagsg & a) { \
+    if ( comma_set ) fprintf(f, ", "); \
+    comma_set = 1;\
+    fprintf(f, "%s", b); \
+}
+        AT(MG_MERC, "FlMerc");
+        AT(MG_LORD, "FlLord");
+        AT(MG_PRINCE, "FlPrince");
+        AT(MG_PNAME, "FlProperName");
+        AT(MG_REGEN, "FlRegen");
+        AT(MG_NASTY, "FlNasty");
+#ifdef MG_NOTAME
+        AT(MG_NOTAME, "FlUntameable");
+#endif
+#ifdef MG_INFRAVISIBLE
+        AT(MG_INFRAVISIBLE, "FlInfravisible");
+#endif
+#undef AT // mflagsg
+
+#define AT(a, b) if (pm->mflagsa & a) { \
+    if ( comma_set ) fprintf(f, ", "); \
+    comma_set = 1;\
+    fprintf(f, "%s", b); \
+}
+#ifdef MA_UNDEAD
+        AT(MA_UNDEAD, "FlUndead");
+#endif
+#ifdef MA_WERE
+        AT(MA_WERE, "FlWere");
+#endif
+#ifdef MA_HUMAN
+        AT(MA_HUMAN, "FlHuman");
+#endif
+#ifdef MA_ELF
+        AT(MA_ELF, "FlElf");
+#endif
+#ifdef MA_DWARF
+        AT(MA_DWARF, "FlDwarf");
+#endif
+#ifdef MA_GNOME
+        AT(MA_GNOME, "FlGnome");
+#endif
+#ifdef MA_ORC
+        AT(MA_ORC, "FlOrc");
+#endif
+#ifdef MA_VAMPIRE
+        AT(MA_DEMON, "FlVampire");
+#endif
+#ifdef MA_CLOCK
+        AT(MA_CLOCK, "FlClockwork");
+#endif
+#ifdef MA_DEMON
+        AT(MA_DEMON, "FlDemon");
+#endif
+        AT(MA_MINION, "FlMinion");
+#ifdef MA_GIANT
+        AT(MA_GIANT, "FlGiant");
+#endif
+#undef AT // mflagsa
+
+#define AT(a, b) if (pm->mflagsv & a) { \
+    if ( comma_set ) fprintf(f, ", "); \
+    comma_set = 1;\
+    fprintf(f, "%s", b); \
+}
+#ifdef MV_INFRAVISION
+        AT(MV_INFRAVISION, "FlInfravision");
+#endif
+        AT(MV_SEE_INVIS, "FlSeeInvis");
+#undef AT // mflagsv
+
+        if (species_passes_walls(pm)) {
+            fprintf(f, ", FlPhasing");
+        }
+#ifdef HAS_HATES_SILVER
+        if (hates_silver(pm)) fprintf(f, ", FlHatesSilver");
+#endif
+        if (passes_bars(&dummymonst)) {
+            if ( comma_set ) fprintf(f, ", ");
+            comma_set = 1;
+            fprintf(f, "FlPassesBars");
+        }
+        if (vegan(pm)) fprintf(f, ", FlVegan");
+        else if (vegetarian(pm)) fprintf(f, ", FlVegetarian");
+#endif // DNETHACK_MONFLAGS
+
+#define MH(a, b) if (pm->mhflags & (a)) { \
+    if ( comma_set ) fprintf(f, ", "); \
+    comma_set = 1;\
+    fprintf(f, "%s", b); \
+}
+#ifdef HAS_RACEBOOLEAN_BITFLAGS
+        MH(MH_GIANT, "FlGiant")
+        MH(MH_UNDEAD, "FlUndead")
+        MH(MH_HUMAN, "FlHuman")
+        MH(MH_GNOME, "FlGnome")
+        MH(MH_ORC, "FlOrc")
+        MH(MH_WERE, "FlWere")
+        MH(MH_DEMON, "FlDemon")
+#endif
         }
         fprintf(f, "]\n");
         fprintf(f, "   color: ");

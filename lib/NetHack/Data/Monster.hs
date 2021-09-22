@@ -31,7 +31,11 @@ data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |
               AtMMagical | AtReachingBite |
               AtLash | AtTrample | AtScratch | AtIllurien | AtTinker |
               AtPhaseNonContact | AtBeamNonContact | AtMillionArms |
-              AtSpin | AtAny | AtRangedThorns
+              AtSpin | AtAny | AtRangedThorns | AtCloseRangeBreath |
+              AtOffhandedWeapon | AtOffOffhandedWeapon | AtNonContactAttack |
+              AtReachTouch | AtReachBite | AtPassiveWideGaze |
+              AtHitsIfTwoPreviousHitsConnect | AtLashingVine | AtBlackGoat |
+              AtAutoHit
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON AttackType
@@ -103,7 +107,16 @@ data DamageType = AdPhys | AdMagicMissile |
               AdDebuff | AdNivellation | AdTechDrain | AdBlasphemy |
               AdDropItems | AdRemoveErosionProof | AdFlame |
               AdPsionic | AdLoud | AdKnockback | AdWater |
-              AdDrainConstitution | AdPitAttack
+              AdDrainConstitution | AdPitAttack | AdImplantEgg |
+              AdDrainStrength | AdDrainDexterity | AdDrainCharisma |
+              AdFleshHook | AdMindWipe | AdSlowStoning | AdInflictDoubt |
+              AdRevelatoryWhisper | AdPull | AdMercuryBlade | AdBloodFrenzy |
+              AdFourSeasons | AdCreateSphere | AdElementalAcid |
+              AdConflictTouch | AdElementalCold | AdElementalPoison |
+              AdElementalFire | AdElementalElectric | AdArchonFire |
+              AdDessicate | AdArrowOfSlaying | AdAntiBloodAttack |
+              AdFirePoisonPhysicalBlindness | AdPollen | AdGoldify |
+              AdMoonlightRapier | AdMummyRot
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON DamageType
@@ -167,7 +180,8 @@ data MonsterFlag = FlFly | FlSwim | FlAmorphous |
                FlVegan | FlVegetarian | FlPokemon |
                FlAvoider | FlTouchPetrifies | FlInvisible |
                FlScentTracker | FlFairy | FlBlinkAway |
-               FlVanDmgRduc | FlDisplaces
+               FlVanDmgRduc | FlDisplaces | FlClockwork |
+               FlVampire
                deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON MonsterFlag
@@ -194,7 +208,7 @@ data Monster = Monster { moName :: T.Text,
                          moBaseLevel :: Int,
                          moDifficulty :: Int,
                          moSpeed :: Int,
-                         moAC :: Int,
+                         moAC :: Either Int T.Text,
                          moMR :: Int,
                          moAlign :: Int,
                          moGenerationPlaces :: [Place],
@@ -223,7 +237,13 @@ instance FromJSON Monster where
     when (symb == "") $ fail "Must have a symbol."
     baselevel            <- v .: "base-level"
     speed                <- v .: "speed"
-    ac                   <- v .: "ac"
+    ac_int_maybe         <- (Just <$> v .: "ac") <|> pure Nothing :: Parser (Maybe Int)
+    ac_str_maybe         <- (Just <$> v .: "ac") <|> pure Nothing :: Parser (Maybe T.Text)
+    ac <- case (ac_int_maybe, ac_str_maybe) of
+      (Nothing, Nothing) ->
+        fail $ "Cannot parse AC as either int or str"
+      (Just ac_int, _) -> return $ Left ac_int
+      (_, Just ac_str) -> return $ Right ac_str
     mr                   <- v .: "mr"
     diff                 <- fromMaybe 0 <$> (v .:? "difficulty")
     align                <- v .: "alignment"

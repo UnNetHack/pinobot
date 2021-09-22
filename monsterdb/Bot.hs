@@ -161,6 +161,7 @@ relevantFlag MD.FlStalk          = Just "stalker"
 relevantFlag MD.FlMetallivore    = Just "metallivore"
 relevantFlag MD.FlPoisonous      = Just "poisonous"
 relevantFlag MD.FlLithivore      = Just "lithivore"
+relevantFlag MD.FlPassesBars     = Just "passes-bars"
 relevantFlag _                   = Nothing
 
 showB :: Show a => a -> TL.Builder
@@ -189,7 +190,9 @@ lineMonsterInformation mon =
     <> " | Generates: "
     <> generates (MD.moGenerationPlaces mon)
     <> "| AC: "
-    <> showB (MD.moAC mon)
+    <> case MD.moAC mon of
+         Left ac_int -> showB ac_int
+         Right ac_str -> TL.fromText ac_str
     <> " | Attacks: "
     <> attacks (MD.moAttacks mon)
     <> " | Alignment: "
@@ -280,6 +283,17 @@ lineMonsterInformation mon =
   attackTypeName MD.AtSpin            = "spin"
   attackTypeName MD.AtAny             = "any"
   attackTypeName MD.AtRangedThorns    = "ranged-thorns"
+  attackTypeName MD.AtCloseRangeBreath = "close-range-breath"
+  attackTypeName MD.AtOffhandedWeapon = "offhanded-weapon"
+  attackTypeName MD.AtOffOffhandedWeapon = "offoffhanded-weapon"
+  attackTypeName MD.AtNonContactAttack = "non-contact-attack"
+  attackTypeName MD.AtReachTouch      = "longreaching-touch"
+  attackTypeName MD.AtReachBite       = "longreaching-bite"
+  attackTypeName MD.AtPassiveWideGaze = "passive-gaze"
+  attackTypeName MD.AtHitsIfTwoPreviousHitsConnect = "hits-if-two-previous-hits-connect"
+  attackTypeName MD.AtLashingVine     = "lashing-vines"
+  attackTypeName MD.AtBlackGoat       = "black-goat-shenanigans"
+  attackTypeName MD.AtAutoHit         = "autohit"
 
   attackDamageName MD.AdDimness               = "dimness"
   attackDamageName MD.AdMapAmnesia            = "map-amnesia"
@@ -504,7 +518,35 @@ lineMonsterInformation mon =
   attackDamageName MD.AdWater                   = "water"
   attackDamageName MD.AdPitAttack               = "create-pit"
   attackDamageName MD.AdDrainConstitution       = "drain-constitution"
-
+  attackDamageName MD.AdDrainStrength           = "drain-strength"
+  attackDamageName MD.AdDrainCharisma           = "drain-charisma"
+  attackDamageName MD.AdDrainDexterity          = "drain-dexterity"
+  attackDamageName MD.AdFleshHook               = "flesh-hook"
+  attackDamageName MD.AdImplantEgg              = "implant-egg"
+  attackDamageName MD.AdDessicate               = "dessicate"
+  attackDamageName MD.AdArrowOfSlaying          = "arrow-of-slaying"
+  attackDamageName MD.AdArchonFire              = "archon-fire"
+  attackDamageName MD.AdGoldify                 = "goldify"
+  attackDamageName MD.AdMoonlightRapier         = "moonlight-rapier"
+  attackDamageName MD.AdMummyRot                = "rot"
+  attackDamageName MD.AdMindWipe                = "mindwipe"
+  attackDamageName MD.AdSlowStoning             = "slow-stoning"
+  attackDamageName MD.AdInflictDoubt            = "inflict-doubt"
+  attackDamageName MD.AdRevelatoryWhisper       = "revelatory-whisper"
+  attackDamageName MD.AdPull                    = "pull"
+  attackDamageName MD.AdMercuryBlade            = "mercury-blade"
+  attackDamageName MD.AdBloodFrenzy             = "bloodfrenzy"
+  attackDamageName MD.AdPollen                  = "pollen"
+  attackDamageName MD.AdElementalCold           = "elemental-cold"
+  attackDamageName MD.AdElementalPoison         = "elemental-poison"
+  attackDamageName MD.AdElementalFire           = "elemental-fire"
+  attackDamageName MD.AdElementalElectric       = "elemental-electric"
+  attackDamageName MD.AdElementalAcid           = "elemental-acid"
+  attackDamageName MD.AdFourSeasons             = "fourseasons"
+  attackDamageName MD.AdCreateSphere            = "create-sphere"
+  attackDamageName MD.AdConflictTouch           = "conflict-touch"
+  attackDamageName MD.AdAntiBloodAttack         = "antiblood-attack"
+  attackDamageName MD.AdFirePoisonPhysicalBlindness = "fire+poison+physical+blind"
 
   confers :: [MD.Resistance] -> TL.Builder
   confers [] = "nothing "
