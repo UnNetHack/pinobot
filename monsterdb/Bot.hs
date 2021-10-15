@@ -294,6 +294,8 @@ lineMonsterInformation mon =
   attackTypeName MD.AtLashingVine     = "lashing-vines"
   attackTypeName MD.AtBlackGoat       = "black-goat-shenanigans"
   attackTypeName MD.AtAutoHit         = "autohit"
+  attackTypeName MD.AtAdjacent        = "adjacent"
+  attackTypeName MD.AtTalk            = "talk"
 
   attackDamageName MD.AdDimness               = "dimness"
   attackDamageName MD.AdMapAmnesia            = "map-amnesia"
@@ -547,6 +549,12 @@ lineMonsterInformation mon =
   attackDamageName MD.AdConflictTouch           = "conflict-touch"
   attackDamageName MD.AdAntiBloodAttack         = "antiblood-attack"
   attackDamageName MD.AdFirePoisonPhysicalBlindness = "fire+poison+physical+blind"
+  attackDamageName MD.AdCharm                   = "charm"
+  attackDamageName MD.AdScald                   = "scald"
+  attackDamageName MD.AdEatGold                 = "eat-gold"
+  attackDamageName MD.AdQuarkFlavour            = "quark-flavour"
+  attackDamageName MD.AdMildHunger              = "mild-hunger"
+  attackDamageName MD.AdShoe                    = "SHOE-ATTACK"
 
   confers :: [MD.Resistance] -> TL.Builder
   confers [] = "nothing "

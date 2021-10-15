@@ -31,10 +31,10 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 #define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
 //#define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
 
-#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
+//#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
 
-#define DNETHACK_ACS        // game has three different ACs for monsters, rather than one.
-#define HAS_DNETHACK_ID_PERMONST
+//#define DNETHACK_ACS        // game has three different ACs for monsters, rather than one.
+//#define HAS_DNETHACK_ID_PERMONST
 
 #ifdef GENDERED_NAMES
 #define is_valid_monster(str) ((str).pmnames[0] || (str).pmnames[1] || (str).pmnames[2])
@@ -321,6 +321,12 @@ static void extract_monsterdata_to_yaml(
 #ifdef AT_MULTIPLY
             AT(AT_MULTIPLY, "AtMultiply")
 #endif
+#ifdef AT_NTCH
+            AT(AT_NTCH, "AtAdjacent")
+#endif
+#ifdef AT_TALK
+            AT(AT_TALK, "AtTalk")
+#endif
 #ifdef AT_SCRE
             AT(AT_SCRE, "AtScre")
 #endif
@@ -432,6 +438,24 @@ static void extract_monsterdata_to_yaml(
 #endif
 #ifdef AD_ENDS
             AT(AD_ENDS, "AdPlaceholder")
+#endif
+#ifdef AD_CHRM
+            AT(AD_CHRM, "AdCharm")
+#endif
+#ifdef AD_SCLD
+            AT(AD_SCLD, "AdScald")
+#endif
+#ifdef AD_EGLD
+            AT(AD_EGLD, "AdEatGold")
+#endif
+#ifdef AD_FLVR
+            AT(AD_FLVR, "AdQuarkFlavour")
+#endif
+#ifdef AD_HNGY
+            AT(AD_HNGY, "AdMildHunger")
+#endif
+#ifdef AD_SHOE
+            AT(AD_SHOE, "AdShoe")
 #endif
 #ifdef AD_WTHR
             AT(AD_WTHR, "AdWither")
@@ -993,6 +1017,9 @@ static void extract_monsterdata_to_yaml(
     fprintf(f, "%s", b); \
 }
         AT(M1_FLY, "FlFly");
+#ifdef M1_NOTAKE
+        AT(M1_NOTAKE, "FlNoTake");
+#endif
         AT(M1_SWIM, "FlSwim");
         AT(M1_AMORPHOUS, "FlAmorphous");
         AT(M1_WALLWALK, "FlWallwalk");
@@ -1011,6 +1038,9 @@ static void extract_monsterdata_to_yaml(
         AT(M1_MINDLESS, "FlMindless");
         AT(M1_HUMANOID, "FlHumanoid");
         AT(M1_ANIMAL, "FlAnimal");
+#ifdef M1_TUNNEL
+        AT(M1_TUNNEL, "FlTunnel");
+#endif
         AT(M1_SLITHY, "FlSlithy");
         AT(M1_UNSOLID, "FlUnSolid");
         AT(M1_THICK_HIDE, "FlThickHide");
@@ -1170,49 +1200,115 @@ static void extract_monsterdata_to_yaml(
     comma_set = 1;\
     fprintf(f, "%s", b); \
 }
+#ifdef MM_FLY
         AT(MM_FLY, "FlFly");
+#endif
+#ifdef MM_SWIM
         AT(MM_SWIM, "FlSwim");
+#endif
         AT(MM_AMORPHOUS, "FlAmorphous");
         AT(MM_WALLWALK, "FlWallwalk");
+#ifdef MM_CLING
         AT(MM_CLING, "FlCling");
+#endif
+#ifdef MM_TUNNEL
         AT(MM_TUNNEL, "FlTunnel");
+#endif
+#ifdef MM_NEEDPICK
         AT(MM_NEEDPICK, "FlNeedPick");
+#endif
+#ifdef MM_AMPHIBIOUS
         AT(MM_AMPHIBIOUS, "FlAmphibious");
+#endif
+#ifdef MM_BREATHLESS
         AT(MM_BREATHLESS, "FlBreathless");
+#endif
+#ifdef MM_TPORT
         AT(MM_TPORT, "FlTeleport");
+#endif
+#ifdef MM_TPORT_CNTRL
         AT(MM_TPORT_CNTRL, "FlTeleportControl");
+#endif
 #undef AT
 #define AT(a, b) if (pm->mflagst & a) { \
     if ( comma_set ) fprintf(f, ", "); \
     comma_set = 1;\
     fprintf(f, "%s", b); \
 }
+#ifdef MT_CARNIVORE
         AT(MT_CARNIVORE, "FlCarnivore");
+#endif
+#ifdef MT_HERBIVORE
         AT(MT_HERBIVORE, "FlHerbivore");
+#endif
+#ifdef MT_METALLIVORE
         AT(MT_METALLIVORE, "FlMetallivore");
+#endif
+#ifdef MT_CONCEAL
         AT(MT_CONCEAL, "FlConceal");
+#endif
+#ifdef MT_HIDE
         AT(MT_HIDE, "FlHide");
+#endif
+#ifdef MT_NOTAKE
         AT(MT_NOTAKE, "FlNoTake");
+#endif
+#ifdef MT_MINDLESS
         AT(MT_MINDLESS, "FlMindless");
+#endif
+#ifdef MT_HOSTILE
         AT(MT_HOSTILE, "FlHostile");
+#endif
+#ifdef MT_PEACEFUL
         AT(MT_PEACEFUL, "FlPeaceful");
+#endif
+#ifdef MT_DOMESTIC
         AT(MT_DOMESTIC, "FlDomestic");
+#endif
+#ifdef MT_WANDER
         AT(MT_WANDER, "FlWander");
+#endif
         AT(MT_STALK, "FlStalk");
         AT(MT_ROCKTHROW, "FlRockThrow");
+#ifdef MT_GREEDY
         AT(MT_GREEDY, "FlGreedy");
+#endif
+#ifdef MT_JEWELS
         AT(MT_JEWELS, "FlJewels");
+#endif
+#ifdef MT_COLLECT
         AT(MT_COLLECT, "FlCollect");
+#endif
+#ifdef MT_MAGIC
         AT(MT_MAGIC, "FlMagicCollect");
+#endif
+#ifdef MT_WANTSAMUL
         AT(MT_WANTSAMUL, "FlWantsAmulet");
+#endif
+#ifdef MT_WANTSBELL
         AT(MT_WANTSBELL, "FlWantsBell");
+#endif
+#ifdef MT_WANTSBOOK
         AT(MT_WANTSBOOK, "FlWantsBook");
+#endif
+#ifdef MT_WANTSCAND
         AT(MT_WANTSCAND, "FlWantsCand");
+#endif
+#ifdef MT_WANTSARTI
         AT(MT_WANTSARTI, "FlWantsArti");
+#endif
+#ifdef MT_WANTSALL
         AT(MT_WANTSALL, "FlWantsAll");
+#endif
+#ifdef MT_WAITFORU
         AT(MT_WAITFORU, "FlWaitsForYou");
+#endif
+#ifdef MT_CLOSE
         AT(MT_CLOSE, "FlClose");
+#endif
+#ifdef MT_COVETOUS
         AT(MT_COVETOUS, "FlCovetous");
+#endif
 #ifdef MT_TRAITOR
         AT(MT_TRAITOR, "FlTraitor");
 #endif
@@ -1224,8 +1320,12 @@ static void extract_monsterdata_to_yaml(
 }
         AT(MB_ACID, "FlAcid");
         AT(MB_POIS, "FlPoisonous");
+#ifdef MB_NOEYES
         AT(MB_NOEYES, "FlNoEyes");
+#endif
+#ifdef MB_NOHANDS
         AT(MB_NOHANDS, "FlNoHands");
+#endif
         AT(MB_NOLIMBS, "FlNoLimbs");
         AT(MB_NOHEAD, "FlNoHead");
         AT(MB_HUMANOID, "FlHumanoid");

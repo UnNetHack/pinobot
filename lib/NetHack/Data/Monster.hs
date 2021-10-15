@@ -35,7 +35,7 @@ data AttackType = AtNone | AtClaw | AtBite | AtKick | AtButt |
               AtOffhandedWeapon | AtOffOffhandedWeapon | AtNonContactAttack |
               AtReachTouch | AtReachBite | AtPassiveWideGaze |
               AtHitsIfTwoPreviousHitsConnect | AtLashingVine | AtBlackGoat |
-              AtAutoHit
+              AtAutoHit | AtAdjacent | AtTalk
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON AttackType
@@ -116,7 +116,8 @@ data DamageType = AdPhys | AdMagicMissile |
               AdElementalFire | AdElementalElectric | AdArchonFire |
               AdDessicate | AdArrowOfSlaying | AdAntiBloodAttack |
               AdFirePoisonPhysicalBlindness | AdPollen | AdGoldify |
-              AdMoonlightRapier | AdMummyRot
+              AdMoonlightRapier | AdMummyRot | AdCharm | AdScald |
+              AdEatGold | AdQuarkFlavour | AdMildHunger | AdShoe
               deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON DamageType
