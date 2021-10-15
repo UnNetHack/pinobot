@@ -99,7 +99,7 @@ runIRCBot = withSocketsDo $ mask $ \restore -> do
     tid <- forkIO $ listener mvar chan
     (tvar, part) <- IRC.initChannelsPart S.empty
     (tids, _) <- IRC.simpleBot
-         (IRC.nullBotConf { IRC.host = "irc.freenode.org"
+         (IRC.nullBotConf { IRC.host = "irc.libera.chat"
                           , IRC.nick = utf8 "Pinobot"
                           , IRC.commandPrefix = "@"
                           , IRC.user =
