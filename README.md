@@ -25,13 +25,13 @@ How to run
 
 Pinobot is made up of two components:
 
-  * `pinobot-frontend` : This part connect to Freenode.
+  * `pinobot-frontend` : This part connect to Libera.
   * `pinobot-monsterdb` : This part connects to `pinobot-frontend`.
 
 This design allows you to independently upgrade `pinobot-monsterdb`, without
 needing to disconnect Pinobot from IRC.
 
-The bot is hard-coded to connect irc.freenode.org with the nickname `Pinobot`.
+The bot is hard-coded to connect irc.libera.chat with the nickname `Pinobot`.
 Modify the code if you need to change this.
 
 ```shell
