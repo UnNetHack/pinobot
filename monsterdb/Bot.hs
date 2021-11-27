@@ -49,6 +49,7 @@ variants =
       , "SlashTHEM"
       , "Fourk"
       , "EvilHack"
+      , "XNetHack"
       ]
  where
   variantify = fmap $ \name -> V.loadVariant $ "variants/" ++ name ++ ".yaml"

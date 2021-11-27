@@ -19,6 +19,7 @@ Bot commands
     NetHack Brass:      @b?monster
     dNetHack:           @d?monster
     EvilHack:           @e?monster
+    XNetHack:           @x?monster
 
 How to run
 ----------
