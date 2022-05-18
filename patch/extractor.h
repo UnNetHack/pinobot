@@ -286,6 +286,12 @@ static void extract_monsterdata_to_yaml(
             AT(AT_SRPR, "AtNonContactAttack")
 #endif
 /* dnethack */
+#ifdef AT_TAIL
+            AT(AT_TAIL, "AtTailSlap")
+#endif
+#ifdef AT_OBIT
+            AT(AT_OBIT, "AtBite")
+#endif
 #ifdef AT_ARRW
             AT(AT_ARRW, "AtArrow")
             AT(AT_WHIP, "AtWhip")
@@ -388,6 +394,54 @@ static void extract_monsterdata_to_yaml(
             AT(AD_RBRE, "AdRandomBreath")
             AT(AD_SAMU, "AdAmuletSteal")
             AT(AD_CURS, "AdCurse")
+#ifdef AD_LASR
+            AT(AD_LASR, "AdLaser")
+#endif
+#ifdef AD_NUKE
+            AT(AD_NUKE, "AdNuke")
+#endif
+#ifdef AD_UNHY
+            AT(AD_UNHY, "AdUnholy")
+#endif
+#ifdef AD_ROCK
+            AT(AD_ROCK, "AdRock")
+#endif
+#ifdef AD_HOLY
+            AT(AD_HOLY, "AdHoly")
+#endif
+#ifdef AD_LOKO
+            AT(AD_LOKO, "AdLokoban")
+#endif
+#ifdef AD_RNBW
+            AT(AD_RNBW, "AdHalluSick")
+#endif
+#ifdef AD_JACK
+            AT(AD_JACK, "AdBigExplosion")
+#endif
+#ifdef AD_YANK
+            AT(AD_YANK, "AdYank")
+#endif
+#ifdef AD_PAIM
+            AT(AD_PAIM, "AdExplodingMMSpellbook")
+#endif
+#ifdef AD_ALIG
+            AT(AD_ALIG, "AdAlignmentBlast")
+#endif
+#ifdef AD_SPIR
+            AT(AD_SPIR, "AdReleaseAlignmentSpirits")
+#endif
+#ifdef AD_COSM
+            AT(AD_COSM, "AdCrystalMemories")
+#endif
+#ifdef AD_CRYS
+            AT(AD_CRYS, "AdDilithiumCrystals")
+#endif
+#ifdef AD_NUDZ
+            AT(AD_NUDZ, "AdMirrorBlast")
+#endif
+#ifdef AD_WHIS
+            AT(AD_WHIS, "AdVoidWhispers")
+#endif
 #ifdef AD_VAMP
             AT(AD_VAMP, "AdVampireDrain")
 #endif
@@ -1016,7 +1070,9 @@ static void extract_monsterdata_to_yaml(
     comma_set = 1;\
     fprintf(f, "%s", b); \
 }
+#ifdef M1_FLY
         AT(M1_FLY, "FlFly");
+#endif
 #ifdef M1_NOTAKE
         AT(M1_NOTAKE, "FlNoTake");
 #endif
@@ -1025,18 +1081,37 @@ static void extract_monsterdata_to_yaml(
         AT(M1_WALLWALK, "FlWallwalk");
         AT(M1_CLING, "FlCling");
         AT(M1_TUNNEL, "FlTunnel");
+#ifdef M1_NEEDPICK
         AT(M1_NEEDPICK, "FlNeedPick");
+#endif
+#ifdef M1_CONCEAL
         AT(M1_CONCEAL, "FlConceal");
+#endif
+#ifdef M1_HIDE
         AT(M1_HIDE, "FlHide");
+#endif
+#ifdef M1_AMPHIBIOUS
         AT(M1_AMPHIBIOUS, "FlAmphibious");
+#endif
+#ifdef M1_BREATHLESS
         AT(M1_BREATHLESS, "FlBreathless");
-        AT(M1_NOTAKE, "FlNoTake");
+#endif
+#ifdef M1_NOEYES
         AT(M1_NOEYES, "FlNoEyes");
+#endif
+#ifdef M1_NOHANDS
         AT(M1_NOHANDS, "FlNoHands");
+#endif
+#ifdef M1_NOLIMBS
         AT(M1_NOLIMBS, "FlNoLimbs");
+#endif
+#ifdef M1_NOHEAD
         AT(M1_NOHEAD, "FlNoHead");
+#endif
         AT(M1_MINDLESS, "FlMindless");
+#ifdef M1_HUMANOID
         AT(M1_HUMANOID, "FlHumanoid");
+#endif
         AT(M1_ANIMAL, "FlAnimal");
 #ifdef M1_TUNNEL
         AT(M1_TUNNEL, "FlTunnel");
@@ -1235,6 +1310,12 @@ static void extract_monsterdata_to_yaml(
     comma_set = 1;\
     fprintf(f, "%s", b); \
 }
+#ifdef MT_HIDE
+        AT(MT_HIDE, "FlHide");
+#endif
+#ifdef MT_CONCEAL
+        AT(MT_CONCEAL, "FlConceal");
+#endif
 #ifdef MT_CARNIVORE
         AT(MT_CARNIVORE, "FlCarnivore");
 #endif
