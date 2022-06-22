@@ -51,6 +51,7 @@ variants =
       , "Fourk"
       , "EvilHack"
       , "XNetHack"
+      , "SpliceHack"
       ]
  where
   variantify = fmap $ \name -> V.loadVariant $ "variants/" ++ name ++ ".yaml"
@@ -299,6 +300,7 @@ lineMonsterInformation mon =
   attackTypeName MD.AtAdjacent        = "adjacent"
   attackTypeName MD.AtTalk            = "talk"
   attackTypeName MD.AtTailSlap        = "tailslap"
+  attackTypeName MD.AtVolley          = "volley"
 
   attackDamageName MD.AdDimness               = "dimness"
   attackDamageName MD.AdMapAmnesia            = "map-amnesia"
@@ -576,6 +578,18 @@ lineMonsterInformation mon =
   attackDamageName MD.AdVoidWhispers            = "void-whispers"
   attackDamageName MD.AdWarMachineGaze          = "war-machine-gaze"
   attackDamageName MD.AdSimurgh                 = "simurgh"
+  attackDamageName MD.AdInjectLarva             = "inject-larva"
+  attackDamageName MD.AdMakeSkeletons           = "make-skeletons"
+  attackDamageName MD.AdPotionEffect            = "potion-effect"
+  attackDamageName MD.AdKidnap                  = "kidnap"
+  attackDamageName MD.AdLaws                    = "law"
+  attackDamageName MD.AdGetLost                 = "get-lost"
+  attackDamageName MD.AdTransmute               = "transmute"
+  attackDamageName MD.AdGrowHeads               = "grow-heads"
+  attackDamageName MD.AdForgetItems             = "1%-forget-items"
+  attackDamageName MD.AdWind                    = "wind"
+  attackDamageName MD.AdQuills                  = "quills"
+  attackDamageName MD.AdVoidDisintegrate        = "void-disintegrate"
 
   confers :: [MD.Resistance] -> TL.Builder
   confers [] = "nothing "

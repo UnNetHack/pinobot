@@ -26,10 +26,10 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 #undef main
 
 //#define HAS_RACEBOOLEAN_BITFLAGS    // Has 'mhflags' in permonst
-//#define HAS_MONST_GLOBALS_INIT
-//#define GENDERED_NAMES   // Has pmnames instead of mname
-#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
-//#define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
+#define HAS_MONST_GLOBALS_INIT
+#define GENDERED_NAMES   // Has pmnames instead of mname
+//#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
+#define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
 
 //#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
 
@@ -336,6 +336,9 @@ static void extract_monsterdata_to_yaml(
 #ifdef AT_SCRE
             AT(AT_SCRE, "AtScre")
 #endif
+#ifdef AT_VOLY
+            AT(AT_VOLY, "AtVolley")
+#endif
 #ifdef AT_ANY
             AT(AT_ANY, "AtAny")
 #endif
@@ -394,6 +397,45 @@ static void extract_monsterdata_to_yaml(
             AT(AD_RBRE, "AdRandomBreath")
             AT(AD_SAMU, "AdAmuletSteal")
             AT(AD_CURS, "AdCurse")
+#ifdef AD_LARV
+            AT(AD_LARV, "AdInjectLarva")
+#endif
+#ifdef AD_SKEL
+            AT(AD_SKEL, "AdMakeSkeletons")
+#endif
+#ifdef AD_POTN
+            AT(AD_POTN, "AdPotionEffect")
+#endif
+#ifdef AD_KDNP
+            AT(AD_KDNP, "AdKidnap")
+#endif
+#ifdef AD_LAWS
+            AT(AD_LAWS, "AdLaws")
+#endif
+#ifdef AD_LOST
+            AT(AD_LOST, "AdGetLost")
+#endif
+#ifdef AD_MTRL
+            AT(AD_MTRL, "AdTransmute")
+#endif
+#ifdef AD_HYDR
+            AT(AD_HYDR, "AdGrowHeads")
+#endif
+#ifdef AD_MEMR
+            AT(AD_MEMR, "AdForgetItems")
+#endif
+#ifdef AD_WIND
+            AT(AD_WIND, "AdWind")
+#endif
+#ifdef AD_QUIL
+            AT(AD_QUIL, "AdQuills")
+#endif
+#ifdef AD_VOID
+            AT(AD_VOID, "AdVoidDisintegrate")
+#endif
+#ifdef AD_DSRM
+            AT(AD_DSRM, "AdDisarm")
+#endif
 #ifdef AD_LASR
             AT(AD_LASR, "AdLaser")
 #endif
@@ -652,9 +694,11 @@ static void extract_monsterdata_to_yaml(
 #ifdef AD_SPHR
             AT(AD_SPHR, "AdCreateSphere")
 #endif
+#ifdef AD_VORP
+            AT(AD_VORP, "AdVorpal")
+#endif
 /* dnethack, bundled together */
 #ifdef AD_UNKNWN
-            AT(AD_VORP, "AdVorpal")
             AT(AD_BIST, "AdBisectBeak")
             AT(AD_MIST, "AdMist")
             AT(AD_SUCK, "AdSuck")
