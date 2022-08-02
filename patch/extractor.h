@@ -26,15 +26,15 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 #undef main
 
 //#define HAS_RACEBOOLEAN_BITFLAGS    // Has 'mhflags' in permonst
-#define HAS_MONST_GLOBALS_INIT
-#define GENDERED_NAMES   // Has pmnames instead of mname
-//#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
-#define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
+//#define HAS_MONST_GLOBALS_INIT
+//#define GENDERED_NAMES   // Has pmnames instead of mname
+#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
+//#define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
 
-//#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
+#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
 
-//#define DNETHACK_ACS        // game has three different ACs for monsters, rather than one.
-//#define HAS_DNETHACK_ID_PERMONST
+#define DNETHACK_ACS        // game has three different ACs for monsters, rather than one.
+#define HAS_DNETHACK_ID_PERMONST
 
 #ifdef GENDERED_NAMES
 #define is_valid_monster(str) ((str).pmnames[0] || (str).pmnames[1] || (str).pmnames[2])
@@ -696,6 +696,9 @@ static void extract_monsterdata_to_yaml(
 #endif
 #ifdef AD_VORP
             AT(AD_VORP, "AdVorpal")
+#endif
+#ifdef AD_PERH
+            AT(AD_PERH, "AdPerHitDie")
 #endif
 /* dnethack, bundled together */
 #ifdef AD_UNKNWN
