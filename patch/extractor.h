@@ -25,6 +25,12 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 
 #undef main
 
+// UnNetHack (maybe other variants) have a function called "hates_silver"
+// which determines if a monster is vulnerable to silver. Uncomment this if
+// the function exists if you want pinobot to report about silver
+// vulnerability.
+// #ifdef HAS_HATES_SILVER
+
 //#define HAS_RACEBOOLEAN_BITFLAGS    // Has 'mhflags' in permonst
 //#define HAS_MONST_GLOBALS_INIT
 //#define GENDERED_NAMES   // Has pmnames instead of mname
