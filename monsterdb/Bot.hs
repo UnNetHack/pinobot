@@ -171,6 +171,7 @@ relevantFlag MD.FlMetallivore = Just "metallivore"
 relevantFlag MD.FlPoisonous = Just "poisonous"
 relevantFlag MD.FlLithivore = Just "lithivore"
 relevantFlag MD.FlPassesBars = Just "passes-bars"
+relevantFlag MD.FlHatesSilver = Just "silverhating"
 relevantFlag _ = Nothing
 
 showB :: Show a => a -> TL.Builder
@@ -308,6 +309,7 @@ lineMonsterInformation mon =
     attackTypeName MD.AtTalk = "talk"
     attackTypeName MD.AtTailSlap = "tailslap"
     attackTypeName MD.AtVolley = "volley"
+    attackTypeName MD.AtWolfHeadBite = "wolfhead-bite"
 
     attackDamageName MD.AdDimness = "dimness"
     attackDamageName MD.AdMapAmnesia = "map-amnesia"
@@ -598,6 +600,8 @@ lineMonsterInformation mon =
     attackDamageName MD.AdQuills = "quills"
     attackDamageName MD.AdVoidDisintegrate = "void-disintegrate"
     attackDamageName MD.AdPerHitDie = "per-hit-die"
+    attackDamageName MD.AdSeverePoison = "severe-poison"
+    attackDamageName MD.AdHolyUnholyEnergy = "holy-unholy-energy"
 
     confers :: [MD.Resistance] -> TL.Builder
     confers [] = "nothing "

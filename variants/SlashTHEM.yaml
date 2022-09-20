@@ -1207,7 +1207,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlNoHands, FlNoLimbs, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlHostile, FlInfravisible]
+   flags: [FlNoHands, FlNoLimbs, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlHostile, FlInfravisible, FlHatesSilver]
    color: Brown
 
  - name: "little dog"
@@ -1473,7 +1473,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlNoHands, FlNoLimbs, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlInfravisible]
+   flags: [FlNoHands, FlNoLimbs, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlInfravisible, FlHatesSilver]
    color: Brown
 
  - name: "warg"
@@ -1859,7 +1859,7 @@ monsters:
    size: small
    resistances:
    conferred:
-   flags: [FlFly, FlNoTake, FlAmphibious, FlNoTake, FlNoHands, FlNoLimbs, FlNoHead, FlNeuter, FlHostile, FlInfravisible]
+   flags: [FlFly, FlNoTake, FlAmphibious, FlNoHands, FlNoLimbs, FlNoHead, FlNeuter, FlHostile, FlInfravisible]
    color: Blue
 
  - name: "burning eye"
@@ -1883,7 +1883,7 @@ monsters:
    size: small
    resistances:
    conferred:
-   flags: [FlFly, FlNoTake, FlAmphibious, FlNoTake, FlNoHands, FlNoLimbs, FlNoHead, FlNeuter, FlHostile, FlInfravisible]
+   flags: [FlFly, FlNoTake, FlAmphibious, FlNoHands, FlNoLimbs, FlNoHead, FlNeuter, FlHostile, FlInfravisible]
    color: Red
 
  - name: "glowing eye"
@@ -1934,7 +1934,7 @@ monsters:
     - ReSleep
    conferred:
     - ReCold
-   flags: [FlFly, FlNoTake, FlBreathless, FlNoTake, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlInfravisible]
+   flags: [FlFly, FlNoTake, FlBreathless, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlInfravisible]
    color: White
 
  - name: "flaming sphere"
@@ -2235,7 +2235,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlNoHands, FlNoLimbs, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlHostile, FlInfravisible]
+   flags: [FlNoHands, FlNoLimbs, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlHostile, FlInfravisible, FlHatesSilver]
    color: Black
 
  - name: "large cat"
@@ -2383,7 +2383,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlNoHands, FlNoLimbs, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlHostile, FlInfravisible]
+   flags: [FlNoHands, FlNoLimbs, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlHostile, FlInfravisible, FlHatesSilver]
    color: Yellow
 
  - name: "algolian suntiger"
@@ -3142,7 +3142,7 @@ monsters:
     - ReSleep
     - RePoison
    conferred:
-   flags: [FlPoisonous, FlHostile, FlStalk, FlInfravisible, FlInfravision]
+   flags: [FlPoisonous, FlHostile, FlStalk, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "homunculus"
@@ -3171,7 +3171,7 @@ monsters:
    conferred:
     - ReSleep
     - RePoison
-   flags: [FlFly, FlPoisonous, FlStalk, FlInfravisible, FlInfravision, FlPassesBars]
+   flags: [FlFly, FlPoisonous, FlStalk, FlInfravisible, FlInfravision, FlHatesSilver, FlPassesBars]
    color: Green
 
  - name: "dretch"
@@ -3196,7 +3196,7 @@ monsters:
    size: tiny
    resistances:
    conferred:
-   flags: [FlRegen, FlWander, FlStalk, FlTraitor, FlInfravisible, FlInfravision, FlPassesBars]
+   flags: [FlRegen, FlWander, FlStalk, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver, FlPassesBars]
    color: Yellow
 
  - name: "imp"
@@ -3221,7 +3221,7 @@ monsters:
    size: tiny
    resistances:
    conferred:
-   flags: [FlRegen, FlWander, FlStalk, FlInfravisible, FlInfravision, FlPassesBars]
+   flags: [FlRegen, FlWander, FlStalk, FlInfravisible, FlInfravision, FlHatesSilver, FlPassesBars]
    color: Red
 
  - name: "lemure"
@@ -3248,7 +3248,7 @@ monsters:
     - RePoison
    conferred:
     - ReSleep
-   flags: [FlRegen, FlPoisonous, FlNeuter, FlHostile, FlWander, FlStalk, FlInfravisible, FlInfravision]
+   flags: [FlRegen, FlPoisonous, FlNeuter, FlHostile, FlWander, FlStalk, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Brown
 
  - name: "quasit"
@@ -3275,7 +3275,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlRegen, FlStalk, FlInfravisible, FlInfravision]
+   flags: [FlRegen, FlStalk, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Blue
 
  - name: "rutterkin"
@@ -3300,7 +3300,7 @@ monsters:
    size: tiny
    resistances:
    conferred:
-   flags: [FlRegen, FlWander, FlStalk, FlTraitor, FlInfravisible, FlInfravision, FlPassesBars]
+   flags: [FlRegen, FlWander, FlStalk, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver, FlPassesBars]
    color: Orange
 
  - name: "tengu"
@@ -3352,7 +3352,7 @@ monsters:
    size: tiny
    resistances:
    conferred:
-   flags: [FlRegen, FlWander, FlStalk, FlTraitor, FlInfravisible, FlInfravision, FlPassesBars]
+   flags: [FlRegen, FlWander, FlStalk, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver, FlPassesBars]
    color: Green
 
  - name: "blood imp"
@@ -3377,7 +3377,7 @@ monsters:
    size: tiny
    resistances:
    conferred:
-   flags: [FlRegen, FlWander, FlStalk, FlTraitor, FlInfravisible, FlInfravision, FlPassesBars]
+   flags: [FlRegen, FlWander, FlStalk, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver, FlPassesBars]
    color: Black
 
  - name: "uranium imp"
@@ -3402,7 +3402,7 @@ monsters:
    size: tiny
    resistances:
    conferred:
-   flags: [FlRegen, FlHostile, FlWander, FlStalk, FlMagicCollect, FlInfravisible, FlInfravision, FlPassesBars]
+   flags: [FlRegen, FlHostile, FlWander, FlStalk, FlMagicCollect, FlInfravisible, FlInfravision, FlHatesSilver, FlPassesBars]
    color: BrightGreen
 
  - name: "blue jelly"
@@ -3430,7 +3430,7 @@ monsters:
    conferred:
     - ReCold
     - RePoison
-   flags: [FlNoTake, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlPassesBars, FlVegan]
+   flags: [FlNoTake, FlAmorphous, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlPassesBars, FlVegan]
    color: Blue
 
  - name: "red jelly"
@@ -3458,7 +3458,7 @@ monsters:
    conferred:
     - ReFire
     - RePoison
-   flags: [FlNoTake, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlPassesBars, FlVegan]
+   flags: [FlNoTake, FlAmorphous, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlPassesBars, FlVegan]
    color: Red
 
  - name: "spotted jelly"
@@ -3484,7 +3484,7 @@ monsters:
     - ReAcid
     - RePetrification
    conferred:
-   flags: [FlNoTake, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlAcid, FlNeuter, FlHostile, FlPassesBars, FlVegan]
+   flags: [FlNoTake, FlAmorphous, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlAcid, FlNeuter, FlHostile, FlPassesBars, FlVegan]
    color: Green
 
  - name: "clear jelly"
@@ -3538,7 +3538,7 @@ monsters:
     - ReAcid
     - RePetrification
    conferred:
-   flags: [FlNoTake, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlAcid, FlNeuter, FlHostile, FlPassesBars, FlVegan]
+   flags: [FlNoTake, FlAmorphous, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlAcid, FlNeuter, FlHostile, FlPassesBars, FlVegan]
    color: Brown
 
  - name: "yellow jelly"
@@ -4724,7 +4724,7 @@ monsters:
    size: small
    resistances:
    conferred:
-   flags: [FlNoTake, FlCling, FlHide, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile]
+   flags: [FlNoTake, FlCling, FlHide, FlNoEyes, FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile]
    color: Gray
 
  - name: "iron piercer"
@@ -4749,7 +4749,7 @@ monsters:
    size: medium
    resistances:
    conferred:
-   flags: [FlNoTake, FlCling, FlHide, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile]
+   flags: [FlNoTake, FlCling, FlHide, FlNoEyes, FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile]
    color: Cyan
 
  - name: "glass piercer"
@@ -4775,7 +4775,7 @@ monsters:
    resistances:
     - ReAcid
    conferred:
-   flags: [FlNoTake, FlCling, FlHide, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile]
+   flags: [FlNoTake, FlCling, FlHide, FlNoEyes, FlNoHands, FlNoLimbs, FlAnimal, FlCarnivore, FlHostile]
    color: White
 
  - name: "lamb"
@@ -5504,7 +5504,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlNoHands, FlNoLimbs, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlHostile, FlInfravisible, FlPassesBars]
+   flags: [FlNoHands, FlNoLimbs, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlHostile, FlInfravisible, FlHatesSilver, FlPassesBars]
    color: Brown
 
  - name: "rock mole"
@@ -5994,7 +5994,7 @@ monsters:
     - ReDrain
    conferred:
     - RePoison
-   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlHostile]
+   flags: [FlNoHands, FlNoLimbs, FlAnimal, FlOviparous, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlHostile, FlHatesSilver]
    color: Black
 
  - name: "lurker above"
@@ -6469,7 +6469,7 @@ monsters:
     - RePoison
    conferred:
     - ReSleep
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlRegen, FlPoisonous, FlNeuter, FlHostile, FlWander, FlStalk, FlPassesBars]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlRegen, FlPoisonous, FlNeuter, FlHostile, FlWander, FlStalk, FlPassesBars]
    color: White
 
  - name: "maggot"
@@ -6494,7 +6494,7 @@ monsters:
    size: small
    resistances:
    conferred:
-   flags: [FlNoTake, FlConceal, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlConceal, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlCarnivore, FlHostile, FlPassesBars]
    color: White
 
  - name: "dung worm"
@@ -6519,7 +6519,7 @@ monsters:
    size: small
    resistances:
    conferred:
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlCarnivore, FlHostile, FlPassesBars]
    color: Black
 
  - name: "acid worm"
@@ -6546,7 +6546,7 @@ monsters:
     - ReAcid
     - RePetrification
    conferred:
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlAcid, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlAcid, FlCarnivore, FlHostile, FlPassesBars]
    color: Green
 
  - name: "bloodworm"
@@ -6571,7 +6571,7 @@ monsters:
    resistances:
     - ReAcid
    conferred:
-   flags: [FlNoTake, FlAmphibious, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlCarnivore, FlHostile, FlPassesBars]
    color: Brown
 
  - name: "tunnel worm"
@@ -6596,7 +6596,7 @@ monsters:
    resistances:
     - ReAcid
    conferred:
-   flags: [FlNoTake, FlTunnel, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlTunnel, FlSlithy, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlTunnel, FlNoHands, FlNoLimbs, FlAnimal, FlTunnel, FlSlithy, FlCarnivore, FlHostile, FlPassesBars]
    color: Red
 
  - name: "baby long worm"
@@ -6621,7 +6621,7 @@ monsters:
    size: large
    resistances:
    conferred:
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlCarnivore, FlHostile]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlCarnivore, FlHostile]
    color: Brown
 
  - name: "baby purple worm"
@@ -6670,7 +6670,7 @@ monsters:
    size: gigantic
    resistances:
    conferred:
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlCarnivore, FlHostile, FlNasty, FlStrong]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlCarnivore, FlHostile, FlNasty, FlStrong]
    color: Brown
 
  - name: "purple worm"
@@ -7175,7 +7175,7 @@ monsters:
     - ReAcid
     - RePetrification
    conferred:
-   flags: [FlFly, FlNoTake, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlNeuter, FlHostile, FlInfravisible, FlPassesBars, FlVegan]
+   flags: [FlFly, FlNoTake, FlAmorphous, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlNeuter, FlHostile, FlInfravisible, FlPassesBars, FlVegan]
    color: Yellow
 
  - name: "black light"
@@ -7208,7 +7208,7 @@ monsters:
     - ReAcid
     - RePetrification
    conferred:
-   flags: [FlFly, FlNoTake, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlSeeInvis, FlInvisible, FlNeuter, FlHostile, FlPassesBars, FlVegan]
+   flags: [FlFly, FlNoTake, FlAmorphous, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlSeeInvis, FlInvisible, FlNeuter, FlHostile, FlPassesBars, FlVegan]
    color: Black
 
  - name: "will o' wisp"
@@ -7241,7 +7241,7 @@ monsters:
     - ReAcid
     - RePetrification
    conferred:
-   flags: [FlFly, FlNoTake, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlOviparous, FlNoPoly, FlNeuter, FlPeaceful, FlInfravisible, FlPassesBars, FlVegan]
+   flags: [FlFly, FlNoTake, FlAmorphous, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlOviparous, FlNoPoly, FlNeuter, FlPeaceful, FlInfravisible, FlPassesBars, FlVegan]
    color: White
 
  - name: "echidna"
@@ -7935,7 +7935,7 @@ monsters:
     - ReSleep
     - RePoison
    conferred:
-   flags: [FlFly, FlNoHands, FlNoLimbs, FlAnimal, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlHostile, FlInfravisible]
+   flags: [FlFly, FlNoHands, FlNoLimbs, FlAnimal, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlHostile, FlInfravisible, FlHatesSilver]
    color: Black
 
  - name: "hellbat"
@@ -9125,7 +9125,7 @@ monsters:
     - RePoison
     - RePetrification
    conferred:
-   flags: [FlFly, FlNoTake, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlNeuter, FlStrong, FlInfravisible, FlVegan]
+   flags: [FlFly, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlNeuter, FlStrong, FlInfravisible, FlVegan]
    color: Yellow
 
  - name: "earth elemental"
@@ -9206,7 +9206,7 @@ monsters:
     - RePoison
     - RePetrification
    conferred:
-   flags: [FlNoTake, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlNeuter, FlStrong, FlInfravisible, FlVegan]
+   flags: [FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlNeuter, FlStrong, FlInfravisible, FlVegan]
    color: BrightCyan
 
  - name: "greater air elemental"
@@ -9288,7 +9288,7 @@ monsters:
     - RePoison
     - RePetrification
    conferred:
-   flags: [FlFly, FlNoTake, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlNeuter, FlStrong, FlInfravisible, FlVegan]
+   flags: [FlFly, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlNeuter, FlStrong, FlInfravisible, FlVegan]
    color: Red
 
  - name: "greater water elemental"
@@ -9339,7 +9339,7 @@ monsters:
    size: small
    resistances:
    conferred:
-   flags: [FlNoTake, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlVegan]
+   flags: [FlNoTake, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlVegan]
    color: BrightGreen
 
  - name: "brown mold"
@@ -9367,7 +9367,7 @@ monsters:
    conferred:
     - ReCold
     - RePoison
-   flags: [FlNoTake, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlVegan]
+   flags: [FlNoTake, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlVegan]
    color: Brown
 
  - name: "yellow mold"
@@ -9393,7 +9393,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlPoisonous, FlNeuter, FlHostile, FlVegan]
+   flags: [FlNoTake, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlPoisonous, FlNeuter, FlHostile, FlVegan]
    color: Yellow
 
  - name: "green mold"
@@ -9419,7 +9419,7 @@ monsters:
     - ReAcid
     - RePetrification
    conferred:
-   flags: [FlNoTake, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlAcid, FlNeuter, FlHostile, FlVegan]
+   flags: [FlNoTake, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlAcid, FlNeuter, FlHostile, FlVegan]
    color: Green
 
  - name: "red mold"
@@ -9447,7 +9447,7 @@ monsters:
    conferred:
     - ReFire
     - RePoison
-   flags: [FlNoTake, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlInfravisible, FlVegan]
+   flags: [FlNoTake, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlInfravisible, FlVegan]
    color: Red
 
  - name: "shrieker"
@@ -9499,7 +9499,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlVegan]
+   flags: [FlNoTake, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlNeuter, FlHostile, FlVegan]
    color: Magenta
 
  - name: "gray fungus"
@@ -9525,7 +9525,7 @@ monsters:
    resistances:
     - RePoison
    conferred:
-   flags: [FlNoTake, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlPoisonous, FlNeuter, FlHostile, FlVegan]
+   flags: [FlNoTake, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlPoisonous, FlNeuter, FlHostile, FlVegan]
    color: Gray
 
  - name: "disgusting mold"
@@ -9551,7 +9551,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlCarnivore, FlHerbivore, FlNeuter, FlHostile, FlVegan]
+   flags: [FlNoTake, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlCarnivore, FlHerbivore, FlNeuter, FlHostile, FlVegan]
    color: Cyan
 
  - name: "black mold"
@@ -9577,7 +9577,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlCarnivore, FlHerbivore, FlNeuter, FlHostile, FlVegan]
+   flags: [FlNoTake, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlCarnivore, FlHerbivore, FlNeuter, FlHostile, FlVegan]
    color: Black
 
  - name: "creeping mold"
@@ -9603,7 +9603,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlCarnivore, FlHerbivore, FlNeuter, FlHostile, FlVegan]
+   flags: [FlNoTake, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlCarnivore, FlHerbivore, FlNeuter, FlHostile, FlVegan]
    color: Gray
 
  - name: "gnome"
@@ -10329,7 +10329,7 @@ monsters:
     - ReAcid
     - RePetrification
    conferred:
-   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlThickHide, FlRegen, FlHerbivore, FlNeuter, FlClose, FlInfravisible]
+   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlThickHide, FlRegen, FlHerbivore, FlNeuter, FlClose, FlInfravisible]
    color: White
 
  - name: "jubjub bird"
@@ -10997,7 +10997,7 @@ monsters:
    conferred:
     - ReFire
     - RePoison
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlCarnivore, FlHerbivore, FlStrong, FlInfravisible]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlCarnivore, FlHerbivore, FlStrong, FlInfravisible]
    color: Red
 
  - name: "blue naga hatchling"
@@ -11026,7 +11026,7 @@ monsters:
    conferred:
     - ReElectricity
     - RePoison
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlCarnivore, FlHerbivore, FlStrong, FlInfravisible]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlCarnivore, FlHerbivore, FlStrong, FlInfravisible]
    color: Blue
 
  - name: "black naga hatchling"
@@ -11055,7 +11055,7 @@ monsters:
     - RePetrification
    conferred:
     - RePoison
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlAcid, FlCarnivore, FlStrong]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlAcid, FlCarnivore, FlStrong]
    color: Black
 
  - name: "golden naga hatchling"
@@ -11082,7 +11082,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlCarnivore, FlHerbivore, FlStrong]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlCarnivore, FlHerbivore, FlStrong]
    color: Yellow
 
  - name: "guardian naga hatchling"
@@ -11109,7 +11109,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlCarnivore, FlHerbivore, FlStrong]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlCarnivore, FlHerbivore, FlStrong]
    color: Green
 
  - name: "white naga hatchling"
@@ -11138,7 +11138,7 @@ monsters:
    conferred:
     - ReCold
     - RePoison
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlAcid, FlCarnivore, FlStrong]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlAcid, FlCarnivore, FlStrong]
    color: White
 
  - name: "red naga"
@@ -11166,7 +11166,7 @@ monsters:
    conferred:
     - ReFire
     - RePoison
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlCarnivore, FlHerbivore, FlStrong, FlInfravisible]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlCarnivore, FlHerbivore, FlStrong, FlInfravisible]
    color: Red
 
  - name: "blue naga"
@@ -11195,7 +11195,7 @@ monsters:
    conferred:
     - ReElectricity
     - RePoison
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlCarnivore, FlHerbivore, FlStrong, FlInfravisible]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlCarnivore, FlHerbivore, FlStrong, FlInfravisible]
    color: Blue
 
  - name: "black naga"
@@ -11223,7 +11223,7 @@ monsters:
     - RePetrification
    conferred:
     - RePoison
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlAcid, FlCarnivore, FlStrong]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlAcid, FlCarnivore, FlStrong]
    color: Black
 
  - name: "golden naga"
@@ -11249,7 +11249,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlCarnivore, FlHerbivore, FlStrong]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlCarnivore, FlHerbivore, FlStrong]
    color: Yellow
 
  - name: "guardian naga"
@@ -11275,7 +11275,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlPoisonous, FlCarnivore, FlHerbivore, FlStrong]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlPoisonous, FlCarnivore, FlHerbivore, FlStrong]
    color: Green
 
  - name: "white naga"
@@ -11304,7 +11304,7 @@ monsters:
    conferred:
     - ReCold
     - RePoison
-   flags: [FlNoTake, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlAcid, FlCarnivore, FlStrong]
+   flags: [FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlAcid, FlCarnivore, FlStrong]
    color: White
 
  - name: "ogre"
@@ -11872,7 +11872,7 @@ monsters:
     - RePoison
     - ReAcid
    conferred:
-   flags: [FlFly, FlNoTake, FlAmorphous, FlBreathless, FlNoTake, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlTeleport, FlNoPoly, FlNeuter, FlHostile, FlPassesBars]
+   flags: [FlFly, FlNoTake, FlAmorphous, FlBreathless, FlNoEyes, FlNoHands, FlNoLimbs, FlNoHead, FlMindless, FlUnSolid, FlTeleport, FlNoPoly, FlNeuter, FlHostile, FlPassesBars]
    color: BrightBlue
 
  - name: "rust monster"
@@ -11945,7 +11945,7 @@ monsters:
     - ReDisintegrate
     - RePetrification
    conferred:
-   flags: [FlNoTake, FlTunnel, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlTunnel, FlRegen, FlNoPoly, FlHostile, FlWander, FlNasty, FlInfravisible]
+   flags: [FlNoTake, FlTunnel, FlNoHands, FlNoLimbs, FlAnimal, FlTunnel, FlRegen, FlNoPoly, FlHostile, FlWander, FlNasty, FlInfravisible]
    color: BrightGreen
 
  - name: "garter snake"
@@ -11970,7 +11970,7 @@ monsters:
    size: tiny
    resistances:
    conferred:
-   flags: [FlNoTake, FlSwim, FlConceal, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlCarnivore, FlPassesBars]
+   flags: [FlNoTake, FlSwim, FlConceal, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlCarnivore, FlPassesBars]
    color: Green
 
  - name: "snake"
@@ -11996,7 +11996,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlSwim, FlConceal, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlSwim, FlConceal, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlPassesBars]
    color: Brown
 
  - name: "water moccasin"
@@ -12021,7 +12021,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlSwim, FlConceal, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlSwim, FlConceal, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlPassesBars]
    color: Red
 
  - name: "asp"
@@ -12047,7 +12047,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlSwim, FlConceal, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlSwim, FlConceal, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlPassesBars]
    color: Magenta
 
  - name: "pit viper"
@@ -12073,7 +12073,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlSwim, FlConceal, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlInfravision, FlPassesBars]
+   flags: [FlNoTake, FlSwim, FlConceal, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlInfravision, FlPassesBars]
    color: Blue
 
  - name: "python"
@@ -12099,7 +12099,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlSwim, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlCarnivore, FlHostile, FlStrong, FlInfravision]
+   flags: [FlNoTake, FlSwim, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlCarnivore, FlHostile, FlStrong, FlInfravision]
    color: Magenta
 
  - name: "cobra"
@@ -12125,7 +12125,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlSwim, FlConceal, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlSwim, FlConceal, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlPassesBars]
    color: Blue
 
  - name: "king cobra"
@@ -12151,7 +12151,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlSwim, FlConceal, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlSwim, FlConceal, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlHostile, FlPassesBars]
    color: Gray
 
  - name: "weresnake"
@@ -12176,7 +12176,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlSwim, FlNoHands, FlNoLimbs, FlSlithy, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlLord, FlHostile, FlPassesBars]
+   flags: [FlSwim, FlNoHands, FlNoLimbs, FlSlithy, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlWere, FlLord, FlHostile, FlHatesSilver, FlPassesBars]
    color: Brown
 
  - name: "asphynx"
@@ -12203,7 +12203,7 @@ monsters:
     - RePetrification
    conferred:
     - RePoison
-   flags: [FlNoTake, FlSwim, FlConceal, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlTouchPetrifies, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlSwim, FlConceal, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlPoisonous, FlCarnivore, FlTouchPetrifies, FlHostile, FlPassesBars]
    color: Black
 
  - name: "troll"
@@ -12523,7 +12523,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlUndead, FlHostile, FlStalk, FlNasty, FlStrong, FlTraitor, FlInfravisible]
+   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlUndead, FlHostile, FlStalk, FlNasty, FlStrong, FlTraitor, FlInfravisible, FlHatesSilver]
    color: Red
 
  - name: "vampire lord"
@@ -12551,7 +12551,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlUndead, FlLord, FlMale, FlHostile, FlStalk, FlNasty, FlStrong, FlTraitor, FlInfravisible]
+   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlUndead, FlLord, FlMale, FlHostile, FlStalk, FlNasty, FlStrong, FlTraitor, FlInfravisible, FlHatesSilver]
    color: Blue
 
  - name: "fire vampire"
@@ -12580,7 +12580,7 @@ monsters:
     - ReSleep
     - RePoison
    conferred:
-   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlNeuter, FlHostile, FlStalk, FlNasty, FlStrong, FlTraitor, FlInfravisible]
+   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlNeuter, FlHostile, FlStalk, FlNasty, FlStrong, FlTraitor, FlInfravisible, FlHatesSilver]
    color: Red
 
  - name: "vogon lord"
@@ -12633,7 +12633,7 @@ monsters:
     - ReSleep
     - RePoison
    conferred:
-   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlInvisible, FlNeuter, FlHostile, FlStalk, FlNasty, FlStrong, FlTraitor, FlInfravisible]
+   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlInvisible, FlNeuter, FlHostile, FlStalk, FlNasty, FlStrong, FlTraitor, FlInfravisible, FlHatesSilver]
    color: White
 
  - name: "Prostetnik Vogon Jeltz"
@@ -12685,7 +12685,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlUndead, FlLord, FlMale, FlHostile, FlStalk, FlNasty, FlStrong, FlMagicCollect, FlInfravisible]
+   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlUndead, FlLord, FlMale, FlHostile, FlStalk, FlNasty, FlStrong, FlMagicCollect, FlInfravisible, FlHatesSilver]
    color: Gray
 
  - name: "vampire mage"
@@ -12713,7 +12713,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlUndead, FlLord, FlMale, FlHostile, FlStalk, FlNasty, FlStrong, FlMagicCollect, FlTraitor, FlInfravisible]
+   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlUndead, FlLord, FlMale, FlHostile, FlStalk, FlNasty, FlStrong, FlMagicCollect, FlTraitor, FlInfravisible, FlHatesSilver]
    color: BrightBlue
 
  - name: "Vlad the Impaler"
@@ -12740,7 +12740,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlUndead, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlWantsCand, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible]
+   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlNoPoly, FlUndead, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlWantsCand, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlHatesSilver]
    color: Magenta
 
  - name: "barrow wight"
@@ -14527,7 +14527,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlHostile, FlCollect, FlInfravisible]
+   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlHostile, FlCollect, FlInfravisible, FlHatesSilver]
    color: Brown
 
  - name: "werejackal"
@@ -14554,7 +14554,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlHostile, FlCollect, FlInfravisible]
+   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlHostile, FlCollect, FlInfravisible, FlHatesSilver]
    color: Red
 
  - name: "werewolf"
@@ -14581,7 +14581,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlCollect, FlInfravisible]
+   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlCollect, FlInfravisible, FlHatesSilver]
    color: Orange
 
  - name: "werepanther"
@@ -14608,7 +14608,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlHostile, FlCollect, FlInfravisible]
+   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlHostile, FlCollect, FlInfravisible, FlHatesSilver]
    color: Black
 
  - name: "weretiger"
@@ -14635,7 +14635,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlHostile, FlCollect, FlInfravisible]
+   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlHostile, FlCollect, FlInfravisible, FlHatesSilver]
    color: Yellow
 
  - name: "weresnake"
@@ -14662,7 +14662,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlHostile, FlCollect]
+   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlHostile, FlCollect, FlHatesSilver]
    color: Brown
 
  - name: "werespider"
@@ -14689,7 +14689,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlHostile, FlCollect]
+   flags: [FlHumanoid, FlRegen, FlPoisonous, FlCarnivore, FlHerbivore, FlNoPoly, FlWere, FlHuman, FlHostile, FlCollect, FlHatesSilver]
    color: Black
 
  - name: "gibberling"
@@ -15981,7 +15981,7 @@ monsters:
     - RePetrification
     - ReDrain
    conferred:
-   flags: [FlFly, FlWallwalk, FlBreathless, FlHumanoid, FlUnSolid, FlSeeInvis, FlNoPoly, FlUndead, FlHostile, FlWander, FlStalk, FlNasty, FlPhasing, FlInfravision, FlPassesBars, FlVegan]
+   flags: [FlFly, FlWallwalk, FlBreathless, FlHumanoid, FlUnSolid, FlSeeInvis, FlNoPoly, FlUndead, FlHostile, FlWander, FlStalk, FlNasty, FlPhasing, FlInfravision, FlHatesSilver, FlPassesBars, FlVegan]
    color: Black
 
  - name: "poltergeist"
@@ -16038,7 +16038,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlSwim, FlHumanoid, FlPoisonous, FlNoPoly, FlDemon, FlHostile, FlStalk, FlNasty, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlSwim, FlHumanoid, FlPoisonous, FlNoPoly, FlDemon, FlHostile, FlStalk, FlNasty, FlCollect, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Blue
 
  - name: "horned devil"
@@ -16065,7 +16065,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlThickHide, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlThickHide, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Brown
 
  - name: "spined devil"
@@ -16092,7 +16092,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlThickHide, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor]
+   flags: [FlFly, FlThickHide, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlHatesSilver]
    color: Green
 
  - name: "bearded devil"
@@ -16119,7 +16119,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlThickHide, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor]
+   flags: [FlThickHide, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlHatesSilver]
    color: Black
 
  - name: "succubus"
@@ -16147,7 +16147,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlHumanoid, FlPoisonous, FlDemon, FlFemale, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlPoisonous, FlDemon, FlFemale, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Gray
 
  - name: "incubus"
@@ -16175,7 +16175,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlHumanoid, FlPoisonous, FlDemon, FlMale, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlPoisonous, FlDemon, FlMale, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Gray
 
  - name: "news daemon"
@@ -16199,7 +16199,7 @@ monsters:
    resistances:
     - ReDrain
    conferred:
-   flags: [FlFly, FlUnSolid, FlDemon, FlNeuter, FlHostile, FlNasty]
+   flags: [FlFly, FlUnSolid, FlDemon, FlNeuter, FlHostile, FlNasty, FlHatesSilver]
    color: BrightBlue
 
  - name: "printer daemon"
@@ -16223,7 +16223,7 @@ monsters:
    resistances:
     - ReDrain
    conferred:
-   flags: [FlFly, FlUnSolid, FlDemon, FlNeuter, FlHostile, FlNasty]
+   flags: [FlFly, FlUnSolid, FlDemon, FlNeuter, FlHostile, FlNasty, FlHatesSilver]
    color: BrightBlue
 
  - name: "erinys"
@@ -16250,7 +16250,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlHumanoid, FlPoisonous, FlNoPoly, FlDemon, FlFemale, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlHumanoid, FlPoisonous, FlNoPoly, FlDemon, FlFemale, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "barbed devil"
@@ -16277,7 +16277,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlThickHide, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlThickHide, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "marilith"
@@ -16304,7 +16304,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlHumanoid, FlSlithy, FlSeeInvis, FlPoisonous, FlDemon, FlFemale, FlHostile, FlStalk, FlNasty, FlCollect, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlHumanoid, FlSlithy, FlSeeInvis, FlPoisonous, FlDemon, FlFemale, FlHostile, FlStalk, FlNasty, FlCollect, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "bar-lgura"
@@ -16331,7 +16331,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Orange
 
  - name: "chasme"
@@ -16358,7 +16358,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Cyan
 
  - name: "vrock"
@@ -16385,7 +16385,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "babau"
@@ -16412,7 +16412,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Black
 
  - name: "hezrou"
@@ -16439,7 +16439,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlHumanoid, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlHumanoid, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "bone devil"
@@ -16466,7 +16466,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlCollect, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlCollect, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Gray
 
  - name: "damned pirate"
@@ -16494,7 +16494,7 @@ monsters:
     - RePetrification
     - ReDrain
    conferred:
-   flags: [FlBreathless, FlMindless, FlHumanoid, FlDemon, FlHostile, FlWander, FlNasty, FlStrong, FlCollect, FlInfravision]
+   flags: [FlBreathless, FlMindless, FlHumanoid, FlDemon, FlHostile, FlWander, FlNasty, FlStrong, FlCollect, FlInfravision, FlHatesSilver]
    color: White
 
  - name: "ice devil"
@@ -16522,7 +16522,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlSeeInvis, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlSeeInvis, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: White
 
  - name: "nalfeshnee"
@@ -16549,7 +16549,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlHumanoid, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlHumanoid, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "nabassu"
@@ -16576,7 +16576,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlHumanoid, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Black
 
  - name: "lava demon"
@@ -16603,7 +16603,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlHumanoid, FlPoisonous, FlNoPoly, FlDemon, FlHostile, FlStalk, FlNasty, FlCollect, FlInfravisible, FlInfravision]
+   flags: [FlHumanoid, FlPoisonous, FlNoPoly, FlDemon, FlHostile, FlStalk, FlNasty, FlCollect, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "nycademon"
@@ -16630,7 +16630,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlSeeInvis, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlCollect, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlSeeInvis, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlCollect, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "pit fiend"
@@ -16657,7 +16657,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlSeeInvis, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlCollect, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlSeeInvis, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlCollect, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "balrog"
@@ -16684,7 +16684,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlSeeInvis, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlTraitor, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlSeeInvis, FlPoisonous, FlDemon, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlTraitor, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "UNIX Kernel"
@@ -16709,7 +16709,7 @@ monsters:
    resistances:
     - ReDrain
    conferred:
-   flags: [FlFly, FlUnSolid, FlNoPoly, FlDemon, FlLord, FlNeuter, FlHostile]
+   flags: [FlFly, FlUnSolid, FlNoPoly, FlDemon, FlLord, FlNeuter, FlHostile, FlHatesSilver]
    color: BrightBlue
 
  - name: "Juiblex"
@@ -16738,7 +16738,7 @@ monsters:
     - RePetrification
     - ReDrain
    conferred:
-   flags: [FlFly, FlAmorphous, FlAmphibious, FlNoHead, FlSeeInvis, FlAcid, FlPoisonous, FlNoPoly, FlDemon, FlLord, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravision, FlPassesBars]
+   flags: [FlFly, FlAmorphous, FlAmphibious, FlNoHead, FlSeeInvis, FlAcid, FlPoisonous, FlNoPoly, FlDemon, FlLord, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravision, FlHatesSilver, FlPassesBars]
    color: BrightGreen
 
  - name: "Yeenoghu"
@@ -16766,7 +16766,7 @@ monsters:
     - ReMagic
     - ReDrain
    conferred:
-   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlLord, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlCollect, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlLord, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlCollect, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Magenta
 
  - name: "Orcus"
@@ -16793,7 +16793,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlCollect, FlWantsAmulet, FlWantsBook, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlCollect, FlWantsAmulet, FlWantsBook, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Magenta
 
  - name: "Geryon"
@@ -16820,7 +16820,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlSlithy, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlSlithy, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Magenta
 
  - name: "Dispater"
@@ -16847,7 +16847,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlHumanoid, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlCollect, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlCollect, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Magenta
 
  - name: "Baalzebub"
@@ -16874,7 +16874,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Magenta
 
  - name: "Asmodeus"
@@ -16902,7 +16902,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlHumanoid, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlHumanoid, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Magenta
 
  - name: "Demogorgon"
@@ -16929,7 +16929,7 @@ monsters:
     - RePoison
     - ReDrain
    conferred:
-   flags: [FlFly, FlNoHands, FlNoLimbs, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlNoHands, FlNoLimbs, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlWantsAmulet, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Magenta
 
  - name: "Cthulhu"
@@ -16959,7 +16959,7 @@ monsters:
     - RePetrification
     - ReDrain
    conferred:
-   flags: [FlSwim, FlAmphibious, FlBreathless, FlNoHands, FlNoLimbs, FlThickHide, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlNeuter, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlWaitsForYou, FlUntameable, FlInfravision]
+   flags: [FlSwim, FlAmphibious, FlBreathless, FlNoHands, FlNoLimbs, FlThickHide, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlPrince, FlNeuter, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlWaitsForYou, FlUntameable, FlInfravision, FlHatesSilver]
    color: Magenta
 
  - name: "Death"
@@ -17156,7 +17156,7 @@ monsters:
     - RePoison
    conferred:
     - RePoison
-   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoTake, FlNoHands, FlNoLimbs, FlSlithy, FlPoisonous, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlSlithy, FlPoisonous, FlHostile, FlPassesBars]
    color: Blue
 
  - name: "babelfish"
@@ -17206,7 +17206,7 @@ monsters:
    size: tiny
    resistances:
    conferred:
-   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlCarnivore, FlHostile, FlPassesBars]
+   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlCarnivore, FlHostile, FlPassesBars]
    color: Red
 
  - name: "giant clam"
@@ -17231,7 +17231,7 @@ monsters:
    size: large
    resistances:
    conferred:
-   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlHostile]
+   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlHostile]
    color: White
 
  - name: "giant eel"
@@ -17256,7 +17256,7 @@ monsters:
    size: huge
    resistances:
    conferred:
-   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlCarnivore, FlHostile, FlInfravisible]
+   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlCarnivore, FlHostile, FlInfravisible]
    color: Cyan
 
  - name: "shark"
@@ -17281,7 +17281,7 @@ monsters:
    size: large
    resistances:
    conferred:
-   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlThickHide, FlOviparous, FlCarnivore, FlHostile]
+   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlThickHide, FlOviparous, FlCarnivore, FlHostile]
    color: Gray
 
  - name: "giant crab"
@@ -17333,7 +17333,7 @@ monsters:
     - ReElectricity
    conferred:
     - ReElectricity
-   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoTake, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlCarnivore, FlHostile, FlInfravisible]
+   flags: [FlNoTake, FlSwim, FlAmphibious, FlNoHands, FlNoLimbs, FlAnimal, FlSlithy, FlOviparous, FlCarnivore, FlHostile, FlInfravisible]
    color: BrightBlue
 
  - name: "atlantean"
@@ -20499,7 +20499,7 @@ monsters:
     - RePetrification
     - ReDrain
    conferred:
-   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "Thoth Amon"
@@ -20800,7 +20800,7 @@ monsters:
     - ReMagic
     - ReDrain
    conferred:
-   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlAvoider, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlAvoider, FlInfravisible, FlInfravision, FlHatesSilver]
    color: BrightMagenta
 
  - name: "Grandpa Tank Breaker"
@@ -20853,7 +20853,7 @@ monsters:
     - RePetrification
     - ReDrain
    conferred:
-   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlFemale, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlFemale, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Brown
 
  - name: "fearful triceratops"
@@ -21301,7 +21301,7 @@ monsters:
     - RePetrification
     - ReDrain
    conferred:
-   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous]
+   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlHatesSilver]
    color: Black
 
  - name: "Blackbeard's Ghost"
@@ -21409,7 +21409,7 @@ monsters:
     - RePetrification
     - ReDrain
    conferred:
-   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision]
+   flags: [FlFly, FlSeeInvis, FlPoisonous, FlNoPoly, FlDemon, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlInfravisible, FlInfravision, FlHatesSilver]
    color: Red
 
  - name: "Scorpius"
@@ -21626,7 +21626,7 @@ monsters:
     - RePetrification
     - ReDrain
    conferred:
-   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlNoPoly, FlUndead, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous]
+   flags: [FlFly, FlBreathless, FlHumanoid, FlRegen, FlPoisonous, FlNoPoly, FlUndead, FlPrince, FlMale, FlProperName, FlHostile, FlStalk, FlNasty, FlStrong, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlHatesSilver]
    color: Magenta
 
  - name: "Lord Surtur"

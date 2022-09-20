@@ -74,6 +74,7 @@ data AttackType
   | AtTalk
   | AtTailSlap
   | AtVolley
+  | AtWolfHeadBite
   deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON AttackType
@@ -366,6 +367,8 @@ data DamageType
   | AdQuills
   | AdVoidDisintegrate
   | AdPerHitDie
+  | AdSeverePoison
+  | AdHolyUnholyEnergy
   deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON DamageType
