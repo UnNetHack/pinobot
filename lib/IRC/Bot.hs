@@ -11,11 +11,12 @@ import Control.Concurrent.STM
 import Control.Exception
 import Control.Monad
 import qualified Data.ByteString as B
-import qualified Data.ByteString.UTF8 as Utf8
 import Data.Foldable
 import Data.Maybe
 import Data.Serialize
 import qualified Data.Set as S
+import Data.Text (Text)
+import qualified Data.Text as T
 import qualified Data.Text.Encoding as T
 import IRC.Socket
 import IRC.Types
@@ -26,9 +27,10 @@ import qualified Network.IRC.Bot.Part.NickUser as IRC
 import qualified Network.IRC.Bot.Part.Ping as IRC
 import Network.IRC.Commands
 import Pipes
-
-utf8 :: String -> B.ByteString
-utf8 = Utf8.fromString
+import System.Environment
+import System.Exit
+import Toml (TomlCodec, (.=))
+import qualified Toml
 
 communicatorPart ::
   IRC.BotMonad m =>
@@ -58,7 +60,7 @@ communicatorPart mvar tvar tchan = do
   mesg <- IRC.askMessage
   maybe_nname <- IRC.askSenderNickName
   guard (isJust maybe_nname)
-  let Just nname = maybe_nname
+  let nname = fromJust maybe_nname
 
   me <- IRC.whoami
 
@@ -114,8 +116,63 @@ listener mvar chan = do
       next_msg <- atomically $ readTChan bcast
       send sock (encode next_msg)
 
+data Configuration = Configuration
+  { nickname :: Text,
+    username :: Text,
+    realname :: Text,
+    hostname :: Text,
+    host :: Text,
+    port :: Int,
+    commandPrefix :: Text
+  }
+  deriving (Eq, Ord, Show, Read)
+
+configurationCodec :: TomlCodec Configuration
+configurationCodec =
+  Configuration
+    <$> Toml.text "nickname"
+    .= nickname
+    <*> Toml.text "username"
+    .= username
+    <*> Toml.text "realname"
+    .= realname
+    <*> Toml.text "hostname"
+    .= hostname
+    <*> Toml.text "host"
+    .= host
+    <*> Toml.int "port"
+    .= port
+    <*> Toml.text "command_prefix"
+    .= commandPrefix
+
+prettyPrintConfig :: Configuration -> IO ()
+prettyPrintConfig conf = do
+  putStrLn "-- User configuration --"
+  putStrLn $ "Nickname:        " <> T.unpack (nickname conf)
+  putStrLn $ "Username:        " <> T.unpack (username conf)
+  putStrLn $ "Realname:        " <> T.unpack (realname conf)
+  putStrLn $ "Hostname:        " <> T.unpack (hostname conf)
+  putStrLn "-- Connect configuration --"
+  putStrLn $ "Host:            " <> T.unpack (host conf)
+  putStrLn $ "Port:            " <> show (port conf)
+  putStrLn "-- Behavior configuration --"
+  putStrLn $ "Command prefix:  " <> T.unpack (commandPrefix conf)
+
 runIRCBot :: IO ()
 runIRCBot = withSocketsDo $ mask $ \restore -> do
+  args <- getArgs
+  let config_filepath = case args of
+        [] -> "pinobot_config.toml"
+        [path] -> path
+        _ -> error "Only one argument accepted; which is the path to configuration file toml."
+  putStrLn $ "Reading configuration from " <> config_filepath
+  conf_txt <- T.pack <$> readFile config_filepath
+  conf <- case Toml.decode configurationCodec conf_txt of
+    Left errors -> do
+      putStrLn $ "Cannot parse configuration file: " <> show errors
+      exitFailure
+    Right conf -> return (conf :: Configuration)
+  prettyPrintConfig conf
   mvar <- newEmptyMVar
   chan <- newTChanIO
   tid <- forkIO $ listener mvar chan
@@ -123,14 +180,14 @@ runIRCBot = withSocketsDo $ mask $ \restore -> do
   (tids, _) <-
     IRC.simpleBot
       ( IRC.nullBotConf
-          { IRC.host = "irc.freenode.org",
-            IRC.nick = utf8 "Pinobot",
-            IRC.commandPrefix = "@",
+          { IRC.host = T.unpack (host conf),
+            IRC.nick = T.encodeUtf8 (nickname conf),
+            IRC.commandPrefix = T.unpack (commandPrefix conf),
             IRC.user =
               IRC.nullUser
-                { IRC.username = utf8 "pino",
-                  IRC.realname = utf8 "Pinobot",
-                  IRC.hostname = "trankesbel"
+                { IRC.username = T.encodeUtf8 (username conf),
+                  IRC.realname = T.encodeUtf8 (realname conf),
+                  IRC.hostname = T.unpack (hostname conf)
                 }
           }
       )

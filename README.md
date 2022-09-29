@@ -34,8 +34,9 @@ Pinobot is made up of two components:
 This design allows you to independently upgrade `pinobot-monsterdb`, without
 needing to disconnect Pinobot from IRC.
 
-The bot is hard-coded to connect irc.freenode.org with the nickname `Pinobot`.
-Modify the code if you need to change this.
+There is a file called `pinobot_config.toml` in the root of this repository.
+When you run pinobot, it will look for this file to figure out where it should
+connect, what nickname it should use, etc.
 
 ```shell
 # Assuming cabal and ghc are installed.
