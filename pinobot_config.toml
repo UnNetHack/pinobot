@@ -3,14 +3,8 @@
 nickname = "Pinobot"
 username = "pino"
 realname = "Pino"
-hostname = "pinomachine"
 
 # Network configuration; i.e. where should Pinobot connect
 host = "irc.libera.chat"
-port = 6669
-
-# Behavior configuration.
-
-# command_prefix: what's the letter you use to trigger pinobot.
-# E.g. someone saying on channel the line "@v?jackal" <- the @ is the command prefix
-command_prefix = "@"
+port = 6697
+use_tls = true
