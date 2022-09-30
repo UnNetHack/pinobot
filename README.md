@@ -28,7 +28,7 @@ How to run
 
 Pinobot is made up of two components:
 
-  * `pinobot-frontend` : This part connect to Freenode.
+  * `pinobot-frontend` : This part connects to IRC network.
   * `pinobot-monsterdb` : This part connects to `pinobot-frontend`.
 
 This design allows you to independently upgrade `pinobot-monsterdb`, without
