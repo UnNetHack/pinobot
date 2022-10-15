@@ -155,13 +155,13 @@ relevantFlag MD.FlAmphibious = Just "amphibious"
 relevantFlag MD.FlBreathless = Just "breathless"
 relevantFlag MD.FlSeeInvis = Just "seeinvis"
 relevantFlag MD.FlThickHide = Just "thick hide"
-relevantFlag MD.FlRegen = Just "regenerates"
+relevantFlag MD.FlRegen = Just "regen"
 relevantFlag MD.FlUnSolid = Just "unsolid"
-relevantFlag MD.FlInfravisible = Just "infravisible"
+relevantFlag MD.FlInfravisible = Just "infravis"
 relevantFlag MD.FlCovetous = Just "covetous"
 relevantFlag MD.FlMindless = Just "mindless"
 relevantFlag MD.FlNoPoly = Just "nopoly"
-relevantFlag MD.FlTeleport = Just "teleports"
+relevantFlag MD.FlTeleport = Just "tele"
 relevantFlag MD.FlUndead = Just "undead"
 relevantFlag MD.FlDemon = Just "demon"
 relevantFlag MD.FlVegan = Just "vegan"
@@ -171,7 +171,7 @@ relevantFlag MD.FlMetallivore = Just "metallivore"
 relevantFlag MD.FlPoisonous = Just "poisonous"
 relevantFlag MD.FlLithivore = Just "lithivore"
 relevantFlag MD.FlPassesBars = Just "passes-bars"
-relevantFlag MD.FlHatesSilver = Just "silverhating"
+relevantFlag MD.FlHatesSilver = Just "silverhate"
 relevantFlag _ = Nothing
 
 showB :: Show a => a -> TL.Builder
@@ -193,21 +193,21 @@ lineMonsterInformation mon =
         <> showB (MD.moSpeed mon)
         <> " | Res: "
         <> resistances (MD.moResistances mon)
-        <> "| Confers: "
+        <> "| Confer: "
         <> confers (MD.moConferred mon)
         <> "| MR: "
         <> showB (MD.moMR mon)
-        <> " | Generates: "
+        <> " | Gen: "
         <> generates (MD.moGenerationPlaces mon)
         <> "| AC: "
         <> case MD.moAC mon of
           Left ac_int -> showB ac_int
           Right ac_str -> TL.fromText ac_str
-        <> " | Attacks: "
+        <> " | Atk: "
         <> attacks (MD.moAttacks mon)
-        <> " | Alignment: "
+        <> " | Align: "
         <> showB (MD.moAlign mon)
-        <> " | Flags: "
+        <> " | "
         <> flags
   where
     generates :: [MD.Place] -> TL.Builder
