@@ -39,8 +39,8 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 #define HAS_MON_HATES_MATERIAL
 
 //#define HAS_RACEBOOLEAN_BITFLAGS    // Has 'mhflags' in permonst
-#define HAS_MONST_GLOBALS_INIT
-#define GENDERED_NAMES   // Has pmnames instead of mname
+//#define HAS_MONST_GLOBALS_INIT
+//#define GENDERED_NAMES   // Has pmnames instead of mname
 //#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
 #define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
 
@@ -176,6 +176,7 @@ static void extract_monsterdata_to_yaml(
     {
         pm = &mons[i1];
         dummymonst.data = pm;
+        dummymonst.mnum = i1;
 
         for (int gender = 0; gender < num_genders; ++gender) {
             if (get_gender_name(mons[i1], gender) == 0) { continue; };
@@ -1305,14 +1306,14 @@ static void extract_monsterdata_to_yaml(
 #ifdef M3_TRAITOR
         AT(M3_TRAITOR, "FlTraitor");
 #endif
+#ifdef HAS_MON_HATES_MATERIAL
+        if (mon_hates_material(&dummymonst, SILVER)) fprintf(f, ", FlHatesSilver");
+#endif
 #ifdef M3_INFRAVISIBLE
         AT(M3_INFRAVISIBLE, "FlInfravisible");
 #endif
 #ifdef M3_INFRAVISION
         AT(M3_INFRAVISION, "FlInfravision");
-#endif
-#ifdef HAS_MON_HATES_MATERIAL
-        if (mon_hates_material(&dummymonst, SILVER)) fprintf(f, ", FlHatesSilver");
 #endif
 #ifdef HAS_HATES_SILVER
         if (hates_silver(pm)) fprintf(f, ", FlHatesSilver");
@@ -1327,7 +1328,6 @@ static void extract_monsterdata_to_yaml(
 
 #undef AT
 #endif // #ifdef DNETHACK_MONFLAGS
-
 #ifdef DNETHACK_MONFLAGS
         if (!polyok(pm)) {
             if ( comma_set ) fprintf(f, ", ");
