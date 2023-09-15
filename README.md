@@ -22,6 +22,7 @@ Bot commands
     EvilHack:           @e?monster
     XNetHack:           @x?monster
     SpliceHack:         @sp?monster
+    Hack'EM:            @h?monster
 
 How to run
 ----------

@@ -29,7 +29,7 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 // which determines if a monster is vulnerable to silver. Uncomment this if
 // the function exists if you want pinobot to report about silver
 // vulnerability.
-//#define HAS_HATES_SILVER
+// #define HAS_HATES_SILVER
 
 // Has "mon_hates_material" function.
 // As of writing of this, this is found in evilhack, splicehack and
@@ -45,6 +45,8 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 #define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
 
 //#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
+
+#define HAS_MNUM
 
 //#define DNETHACK_ACS        // game has three different ACs for monsters, rather than one.
 //#define HAS_DNETHACK_ID_PERMONST
@@ -176,7 +178,9 @@ static void extract_monsterdata_to_yaml(
     {
         pm = &mons[i1];
         dummymonst.data = pm;
+#ifdef HAS_MNUM
         dummymonst.mnum = i1;
+#endif
 
         for (int gender = 0; gender < num_genders; ++gender) {
             if (get_gender_name(mons[i1], gender) == 0) { continue; };
@@ -723,6 +727,15 @@ static void extract_monsterdata_to_yaml(
 #ifdef AD_HLUH
             AT(AD_HLUH, "AdHolyUnholyEnergy")
 #endif
+#ifdef AD_TSMI
+            AT(AD_TSMI, "AdTentaclesStealMagicItems")
+#endif
+#ifdef AD_BYAK
+            AT(AD_BYAK, "AdByakheeEggs")
+#endif
+#ifdef AD_BSTR
+            AT(AD_BSTR, "AdBlackStarRapier")
+#endif
 /* dnethack, bundled together */
 #ifdef AD_UNKNWN
             AT(AD_BIST, "AdBisectBeak")
@@ -778,6 +791,15 @@ static void extract_monsterdata_to_yaml(
 #endif
 #ifdef AD_CALM
             AT(AD_CALM, "AdCalm")
+#endif
+#ifdef AD_PIER
+            AT(AD_PIER, "AdPiercingScream")
+#endif
+#ifdef AD_SONG
+            AT(AD_SONG, "AdSong")
+#endif
+#ifdef AD_GIBB
+            AT(AD_GIBB, "AdGibber")
 #endif
 #ifdef AD_TCKL
             AT(AD_TCKL, "AdTickle")
@@ -1250,29 +1272,69 @@ static void extract_monsterdata_to_yaml(
 #ifdef M2_DEMON
         AT(M2_DEMON, "FlDemon");
 #endif
+#ifdef M2_MERC
         AT(M2_MERC, "FlMerc");
+#endif
+#ifdef M2_LORD
         AT(M2_LORD, "FlLord");
+#endif
+#ifdef M2_PRINCE
         AT(M2_PRINCE, "FlPrince");
+#endif
+#ifdef M2_MINION
         AT(M2_MINION, "FlMinion");
+#endif
 #ifdef M2_GIANT
         AT(M2_GIANT, "FlGiant");
 #endif
+#ifdef M2_MALE
         AT(M2_MALE, "FlMale");
+#endif
+#ifdef M2_FEMALE
         AT(M2_FEMALE, "FlFemale");
+#endif
+#ifdef M2_NEUTER
         AT(M2_NEUTER, "FlNeuter");
+#endif
+#ifdef M2_PNAME
         AT(M2_PNAME, "FlProperName");
+#endif
+#ifdef M2_HOSTILE
         AT(M2_HOSTILE, "FlHostile");
+#endif
+#ifdef M2_PEACEFUL
         AT(M2_PEACEFUL, "FlPeaceful");
+#endif
+#ifdef M2_DOMESTIC
         AT(M2_DOMESTIC, "FlDomestic");
+#endif
+#ifdef M2_WANDER
         AT(M2_WANDER, "FlWander");
+#endif
+#ifdef M2_STALK
         AT(M2_STALK, "FlStalk");
+#endif
+#ifdef M2_NASTY
         AT(M2_NASTY, "FlNasty");
+#endif
+#ifdef M2_STRONG
         AT(M2_STRONG, "FlStrong");
+#endif
+#ifdef M2_ROCKTHROW
         AT(M2_ROCKTHROW, "FlRockThrow");
+#endif
+#ifdef M2_GREEDY
         AT(M2_GREEDY, "FlGreedy");
+#endif
+#ifdef M2_JEWELS
         AT(M2_JEWELS, "FlJewels");
+#endif
+#ifdef M2_COLLECT
         AT(M2_COLLECT, "FlCollect");
+#endif
+#ifdef M2_MAGIC
         AT(M2_MAGIC, "FlMagicCollect");
+#endif
 #undef AT
         if (passes_walls(pm)) {
             fprintf(f, ", FlPhasing");
@@ -1282,15 +1344,33 @@ static void extract_monsterdata_to_yaml(
     comma_set = 1;\
     fprintf(f, "%s", b); \
 }
+#ifdef M3_WANTSAMUL
         AT(M3_WANTSAMUL, "FlWantsAmulet");
+#endif
+#ifdef M3_WANTSBELL
         AT(M3_WANTSBELL, "FlWantsBell");
+#endif
+#ifdef M3_WANTSBOOK
         AT(M3_WANTSBOOK, "FlWantsBook");
+#endif
+#ifdef M3_WANTSCAND
         AT(M3_WANTSCAND, "FlWantsCand");
+#endif
+#ifdef M3_WANTSARTI
         AT(M3_WANTSARTI, "FlWantsArti");
+#endif
+#ifdef M3_WANTSALL
         AT(M3_WANTSALL, "FlWantsAll");
+#endif
+#ifdef M3_WAITFORU
         AT(M3_WAITFORU, "FlWaitsForYou");
+#endif
+#ifdef M3_CLOSE
         AT(M3_CLOSE, "FlClose");
+#endif
+#ifdef M3_COVETOUS
         AT(M3_COVETOUS, "FlCovetous");
+#endif
 #ifdef M3_LITHIVORE
         AT(M3_LITHIVORE, "FlLithivore");
 #endif
@@ -1316,6 +1396,7 @@ static void extract_monsterdata_to_yaml(
         AT(M3_INFRAVISION, "FlInfravision");
 #endif
 #ifdef HAS_HATES_SILVER
+        printf("!HI\n");
         if (hates_silver(pm)) fprintf(f, ", FlHatesSilver");
 #endif
         if (passes_bars(pm)) {
@@ -1558,6 +1639,9 @@ static void extract_monsterdata_to_yaml(
 #endif
 #ifdef MG_NOTAME
         AT(MG_NOTAME, "FlUntameable");
+#endif
+#ifdef MG_NOPOLY
+        AT(MG_NOPOLY, "FlNoPoly");
 #endif
 #ifdef MG_INFRAVISIBLE
         AT(MG_INFRAVISIBLE, "FlInfravisible");

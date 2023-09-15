@@ -52,7 +52,8 @@ variants =
         "Fourk",
         "EvilHack",
         "XNetHack",
-        "SpliceHack"
+        "SpliceHack",
+        "Hackem"
       ]
   where
     variantify = fmap $ \name -> V.loadVariant $ "variants/" ++ name ++ ".yaml"
@@ -602,6 +603,12 @@ lineMonsterInformation mon =
     attackDamageName MD.AdPerHitDie = "per-hit-die"
     attackDamageName MD.AdSeverePoison = "severe-poison"
     attackDamageName MD.AdHolyUnholyEnergy = "holy-unholy-energy"
+    attackDamageName MD.AdByakheeEggs = "byakhee-eggs"
+    attackDamageName MD.AdTentaclesStealMagicItems = "tentacle-magic-item-steal"
+    attackDamageName MD.AdBlackStarRapier = "black-star-rapier"
+    attackDamageName MD.AdPiercingScream = "piercing-stream"
+    attackDamageName MD.AdSong = "song"
+    attackDamageName MD.AdGibber = "gibber"
 
     confers :: [MD.Resistance] -> TL.Builder
     confers [] = "nothing "

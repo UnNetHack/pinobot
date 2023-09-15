@@ -369,6 +369,12 @@ data DamageType
   | AdPerHitDie
   | AdSeverePoison
   | AdHolyUnholyEnergy
+  | AdByakheeEggs
+  | AdTentaclesStealMagicItems
+  | AdBlackStarRapier
+  | AdPiercingScream
+  | AdSong
+  | AdGibber
   deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON DamageType
