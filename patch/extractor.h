@@ -29,7 +29,7 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 // which determines if a monster is vulnerable to silver. Uncomment this if
 // the function exists if you want pinobot to report about silver
 // vulnerability.
-// #define HAS_HATES_SILVER
+#define HAS_HATES_SILVER
 
 // Has "mon_hates_material" function.
 // As of writing of this, this is found in evilhack, splicehack and
@@ -41,15 +41,15 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 //#define HAS_RACEBOOLEAN_BITFLAGS    // Has 'mhflags' in permonst
 //#define HAS_MONST_GLOBALS_INIT
 //#define GENDERED_NAMES   // Has pmnames instead of mname
-//#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
-#define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
+#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
+//#define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
 
-//#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
+#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
 
-#define HAS_MNUM
+//#define HAS_MNUM
 
-//#define DNETHACK_ACS        // game has three different ACs for monsters, rather than one.
-//#define HAS_DNETHACK_ID_PERMONST
+#define DNETHACK_ACS        // game has three different ACs for monsters, rather than one.
+#define HAS_DNETHACK_ID_PERMONST
 
 #ifdef GENDERED_NAMES
 #define is_valid_monster(str) ((str).pmnames[0] || (str).pmnames[1] || (str).pmnames[2])
@@ -315,7 +315,10 @@ static void extract_monsterdata_to_yaml(
 #endif
 #ifdef AT_ARRW
             AT(AT_ARRW, "AtArrow")
+#endif
+#ifdef AT_WHIP
             AT(AT_WHIP, "AtWhip")
+#endif
             AT(AT_LRCH, "AtReach")
             AT(AT_HODS, "AtMirror")
             AT(AT_LNCK, "AtReachingBite")
@@ -325,15 +328,34 @@ static void extract_monsterdata_to_yaml(
             AT(AT_WISP, "AtWispMist")
             AT(AT_TNKR, "AtTinker")
             AT(AT_5SQR, "AtReachTouch")
+#ifdef AT_5SBT
             AT(AT_5SBT, "AtReachBite")
+#endif
+#ifdef AT_WDGZ
             AT(AT_WDGZ, "AtPassiveWideGaze")
+#endif
+#ifdef AT_REND
             AT(AT_REND, "AtHitsIfTwoPreviousHitsConnect")
+#endif
+#ifdef AT_VINE
             AT(AT_VINE, "AtLashingVine")
+#endif
+#ifdef AT_BKGT
             AT(AT_BKGT, "AtBlackGoat")
+#endif
+#ifdef AT_BKG2
             AT(AT_BKG2, "AtBlackGoat")
+#endif
+#ifdef AT_XSPR
             AT(AT_XSPR, "AtNonContactAttack")
+#endif
+#ifdef AT_MSPR
             AT(AT_MSPR, "AtNonContactAttack")
+#endif
+#ifdef AT_DSPR
             AT(AT_DSPR, "AtNonContactAttack")
+#endif
+#ifdef AT_ESPR
             AT(AT_ESPR, "AtNonContactAttack")
 #endif
 #ifdef AT_SHDW
