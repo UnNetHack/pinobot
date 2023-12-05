@@ -7,6 +7,7 @@ module NetHack.Data.Monster where
 import Control.Applicative
 import Control.Monad
 import Data.Maybe
+import Data.List ( nub )
 import qualified Data.Text as T
 import Data.Yaml
 import GHC.Generics
@@ -613,7 +614,7 @@ instance FromJSON Monster where
     size <- v .: "size"
     resis <- v .: "resistances" <|> pure []
     confers <- v .: "conferred" <|> pure []
-    flags <- v .: "flags"
+    flags <- nub <$> v .: "flags"
     color <- v .: "color"
     return
       Monster
