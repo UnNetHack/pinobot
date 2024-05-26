@@ -47,6 +47,7 @@ variants =
         "Brass",
         "Dnethack",
         "Notdnethack",
+        "Notnotdnethack",
         "SlashemExtended",
         "SlashTHEM",
         "Fourk",

@@ -1,5 +1,5 @@
-variant: "Dnethack"
-prefix: "d"
+variant: "Notnotdnethack"
+prefix: "nn"
 
 monsters:
  - name: "giant ant"
@@ -693,6 +693,31 @@ monsters:
    conferred:
    flags: [FlCarnivore, FlHostile, FlNoHands, FlAnimal, FlInfravisible]
    color: Red
+
+ - name: "wolf cub"
+   symbol: "d"
+   base-level: 2
+   difficulty: 3
+   speed: 12
+   ac: "Nat 0/Dodge 3/Prot 0"
+   mr: 0
+   alignment: 5
+   generates:
+    - gehennom
+    - dungeons
+   leaves-corpse: Yes
+   not-generated-normally: No
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: Yes
+   attacks: [[AtBite, AdPhys, 1, 4]]
+   weight: 500
+   nutrition: 200
+   size: small
+   resistances:
+   conferred:
+   flags: [FlCarnivore, FlHostile, FlNoHands, FlAnimal, FlInfravisible]
+   color: Gray
 
  - name: "little dog"
    symbol: "d"
@@ -1557,6 +1582,36 @@ monsters:
    flags: [FlFly, FlAmphibious, FlNoTake, FlHostile, FlNoLimbs, FlNoHead, FlNeuter, FlInfravisible, FlInfravision]
    color: Blue
 
+ - name: "Death Eye"
+   symbol: "e"
+   base-level: 15
+   difficulty: 20
+   speed: 8
+   ac: "Nat 6/Dodge 0/Prot 0"
+   mr: 50
+   alignment: -10
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtGaze, AdRandomGaze, 4, 6], [AtGaze, AdParalyse, 4, 6], [AtGaze, AdDeadGaze, 4, 6], [AtNone, AdParalyse, 3, 5]]
+   weight: 9000
+   nutrition: 800
+   size: large
+   resistances:
+    - ReCold
+    - ReSleep
+    - ReElectricity
+    - RePoison
+    - RePetrification
+    - ReMagic
+   conferred:
+   flags: [FlNoPoly, FlFly, FlBreathless, FlHostile, FlStalk, FlPoisonous, FlNoLimbs, FlNoHead, FlNeuter, FlUntameable, FlNoPoly, FlInfravisible, FlInfravision, FlSeeInvis]
+   color: Magenta
+
  - name: "ball of radiance"
    symbol: "e"
    base-level: 18
@@ -2351,7 +2406,7 @@ monsters:
     - RePoison
    conferred:
    flags: [FlFly, FlCarnivore, FlHerbivore, FlHostile, FlGreedy, FlJewels, FlCollect, FlTraitor, FlHumanoid, FlNasty, FlInfravisible, FlSeeInvis]
-   color: Magenta
+   color: BrightMagenta
 
  - name: "edderkop"
    symbol: "h"
@@ -2405,7 +2460,31 @@ monsters:
     - RePoison
    conferred:
    flags: [FlFly, FlCarnivore, FlHerbivore, FlHostile, FlGreedy, FlJewels, FlCollect, FlTraitor, FlHumanoid, FlNasty, FlInfravisible, FlSeeInvis]
-   color: Magenta
+   color: BrightMagenta
+
+ - name: "adversary"
+   symbol: "h"
+   base-level: 15
+   difficulty: 20
+   speed: 12
+   ac: "Nat 10/Dodge 0/Prot 0"
+   mr: 90
+   alignment: 0
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 8], [AtOffhandedWeapon, AdPhys, 1, 8], [AtTentacle, AdIntDrain, 1, 4], [AtTentacle, AdIntDrain, 1, 2], [AtTentacle, AdIntDrain, 1, 2]]
+   weight: 3000
+   nutrition: 800
+   size: large
+   resistances:
+    - RePoison
+   conferred:
+   flags: [FlFly, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlHumanoid, FlNasty, FlInfravisible, FlSeeInvis]
+   color: BrightMagenta
 
  - name: "gnoll"
    symbol: "h"
@@ -3210,6 +3289,56 @@ monsters:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlHostile, FlMagicCollect, FlPoisonous, FlHumanoid, FlOviparous, FlLord, FlNoPoly, FlInfravision]
    color: BrightBlue
 
+ - name: "swamp kobold"
+   symbol: "k"
+   base-level: 3
+   difficulty: 4
+   speed: 9
+   ac: "Nat 0/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 3
+   generates:
+    - gehennom
+    - dungeons
+   leaves-corpse: Yes
+   not-generated-normally: No
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: Yes
+   attacks: [[AtWeapon, AdPhys, 1, 8]]
+   weight: 450
+   nutrition: 150
+   size: small
+   resistances:
+    - RePoison
+   conferred:
+   flags: [FlAmphibious, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlPoisonous, FlHumanoid, FlOviparous, FlInfravision]
+   color: Green
+
+ - name: "kobold brute"
+   symbol: "k"
+   base-level: 3
+   difficulty: 5
+   speed: 6
+   ac: "Nat 0/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 3
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: Yes
+   attacks: [[AtWeapon, AdPhys, 1, 6], [AtOffhandedWeapon, AdPhys, 1, 6]]
+   weight: 850
+   nutrition: 150
+   size: medium
+   resistances:
+    - RePoison
+   conferred:
+   flags: [FlAmphibious, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlPoisonous, FlHumanoid, FlOviparous, FlInfravision]
+   color: Gray
+
  - name: "winged kobold"
    symbol: "k"
    base-level: 5
@@ -3235,6 +3364,83 @@ monsters:
    conferred:
    flags: [FlFly, FlCarnivore, FlHerbivore, FlHostile, FlGreedy, FlJewels, FlMagicCollect, FlPoisonous, FlHumanoid, FlOviparous, FlLord, FlInfravision]
    color: Blue
+
+ - name: "rock kobold"
+   symbol: "k"
+   base-level: 5
+   difficulty: 6
+   speed: 9
+   ac: "Nat 6/Dodge 0/Prot 0"
+   mr: 10
+   alignment: 3
+   generates:
+    - gehennom
+    - dungeons
+   leaves-corpse: Yes
+   not-generated-normally: No
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: Yes
+   attacks: [[AtWeapon, AdPhys, 2, 6]]
+   weight: 500
+   nutrition: 200
+   size: small
+   resistances:
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlPoisonous, FlHumanoid, FlThickHide, FlOviparous, FlLord, FlInfravision]
+   color: Black
+
+ - name: "kobold high shaman"
+   symbol: "k"
+   base-level: 10
+   difficulty: 13
+   speed: 9
+   ac: "Nat 0/Dodge 0/Prot 4"
+   mr: 40
+   alignment: 4
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 2, 10], [AtKick, AdPhys, 1, 4], [AtCast, AdClerical, 0, 0]]
+   weight: 450
+   nutrition: 150
+   size: small
+   resistances:
+    - ReElectricity
+    - RePoison
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlHostile, FlMagicCollect, FlPoisonous, FlHumanoid, FlOviparous, FlLord, FlNoPoly, FlInfravision]
+   color: BrightBlue
+
+ - name: "Kroo the Kobold King"
+   symbol: "k"
+   base-level: 13
+   difficulty: 15
+   speed: 9
+   ac: "Nat 10/Dodge 0/Prot 0"
+   mr: 10
+   alignment: 3
+   generates:
+    - unique
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 2, 6], [AtOffhandedWeapon, AdPhys, 2, 6]]
+   weight: 500
+   nutrition: 200
+   size: small
+   resistances:
+    - RePoison
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlHostile, FlGreedy, FlJewels, FlPoisonous, FlHumanoid, FlOviparous, FlMale, FlLord, FlPrince, FlProperName, FlUntameable, FlNoPoly, FlInfravision]
+   color: Yellow
 
  - name: "leprechaun"
    symbol: "l"
@@ -5392,6 +5598,33 @@ monsters:
    flags: [FlNoPoly, FlHerbivore, FlWander, FlJewels, FlNoHands, FlAnimal, FlStrong, FlNasty, FlNoPoly, FlInfravisible, FlVampire, FlDemon, FlHatesSilver]
    color: Orange
 
+ - name: "Lokoban Pinata"
+   symbol: "u"
+   base-level: 12
+   difficulty: 13
+   speed: 0
+   ac: "Nat 0/Dodge 0/Prot 0"
+   mr: 110
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtSuicideExplode, AdLokoban, 1, 3]]
+   weight: 3000
+   nutrition: 800
+   size: large
+   resistances:
+    - ReSleep
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlBreathless, FlMindless, FlHostile, FlNoHands, FlAnimal, FlStrong, FlNoPoly]
+   color: Cyan
+
  - name: "fog cloud"
    symbol: "v"
    base-level: 3
@@ -5670,6 +5903,33 @@ monsters:
    flags: [FlNoPoly, FlFly, FlBreathless, FlHostile, FlStalk, FlNoEyes, FlNoLimbs, FlNoHead, FlUnSolid, FlStrong, FlRegen, FlNasty, FlNoPoly, FlInfravisible, FlMinion, FlInfravision, FlPassesBars, FlVegan]
    color: White
 
+ - name: "snow cloud"
+   symbol: "v"
+   base-level: 15
+   difficulty: 19
+   speed: 12
+   ac: "Nat 15/Dodge 0/Prot 0"
+   mr: 30
+   alignment: -10
+   generates:
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtTouch, AdCold, 4, 4], [AtEngulf, AdCold, 2, 6], [AtNone, AdCold, 0, 6]]
+   weight: 0
+   nutrition: 0
+   size: medium
+   resistances:
+    - ReCold
+    - ReSleep
+    - RePoison
+   conferred:
+    - ReCold
+   flags: [FlFly, FlBreathless, FlCarnivore, FlHerbivore, FlHostile, FlStalk, FlNoLimbs, FlNoHead, FlUnSolid, FlFemale, FlStrong, FlRegen, FlNasty, FlInfravisible, FlInfravision, FlPassesBars, FlVegan]
+   color: White
+
  - name: "pyroclastic vortex"
    symbol: "v"
    base-level: 18
@@ -5821,6 +6081,29 @@ monsters:
    flags: [FlCarnivore, FlNoTake, FlHostile, FlNoEyes, FlNoLimbs, FlSlithy, FlOviparous, FlStrong, FlNasty]
    color: Brown
 
+ - name: "neothelid"
+   symbol: "w"
+   base-level: 14
+   difficulty: 17
+   speed: 3
+   ac: "Nat 5/Dodge 0/Prot 0"
+   mr: 10
+   alignment: 0
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtTentacle, AdIntDrain, 2, 4], [AtTentacle, AdIntDrain, 1, 4], [AtTentacle, AdShred, 2, 4]]
+   weight: 9000
+   nutrition: 1500
+   size: gigantic
+   resistances:
+   conferred:
+   flags: [FlCarnivore, FlNoTake, FlHostile, FlNoLimbs, FlSlithy, FlOviparous, FlStrong, FlNasty]
+   color: BrightMagenta
+
  - name: "purple worm"
    symbol: "w"
    base-level: 15
@@ -5896,6 +6179,32 @@ monsters:
    conferred:
    flags: [FlHostile, FlAnimal, FlInfravisible, FlPassesBars]
    color: Magenta
+
+ - name: "chill bug"
+   symbol: "x"
+   base-level: 2
+   difficulty: 4
+   speed: 14
+   ac: "Nat 1/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+    - gehennom
+    - dungeons
+   leaves-corpse: No
+   not-generated-normally: No
+   appears-in-small-groups: Yes
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtBite, AdCold, 1, 3]]
+   weight: 15
+   nutrition: 10
+   size: tiny
+   resistances:
+    - ReCold
+   conferred:
+   flags: [FlHostile, FlAnimal, FlInfravisible, FlPassesBars]
+   color: White
 
  - name: "xan"
    symbol: "x"
@@ -8246,8 +8555,8 @@ monsters:
  - name: "parrot"
    symbol: "B"
    base-level: 2
-   difficulty: 4
-   speed: 20
+   difficulty: 3
+   speed: 16
    ac: "Nat 0/Dodge 4/Prot 0"
    mr: 0
    alignment: 0
@@ -10065,7 +10374,7 @@ monsters:
  - name: "migo soldier"
    symbol: "F"
    base-level: 9
-   difficulty: 14
+   difficulty: 13
    speed: 14
    ac: "Nat 16/Dodge 0/Prot 0"
    mr: 40
@@ -10077,7 +10386,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: Yes
    genocidable: Yes
-   attacks: [[AtGaze, AdMist, 0, 0], [AtWeapon, AdPhys, 1, 10], [AtClaw, AdElectricity, 2, 3]]
+   attacks: [[AtWeapon, AdPhys, 1, 10], [AtClaw, AdElectricity, 2, 3]]
    weight: 1300
    nutrition: 250
    size: medium
@@ -10094,7 +10403,7 @@ monsters:
  - name: "migo philosopher"
    symbol: "F"
    base-level: 9
-   difficulty: 14
+   difficulty: 13
    speed: 10
    ac: "Nat 12/Dodge 0/Prot 0"
    mr: 60
@@ -10105,7 +10414,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: Yes
-   attacks: [[AtGaze, AdMist, 0, 0], [AtClaw, AdIntDrain, 2, 3], [AtClaw, AdPhys, 1, 8], [AtCast, AdSpell, 4, 3]]
+   attacks: [[AtClaw, AdIntDrain, 2, 3], [AtClaw, AdPhys, 1, 8], [AtCast, AdSpell, 4, 3]]
    weight: 1450
    nutrition: 400
    size: medium
@@ -10148,7 +10457,7 @@ monsters:
  - name: "migo queen"
    symbol: "F"
    base-level: 25
-   difficulty: 31
+   difficulty: 30
    speed: 6
    ac: "Nat 16/Dodge 0/Prot 0"
    mr: 90
@@ -10160,7 +10469,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: Yes
-   attacks: [[AtGaze, AdMist, 0, 0], [AtClaw, AdParalyse, 3, 3], [AtClaw, AdIntDrain, 3, 3], [AtCast, AdClerical, 6, 3]]
+   attacks: [[AtClaw, AdParalyse, 3, 3], [AtClaw, AdIntDrain, 3, 3], [AtCast, AdClerical, 6, 3]]
    weight: 1900
    nutrition: 600
    size: medium
@@ -10266,6 +10575,33 @@ monsters:
    appears-in-large-groups: No
    genocidable: No
    attacks: [[AtExplode, AdPhys, 3, 6], [AtSuicideExplode, AdPhys, 3, 6]]
+   weight: 10
+   nutrition: 0
+   size: tiny
+   resistances:
+    - ReSleep
+    - RePoison
+    - RePetrification
+    - ReDrain
+   conferred:
+   flags: [FlNoPoly, FlBreathless, FlMindless, FlHostile, FlNoLimbs, FlNoHead, FlNeuter, FlNoPoly, FlClockwork, FlPassesBars, FlVegan]
+   color: White
+
+ - name: "mini nuke"
+   symbol: "G"
+   base-level: 0
+   difficulty: 2
+   speed: 16
+   ac: "Nat 2/Dodge 0/Prot 0"
+   mr: 4
+   alignment: 0
+   generates:
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtExplode, AdNuke, 3, 6], [AtSuicideExplode, AdNuke, 3, 6]]
    weight: 10
    nutrition: 0
    size: tiny
@@ -10697,6 +11033,34 @@ monsters:
    flags: [FlBreathless, FlStalk, FlCollect, FlHumanoid, FlClockwork, FlVegan]
    color: Yellow
 
+ - name: "Warmachine"
+   symbol: "G"
+   base-level: 20
+   difficulty: 24
+   speed: 6
+   ac: "Nat 19/Dodge 0/Prot 0"
+   mr: 0
+   alignment: -10
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtCast, AdLaser, 4, 5], [AtGaze, AdWarMachineGaze, 2, 2]]
+   weight: 9000
+   nutrition: 0
+   size: gigantic
+   resistances:
+    - ReFire
+    - ReSleep
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlBreathless, FlMindless, FlHostile, FlWantsArti, FlWantsAll, FlCovetous, FlNoHands, FlNeuter, FlProperName, FlNasty, FlNoPoly, FlClockwork, FlVegan]
+   color: Magenta
+
  - name: "colossal clockwork war-machine"
    symbol: "G"
    base-level: 45
@@ -10771,6 +11135,31 @@ monsters:
    conferred:
    flags: [FlCarnivore, FlRockThrow, FlJewels, FlCollect, FlHumanoid, FlStrong, FlNasty, FlInfravisible, FlGiant, FlInfravision]
    color: Gray
+
+ - name: "ent"
+   symbol: "H"
+   base-level: 7
+   difficulty: 9
+   speed: 10
+   ac: "Nat 4/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+    - gehennom
+    - dungeons
+   leaves-corpse: Yes
+   not-generated-normally: No
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: Yes
+   attacks: [[AtWeapon, AdPhys, 2, 8]]
+   weight: 4500
+   nutrition: 800
+   size: huge
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlRockThrow, FlCollect, FlHumanoid, FlStrong, FlNoPoly, FlInfravisible]
+   color: Green
 
  - name: "hill giant"
    symbol: "H"
@@ -12120,6 +12509,35 @@ monsters:
    flags: [FlBreathless, FlHostile, FlMagicCollect, FlWantsBook, FlWantsAll, FlCovetous, FlPoisonous, FlHumanoid, FlPrince, FlRegen, FlUndead, FlHuman, FlInfravision]
    color: BrightMagenta
 
+ - name: "white naga hatchling"
+   symbol: "N"
+   base-level: 3
+   difficulty: 4
+   speed: 10
+   ac: "Nat 4/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+    - gehennom
+    - dungeons
+   leaves-corpse: Yes
+   not-generated-normally: No
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: Yes
+   attacks: [[AtBite, AdPhys, 1, 4]]
+   weight: 500
+   nutrition: 100
+   size: small
+   resistances:
+    - ReCold
+    - RePoison
+   conferred:
+    - ReCold
+    - RePoison
+   flags: [FlCarnivore, FlHerbivore, FlNoTake, FlNoLimbs, FlSlithy, FlThickHide, FlStrong, FlInfravisible, FlPassesBars]
+   color: White
+
  - name: "red naga hatchling"
    symbol: "N"
    base-level: 3
@@ -12236,6 +12654,35 @@ monsters:
     - RePoison
    flags: [FlCarnivore, FlHerbivore, FlNoTake, FlNoLimbs, FlSlithy, FlThickHide, FlStrong, FlPassesBars]
    color: Green
+
+ - name: "white naga"
+   symbol: "N"
+   base-level: 4
+   difficulty: 6
+   speed: 12
+   ac: "Nat 6/Dodge 0/Prot 0"
+   mr: 0
+   alignment: -4
+   generates:
+    - gehennom
+    - dungeons
+   leaves-corpse: Yes
+   not-generated-normally: No
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: Yes
+   attacks: [[AtBite, AdPhys, 2, 3], [AtGaze, AdCold, 1, 3]]
+   weight: 3000
+   nutrition: 800
+   size: huge
+   resistances:
+    - ReCold
+    - RePoison
+   conferred:
+    - ReCold
+    - RePoison
+   flags: [FlCarnivore, FlHerbivore, FlNoTake, FlNoLimbs, FlSlithy, FlThickHide, FlOviparous, FlStrong, FlInfravisible]
+   color: White
 
  - name: "red naga"
    symbol: "N"
@@ -12903,6 +13350,32 @@ monsters:
     - RePoison
    flags: [FlSwim, FlConceal, FlCarnivore, FlConceal, FlNoTake, FlHostile, FlPoisonous, FlNoLimbs, FlSlithy, FlOviparous, FlPassesBars]
    color: Red
+
+ - name: "fire snake"
+   symbol: "S"
+   base-level: 4
+   difficulty: 6
+   speed: 15
+   ac: "Nat 7/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+    - gehennom
+   leaves-corpse: Yes
+   not-generated-normally: No
+   appears-in-small-groups: Yes
+   appears-in-large-groups: No
+   genocidable: Yes
+   attacks: [[AtBite, AdFire, 2, 6]]
+   weight: 150
+   nutrition: 80
+   size: tiny
+   resistances:
+    - ReFire
+   conferred:
+    - ReFire
+   flags: [FlCarnivore, FlNoTake, FlHostile, FlNoLimbs, FlSlithy, FlPassesBars]
+   color: Orange
 
  - name: "wraithworm"
    symbol: "S"
@@ -13843,6 +14316,33 @@ monsters:
    flags: [FlNoPoly, FlFly, FlBreathless, FlHostile, FlStalk, FlPoisonous, FlHumanoid, FlMale, FlStrong, FlLord, FlRegen, FlNasty, FlNoPoly, FlInfravisible, FlUndead, FlHatesSilver]
    color: Blue
 
+ - name: "villithid"
+   symbol: "V"
+   base-level: 16
+   difficulty: 21
+   speed: 14
+   ac: "Nat 18/Dodge 0/Prot 0"
+   mr: 50
+   alignment: -20
+   generates:
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 6], [AtTentacle, AdVampireDrain, 1, 8], [AtTentacle, AdIntDrain, 1, 4]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReCold
+    - ReSleep
+    - RePoison
+    - ReDrain
+   conferred:
+   flags: [FlNoPoly, FlFly, FlBreathless, FlHostile, FlStalk, FlPoisonous, FlHumanoid, FlMale, FlStrong, FlLord, FlRegen, FlNasty, FlNoPoly, FlInfravisible, FlUndead, FlHatesSilver]
+   color: Magenta
+
  - name: "star vampire"
    symbol: "V"
    base-level: 18
@@ -14392,6 +14892,32 @@ monsters:
    conferred:
    flags: [FlCarnivore, FlHerbivore, FlHumanoid, FlStrong, FlInfravisible, FlSeeInvis]
    color: Gray
+
+ - name: "Abominable Snowman"
+   symbol: "Y"
+   base-level: 9
+   difficulty: 12
+   speed: 15
+   ac: "Nat 4/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtClaw, AdCold, 1, 6], [AtClaw, AdPhys, 1, 6], [AtBite, AdPhys, 1, 6], [AtBreath, AdCold, 2, 6]]
+   weight: 2600
+   nutrition: 700
+   size: huge
+   resistances:
+    - ReCold
+   conferred:
+    - ReCold
+   flags: [FlNoPoly, FlCarnivore, FlHostile, FlHumanoid, FlStrong, FlNoPoly, FlInfravisible]
+   color: White
 
  - name: "gug"
    symbol: "Y"
@@ -15140,7 +15666,7 @@ monsters:
     - ReElectricity
     - RePoison
    conferred:
-   flags: [FlBreathless, FlHostile, FlTraitor, FlHumanoid, FlNeuter, FlStrong, FlInfravisible, FlVegan]
+   flags: [FlBreathless, FlHostile, FlHumanoid, FlNeuter, FlStrong, FlInfravisible, FlVegan]
    color: Magenta
 
  - name: "living lectern"
@@ -15872,6 +16398,30 @@ monsters:
    flags: [FlNoPoly, FlBreathless, FlStalk, FlWantsAmulet, FlWantsAll, FlCovetous, FlHumanoid, FlThickHide, FlStrong, FlRegen, FlNoPoly, FlMinion]
    color: Yellow
 
+ - name: "Fell"
+   symbol: "\""
+   base-level: 20
+   difficulty: 22
+   speed: 6
+   ac: "Nat 4/Dodge 0/Prot 6"
+   mr: 0
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 2, 8]]
+   weight: 1450
+   nutrition: 0
+   size: medium
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlBreathless, FlPeaceful, FlCollect, FlMagicCollect, FlHumanoid, FlMale, FlStrong, FlProperName, FlNoPoly, FlMinion]
+   color: White
+
  - name: "Adamach"
    symbol: "\""
    base-level: 100
@@ -16596,6 +17146,52 @@ monsters:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlCollect, FlMagicCollect, FlHumanoid, FlStrong, FlNoPoly, FlInfravisible, FlHuman]
    color: White
 
+ - name: "armorsmith"
+   symbol: "@"
+   base-level: 12
+   difficulty: 14
+   speed: 8
+   ac: "Nat 0/Dodge 0/Prot 10"
+   mr: 50
+   alignment: 0
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 4, 4], [AtOffhandedWeapon, AdPhys, 4, 4]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlCollect, FlMagicCollect, FlHumanoid, FlStrong, FlNoPoly, FlInfravisible, FlHuman]
+   color: White
+
+ - name: "dye savant"
+   symbol: "@"
+   base-level: 12
+   difficulty: 14
+   speed: 12
+   ac: "Nat 0/Dodge 0/Prot 10"
+   mr: 50
+   alignment: 0
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 4, 4], [AtOffhandedWeapon, AdPhys, 4, 4]]
+   weight: 1088
+   nutrition: 400
+   size: medium
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlCollect, FlMagicCollect, FlHumanoid, FlFemale, FlNoPoly, FlInfravisible, FlHuman]
+   color: BrightCyan
+
  - name: "goblin smith"
    symbol: "o"
    base-level: 0
@@ -16858,6 +17454,31 @@ monsters:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlHumanoid, FlFemale, FlUntameable, FlNoPoly, FlInfravisible, FlHuman, FlSeeInvis]
    color: BrightBlue
 
+ - name: "Travelling Wizard"
+   symbol: "@"
+   base-level: 12
+   difficulty: 13
+   speed: 0
+   ac: "Nat 0/Dodge 0/Prot 10"
+   mr: 50
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtNone, AdMagicMissile, 0, 4]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReMagic
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlHumanoid, FlMale, FlUntameable, FlNoPoly, FlInfravisible, FlHuman, FlSeeInvis]
+   color: BrightBlue
+
  - name: "aligned priest"
    symbol: "@"
    base-level: 12
@@ -16880,7 +17501,7 @@ monsters:
     - ReElectricity
    conferred:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlCollect, FlHumanoid, FlLord, FlUntameable, FlNoPoly, FlInfravisible, FlHuman]
-   color: White
+   color: Yellow
 
  - name: "high priest"
    symbol: "@"
@@ -17113,6 +17734,29 @@ monsters:
    conferred:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlStalk, FlCollect, FlHumanoid, FlStrong, FlMerc, FlNoPoly, FlInfravisible, FlHuman]
    color: Green
+
+ - name: "failed ceremorph"
+   symbol: "@"
+   base-level: 10
+   difficulty: 12
+   speed: 10
+   ac: "Nat 0/Dodge 0/Prot 0"
+   mr: 15
+   alignment: 4
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 3, 4], [AtWeapon, AdPhys, 3, 4]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlFly, FlHumanoid, FlStrong, FlUntameable, FlNoPoly, FlInfravisible, FlHuman]
+   color: White
 
  - name: "aztec warrior"
    symbol: "@"
@@ -17448,6 +18092,31 @@ monsters:
    flags: [FlNoPoly, FlFly, FlBreathless, FlTeleport, FlTeleportControl, FlCarnivore, FlHerbivore, FlHostile, FlMagicCollect, FlWantsAmulet, FlWantsBell, FlWantsBook, FlWantsAll, FlWaitsForYou, FlCovetous, FlHumanoid, FlMale, FlStrong, FlPrince, FlRegen, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlHuman, FlSeeInvis]
    color: Magenta
 
+ - name: "Lady of Pain"
+   symbol: "@"
+   base-level: 25
+   difficulty: 32
+   speed: 15
+   ac: "Nat 0/Dodge 0/Prot 15"
+   mr: 40
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 4, 10], [AtCast, AdSpell, 0, 5], [AtClaw, AdTeleport, 2, 4], [AtClaw, AdLevelTeleport, 2, 4], [AtClaw, AdTele, 2, 4]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReMagic
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlStalk, FlGreedy, FlJewels, FlCollect, FlMagicCollect, FlHumanoid, FlFemale, FlStrong, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlSeeInvis]
+   color: Magenta
+
  - name: "Croesus"
    symbol: "@"
    base-level: 20
@@ -17505,7 +18174,7 @@ monsters:
    color: Magenta
 
  - name: "garo"
-   symbol: "."
+   symbol: "8"
    base-level: 4
    difficulty: 6
    speed: 14
@@ -17535,7 +18204,7 @@ monsters:
    color: Brown
 
  - name: "ghost"
-   symbol: "."
+   symbol: "8"
    base-level: 10
    difficulty: 12
    speed: 3
@@ -17563,8 +18232,33 @@ monsters:
    flags: [FlNoPoly, FlFly, FlWallwalk, FlBreathless, FlHostile, FlStalk, FlHumanoid, FlUnSolid, FlNoPoly, FlUndead, FlInfravision, FlPhasing, FlVegan]
    color: Gray
 
+ - name: "etherealoid"
+   symbol: "8"
+   base-level: 10
+   difficulty: 13
+   speed: 12
+   ac: "Nat 0/Dodge 0/Prot 15"
+   mr: 50
+   alignment: -5
+   generates:
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 1], [AtEngulf, AdBlackWebShadow, 1, 6]]
+   weight: 0
+   nutrition: 0
+   size: large
+   resistances:
+    - ReDisintegrate
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlFly, FlWallwalk, FlBreathless, FlUnSolid, FlNoPoly, FlPhasing, FlVegan]
+   color: White
+
  - name: "being of Ib"
-   symbol: "."
+   symbol: "8"
    base-level: 10
    difficulty: 13
    speed: 12
@@ -17594,7 +18288,7 @@ monsters:
    color: Green
 
  - name: "priest of Ib"
-   symbol: "."
+   symbol: "8"
    base-level: 15
    difficulty: 18
    speed: 12
@@ -17624,7 +18318,7 @@ monsters:
    color: BrightGreen
 
  - name: "garo master"
-   symbol: "."
+   symbol: "8"
    base-level: 18
    difficulty: 22
    speed: 18
@@ -17654,7 +18348,7 @@ monsters:
    color: Magenta
 
  - name: "broken shadow"
-   symbol: " "
+   symbol: "6"
    base-level: 10
    difficulty: 13
    speed: 3
@@ -17683,7 +18377,7 @@ monsters:
    color: Black
 
  - name: "shade"
-   symbol: " "
+   symbol: "6"
    base-level: 12
    difficulty: 15
    speed: 10
@@ -18593,6 +19287,102 @@ monsters:
    conferred:
    flags: [FlFly, FlHostile, FlStalk, FlCollect, FlWaitsForYou, FlTraitor, FlPoisonous, FlHumanoid, FlStrong, FlNasty, FlInfravisible, FlVampire, FlDemon, FlSeeInvis, FlHatesSilver]
    color: BrightMagenta
+
+ - name: "efreet"
+   symbol: "&"
+   base-level: 9
+   difficulty: 12
+   speed: 12
+   ac: "Nat 6/Dodge 0/Prot 0"
+   mr: 30
+   alignment: -10
+   generates:
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdFire, 2, 8], [AtCast, AdSpell, 4, 4]]
+   weight: 1500
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReFire
+   conferred:
+   flags: [FlNoPoly, FlFly, FlHostile, FlStalk, FlCollect, FlHumanoid, FlNoPoly, FlInfravisible]
+   color: Orange
+
+ - name: "efreet overseer"
+   symbol: "&"
+   base-level: 12
+   difficulty: 16
+   speed: 12
+   ac: "Nat 8/Dodge 0/Prot 0"
+   mr: 30
+   alignment: -10
+   generates:
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdFire, 3, 8], [AtCast, AdSpell, 4, 5]]
+   weight: 1500
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReFire
+   conferred:
+   flags: [FlNoPoly, FlFly, FlHostile, FlStalk, FlCollect, FlHumanoid, FlNoPoly, FlInfravisible]
+   color: Red
+
+ - name: "efreet merchant"
+   symbol: "&"
+   base-level: 12
+   difficulty: 15
+   speed: 12
+   ac: "Nat 8/Dodge 0/Prot 0"
+   mr: 30
+   alignment: -10
+   generates:
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 3, 8], [AtCast, AdSpell, 4, 5]]
+   weight: 1500
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReFire
+   conferred:
+   flags: [FlNoPoly, FlFly, FlHostile, FlStalk, FlCollect, FlHumanoid, FlNoPoly, FlInfravisible]
+   color: Red
+
+ - name: "efreet guardian"
+   symbol: "&"
+   base-level: 15
+   difficulty: 19
+   speed: 14
+   ac: "Nat 8/Dodge 0/Prot 0"
+   mr: 30
+   alignment: -10
+   generates:
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 3, 8], [AtOffhandedWeapon, AdPhys, 3, 8], [AtCast, AdSpell, 4, 5]]
+   weight: 1500
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReFire
+   conferred:
+   flags: [FlNoPoly, FlFly, FlHostile, FlStalk, FlCollect, FlHumanoid, FlNoPoly, FlInfravisible]
+   color: Red
 
  - name: "shayateen"
    symbol: "&"
@@ -20129,6 +20919,56 @@ monsters:
    flags: [FlNoPoly, FlFly, FlWallwalk, FlBreathless, FlStalk, FlHumanoid, FlUntameable, FlNoPoly, FlInfravisible, FlSeeInvis, FlPhasing]
    color: Black
 
+ - name: "octopode"
+   symbol: ";"
+   base-level: 0
+   difficulty: 2
+   speed: 12
+   ac: "Nat 0/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 8], [AtTentacle, AdWrap, 1, 8]]
+   weight: 1500
+   nutrition: 400
+   size: medium
+   resistances:
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlSwim, FlAmphibious, FlBreathless, FlCarnivore, FlHerbivore, FlCollect, FlStrong, FlInfravisible]
+   color: Magenta
+
+ - name: "illithid larva"
+   symbol: ";"
+   base-level: 3
+   difficulty: 4
+   speed: 3
+   ac: "Nat 4/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 1
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtBite, AdPhys, 1, 2]]
+   weight: 750
+   nutrition: 100
+   size: small
+   resistances:
+    - RePoison
+   conferred:
+    - RePoison
+   flags: [FlSwim, FlAmphibious, FlNoTake, FlMindless, FlHostile, FlPoisonous, FlNoLimbs, FlNoHead]
+   color: BrightMagenta
+
  - name: "jellyfish"
    symbol: ";"
    base-level: 3
@@ -20566,6 +21406,32 @@ monsters:
    flags: [FlSwim, FlAmphibious, FlCarnivore, FlHostile, FlNoHands, FlAnimal]
    color: Green
 
+ - name: "salamander prisoner"
+   symbol: ":"
+   base-level: 5
+   difficulty: 10
+   speed: 12
+   ac: "Nat 11/Dodge 0/Prot 0"
+   mr: 0
+   alignment: -9
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 4], [AtTouch, AdFire, 1, 3], [AtHug, AdPhys, 1, 3], [AtHug, AdFire, 1, 3]]
+   weight: 1500
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReFire
+    - ReSleep
+   conferred:
+    - ReFire
+   flags: [FlCarnivore, FlHerbivore, FlStalk, FlCollect, FlMagicCollect, FlClose, FlPoisonous, FlHumanoid, FlSlithy, FlThickHide, FlInfravisible, FlInfravision, FlPassesBars]
+   color: Orange
+
  - name: "chameleon"
    symbol: ":"
    base-level: 6
@@ -20667,6 +21533,32 @@ monsters:
    flags: [FlSwim, FlAmphibious, FlCarnivore, FlHostile, FlNoHands, FlAnimal, FlOviparous, FlStrong]
    color: Green
 
+ - name: "salamander slave"
+   symbol: ":"
+   base-level: 7
+   difficulty: 12
+   speed: 12
+   ac: "Nat 11/Dodge 0/Prot 0"
+   mr: 0
+   alignment: -9
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 8], [AtTouch, AdFire, 1, 6], [AtHug, AdPhys, 1, 6], [AtHug, AdFire, 1, 6]]
+   weight: 1500
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReFire
+    - ReSleep
+   conferred:
+    - ReFire
+   flags: [FlCarnivore, FlHerbivore, FlHostile, FlStalk, FlCollect, FlMagicCollect, FlPoisonous, FlHumanoid, FlSlithy, FlThickHide, FlInfravisible, FlInfravision, FlPassesBars]
+   color: Orange
+
  - name: "salamander"
    symbol: ":"
    base-level: 8
@@ -20691,7 +21583,7 @@ monsters:
     - ReSleep
    conferred:
     - ReFire
-   flags: [FlHostile, FlStalk, FlCollect, FlMagicCollect, FlPoisonous, FlHumanoid, FlSlithy, FlThickHide, FlInfravisible, FlInfravision, FlPassesBars]
+   flags: [FlCarnivore, FlHerbivore, FlHostile, FlStalk, FlCollect, FlMagicCollect, FlPoisonous, FlHumanoid, FlSlithy, FlThickHide, FlInfravisible, FlInfravision, FlPassesBars]
    color: Orange
 
  - name: "weeping willow"
@@ -20847,6 +21739,32 @@ monsters:
     - RePoison
    flags: [FlNoPoly, FlBreathless, FlNoTake, FlMindless, FlHostile, FlNoEyes, FlHumanoid, FlNeuter, FlNoPoly, FlPassesBars, FlVegan]
    color: Yellow
+
+ - name: "Thrashing Tulip Poplar"
+   symbol: "{"
+   base-level: 9
+   difficulty: 13
+   speed: 16
+   ac: "Nat 18/Dodge 0/Prot 0"
+   mr: 66
+   alignment: -10
+   generates:
+    - unique
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtReach, AdPhys, 2, 4], [AtReach, AdPhys, 2, 4], [AtReach, AdPhys, 1, 4], [AtArrow, AdFourSeasons, 1, 4]]
+   weight: 4500
+   nutrition: 1000
+   size: huge
+   resistances:
+    - RePoison
+   conferred:
+    - RePoison
+   flags: [FlNoPoly, FlBreathless, FlNoTake, FlMindless, FlHostile, FlNoEyes, FlNoLimbs, FlNoHead, FlNeuter, FlNoPoly, FlVegan]
+   color: Magenta
 
  - name: "dungeon fern"
    symbol: "{"
@@ -21322,29 +22240,6 @@ monsters:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlCollect, FlHumanoid, FlStrong, FlNoPoly, FlInfravisible, FlHuman]
    color: White
 
- - name: "half-dragon"
-   symbol: "D"
-   base-level: 10
-   difficulty: 13
-   speed: 9
-   ac: "Nat 0/Dodge 0/Prot 0"
-   mr: 1
-   alignment: 0
-   generates:
-   leaves-corpse: Yes
-   not-generated-normally: Yes
-   appears-in-small-groups: No
-   appears-in-large-groups: No
-   genocidable: No
-   attacks: [[AtWeapon, AdPhys, 2, 6], [AtOffhandedWeapon, AdPhys, 2, 6], [AtWeapon, AdPhys, 2, 6], [AtOffhandedWeapon, AdPhys, 2, 6], [AtWeapon, AdStun, 2, 6], [AtOffhandedWeapon, AdStun, 1, 6], [AtBreath, AdHalfDragon, 1, 6]]
-   weight: 1450
-   nutrition: 400
-   size: medium
-   resistances:
-   conferred:
-   flags: [FlNoPoly, FlCarnivore, FlHostile, FlGreedy, FlJewels, FlHumanoid, FlThickHide, FlStrong, FlNoPoly, FlInfravisible, FlHuman]
-   color: White
-
  - name: "bard"
    symbol: "@"
    base-level: 10
@@ -21480,6 +22375,29 @@ monsters:
    size: medium
    resistances:
     - RePoison
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlCollect, FlHumanoid, FlStrong, FlNoPoly, FlInfravisible, FlHuman]
+   color: White
+
+ - name: "anachronounbinder"
+   symbol: "@"
+   base-level: 5
+   difficulty: 7
+   speed: 12
+   ac: "Nat 0/Dodge 0/Prot 0"
+   mr: 50
+   alignment: 0
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 4]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
    conferred:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlCollect, FlHumanoid, FlStrong, FlNoPoly, FlInfravisible, FlHuman]
    color: White
@@ -21883,30 +22801,6 @@ monsters:
    flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlCollect, FlHumanoid, FlFemale, FlStrong, FlNoPoly, FlInfravisible, FlMinion, FlSeeInvis]
    color: White
 
- - name: "incantifier"
-   symbol: "@"
-   base-level: 20
-   difficulty: 27
-   speed: 12
-   ac: "Nat 0/Dodge 0/Prot 0"
-   mr: 0
-   alignment: 0
-   generates:
-   leaves-corpse: Yes
-   not-generated-normally: Yes
-   appears-in-small-groups: No
-   appears-in-large-groups: No
-   genocidable: No
-   attacks: [[AtWeapon, AdPhys, 1, 1], [AtTouch, AdMagicDrain, 3, 30], [AtTouch, AdMagicDrain, 3, 30], [AtMMagical, AdSpell, 0, 0]]
-   weight: 1450
-   nutrition: 400
-   size: medium
-   resistances:
-    - ReMagic
-   conferred:
-   flags: [FlNoPoly, FlCollect, FlMagicCollect, FlHumanoid, FlStrong, FlNoPoly, FlInfravisible, FlHuman]
-   color: White
-
  - name: "worm that walks"
    symbol: "w"
    base-level: 20
@@ -21951,6 +22845,1087 @@ monsters:
    resistances:
    conferred:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlCollect, FlMagicCollect, FlHumanoid, FlStrong, FlNoPoly, FlInfravisible, FlHuman]
+   color: White
+
+ - name: "incantifier"
+   symbol: "@"
+   base-level: 20
+   difficulty: 27
+   speed: 12
+   ac: "Nat 0/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 1], [AtTouch, AdMagicDrain, 3, 30], [AtTouch, AdMagicDrain, 3, 30], [AtMMagical, AdSpell, 0, 0]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReMagic
+   conferred:
+   flags: [FlNoPoly, FlCollect, FlMagicCollect, FlHumanoid, FlStrong, FlNoPoly, FlInfravisible, FlHuman]
+   color: White
+
+ - name: "half-dragon"
+   symbol: "D"
+   base-level: 10
+   difficulty: 13
+   speed: 9
+   ac: "Nat 0/Dodge 0/Prot 0"
+   mr: 1
+   alignment: 0
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 2, 6], [AtOffhandedWeapon, AdPhys, 2, 6], [AtWeapon, AdPhys, 2, 6], [AtOffhandedWeapon, AdPhys, 2, 6], [AtWeapon, AdStun, 2, 6], [AtOffhandedWeapon, AdStun, 1, 6], [AtBreath, AdHalfDragon, 1, 6]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHostile, FlGreedy, FlJewels, FlHumanoid, FlThickHide, FlStrong, FlNoPoly, FlInfravisible, FlHuman]
+   color: White
+
+ - name: "Ahazu"
+   symbol: "&"
+   base-level: 10
+   difficulty: 13
+   speed: 12
+   ac: "Nat 2/Dodge 0/Prot 0"
+   mr: 3
+   alignment: -1
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtTouch, AdFamine, 4, 4], [AtEngulf, AdDigest, 4, 4]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReFire
+    - RePoison
+    - ReDrain
+   conferred:
+   flags: [FlNoPoly, FlAmorphous, FlBreathless, FlHostile, FlStalk, FlCollect, FlTraitor, FlPoisonous, FlMale, FlStrong, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlVampire, FlDemon, FlHatesSilver, FlPassesBars]
+   color: Black
+
+ - name: "Amon"
+   symbol: "q"
+   base-level: 10
+   difficulty: 11
+   speed: 16
+   ac: "Nat 3/Dodge 0/Prot 0"
+   mr: 0
+   alignment: -2
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtButt, AdPhys, 4, 4], [AtBite, AdPhys, 2, 6]]
+   weight: 4500
+   nutrition: 1000
+   size: huge
+   resistances:
+    - ReFire
+    - ReCold
+   conferred:
+   flags: [FlNoPoly, FlHerbivore, FlHostile, FlNoHands, FlAnimal, FlThickHide, FlMale, FlStrong, FlProperName, FlUntameable, FlNoPoly, FlInfravisible, FlGiant]
+   color: White
+
+ - name: "Andrealphus"
+   symbol: "B"
+   base-level: 11
+   difficulty: 13
+   speed: 20
+   ac: "Nat 4/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtBite, AdPhys, 1, 6], [AtClaw, AdTeleport, 1, 6]]
+   weight: 40
+   nutrition: 20
+   size: tiny
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHostile, FlWander, FlNoHands, FlAnimal, FlOviparous, FlMale, FlProperName, FlUntameable, FlNoPoly, FlInfravisible, FlPassesBars]
+   color: Cyan
+
+ - name: "Andromalius"
+   symbol: "@"
+   base-level: 12
+   difficulty: 16
+   speed: 12
+   ac: "Nat 4/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 1
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdStealByTeleportation, 2, 4], [AtTouch, AdParalyse, 2, 4], [AtWeapon, AdItemSteal, 2, 4]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlHumanoid, FlMale, FlProperName, FlUntameable, FlNoPoly, FlInfravisible, FlHuman]
+   color: Gray
+
+ - name: "Astaroth"
+   symbol: "&"
+   base-level: 13
+   difficulty: 15
+   speed: 14
+   ac: "Nat 5/Dodge 0/Prot 0"
+   mr: 40
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 4, 5], [AtTinker, AdTinker, 0, 0]]
+   weight: 3000
+   nutrition: 400
+   size: large
+   resistances:
+    - ReFire
+    - ReElectricity
+    - ReDrain
+   conferred:
+   flags: [FlNoPoly, FlHostile, FlStalk, FlCollect, FlPoisonous, FlHumanoid, FlMale, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlVampire, FlDemon, FlHatesSilver]
+   color: Red
+
+ - name: "Balam"
+   symbol: "&"
+   base-level: 14
+   difficulty: 18
+   speed: 12
+   ac: "Nat 6/Dodge 0/Prot 0"
+   mr: 50
+   alignment: 12
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 4], [AtOffhandedWeapon, AdPhys, 1, 4], [AtTouch, AdCold, 2, 4], [AtGaze, AdCold, 3, 4]]
+   weight: 3000
+   nutrition: 400
+   size: large
+   resistances:
+    - ReFire
+    - ReCold
+    - RePoison
+    - ReDrain
+   conferred:
+   flags: [FlNoPoly, FlHostile, FlStalk, FlPoisonous, FlHumanoid, FlFemale, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlVampire, FlDemon, FlHatesSilver]
+   color: BrightCyan
+
+ - name: "Berith"
+   symbol: "C"
+   base-level: 15
+   difficulty: 19
+   speed: 16
+   ac: "Nat 0/Dodge 0/Prot 0"
+   mr: 10
+   alignment: -3
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 2, 8], [AtKick, AdPhys, 1, 6], [AtNonContactAttack, AdAntiBloodAttack, 1, 6]]
+   weight: 2550
+   nutrition: 600
+   size: medium
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlHostile, FlGreedy, FlCollect, FlHumanoid, FlAnimal, FlMale, FlStrong, FlProperName, FlUntameable, FlNoPoly, FlInfravisible]
+   color: Red
+
+ - name: "Buer"
+   symbol: "z"
+   base-level: 16
+   difficulty: 18
+   speed: 16
+   ac: "Nat 6/Dodge 0/Prot 0"
+   mr: 40
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtBite, AdConDrain, 8, 2], [AtKick, AdPhys, 6, 4]]
+   weight: 3000
+   nutrition: 600
+   size: large
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlHostile, FlAnimal, FlMale, FlFemale, FlStrong, FlProperName, FlUntameable, FlNoPoly, FlInfravisible]
+   color: Yellow
+
+ - name: "Chupoclops"
+   symbol: "s"
+   base-level: 17
+   difficulty: 22
+   speed: 16
+   ac: "Nat 6/Dodge 0/Prot 0"
+   mr: 50
+   alignment: -5
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtBite, AdStrDrain, 4, 8], [AtKick, AdWebs, 3, 6], [AtNone, AdWebs, 0, 0], [AtSpit, AdWebs, 2, 4]]
+   weight: 3000
+   nutrition: 800
+   size: large
+   resistances:
+    - ReSleep
+    - RePoison
+   conferred:
+    - ReSleep
+    - RePoison
+   flags: [FlNoPoly, FlCarnivore, FlHostile, FlPoisonous, FlNoHands, FlAnimal, FlOviparous, FlFemale, FlStrong, FlProperName, FlUntameable, FlNoPoly]
+   color: Black
+
+ - name: "Dantalion"
+   symbol: "@"
+   base-level: 18
+   difficulty: 20
+   speed: 15
+   ac: "Nat 6/Dodge 0/Prot 0"
+   mr: 40
+   alignment: 15
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 4, 10]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlHostile, FlStalk, FlGreedy, FlJewels, FlCollect, FlMagicCollect, FlWantsBook, FlWantsAll, FlCovetous, FlHumanoid, FlMale, FlStrong, FlPrince, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlHuman, FlSeeInvis]
+   color: Magenta
+
+ - name: "Shiro"
+   symbol: "@"
+   base-level: 19
+   difficulty: 23
+   speed: 15
+   ac: "Nat 14/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 1
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 2, 5], [AtWeapon, AdPhys, 2, 5], [AtArrow, AdRock, 1, 4]]
+   weight: 750
+   nutrition: 400
+   size: medium
+   resistances:
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlHostile, FlStalk, FlCollect, FlMagicCollect, FlHumanoid, FlMale, FlStrong, FlProperName, FlUntameable, FlNoPoly, FlHuman, FlSeeInvis]
+   color: Gray
+
+ - name: "Echidna"
+   symbol: "n"
+   base-level: 20
+   difficulty: 25
+   speed: 12
+   ac: "Nat 7/Dodge 0/Prot 0"
+   mr: 30
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 8], [AtBreath, AdAcid, 4, 10], [AtClaw, AdSeduce, 0, 0], [AtClaw, AdSeduce, 0, 0]]
+   weight: 4500
+   nutrition: 1500
+   size: gigantic
+   resistances:
+    - ReAcid
+    - RePetrification
+   conferred:
+    - ReAcid
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlAcid, FlThickHide, FlFemale, FlStrong, FlProperName, FlUntameable, FlNoPoly, FlInfravisible, FlHuman]
+   color: Yellow
+
+ - name: "Eden"
+   symbol: "D"
+   base-level: 21
+   difficulty: 25
+   speed: 12
+   ac: "Nat 10/Dodge 0/Prot 0"
+   mr: 100
+   alignment: 5
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtBreath, AdFire, 4, 10], [AtBite, AdPhys, 3, 8], [AtClaw, AdPhys, 3, 4], [AtClaw, AdPhys, 3, 4]]
+   weight: 4500
+   nutrition: 1500
+   size: gigantic
+   resistances:
+    - ReFire
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHostile, FlGreedy, FlJewels, FlMagicCollect, FlNoHands, FlAnimal, FlThickHide, FlStrong, FlProperName, FlUntameable, FlNoPoly, FlSeeInvis]
+   color: BrightCyan
+
+ - name: "Enki"
+   symbol: "@"
+   base-level: 22
+   difficulty: 29
+   speed: 12
+   ac: "Nat 15/Dodge 0/Prot 0"
+   mr: 60
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 4, 8], [AtTouch, AdWet, 3, 8], [AtBeamNonContact, AdWet, 4, 8], [AtNone, AdRust, 0, 0]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlHumanoid, FlStrong, FlProperName, FlUntameable, FlNoPoly, FlInfravisible, FlHuman, FlPassesBars]
+   color: Brown
+
+ - name: "Eurynome"
+   symbol: "n"
+   base-level: 25
+   difficulty: 30
+   speed: 20
+   ac: "Nat 15/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtClaw, AdSeduce, 0, 0], [AtReachTouch, AdParalyse, 4, 5], [AtReachTouch, AdLevelTeleport, 0, 0]]
+   weight: 1200
+   nutrition: 300
+   size: medium
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlSwim, FlTeleport, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlHumanoid, FlFemale, FlProperName, FlUntameable, FlNoPoly, FlInfravisible]
+   color: Blue
+
+ - name: "Eve"
+   symbol: "@"
+   base-level: 26
+   difficulty: 29
+   speed: 14
+   ac: "Nat 10/Dodge 0/Prot 0"
+   mr: 0
+   alignment: -1
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 3, 6], [AtArrow, AdPhys, 4, 1], [AtWeapon, AdPhys, 3, 6]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlHumanoid, FlFemale, FlStrong, FlProperName, FlUntameable, FlNoPoly, FlInfravisible, FlHuman]
+   color: BrightGreen
+
+ - name: "Fafnir"
+   symbol: "D"
+   base-level: 27
+   difficulty: 33
+   speed: 12
+   ac: "Nat 16/Dodge 0/Prot 0"
+   mr: 50
+   alignment: -2
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtBreath, AdStrDrain, 3, 8], [AtClaw, AdGoldSteal, 3, 4], [AtClaw, AdGoldSteal, 3, 4]]
+   weight: 4500
+   nutrition: 1500
+   size: gigantic
+   resistances:
+    - ReFire
+    - RePoison
+   conferred:
+    - ReFire
+    - RePoison
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHostile, FlGreedy, FlJewels, FlMagicCollect, FlNoHands, FlAnimal, FlThickHide, FlMale, FlStrong, FlProperName, FlUntameable, FlNoPoly, FlSeeInvis]
+   color: Red
+
+ - name: "Huginn"
+   symbol: "B"
+   base-level: 20
+   difficulty: 23
+   speed: 20
+   ac: "Nat 6/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtBite, AdPhys, 3, 6], [AtGaze, AdWisdom, 1, 3], [AtClaw, AdStun, 3, 6]]
+   weight: 500
+   nutrition: 200
+   size: small
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHostile, FlWander, FlNoHands, FlAnimal, FlFemale, FlProperName, FlNoPoly, FlInfravisible]
+   color: Black
+
+ - name: "Muninn"
+   symbol: "B"
+   base-level: 20
+   difficulty: 23
+   speed: 20
+   ac: "Nat 6/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtBite, AdPhys, 3, 6], [AtGaze, AdIntDrain, 1, 3], [AtClaw, AdStun, 3, 6]]
+   weight: 500
+   nutrition: 200
+   size: small
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHostile, FlWander, FlNoHands, FlAnimal, FlMale, FlProperName, FlNoPoly, FlInfravisible]
+   color: Black
+
+ - name: "Iris"
+   symbol: "h"
+   base-level: 28
+   difficulty: 31
+   speed: 14
+   ac: "Nat 15/Dodge 0/Prot 0"
+   mr: 90
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 4, 4], [AtTentacle, AdHalluSick, 3, 6]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+    - RePoison
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlHostile, FlGreedy, FlJewels, FlCollect, FlTraitor, FlHumanoid, FlFemale, FlProperName, FlUntameable, FlNoPoly, FlInfravisible, FlSeeInvis]
+   color: Yellow
+
+ - name: "Jack"
+   symbol: "@"
+   base-level: 5
+   difficulty: 8
+   speed: 10
+   ac: "Nat 0/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 4], [AtSuicideExplode, AdBigExplosion, 100, 4]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReFire
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlHostile, FlWander, FlCollect, FlHumanoid, FlMale, FlStrong, FlProperName, FlNoPoly, FlInfravisible, FlHuman]
+   color: White
+
+ - name: "Malphas"
+   symbol: "h"
+   base-level: 30
+   difficulty: 32
+   speed: 20
+   ac: "Nat 4/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtBite, AdPhys, 8, 4], [AtClaw, AdPhys, 8, 4]]
+   weight: 40
+   nutrition: 20
+   size: tiny
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHostile, FlWander, FlNoHands, FlAnimal, FlOviparous, FlMale, FlPrince, FlProperName, FlUntameable, FlNoPoly, FlInfravisible, FlPassesBars]
+   color: Black
+
+ - name: "Marionette"
+   symbol: "'"
+   base-level: 31
+   difficulty: 35
+   speed: 8
+   ac: "Nat 14/Dodge 0/Prot 0"
+   mr: 60
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtReachTouch, AdYank, 4, 6], [AtWeapon, AdPhys, 4, 10]]
+   weight: 4500
+   nutrition: 0
+   size: large
+   resistances:
+    - ReFire
+    - ReCold
+    - ReSleep
+    - ReElectricity
+    - RePoison
+   conferred:
+   flags: [FlNoPoly, FlBreathless, FlMindless, FlHostile, FlStalk, FlCollect, FlPoisonous, FlHumanoid, FlThickHide, FlFemale, FlStrong, FlProperName, FlUntameable, FlNoPoly, FlVegan]
+   color: Cyan
+
+ - name: "Great Mother"
+   symbol: "e"
+   base-level: 32
+   difficulty: 39
+   speed: 12
+   ac: "Nat 10/Dodge 0/Prot 0"
+   mr: 100
+   alignment: -1
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtGaze, AdParalyse, 5, 5], [AtGaze, AdElectricity, 2, 15], [AtClaw, AdPhys, 5, 2], [AtKick, AdStun, 5, 3], [AtCast, AdSpell, 3, 4]]
+   weight: 1600
+   nutrition: 500
+   size: medium
+   resistances:
+    - ReSleep
+    - RePoison
+    - RePetrification
+   conferred:
+    - ReSleep
+   flags: [FlNoPoly, FlAmphibious, FlBreathless, FlHostile, FlGreedy, FlJewels, FlCollect, FlMagicCollect, FlNoHead, FlNeuter, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlInfravision, FlSeeInvis]
+   color: Magenta
+
+ - name: "Naberius"
+   symbol: "d"
+   base-level: 33
+   difficulty: 40
+   speed: 20
+   ac: "Nat 15/Dodge 0/Prot 0"
+   mr: 20
+   alignment: -1
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtBite, AdPhys, 6, 6], [AtBite, AdPhys, 4, 6], [AtBite, AdPhys, 6, 6], [AtBite, AdPhys, 4, 6], [AtBite, AdPhys, 6, 6], [AtBite, AdPhys, 4, 6]]
+   weight: 3000
+   nutrition: 800
+   size: huge
+   resistances:
+    - ReFire
+   conferred:
+    - ReFire
+   flags: [FlNoPoly, FlCarnivore, FlHostile, FlTraitor, FlNoHands, FlAnimal, FlMale, FlProperName, FlNasty, FlNoPoly, FlInfravisible]
+   color: Magenta
+
+ - name: "Orthos"
+   symbol: "8"
+   base-level: 34
+   difficulty: 42
+   speed: 30
+   ac: "Nat 30/Dodge 0/Prot 0"
+   mr: 50
+   alignment: -5
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtTouch, AdBlackWebShadow, 4, 4], [AtTouch, AdBlackWebShadow, 4, 4], [AtEngulf, AdBlackWebShadow, 4, 4]]
+   weight: 0
+   nutrition: 0
+   size: medium
+   resistances:
+    - ReCold
+    - ReSleep
+    - ReDisintegrate
+    - RePoison
+    - RePetrification
+    - ReDrain
+   conferred:
+   flags: [FlNoPoly, FlFly, FlWallwalk, FlBreathless, FlHostile, FlStalk, FlHumanoid, FlUnSolid, FlProperName, FlUntameable, FlNoPoly, FlInfravision, FlPhasing, FlVegan]
+   color: Black
+
+ - name: "Ose"
+   symbol: "@"
+   base-level: 35
+   difficulty: 40
+   speed: 15
+   ac: "Nat 14/Dodge 0/Prot 0"
+   mr: 100
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 3, 8], [AtBreath, AdSleep, 3, 8], [AtClaw, AdLethe, 1, 3]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReFire
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlFly, FlBreathless, FlHostile, FlStalk, FlCollect, FlHumanoid, FlFemale, FlStrong, FlPrince, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlHuman, FlSeeInvis]
+   color: BrightBlue
+
+ - name: "Otiax"
+   symbol: "v"
+   base-level: 36
+   difficulty: 40
+   speed: 12
+   ac: "Nat 10/Dodge 0/Prot 0"
+   mr: 0
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtTouch, AdPhys, 4, 6], [AtGaze, AdMist, 4, 6]]
+   weight: 0
+   nutrition: 0
+   size: huge
+   resistances:
+    - ReSleep
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlFly, FlAmorphous, FlBreathless, FlMindless, FlHostile, FlStalk, FlNoEyes, FlNoLimbs, FlNoHead, FlUnSolid, FlNeuter, FlProperName, FlUntameable, FlNoPoly, FlPassesBars, FlVegan]
+   color: White
+
+ - name: "Paimon"
+   symbol: "&"
+   base-level: 37
+   difficulty: 46
+   speed: 12
+   ac: "Nat 18/Dodge 0/Prot 0"
+   mr: 100
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 4, 4], [AtWeapon, AdPhys, 4, 4], [AtCast, AdSpell, 4, 4], [AtCast, AdClerical, 6, 6], [AtMMagical, AdMagicMissile, 5, 4]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReFire
+    - ReSleep
+    - RePoison
+    - RePetrification
+    - ReDrain
+   conferred:
+   flags: [FlNoPoly, FlHostile, FlStalk, FlTraitor, FlPoisonous, FlHumanoid, FlFemale, FlStrong, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlVampire, FlDemon, FlInfravision]
+   color: BrightBlue
+
+ - name: "Simurgh"
+   symbol: "B"
+   base-level: 38
+   difficulty: 42
+   speed: 20
+   ac: "Nat 14/Dodge 0/Prot 0"
+   mr: 30
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtBite, AdPhys, 5, 5], [AtClaw, AdSimurgh, 5, 5]]
+   weight: 3000
+   nutrition: 400
+   size: large
+   resistances:
+    - ReSleep
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlFly, FlHerbivore, FlHostile, FlWander, FlNoHands, FlAnimal, FlOviparous, FlFemale, FlProperName, FlUntameable, FlNoPoly, FlInfravisible]
+   color: BrightGreen
+
+ - name: "Tenebrous"
+   symbol: "v"
+   base-level: 39
+   difficulty: 47
+   speed: 16
+   ac: "Nat 15/Dodge 0/Prot 0"
+   mr: 50
+   alignment: -2
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtTouch, AdLevelDrain, 4, 6], [AtTouch, AdLevelDrain, 4, 6], [AtReach, AdMultiElementCounterAttackThatAngersTons, 4, 6]]
+   weight: 0
+   nutrition: 0
+   size: huge
+   resistances:
+    - ReFire
+    - ReCold
+    - ReSleep
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlFly, FlAmorphous, FlBreathless, FlHostile, FlStalk, FlNoEyes, FlNoLimbs, FlNoHead, FlUnSolid, FlNeuter, FlProperName, FlUntameable, FlNoPoly, FlPassesBars, FlVegan]
+   color: Black
+
+ - name: "Ymir"
+   symbol: "H"
+   base-level: 40
+   difficulty: 46
+   speed: 15
+   ac: "Nat 15/Dodge 0/Prot 0"
+   mr: 100
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 3, 8], [AtWeapon, AdPhys, 3, 8], [AtKick, AdPhys, 5, 6], [AtArrow, AdBoulderArrow, 1, 1]]
+   weight: 9000
+   nutrition: 1500
+   size: gigantic
+   resistances:
+    - ReCold
+    - ReSleep
+    - RePoison
+    - RePetrification
+   conferred:
+    - ReSleep
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlHostile, FlStalk, FlRockThrow, FlGreedy, FlJewels, FlCollect, FlMagicCollect, FlTraitor, FlPoisonous, FlHumanoid, FlThickHide, FlMale, FlStrong, FlPrince, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlHuman, FlGiant, FlInfravision]
+   color: BrightGreen
+
+ - name: "The Alignment Thing"
+   symbol: "&"
+   base-level: 42
+   difficulty: 47
+   speed: 6
+   ac: "Nat 18/Dodge 0/Prot 0"
+   mr: 100
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdAlignmentBlast, 5, 5], [AtNone, AdPoly, 4, 4], [AtSuicideExplode, AdReleaseAlignmentSpirits, 1, 1]]
+   weight: 9000
+   nutrition: 1500
+   size: gigantic
+   resistances:
+    - ReFire
+    - ReCold
+    - ReSleep
+    - ReElectricity
+    - RePoison
+    - RePetrification
+    - ReDrain
+   conferred:
+   flags: [FlNoPoly, FlFly, FlHostile, FlStalk, FlTraitor, FlPoisonous, FlHumanoid, FlNeuter, FlStrong, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlVampire, FlDemon, FlInfravision]
+   color: White
+
+ - name: "Miska"
+   symbol: "C"
+   base-level: 45
+   difficulty: 51
+   speed: 15
+   ac: "Nat 18/Dodge 0/Prot 0"
+   mr: 100
+   alignment: -18
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtMillionArms, AdPhys, 2, 10], [AtWeapon, AdPhys, 2, 10], [AtBite, AdStrDrain, 8, 8], [AtKick, AdWebs, 1, 1]]
+   weight: 2550
+   nutrition: 500
+   size: huge
+   resistances:
+    - ReFire
+    - ReSleep
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlHumanoid, FlAnimal, FlMale, FlStrong, FlProperName, FlNoPoly, FlInfravisible, FlHuman]
+   color: Magenta
+
+ - name: "Cosmos"
+   symbol: "7"
+   base-level: 45
+   difficulty: 51
+   speed: 15
+   ac: "Nat 18/Dodge 0/Prot 0"
+   mr: 100
+   alignment: 12
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 5, 10], [AtWeapon, AdCrystalMemories, 2, 10], [AtArrow, AdDilithiumCrystals, 1, 4]]
+   weight: 2550
+   nutrition: 500
+   size: huge
+   resistances:
+    - ReFire
+    - ReSleep
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlHumanoid, FlFemale, FlStrong, FlProperName, FlNoPoly, FlInfravisible, FlHuman]
+   color: White
+
+ - name: "Nudzirath"
+   symbol: "9"
+   base-level: 45
+   difficulty: 50
+   speed: 15
+   ac: "Nat 18/Dodge 0/Prot 0"
+   mr: 100
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 4, 10], [AtWeapon, AdMirrorBlast, 4, 10]]
+   weight: 2550
+   nutrition: 500
+   size: huge
+   resistances:
+    - ReFire
+    - ReSleep
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlHostile, FlCollect, FlHumanoid, FlFemale, FlStrong, FlProperName, FlNoPoly, FlInfravisible, FlHuman]
+   color: Gray
+
+ - name: "Unknown God"
+   symbol: "U"
+   base-level: 95
+   difficulty: 46
+   speed: 0
+   ac: "Nat 18/Dodge 0/Prot 0"
+   mr: 100
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtNone, AdPoly, 10, 10]]
+   weight: 9000
+   nutrition: 1500
+   size: gigantic
+   resistances:
+    - ReFire
+    - ReSleep
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlPeaceful, FlCollect, FlHumanoid, FlAnimal, FlFemale, FlStrong, FlProperName, FlNoPoly, FlInfravisible, FlHuman]
+   color: White
+
+ - name: "Numina"
+   symbol: "@"
+   base-level: 50
+   difficulty: 28
+   speed: 15
+   ac: "Nat 20/Dodge 0/Prot 0"
+   mr: 100
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtClaw, AdStun, 3, 8], [AtClaw, AdConfuse, 3, 8], [AtReach, AdVoidWhispers, 2, 12]]
+   weight: 4500
+   nutrition: 400
+   size: huge
+   resistances:
+    - ReFire
+    - ReElectricity
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlFly, FlBreathless, FlHostile, FlStalk, FlCollect, FlHumanoid, FlFemale, FlStrong, FlPrince, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlHuman, FlSeeInvis]
+   color: BrightMagenta
+
+ - name: "Ilsensine The Fallen"
+   symbol: "7"
+   base-level: 105
+   difficulty: 51
+   speed: 15
+   ac: "Nat 18/Dodge 0/Prot 0"
+   mr: 100
+   alignment: 12
+   generates:
+    - unique
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtNone, AdMagicMissile, 10, 10]]
+   weight: 2550
+   nutrition: 500
+   size: huge
+   resistances:
+    - ReFire
+    - ReSleep
+    - RePoison
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlPeaceful, FlCollect, FlHumanoid, FlFemale, FlStrong, FlProperName, FlNoPoly, FlInfravisible, FlHuman]
    color: White
 
  - name: "Lord Carnarvon"
@@ -22634,6 +24609,30 @@ monsters:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlStalk, FlGreedy, FlJewels, FlCollect, FlMagicCollect, FlClose, FlTraitor, FlHumanoid, FlMale, FlPrince, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlGnome, FlInfravision]
    color: Magenta
 
+ - name: "Raggo the Gnome King"
+   symbol: "G"
+   base-level: 13
+   difficulty: 15
+   speed: 10
+   ac: "Nat 5/Dodge 0/Prot 0"
+   mr: 10
+   alignment: -3
+   generates:
+    - unique
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 2, 6], [AtOffhandedWeapon, AdPhys, 2, 6]]
+   weight: 750
+   nutrition: 150
+   size: small
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlHostile, FlStalk, FlGreedy, FlJewels, FlCollect, FlMagicCollect, FlClose, FlTraitor, FlHumanoid, FlMale, FlPrince, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlGnome, FlInfravision]
+   color: Magenta
+
  - name: "orc warchief"
    symbol: "o"
    base-level: 20
@@ -22708,6 +24707,33 @@ monsters:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlCollect, FlMagicCollect, FlClose, FlHumanoid, FlMale, FlStrong, FlLord, FlProperName, FlUntameable, FlNoPoly, FlInfravisible, FlHuman]
    color: Magenta
 
+ - name: "Salamander Mage"
+   symbol: ":"
+   base-level: 20
+   difficulty: 27
+   speed: 12
+   ac: "Nat 11/Dodge 0/Prot 0"
+   mr: 0
+   alignment: -9
+   generates:
+    - unique
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 2, 8], [AtTouch, AdFire, 1, 8], [AtHug, AdPhys, 2, 8], [AtHug, AdFire, 3, 8], [AtCast, AdSpell, 2, 8]]
+   weight: 1500
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReFire
+    - ReSleep
+   conferred:
+    - ReFire
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlCollect, FlMagicCollect, FlPoisonous, FlHumanoid, FlSlithy, FlThickHide, FlMale, FlUntameable, FlNoPoly, FlInfravisible, FlInfravision, FlPassesBars]
+   color: Magenta
+
  - name: "Twoflower"
    symbol: "@"
    base-level: 20
@@ -22758,6 +24784,31 @@ monsters:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlCollect, FlMagicCollect, FlClose, FlHumanoid, FlFemale, FlStrong, FlUntameable, FlNoPoly, FlInfravisible, FlHuman]
    color: Magenta
 
+ - name: "Ulitharid"
+   symbol: "h"
+   base-level: 20
+   difficulty: 27
+   speed: 12
+   ac: "Nat 10/Dodge 0/Prot 0"
+   mr: 90
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 4, 8], [AtOffhandedWeapon, AdPhys, 4, 8], [AtTentacle, AdIntDrain, 4, 4], [AtTentacle, AdIntDrain, 4, 4], [AtTentacle, AdIntDrain, 4, 4], [AtTentacle, AdIntDrain, 4, 4]]
+   weight: 3000
+   nutrition: 800
+   size: large
+   resistances:
+    - RePoison
+   conferred:
+   flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlHostile, FlGreedy, FlJewels, FlCollect, FlTraitor, FlHumanoid, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlInfravisible, FlSeeInvis]
+   color: BrightMagenta
+
  - name: "Neferet the Green"
    symbol: "@"
    base-level: 20
@@ -22782,6 +24833,36 @@ monsters:
    conferred:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlCollect, FlMagicCollect, FlClose, FlHumanoid, FlFemale, FlStrong, FlPrince, FlProperName, FlUntameable, FlNoPoly, FlInfravisible, FlHuman]
    color: Green
+
+ - name: "Menzoberranzan"
+   symbol: "L"
+   base-level: 17
+   difficulty: 25
+   speed: 9
+   ac: "Nat 14/Dodge 0/Prot 0"
+   mr: 90
+   alignment: 0
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtTouch, AdCold, 3, 6], [AtTentacle, AdIntDrain, 1, 4], [AtTentacle, AdLevelDrain, 1, 4], [AtTentacle, AdLevelDrain, 1, 4], [AtCast, AdSpell, 0, 0]]
+   weight: 1200
+   nutrition: 100
+   size: medium
+   resistances:
+    - ReFire
+    - ReCold
+    - ReSleep
+    - RePoison
+    - RePetrification
+    - ReDrain
+   conferred:
+   flags: [FlNoPoly, FlFly, FlBreathless, FlMindless, FlHostile, FlMagicCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlPoisonous, FlHumanoid, FlProperName, FlRegen, FlUntameable, FlNoPoly, FlUndead, FlSeeInvis]
+   color: Gray
 
  - name: "Minion of Huhetotl"
    symbol: "&"
@@ -22810,6 +24891,32 @@ monsters:
    conferred:
    flags: [FlNoPoly, FlFly, FlHostile, FlStalk, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlPoisonous, FlHumanoid, FlMale, FlStrong, FlUntameable, FlNoPoly, FlInfravisible, FlVampire, FlDemon, FlInfravision, FlSeeInvis]
    color: Red
+
+ - name: "Efreet Sultan"
+   symbol: "&"
+   base-level: 20
+   difficulty: 25
+   speed: 14
+   ac: "Nat 12/Dodge 0/Prot 0"
+   mr: 30
+   alignment: -10
+   generates:
+    - unique
+   leaves-corpse: No
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 3, 8], [AtWeapon, AdFire, 3, 8], [AtCast, AdSpell, 4, 5]]
+   weight: 1500
+   nutrition: 400
+   size: medium
+   resistances:
+    - ReFire
+    - RePetrification
+   conferred:
+   flags: [FlNoPoly, FlFly, FlHostile, FlStalk, FlCollect, FlWantsArti, FlWantsAll, FlWaitsForYou, FlCovetous, FlHumanoid, FlMale, FlUntameable, FlNoPoly, FlInfravisible, FlSeeInvis]
+   color: Blue
 
  - name: "mummified android"
    symbol: "M"
@@ -22977,7 +25084,6 @@ monsters:
    nutrition: 0
    size: medium
    resistances:
-    - ReElectricity
     - RePoison
    conferred:
    flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlHostile, FlStalk, FlGreedy, FlJewels, FlCollect, FlTraitor, FlHumanoid, FlThickHide, FlMale, FlStrong, FlNasty, FlNoPoly, FlClockwork, FlSeeInvis, FlVegan]
@@ -23002,7 +25108,6 @@ monsters:
    nutrition: 0
    size: medium
    resistances:
-    - ReElectricity
     - RePoison
    conferred:
    flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlHostile, FlStalk, FlGreedy, FlJewels, FlCollect, FlTraitor, FlHumanoid, FlThickHide, FlFemale, FlStrong, FlNasty, FlNoPoly, FlClockwork, FlSeeInvis, FlVegan]
@@ -23027,9 +25132,6 @@ monsters:
    nutrition: 0
    size: medium
    resistances:
-    - ReFire
-    - ReCold
-    - ReElectricity
     - RePoison
    conferred:
    flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlHostile, FlStalk, FlGreedy, FlJewels, FlCollect, FlTraitor, FlHumanoid, FlThickHide, FlFemale, FlStrong, FlNasty, FlNoPoly, FlClockwork, FlSeeInvis, FlVegan]
@@ -23055,9 +25157,6 @@ monsters:
    nutrition: 0
    size: medium
    resistances:
-    - ReFire
-    - ReCold
-    - ReElectricity
     - RePoison
    conferred:
    flags: [FlNoPoly, FlFly, FlCarnivore, FlHerbivore, FlHostile, FlStalk, FlTraitor, FlHumanoid, FlThickHide, FlFemale, FlStrong, FlNasty, FlNoPoly, FlClockwork, FlSeeInvis, FlVegan]
@@ -23085,7 +25184,7 @@ monsters:
     - RePoison
    conferred:
    flags: [FlFly, FlHostile, FlNoLimbs, FlNoHead, FlSlithy, FlInfravisible, FlSeeInvis, FlPassesBars]
-   color: Magenta
+   color: BrightMagenta
 
  - name: "parasitic master mind flayer"
    symbol: "w"
@@ -23109,7 +25208,7 @@ monsters:
     - RePoison
    conferred:
    flags: [FlFly, FlHostile, FlNoLimbs, FlNoHead, FlSlithy, FlInfravisible, FlSeeInvis, FlPassesBars]
-   color: Magenta
+   color: BrightMagenta
 
  - name: "crucified android"
    symbol: "G"
@@ -23256,7 +25355,7 @@ monsters:
    color: BrightMagenta
 
  - name: "Maanzecorian"
-   symbol: "."
+   symbol: "8"
    base-level: 27
    difficulty: 34
    speed: 18
@@ -23993,6 +26092,56 @@ monsters:
    flags: [FlNoPoly, FlSwim, FlAmphibious, FlMindless, FlHostile, FlNoLimbs, FlNoHead, FlNeuter, FlStrong, FlUntameable, FlNoPoly]
    color: BrightMagenta
 
+ - name: "Archipelago Ancient"
+   symbol: "h"
+   base-level: 6
+   difficulty: 9
+   speed: 9
+   ac: "Nat 5/Dodge 0/Prot 0"
+   mr: 10
+   alignment: -3
+   generates:
+    - unique
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 6], [AtOffhandedWeapon, AdPhys, 1, 6], [AtKick, AdPhys, 2, 4], [AtGaze, AdWatcherTentacleGaze, 0, 0]]
+   weight: 4500
+   nutrition: 1000
+   size: huge
+   resistances:
+    - ReCold
+    - ReSleep
+   conferred:
+    - ReSleep
+   flags: [FlNoPoly, FlSwim, FlAmphibious, FlCarnivore, FlHerbivore, FlHostile, FlStalk, FlGreedy, FlJewels, FlCollect, FlMagicCollect, FlTraitor, FlHumanoid, FlStrong, FlUntameable, FlNoPoly, FlInfravisible, FlHuman, FlInfravision]
+   color: Green
+
+ - name: "deep sea tentacle"
+   symbol: "w"
+   base-level: 5
+   difficulty: 6
+   speed: 12
+   ac: "Nat 4/Dodge 0/Prot 0"
+   mr: 0
+   alignment: -3
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtReach, AdPhys, 1, 4]]
+   weight: 4500
+   nutrition: 1000
+   size: huge
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlSwim, FlAmphibious, FlMindless, FlHostile, FlNoLimbs, FlNoHead, FlNeuter, FlStrong, FlUntameable, FlNoPoly]
+   color: Green
+
  - name: "Smaug"
    symbol: "D"
    base-level: 25
@@ -24213,7 +26362,7 @@ monsters:
    color: Black
 
  - name: "Blackbeard's Ghost"
-   symbol: "."
+   symbol: "8"
    base-level: 15
    difficulty: 19
    speed: 12
@@ -24621,6 +26770,29 @@ monsters:
     - RePoison
    flags: [FlNoPoly, FlFly, FlCarnivore, FlHostile, FlGreedy, FlJewels, FlMagicCollect, FlWaitsForYou, FlPoisonous, FlNoHands, FlAnimal, FlThickHide, FlFemale, FlStrong, FlLord, FlProperName, FlNasty, FlUntameable, FlNoPoly, FlSeeInvis]
    color: Green
+
+ - name: "Black Knight"
+   symbol: "@"
+   base-level: 10
+   difficulty: 12
+   speed: 12
+   ac: "Nat 0/Dodge 0/Prot 0"
+   mr: 1
+   alignment: -3
+   generates:
+   leaves-corpse: Yes
+   not-generated-normally: Yes
+   appears-in-small-groups: No
+   appears-in-large-groups: No
+   genocidable: No
+   attacks: [[AtWeapon, AdPhys, 1, 6], [AtOffhandedWeapon, AdPhys, 1, 6]]
+   weight: 1450
+   nutrition: 400
+   size: medium
+   resistances:
+   conferred:
+   flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlCollect, FlHumanoid, FlStrong, FlUntameable, FlNoPoly, FlInfravisible, FlHuman]
+   color: Black
 
  - name: "Sir Garland"
    symbol: "@"
@@ -26003,7 +28175,7 @@ monsters:
    color: Blue
 
  - name: "voice in the dark"
-   symbol: " "
+   symbol: "6"
    base-level: 24
    difficulty: 26
    speed: 12
@@ -28684,5 +30856,5 @@ monsters:
    conferred:
    flags: [FlNoPoly, FlCarnivore, FlHerbivore, FlPeaceful, FlCollect, FlMagicCollect, FlHumanoid, FlStrong, FlNoPoly, FlInfravisible, FlHuman]
    color: White
-all-monster-names: ["giant ant", "killer bee", "soldier ant", "fire ant", "giant beetle", "queen bee", "vermiurge", "valavi", "trilobite", "acid blob", "blob of preserved organs", "quivering blob", "gelatinous cube", "crystal ooze", "blood bloater", "shoggoth", "priest of Ghaunadaur", "mothering mass", "coiling brawn", "chickatrice", "cockatrice", "pyrolisk", "jackal", "fox", "coyote", "little dog", "werejackal", "dog", "dingo", "wolf", "large dog", "warg", "winter wolf cub", "winter wolf", "hell hound pup", "werewolf", "hell hound", "Cerberus", "hound of Tindalos", "anuban jackal", "seal", "gas spore", "floating eye", "monoton", "duton", "triton", "quaton", "quinon", "freezing sphere", "flaming sphere", "shocking sphere", "ballistospore", "pursuer", "vexing orb", "flaming orb", "beholder", "ball of light", "eye of doom", "ball of radiance", "aphanactonan audient", "aphanactonan assessor", "kitten", "housecat", "lynx", "large cat", "jaguar", "panther", "tiger", "manticore", "serpent-necked lioness", "displacer beast", "son of Typhon", "hellcat", "saber-toothed cat", "grimlock", "gremlin", "gargoyle", "winged gargoyle", "nightgaunt", "hobbit", "dwarf", "bugbear", "dwarf lord", "dwarf cleric", "changed", "dwarf queen", "dwarf king", "deep one", "mind flayer", "edderkop", "master mind flayer", "gnoll", "githyanki pirate", "deeper one", "anubite", "elocator", "star spawn", "manes", "homunculus", "lemure", "imp", "nupperibo", "quasit", "tengu", "uranium imp", "legion devil grunt", "legion devil soldier", "legion devil sergeant", "legion devil captain", "metamorphosed nupperibo", "ancient nupperibo", "Glasya", "blue jelly", "spotted jelly", "ochre jelly", "aoa droplet", "aoa", "kobold", "large kobold", "kobold lord", "kobold shaman", "winged kobold", "leprechaun", "ethereal filcher", "lucksucker", "small mimic", "large mimic", "giant mimic", "quickling", "dryad", "naiad", "oread", "yuki-onna", "swamp nymph", "deminymph", "neverwas", "thriae", "selkie", "oceanid", "intoner", "Echo", "goblin", "hobgoblin", "orc", "hill orc", "Mordor orc", "Uruk-hai", "orc shaman", "orc-captain", "Uruk-captain", "Mordor orc elite", "Mordor shaman", "Mordor marshal", "Angband orc", "orc of the ages of stars", "rock piercer", "iron piercer", "glass piercer", "heaven piercer", "lamb", "rothe", "musimon", "sheep", "mumak calf", "leocrotta", "wumpus", "dire sheep", "titanothere", "baluchitherium", "mumak", "mastodon", "deep dweller", "dark young", "sewer rat", "giant rat", "rabid rat", "enormous rat", "rock mole", "rodent of unusual size", "wererat", "woodchuck", "cave spider", "centipede", "giant spider", "scorpion", "mirkwood spider", "phase spider", "demonic black widow", "mirkwood elder", "yurian", "baby metroid", "metroid", "alpha metroid", "lurker above", "trapper", "gamma metroid", "zeta metroid", "omega metroid", "metroid queen", "white unicorn", "gray unicorn", "black unicorn", "pony", "horse", "warhorse", "Nightmare", "fog cloud", "dust vortex", "ice vortex", "energy vortex", "steam vortex", "fire vortex", "singing sand", "stinking cloud", "dancing flame", "luminous cloud", "pyroclastic vortex", "waterspout", "dark worm", "baby long worm", "baby purple worm", "long worm", "purple worm", "hunting horror", "grid bug", "xan", "bebelith", "mote of light", "yellow light", "black light", "zruty", "ammit", "couatl", "Aleax", "Angel", "ki-rin", "Justice Archon", "Shield Archon", "Sword Archon", "Trumpet Archon", "Warden Archon", "Throne Archon", "Light Archon", "Iasoian Archon", "Panakeian Archon", "Hygieian Archon", "Poro Aulon", "harrower of Zariel", "Giant Eagle", "Barachiel", "Domiel", "Erathaol", "Astaphaios", "Raziel", "Sealtiel", "Zaphkiel", "Movanic Deva", "Monadic Deva", "Astral Deva", "Graha Deva", "Surya Deva", "dancing blade", "Mahadeva", "Iksh'na Deva", "Birth", "Health", "Bounty", "Peace", "lillend", "weeping angel", "Coure Eladrin", "Noviere Eladrin", "Bralani Eladrin", "Firre Eladrin", "Shiere Eladrin", "Ghaele Eladrin", "Tulani Eladrin", "Gae Eladrin", "Brighid Eladrin", "Uiscerre Eladrin", "Caillea Eladrin", "Moonshadow", "Dracae Eladrin", "Jrt Netjer", "Light-elf", "kuker", "polypoid being", "Gwynharwyf", "furious whirlwind", "Ascodel", "bloody sunset", "Faerinaal", "ball of gossamer sunlight", "Queen Mab", "coterie of motes", "Keto", "wide-clubbed tentacle", "ancient tempest", "masked queen", "Queen of Stars", "eternal light", "god", "bat", "giant bat", "parrot", "crow", "battle-bat", "vampire bat", "raven", "warbat", "chiropteran", "byakhee", "plains centaur", "forest centaur", "mountain centaur", "sprow", "centaur chieftain", "drider", "priestess of Ghaunadaur", "formian crusher", "formian taskmaster", "Synaisthesia", "baby gray dragon", "baby silver dragon", "baby shimmering dragon", "baby white dragon", "baby orange dragon", "baby black dragon", "baby blue dragon", "baby green dragon", "baby red dragon", "baby deep dragon", "baby yellow dragon", "gray dragon", "silver dragon", "shimmering dragon", "white dragon", "orange dragon", "black dragon", "blue dragon", "green dragon", "red dragon", "deep dragon", "yellow dragon", "tiny pseudodragon", "pseudodragon", "riding pseudodragon", "large pseudodragon", "winged pseudodragon", "huge pseudodragon", "gigantic pseudodragon", "triceratops", "tyrannosaurus", "diplodocus", "stalker", "dream quasielemental", "air elemental", "lightning paraelemental", "fire elemental", "poison paraelemental", "earth elemental", "ice paraelemental", "water elemental", "acid paraelemental", "terracotta soldier", "lethe elemental", "mortai", "lichen", "brown mold", "yellow mold", "green mold", "red mold", "shrieker", "violet fungus", "migo worker", "migo soldier", "migo philosopher", "phantom fungus", "migo queen", "fungal brain", "clockwork soldier", "clockwork dwarf", "faberge sphere", "firework cart", "gnome", "gnome lord", "gnome lady", "tinker gnome", "gnomish wizard", "gnome king", "gnome queen", "clockwork factory", "golden heart", "juggernaut", "id juggernaut", "scrap titan", "hellfire colossus", "hellfire orb", "clockwork automaton", "colossal clockwork war-machine", "giant", "stone giant", "hill giant", "fire giant", "frost giant", "gnoll matriarch", "ettin", "warrior changed", "storm giant", "titan", "minotaur", "minotaur priestess", "deepest one", "lurking one", "blasphemous lurker", "lurking hand", "blasphemous hand", "tove", "jubjub bird", "bandersnatch", "jabberwock", "malkuth sephirah", "yesod sephirah", "daat sephirah", "hod sephirah", "netzach sephirah", "gevurah sephirah", "binah sephirah", "chokhmah sephirah", "lich", "demilich", "master lich", "baelnorn", "death knight", "arch-lich", "dokkalfar eternal matriarch", "Vecna", "kobold mummy", "gnome mummy", "orc mummy", "dwarf mummy", "elf mummy", "human mummy", "drow mummy", "half-dragon mummy", "ettin mummy", "chiropteran mummy", "giant mummy", "soldier mummy", "priest mummy", "pharaoh", "red naga hatchling", "black naga hatchling", "golden naga hatchling", "guardian naga hatchling", "red naga", "black naga", "golden naga", "guardian naga", "ancient naga", "ogre", "ogre mage", "ogre lord", "ogre king", "ogre emperor", "siege ogre", "gray ooze", "brown pudding", "black pudding", "green slime", "flux slime", "living mirage", "darkness given hunger", "quantum mechanic", "rust monster", "disenchanter", "garter snake", "snake", "water moccasin", "wraithworm", "pit viper", "python", "cobra", "serpent man of Yoth", "feathery serpent priestess", "serpent priest", "daughter of Naunet", "man-serpent soldier", "man-serpent mage", "man-serpent summoner", "man-serpent giant", "half-stone-dragon", "pisaca", "troll", "ice troll", "rock troll", "water troll", "Olog-hai", "wood troll", "chuul", "umber hulk", "elder chuul", "hooloovoo", "parasitic wall-hugger", "shambling horror", "stumbling horror", "wandering horror", "gray devourer", "uvuudaum", "Nameless Horror", "beauteous one", "Grue", "vampire", "vampire lady", "vampire lord", "star vampire", "Mina Harker", "Ilona Szilagy", "Carmilla", "Vlad the Impaler", "parai", "barrow wight", "wraith", "phantasm", "Nazgul", "zarielite zealot", "zarielite heretic", "unbodied", "xorn", "monkey", "ape", "owlbear", "yeti", "carnivorous ape", "sasquatch", "gug", "undead knight", "warrior of sunlight", "undead maiden", "knight of the princess's guard", "blue sentinel", "darkmoon knight", "undead rebel", "pardoner", "occultist", "zombie", "ghoul", "hedrow zombie", "skeletal pirate", "hungry dead", "skeleton", "gnoll ghoul", "dread seraph", "phalanx", "straw golem", "paper golem", "rope golem", "gold golem", "leather golem", "wood golem", "flesh golem", "brain golem", "living lectern", "spell golem", "clay golem", "stone golem", "semblance", "treasury golem", "glass golem", "grove guardian", "argentum golem", "iron golem", "green-steel golem", "retriever", "living doll", "parasitized doll", "Amm Kamerel", "Plumach Rilmani", "Ferrumach Rilmani", "Hudor Kamerel", "Cuprilach Rilmani", "Stannumach Rilmani", "Argenach Rilmani", "Sharab Kamerel", "mercurial essence", "brimstone essence", "Hydrargyrumach Rilmani", "Aurumach Rilmani", "Ara Kamerel", "Adamach", "human", "peasant", "miner", "prison guard", "werejackal", "elf", "drow", "Woodland-elf", "drow captain", "Green-elf", "wererat", "Grey-elf", "werewolf", "hedrow warrior", "elf-lord", "elf-lady", "doppelganger", "hedrow wizard", "nurse", "maid", "Elvenking", "Elvenqueen", "unearthly drow", "drow matron", "hedrow blademaster", "embraced drowess", "shopkeeper", "goblin smith", "dwarf smith", "treesinger", "mithril smith", "shadowsmith", "human smith", "guard", "prisoner", "mindless thrall", "mad seer", "Oracle", "aligned priest", "high priest", "elder priest", "priest of an unknown god", "soldier", "sergeant", "lieutenant", "captain", "watchman", "watch captain", "aztec warrior", "aztec spearthrower", "aztec priest", "Shattered Ziggurat cultist", "Shattered Ziggurat knight", "Shattered Ziggurat wizard", "myrmidon hoplite", "myrmidon lochias", "myrmidon ypolochagos", "myrmidon lochagos", "parasitized knight", "Medusa", "Illurien of the Myriad Glimpses", "Wizard of Yendor", "Croesus", "Daemon", "garo", "ghost", "being of Ib", "priest of Ib", "garo master", "broken shadow", "shade", "marid", "lava demon", "horned devil", "succubus", "incubus", "erinys", "vrock", "barbed devil", "hezrou", "damned pirate", "bone devil", "daughter of bedlam", "yochlol", "lilitu", "ice devil", "nalfeshnee", "invidiak", "marilith", "walking delirium", "alkilith", "pit fiend", "fallen angel", "apocalypse angel", "ancient of blessings", "ancient of vitality", "ancient of corruption", "ancient of the burning wastes", "ancient of thought", "ancient of ice", "ancient of death", "balrog", "nessian pit fiend", "shayateen", "strange larva", "akkabish tannin", "shalosh tannah", "nachash tannin", "khaamnun tannin", "raglayim tannin", "teraphim tannah", "sartan tannin", "Fierna", "Aldinach", "Naome", "Bael", "Alrunes", "hateful whispers", "Juiblex", "Zuggtmoy", "Kostchtchie", "Baphomet", "Yeenoghu", "Daughter Lilith", "green pit fiend", "Mammon", "Malcanthet", "Shaktari", "Mother Lilith", "Belial", "Avatar of Lolth", "Graz'zt", "Orcus", "Crone Lilith", "creature in the ice", "Levistus", "Leviathan", "Dispater", "Baalzebub", "Molek", "Mephistopheles", "Pale Night", "Baalphegor", "Verier", "Dagon", "Asmodeus", "Obox-ob", "Lamashtu", "Demogorgon", "Death", "Pestilence", "Famine", "War", "mail daemon", "djinni", "sandestin", "psychopomp", "jellyfish", "piranha", "giant eel", "shark", "water dolphin", "electric eel", "great white shark", "kraken", "charybdisone", "newt", "gecko", "baby cave lizard", "iguana", "baby crocodile", "small cave lizard", "lizard", "cave lizard", "chameleon", "crocodile", "giant turtle", "large cave lizard", "salamander", "weeping willow", "razorvine", "sunflower", "dreadblossom swarm", "brainblossom patch", "mandrake", "dungeon fern", "dungeon fern sprout", "dungeon fern spore", "swamp fern", "swamp fern sprout", "swamp fern spore", "burning fern", "burning fern sprout", "burning fern spore", "devil's snare", "viper tree", "black flower", "warden tree", "candle tree", "long worm tail", "hunting horror tail", "archeologist", "anachrononaut", "barbarian", "half-dragon", "bard", "exile", "caveman", "cavewoman", "convict", "healer", "knight", "monk", "madman", "madwoman", "nobleman", "noblewoman", "priest", "priestess", "itinerant priestess", "pirate", "ranger", "rogue", "samurai", "tourist", "valkyrie", "awakened valkyrie", "transcendent valkyrie", "incantifier", "worm that walks", "wizard", "Lord Carnarvon", "Sara, the Last Oracle", "Pelias", "Pindar", "strange corpse", "Shaman Karnov", "Robert the Lifer", "Eclavdra", "Galadriel", "Hippocrates", "Shuushar the Enlightened", "King Arthur", "Grand Master", "old fortune teller", "Thorin II Oakenshield", "Dain II Ironfoot", "Mother", "drow novice", "crow-winged half-dragon", "Adventuress Zaria", "Arch Priest", "Cassilda the Iron Maiden", "Mayor Cummerbund", "Orion", "damaged arcadian avenger", "Ruggo the Gnome High King", "orc warchief", "Master of Thieves", "Lord Sato", "Twoflower", "Norn", "Neferet the Green", "Minion of Huhetotl", "mummified android", "mummified gynoid", "flayed android", "flayed gynoid", "parasitized embraced alider", "parasitized android", "parasitized gynoid", "parasitized operator", "parasitized commander", "parasitic mind flayer", "parasitic master mind flayer", "crucified android", "crucified gynoid", "twitching four-armed changed", "clairvoyant changed", "Lugribossk", "Maanzecorian", "Thoth Amon", "Aglaope", "Acererak", "Chromatic Dragon", "Platinum Dragon", "Warden Arianna", "Arianna", "Necromancer", "Seyll Auzkovyn", "Daruth Xaxox", "Cyclops", "Blibdoolpoolp, graven-into-flesh", "Blibdoolpoolp's mindgraven champion", "Ixoth", "Nimune", "Master Kaen", "Doctor Archer", "Rebel Ringleader", "adventuring wizard", "militant cleric", "half-elf ranger", "Durin's Bane", "Watcher in the Water", "swarm of snaking tentacles", "long sinuous tentacle", "Smaug", "Bolg", "elder brain", "A'gone", "A'salom", "Bastard of the Boreal Valley", "Watchdog of the Boreal Valley", "Vechernyaya the Sun's Grave-keeper", "Blackbeard's Ghost", "Nalzok", "legionnaire", "Legion", "Scorpius", "Great High Shaman of Kurtulmak", "Master Assassin", "Ashikaga Takauji", "Lord Surtur", "Dark One", "doom knight", "Lich, the Fiend of Earth", "Kary, the Fiend of Fire", "Kraken, the Fiend of Water", "Tiamat, the Fiend of Wind", "Sir Garland", "Garland", "Chaos", "Alabaster elf", "Alabaster elf-elder", "sentinel of Mithardir", "Alabaster mummy", "first wraithworm", "aspect of The Silence", "ford elemental", "ford guardian", "elven wraith", "Shelob", "high shaman", "Lungorthin", "Center of All", "Cathezar", "chain golem", "small goat spawn", "goat spawn", "giant goat spawn", "blessed", "mouth of the goat", "swirling mist", "dust storm", "ice storm", "thunder storm", "fire storm", "witch's familiar", "apprentice witch", "witch", "coven leader", "Good Neighbor", "Hmnyw-Pharaoh", "Nitocris", "Ghoul-queen Nitocris", "twin sibling", "bestial dervish", "ethereal dervish", "sparkling lake", "flashing lake", "smoldering lake", "frosted lake", "blood shower", "many-taloned thing", "deep blue cube", "pitch black cube", "perfectly clear cube", "prayerful thing", "hemorrhagic thing", "many-eyed seeker", "voice in the dark", "tiny being of light", "man-faced millipede", "mirrored moonflower", "crimson writher", "radiant pyramid", "grotesque peeper", "bright walker", "silent one", "alhoon", "Father Dagon", "Mother Hydra", "Great Cthulhu", "arcadian avenger", "Axus", "Arsenal", "Oona", "Apollyon", "Lucifer", "student", "trooper", "myrkalfr", "myrkalfar warrior", "myrkalfar matron", "alider", "android", "gynoid", "operator", "commander", "chieftain", "rhymer", "neanderthal", "inmate", "drow matron-mother", "hedrow master-wizard", "drow alienist", "Gromph", "Dantrag", "Celeborn", "High-elf", "stjarna-alfr", "attendant", "Sister T'eirastra", "Pen'a mendicant", "mendicant sprow", "mendicant drider", "Sir Aljanor", "Alliance vanguard", "Mad Grazi", "kuo toa", "kuo toa whip", "duergar", "giant duergar", "duergar stoneguard", "giant stoneguard", "duergar debilitator", "duergar annihilator", "duergar deepking", "giant deepking", "Y-cultist", "Y-cultist fighter", "Y-cultist wizard", "Y-cultist matron", "Y-cultist patron", "anulo", "anulo dancer", "page", "abbot", "xorn monk", "xuenu monk", "dao lao gui monk", "zhi ren monk", "Lady Constance", "patient", "contaminated patient", "Stranger", "Suzerain", "flaxen starshadow", "flaxen star-phantom", "carcosan courtier", "Star-elf", "Star-emperor", "Star-empress", "Puppet-Emperor Xeleth", "Puppet-Empress Xedalli", "secret-whisperer", "truth-seer", "dream-eater", "veil-render", "servant", "dwarf warrior", "sister", "houseless drow", "corvian", "corvian knight", "acolyte", "pirate brother", "hunter", "gnome comrade", "orc warrior", "thug", "ninja", "roshi", "guide", "warrior", "apprentice"]
+all-monster-names: ["giant ant", "killer bee", "soldier ant", "fire ant", "giant beetle", "queen bee", "vermiurge", "valavi", "trilobite", "acid blob", "blob of preserved organs", "quivering blob", "gelatinous cube", "crystal ooze", "blood bloater", "shoggoth", "priest of Ghaunadaur", "mothering mass", "coiling brawn", "chickatrice", "cockatrice", "pyrolisk", "jackal", "fox", "coyote", "wolf cub", "little dog", "werejackal", "dog", "dingo", "wolf", "large dog", "warg", "winter wolf cub", "winter wolf", "hell hound pup", "werewolf", "hell hound", "Cerberus", "hound of Tindalos", "anuban jackal", "seal", "gas spore", "floating eye", "monoton", "duton", "triton", "quaton", "quinon", "freezing sphere", "flaming sphere", "shocking sphere", "ballistospore", "pursuer", "vexing orb", "flaming orb", "beholder", "ball of light", "eye of doom", "Death Eye", "ball of radiance", "aphanactonan audient", "aphanactonan assessor", "kitten", "housecat", "lynx", "large cat", "jaguar", "panther", "tiger", "manticore", "serpent-necked lioness", "displacer beast", "son of Typhon", "hellcat", "saber-toothed cat", "grimlock", "gremlin", "gargoyle", "winged gargoyle", "nightgaunt", "hobbit", "dwarf", "bugbear", "dwarf lord", "dwarf cleric", "changed", "dwarf queen", "dwarf king", "deep one", "mind flayer", "edderkop", "master mind flayer", "adversary", "gnoll", "githyanki pirate", "deeper one", "anubite", "elocator", "star spawn", "manes", "homunculus", "lemure", "imp", "nupperibo", "quasit", "tengu", "uranium imp", "legion devil grunt", "legion devil soldier", "legion devil sergeant", "legion devil captain", "metamorphosed nupperibo", "ancient nupperibo", "Glasya", "blue jelly", "spotted jelly", "ochre jelly", "aoa droplet", "aoa", "kobold", "large kobold", "kobold lord", "kobold shaman", "swamp kobold", "kobold brute", "winged kobold", "rock kobold", "kobold high shaman", "Kroo the Kobold King", "leprechaun", "ethereal filcher", "lucksucker", "small mimic", "large mimic", "giant mimic", "quickling", "dryad", "naiad", "oread", "yuki-onna", "swamp nymph", "deminymph", "neverwas", "thriae", "selkie", "oceanid", "intoner", "Echo", "goblin", "hobgoblin", "orc", "hill orc", "Mordor orc", "Uruk-hai", "orc shaman", "orc-captain", "Uruk-captain", "Mordor orc elite", "Mordor shaman", "Mordor marshal", "Angband orc", "orc of the ages of stars", "rock piercer", "iron piercer", "glass piercer", "heaven piercer", "lamb", "rothe", "musimon", "sheep", "mumak calf", "leocrotta", "wumpus", "dire sheep", "titanothere", "baluchitherium", "mumak", "mastodon", "deep dweller", "dark young", "sewer rat", "giant rat", "rabid rat", "enormous rat", "rock mole", "rodent of unusual size", "wererat", "woodchuck", "cave spider", "centipede", "giant spider", "scorpion", "mirkwood spider", "phase spider", "demonic black widow", "mirkwood elder", "yurian", "baby metroid", "metroid", "alpha metroid", "lurker above", "trapper", "gamma metroid", "zeta metroid", "omega metroid", "metroid queen", "white unicorn", "gray unicorn", "black unicorn", "pony", "horse", "warhorse", "Nightmare", "Lokoban Pinata", "fog cloud", "dust vortex", "ice vortex", "energy vortex", "steam vortex", "fire vortex", "singing sand", "stinking cloud", "dancing flame", "luminous cloud", "snow cloud", "pyroclastic vortex", "waterspout", "dark worm", "baby long worm", "baby purple worm", "long worm", "neothelid", "purple worm", "hunting horror", "grid bug", "chill bug", "xan", "bebelith", "mote of light", "yellow light", "black light", "zruty", "ammit", "couatl", "Aleax", "Angel", "ki-rin", "Justice Archon", "Shield Archon", "Sword Archon", "Trumpet Archon", "Warden Archon", "Throne Archon", "Light Archon", "Iasoian Archon", "Panakeian Archon", "Hygieian Archon", "Poro Aulon", "harrower of Zariel", "Giant Eagle", "Barachiel", "Domiel", "Erathaol", "Astaphaios", "Raziel", "Sealtiel", "Zaphkiel", "Movanic Deva", "Monadic Deva", "Astral Deva", "Graha Deva", "Surya Deva", "dancing blade", "Mahadeva", "Iksh'na Deva", "Birth", "Health", "Bounty", "Peace", "lillend", "weeping angel", "Coure Eladrin", "Noviere Eladrin", "Bralani Eladrin", "Firre Eladrin", "Shiere Eladrin", "Ghaele Eladrin", "Tulani Eladrin", "Gae Eladrin", "Brighid Eladrin", "Uiscerre Eladrin", "Caillea Eladrin", "Moonshadow", "Dracae Eladrin", "Jrt Netjer", "Light-elf", "kuker", "polypoid being", "Gwynharwyf", "furious whirlwind", "Ascodel", "bloody sunset", "Faerinaal", "ball of gossamer sunlight", "Queen Mab", "coterie of motes", "Keto", "wide-clubbed tentacle", "ancient tempest", "masked queen", "Queen of Stars", "eternal light", "god", "bat", "giant bat", "parrot", "crow", "battle-bat", "vampire bat", "raven", "warbat", "chiropteran", "byakhee", "plains centaur", "forest centaur", "mountain centaur", "sprow", "centaur chieftain", "drider", "priestess of Ghaunadaur", "formian crusher", "formian taskmaster", "Synaisthesia", "baby gray dragon", "baby silver dragon", "baby shimmering dragon", "baby white dragon", "baby orange dragon", "baby black dragon", "baby blue dragon", "baby green dragon", "baby red dragon", "baby deep dragon", "baby yellow dragon", "gray dragon", "silver dragon", "shimmering dragon", "white dragon", "orange dragon", "black dragon", "blue dragon", "green dragon", "red dragon", "deep dragon", "yellow dragon", "tiny pseudodragon", "pseudodragon", "riding pseudodragon", "large pseudodragon", "winged pseudodragon", "huge pseudodragon", "gigantic pseudodragon", "triceratops", "tyrannosaurus", "diplodocus", "stalker", "dream quasielemental", "air elemental", "lightning paraelemental", "fire elemental", "poison paraelemental", "earth elemental", "ice paraelemental", "water elemental", "acid paraelemental", "terracotta soldier", "lethe elemental", "mortai", "lichen", "brown mold", "yellow mold", "green mold", "red mold", "shrieker", "violet fungus", "migo worker", "migo soldier", "migo philosopher", "phantom fungus", "migo queen", "fungal brain", "clockwork soldier", "clockwork dwarf", "faberge sphere", "mini nuke", "firework cart", "gnome", "gnome lord", "gnome lady", "tinker gnome", "gnomish wizard", "gnome king", "gnome queen", "clockwork factory", "golden heart", "juggernaut", "id juggernaut", "scrap titan", "hellfire colossus", "hellfire orb", "clockwork automaton", "Warmachine", "colossal clockwork war-machine", "giant", "stone giant", "ent", "hill giant", "fire giant", "frost giant", "gnoll matriarch", "ettin", "warrior changed", "storm giant", "titan", "minotaur", "minotaur priestess", "deepest one", "lurking one", "blasphemous lurker", "lurking hand", "blasphemous hand", "tove", "jubjub bird", "bandersnatch", "jabberwock", "malkuth sephirah", "yesod sephirah", "daat sephirah", "hod sephirah", "netzach sephirah", "gevurah sephirah", "binah sephirah", "chokhmah sephirah", "lich", "demilich", "master lich", "baelnorn", "death knight", "arch-lich", "dokkalfar eternal matriarch", "Vecna", "kobold mummy", "gnome mummy", "orc mummy", "dwarf mummy", "elf mummy", "human mummy", "drow mummy", "half-dragon mummy", "ettin mummy", "chiropteran mummy", "giant mummy", "soldier mummy", "priest mummy", "pharaoh", "white naga hatchling", "red naga hatchling", "black naga hatchling", "golden naga hatchling", "guardian naga hatchling", "white naga", "red naga", "black naga", "golden naga", "guardian naga", "ancient naga", "ogre", "ogre mage", "ogre lord", "ogre king", "ogre emperor", "siege ogre", "gray ooze", "brown pudding", "black pudding", "green slime", "flux slime", "living mirage", "darkness given hunger", "quantum mechanic", "rust monster", "disenchanter", "garter snake", "snake", "water moccasin", "fire snake", "wraithworm", "pit viper", "python", "cobra", "serpent man of Yoth", "feathery serpent priestess", "serpent priest", "daughter of Naunet", "man-serpent soldier", "man-serpent mage", "man-serpent summoner", "man-serpent giant", "half-stone-dragon", "pisaca", "troll", "ice troll", "rock troll", "water troll", "Olog-hai", "wood troll", "chuul", "umber hulk", "elder chuul", "hooloovoo", "parasitic wall-hugger", "shambling horror", "stumbling horror", "wandering horror", "gray devourer", "uvuudaum", "Nameless Horror", "beauteous one", "Grue", "vampire", "vampire lady", "vampire lord", "villithid", "star vampire", "Mina Harker", "Ilona Szilagy", "Carmilla", "Vlad the Impaler", "parai", "barrow wight", "wraith", "phantasm", "Nazgul", "zarielite zealot", "zarielite heretic", "unbodied", "xorn", "monkey", "ape", "owlbear", "yeti", "carnivorous ape", "sasquatch", "Abominable Snowman", "gug", "undead knight", "warrior of sunlight", "undead maiden", "knight of the princess's guard", "blue sentinel", "darkmoon knight", "undead rebel", "pardoner", "occultist", "zombie", "ghoul", "hedrow zombie", "skeletal pirate", "hungry dead", "skeleton", "gnoll ghoul", "dread seraph", "phalanx", "straw golem", "paper golem", "rope golem", "gold golem", "leather golem", "wood golem", "flesh golem", "brain golem", "living lectern", "spell golem", "clay golem", "stone golem", "semblance", "treasury golem", "glass golem", "grove guardian", "argentum golem", "iron golem", "green-steel golem", "retriever", "living doll", "parasitized doll", "Amm Kamerel", "Plumach Rilmani", "Ferrumach Rilmani", "Hudor Kamerel", "Cuprilach Rilmani", "Stannumach Rilmani", "Argenach Rilmani", "Sharab Kamerel", "mercurial essence", "brimstone essence", "Hydrargyrumach Rilmani", "Aurumach Rilmani", "Ara Kamerel", "Fell", "Adamach", "human", "peasant", "miner", "prison guard", "werejackal", "elf", "drow", "Woodland-elf", "drow captain", "Green-elf", "wererat", "Grey-elf", "werewolf", "hedrow warrior", "elf-lord", "elf-lady", "doppelganger", "hedrow wizard", "nurse", "maid", "Elvenking", "Elvenqueen", "unearthly drow", "drow matron", "hedrow blademaster", "embraced drowess", "shopkeeper", "armorsmith", "dye savant", "goblin smith", "dwarf smith", "treesinger", "mithril smith", "shadowsmith", "human smith", "guard", "prisoner", "mindless thrall", "mad seer", "Oracle", "Travelling Wizard", "aligned priest", "high priest", "elder priest", "priest of an unknown god", "soldier", "sergeant", "lieutenant", "captain", "watchman", "watch captain", "failed ceremorph", "aztec warrior", "aztec spearthrower", "aztec priest", "Shattered Ziggurat cultist", "Shattered Ziggurat knight", "Shattered Ziggurat wizard", "myrmidon hoplite", "myrmidon lochias", "myrmidon ypolochagos", "myrmidon lochagos", "parasitized knight", "Medusa", "Illurien of the Myriad Glimpses", "Wizard of Yendor", "Lady of Pain", "Croesus", "Daemon", "garo", "ghost", "etherealoid", "being of Ib", "priest of Ib", "garo master", "broken shadow", "shade", "marid", "lava demon", "horned devil", "succubus", "incubus", "erinys", "vrock", "barbed devil", "hezrou", "damned pirate", "bone devil", "daughter of bedlam", "yochlol", "lilitu", "ice devil", "nalfeshnee", "invidiak", "marilith", "walking delirium", "alkilith", "pit fiend", "fallen angel", "apocalypse angel", "ancient of blessings", "ancient of vitality", "ancient of corruption", "ancient of the burning wastes", "ancient of thought", "ancient of ice", "ancient of death", "balrog", "nessian pit fiend", "efreet", "efreet overseer", "efreet merchant", "efreet guardian", "shayateen", "strange larva", "akkabish tannin", "shalosh tannah", "nachash tannin", "khaamnun tannin", "raglayim tannin", "teraphim tannah", "sartan tannin", "Fierna", "Aldinach", "Naome", "Bael", "Alrunes", "hateful whispers", "Juiblex", "Zuggtmoy", "Kostchtchie", "Baphomet", "Yeenoghu", "Daughter Lilith", "green pit fiend", "Mammon", "Malcanthet", "Shaktari", "Mother Lilith", "Belial", "Avatar of Lolth", "Graz'zt", "Orcus", "Crone Lilith", "creature in the ice", "Levistus", "Leviathan", "Dispater", "Baalzebub", "Molek", "Mephistopheles", "Pale Night", "Baalphegor", "Verier", "Dagon", "Asmodeus", "Obox-ob", "Lamashtu", "Demogorgon", "Death", "Pestilence", "Famine", "War", "mail daemon", "djinni", "sandestin", "psychopomp", "octopode", "illithid larva", "jellyfish", "piranha", "giant eel", "shark", "water dolphin", "electric eel", "great white shark", "kraken", "charybdisone", "newt", "gecko", "baby cave lizard", "iguana", "baby crocodile", "small cave lizard", "lizard", "cave lizard", "salamander prisoner", "chameleon", "crocodile", "giant turtle", "large cave lizard", "salamander slave", "salamander", "weeping willow", "razorvine", "sunflower", "dreadblossom swarm", "brainblossom patch", "mandrake", "Thrashing Tulip Poplar", "dungeon fern", "dungeon fern sprout", "dungeon fern spore", "swamp fern", "swamp fern sprout", "swamp fern spore", "burning fern", "burning fern sprout", "burning fern spore", "devil's snare", "viper tree", "black flower", "warden tree", "candle tree", "long worm tail", "hunting horror tail", "archeologist", "anachrononaut", "barbarian", "bard", "exile", "caveman", "cavewoman", "convict", "healer", "anachronounbinder", "knight", "monk", "madman", "madwoman", "nobleman", "noblewoman", "priest", "priestess", "itinerant priestess", "pirate", "ranger", "rogue", "samurai", "tourist", "valkyrie", "awakened valkyrie", "transcendent valkyrie", "worm that walks", "wizard", "incantifier", "half-dragon", "Ahazu", "Amon", "Andrealphus", "Andromalius", "Astaroth", "Balam", "Berith", "Buer", "Chupoclops", "Dantalion", "Shiro", "Echidna", "Eden", "Enki", "Eurynome", "Eve", "Fafnir", "Huginn", "Muninn", "Iris", "Jack", "Malphas", "Marionette", "Great Mother", "Naberius", "Orthos", "Ose", "Otiax", "Paimon", "Simurgh", "Tenebrous", "Ymir", "The Alignment Thing", "Miska", "Cosmos", "Nudzirath", "Unknown God", "Numina", "Ilsensine The Fallen", "Lord Carnarvon", "Sara, the Last Oracle", "Pelias", "Pindar", "strange corpse", "Shaman Karnov", "Robert the Lifer", "Eclavdra", "Galadriel", "Hippocrates", "Shuushar the Enlightened", "King Arthur", "Grand Master", "old fortune teller", "Thorin II Oakenshield", "Dain II Ironfoot", "Mother", "drow novice", "crow-winged half-dragon", "Adventuress Zaria", "Arch Priest", "Cassilda the Iron Maiden", "Mayor Cummerbund", "Orion", "damaged arcadian avenger", "Ruggo the Gnome High King", "Raggo the Gnome King", "orc warchief", "Master of Thieves", "Lord Sato", "Salamander Mage", "Twoflower", "Norn", "Ulitharid", "Neferet the Green", "Menzoberranzan", "Minion of Huhetotl", "Efreet Sultan", "mummified android", "mummified gynoid", "flayed android", "flayed gynoid", "parasitized embraced alider", "parasitized android", "parasitized gynoid", "parasitized operator", "parasitized commander", "parasitic mind flayer", "parasitic master mind flayer", "crucified android", "crucified gynoid", "twitching four-armed changed", "clairvoyant changed", "Lugribossk", "Maanzecorian", "Thoth Amon", "Aglaope", "Acererak", "Chromatic Dragon", "Platinum Dragon", "Warden Arianna", "Arianna", "Necromancer", "Seyll Auzkovyn", "Daruth Xaxox", "Cyclops", "Blibdoolpoolp, graven-into-flesh", "Blibdoolpoolp's mindgraven champion", "Ixoth", "Nimune", "Master Kaen", "Doctor Archer", "Rebel Ringleader", "adventuring wizard", "militant cleric", "half-elf ranger", "Durin's Bane", "Watcher in the Water", "swarm of snaking tentacles", "long sinuous tentacle", "Archipelago Ancient", "deep sea tentacle", "Smaug", "Bolg", "elder brain", "A'gone", "A'salom", "Bastard of the Boreal Valley", "Watchdog of the Boreal Valley", "Vechernyaya the Sun's Grave-keeper", "Blackbeard's Ghost", "Nalzok", "legionnaire", "Legion", "Scorpius", "Great High Shaman of Kurtulmak", "Master Assassin", "Ashikaga Takauji", "Lord Surtur", "Dark One", "doom knight", "Lich, the Fiend of Earth", "Kary, the Fiend of Fire", "Kraken, the Fiend of Water", "Tiamat, the Fiend of Wind", "Black Knight", "Sir Garland", "Garland", "Chaos", "Alabaster elf", "Alabaster elf-elder", "sentinel of Mithardir", "Alabaster mummy", "first wraithworm", "aspect of The Silence", "ford elemental", "ford guardian", "elven wraith", "Shelob", "high shaman", "Lungorthin", "Center of All", "Cathezar", "chain golem", "small goat spawn", "goat spawn", "giant goat spawn", "blessed", "mouth of the goat", "swirling mist", "dust storm", "ice storm", "thunder storm", "fire storm", "witch's familiar", "apprentice witch", "witch", "coven leader", "Good Neighbor", "Hmnyw-Pharaoh", "Nitocris", "Ghoul-queen Nitocris", "twin sibling", "bestial dervish", "ethereal dervish", "sparkling lake", "flashing lake", "smoldering lake", "frosted lake", "blood shower", "many-taloned thing", "deep blue cube", "pitch black cube", "perfectly clear cube", "prayerful thing", "hemorrhagic thing", "many-eyed seeker", "voice in the dark", "tiny being of light", "man-faced millipede", "mirrored moonflower", "crimson writher", "radiant pyramid", "grotesque peeper", "bright walker", "silent one", "alhoon", "Father Dagon", "Mother Hydra", "Great Cthulhu", "arcadian avenger", "Axus", "Arsenal", "Oona", "Apollyon", "Lucifer", "student", "trooper", "myrkalfr", "myrkalfar warrior", "myrkalfar matron", "alider", "android", "gynoid", "operator", "commander", "chieftain", "rhymer", "neanderthal", "inmate", "drow matron-mother", "hedrow master-wizard", "drow alienist", "Gromph", "Dantrag", "Celeborn", "High-elf", "stjarna-alfr", "attendant", "Sister T'eirastra", "Pen'a mendicant", "mendicant sprow", "mendicant drider", "Sir Aljanor", "Alliance vanguard", "Mad Grazi", "kuo toa", "kuo toa whip", "duergar", "giant duergar", "duergar stoneguard", "giant stoneguard", "duergar debilitator", "duergar annihilator", "duergar deepking", "giant deepking", "Y-cultist", "Y-cultist fighter", "Y-cultist wizard", "Y-cultist matron", "Y-cultist patron", "anulo", "anulo dancer", "page", "abbot", "xorn monk", "xuenu monk", "dao lao gui monk", "zhi ren monk", "Lady Constance", "patient", "contaminated patient", "Stranger", "Suzerain", "flaxen starshadow", "flaxen star-phantom", "carcosan courtier", "Star-elf", "Star-emperor", "Star-empress", "Puppet-Emperor Xeleth", "Puppet-Empress Xedalli", "secret-whisperer", "truth-seer", "dream-eater", "veil-render", "servant", "dwarf warrior", "sister", "houseless drow", "corvian", "corvian knight", "acolyte", "pirate brother", "hunter", "gnome comrade", "orc warrior", "thug", "ninja", "roshi", "guide", "warrior", "apprentice"]
 

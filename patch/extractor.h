@@ -3,6 +3,8 @@
 // Go to unixmain.c and slap #include "extractor.h" after all the other
 // includes. This overwrites the main() function with the extractor stuff.
 
+#include <stdio.h>
+
 //#include "date.h"
 static void extract_monsterdata_to_yaml(
         FILE* f
@@ -29,7 +31,7 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 // which determines if a monster is vulnerable to silver. Uncomment this if
 // the function exists if you want pinobot to report about silver
 // vulnerability.
-#define HAS_HATES_SILVER
+//#define HAS_HATES_SILVER
 
 // Has "mon_hates_material" function.
 // As of writing of this, this is found in evilhack, splicehack and
@@ -38,18 +40,18 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 // Used to determine silver-hating.
 #define HAS_MON_HATES_MATERIAL
 
-//#define HAS_RACEBOOLEAN_BITFLAGS    // Has 'mhflags' in permonst
+#define HAS_RACEBOOLEAN_BITFLAGS    // Has 'mhflags' in permonst
 //#define HAS_MONST_GLOBALS_INIT
 //#define GENDERED_NAMES   // Has pmnames instead of mname
-#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
-//#define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
+//#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
+#define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
 
-#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
+//#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
 
-//#define HAS_MNUM
+#define HAS_MNUM
 
-#define DNETHACK_ACS        // game has three different ACs for monsters, rather than one.
-#define HAS_DNETHACK_ID_PERMONST
+//#define DNETHACK_ACS        // game has three different ACs for monsters, rather than one.
+//#define HAS_DNETHACK_ID_PERMONST
 
 #ifdef GENDERED_NAMES
 #define is_valid_monster(str) ((str).pmnames[0] || (str).pmnames[1] || (str).pmnames[2])
@@ -263,7 +265,7 @@ static void extract_monsterdata_to_yaml(
 
             fprintf(f, "[");
 #define AT(a, b) else if (pm->mattk[i2].aatyp == a) fprintf(f, "%s", b);
-            if (1 + 1 == 3) { } /* I hope we won't run this code 
+            if (1 + 1 == 3) { } /* I hope we won't run this code
                                    in a universe where 1+1 is 3. */
             AT(AT_NONE, "AtNone")
             AT(AT_CLAW, "AtClaw")
@@ -319,15 +321,33 @@ static void extract_monsterdata_to_yaml(
 #ifdef AT_WHIP
             AT(AT_WHIP, "AtWhip")
 #endif
+#ifdef AT_LRCH
             AT(AT_LRCH, "AtReach")
+#endif
+#ifdef AT_HODS
             AT(AT_HODS, "AtMirror")
+#endif
+#ifdef AT_LNCK
             AT(AT_LNCK, "AtReachingBite")
+#endif
+#ifdef AT_MMGC
             AT(AT_MMGC, "AtMMagical")
+#endif
+#ifdef AT_ILUR
             AT(AT_ILUR, "AtIllurien")
+#endif
+#ifdef AT_HITS
             AT(AT_HITS, "AtAutoHit")
+#endif
+#ifdef AT_WISP
             AT(AT_WISP, "AtWispMist")
+#endif
+#ifdef AT_TNKR
             AT(AT_TNKR, "AtTinker")
+#endif
+#ifdef AT_5SQR
             AT(AT_5SQR, "AtReachTouch")
+#endif
 #ifdef AT_5SBT
             AT(AT_5SBT, "AtReachBite")
 #endif
@@ -1418,7 +1438,6 @@ static void extract_monsterdata_to_yaml(
         AT(M3_INFRAVISION, "FlInfravision");
 #endif
 #ifdef HAS_HATES_SILVER
-        printf("!HI\n");
         if (hates_silver(pm)) fprintf(f, ", FlHatesSilver");
 #endif
         if (passes_bars(pm)) {
