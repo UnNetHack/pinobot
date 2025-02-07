@@ -4,13 +4,13 @@
 // includes. This overwrites the main() function with the extractor stuff.
 
 #include <stdio.h>
+#include <string.h>
 
 //#include "date.h"
 static void extract_monsterdata_to_yaml(
         FILE* f
       , const char* variant
       , const char* command_prefix );
-static const char* detect_variant( const char** command_prefix );
 
 #ifdef G_SHEOL
 #ifdef G_HELL
@@ -78,7 +78,11 @@ int main(int argc, char* argv[])
         return 0;
     }
 
-    variant_str = detect_variant( &command_prefix );
+    // There used to be a type of "auto detect variant" function here,
+    // but it was so unreliable and caused compilation problem today in
+    // 7 Feb 2025 when I was doing an update, so I nuked it, and simply
+    // put this constant string in.
+    variant_str = "ReplaceThisName";
     sprintf( name, "%s.yaml", variant_str );
     if (argc >= 2 && !strcmp(argv[1], "yaml"))
     {
@@ -103,40 +107,6 @@ int main(int argc, char* argv[])
     }
 
     return 0;
-}
-
-static const char* detect_variant( const char** command_prefix )
-{
-#ifdef VERSION_ID
-    const char* vid = VERSION_ID;
-#else
-    const char* vid = 0;
-#endif
-    if ( vid && strstri( vid, "UnNetHackPlus" ) ) {
-        (*command_prefix) = "u+";
-        return "UnNetHackPlus";
-    }
-    if ( vid && strstri( vid, "UnNetHack" ) ) {
-        (*command_prefix) = "u";
-        return "UnNetHack";
-    }
-    if ( vid && strstri( vid, "SporkHack" ) ) {
-        (*command_prefix) = "s";
-        return "SporkHack";
-    }
-    if ( vid && strstri( vid, "NetHack Version 3.4.3" ) ) {
-        (*command_prefix) = "v";
-        return "Vanilla";
-    }
-
-    fprintf( stderr
-           , "I don't know what variant this is. "
-           "Replace module, data type name and command prefix manually. "
-           "Search for 'ReplaceThisName' in the resulting source file.\n" );
-
-    (*command_prefix) = "ReplaceThisName";
-
-    return "ReplaceThisName";
 }
 
 #ifdef HAS_MONSTR
@@ -1376,6 +1346,18 @@ static void extract_monsterdata_to_yaml(
 #endif
 #ifdef M2_MAGIC
         AT(M2_MAGIC, "FlMagicCollect");
+#endif
+#ifdef M2_DRUID_FORM_A
+        AT(M2_DRUID_FORM_A, "FlDruidFormA");
+#endif
+#ifdef M2_DRUID_FORM_B
+        AT(M2_DRUID_FORM_A, "FlDruidFormB");
+#endif
+#ifdef M2_DRUID_FORM_C
+        AT(M2_DRUID_FORM_A, "FlDruidFormC");
+#endif
+#ifdef M2_DRUID_FORM_D
+        AT(M2_DRUID_FORM_A, "FlDruidFormD");
 #endif
 #undef AT
         if (passes_walls(pm)) {

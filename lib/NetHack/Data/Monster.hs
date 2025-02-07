@@ -531,6 +531,11 @@ data MonsterFlag
   | FlDisplaces
   | FlClockwork
   | FlVampire
+  | FlDruidForm  -- doesn't exist in the game, but used to collapse the other four druid forms to this one
+  | FlDruidFormA
+  | FlDruidFormB
+  | FlDruidFormC
+  | FlDruidFormD
   deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON MonsterFlag

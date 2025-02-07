@@ -13,6 +13,7 @@ import Control.Applicative hiding
   )
 import Control.Monad hiding (mapM_)
 import Control.Monad.Trans.Writer
+import Data.List ( nub )
 import Data.Foldable
 import Data.Maybe
 import Data.Monoid
@@ -174,7 +175,18 @@ relevantFlag MD.FlPoisonous = Just "poisonous"
 relevantFlag MD.FlLithivore = Just "lithivore"
 relevantFlag MD.FlPassesBars = Just "passes-bars"
 relevantFlag MD.FlHatesSilver = Just "silverhate"
+relevantFlag MD.FlDruidForm = Just "druid form"
 relevantFlag _ = Nothing
+
+-- Converts any druid-form flag to just FlDruidForm. E.g. FlDruidFormA ->
+-- FlDruidForm.
+collapseDruidForm :: MD.MonsterFlag -> MD.MonsterFlag
+collapseDruidForm MD.FlDruidForm = MD.FlDruidForm
+collapseDruidForm MD.FlDruidFormA = MD.FlDruidForm
+collapseDruidForm MD.FlDruidFormB = MD.FlDruidForm
+collapseDruidForm MD.FlDruidFormC = MD.FlDruidForm
+collapseDruidForm MD.FlDruidFormD = MD.FlDruidForm
+collapseDruidForm other = other
 
 showB :: Show a => a -> TL.Builder
 showB = TL.fromString . show
@@ -234,7 +246,7 @@ lineMonsterInformation mon =
           when isCarnivore $ tell ["carnivore"]
           when isHerbivore $ tell ["herbivore"]
       mapM_ (tell . fmap TL.fromText . catMaybes . return . relevantFlag) $
-        MD.moFlags mon
+        nub $ fmap collapseDruidForm $ MD.moFlags mon
 
     relevantFlags :: [TL.Builder]
     relevantFlags = execWriter relevantFlagsW
