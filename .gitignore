@@ -11,3 +11,4 @@ arbicode-sandbox/*
 !arbicode-sandbox/PinobotSafe.hs
 .stack-work/
 dist-newstyle/
+.DS_Store
