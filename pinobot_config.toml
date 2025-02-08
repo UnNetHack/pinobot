@@ -1,3 +1,7 @@
+######
+### Settings read by pinobot-frontend only ###
+######
+
 # Configuration related to nickname, username etc. the things you see if you
 # /whois pinobot
 nickname = "Pinobot"
@@ -8,3 +12,16 @@ realname = "Pino"
 host = "irc.libera.chat"
 port = 6697
 use_tls = true
+
+######
+### Settings read by pinobot-monsterdb only ###
+######
+
+# Disable specific variants. The names should match a name in monsterdb/Bot.hs
+# (which is the same as the base name of the .yaml files inside variants/
+# directory, e.g. "UnNetHackPlus".
+#
+# pinobot-monsterdb will print which variants are enabled and disabled during
+# its start up, and will visibly warn if it cannot recognize a variant you set
+# here.
+disabled_variants = ["UnNetHackPlus", "SlashemExtended"]

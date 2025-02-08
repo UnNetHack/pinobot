@@ -17,10 +17,13 @@ import Data.List ( nub )
 import Data.Foldable
 import Data.Maybe
 import Data.Monoid
+import Data.Set ( Set )
+import qualified Data.Set as S
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Builder as TL
 import qualified Data.Text.Lazy.Builder as TLB
+import IRC.ConfigFile
 import NetHack.Data.Dice
 import qualified NetHack.Data.Monster as MD
 import qualified NetHack.Data.Variant as V
@@ -33,32 +36,75 @@ import Prelude hiding
     mapM_,
   )
 
--- Add variants here.
-variants :: IO [V.Variant]
-variants =
-  sequence $
-    variantify $
-      [ "Vanilla", -- first one is used by default
-        "Vanilla343",
-        "UnNetHack",
-        "UnNetHackPlus",
-        "SporkHack",
-        "GruntHack",
-        "Slashem",
-        "Brass",
-        "Dnethack",
-        "Notdnethack",
-        "Notnotdnethack",
-        "SlashemExtended",
-        "SlashTHEM",
-        "Fourk",
-        "EvilHack",
-        "XNetHack",
-        "SpliceHack",
-        "Hackem"
-      ]
-  where
-    variantify = fmap $ \name -> V.loadVariant $ "variants/" ++ name ++ ".yaml"
+variantNames :: [String]
+variantNames =
+  [
+    "Vanilla", -- First one is used by default,
+               -- if you query PinoBot with just @? in IRC.
+    "Vanilla343",
+    "UnNetHack",
+    "UnNetHackPlus",
+    "SporkHack",
+    "GruntHack",
+    "Slashem",
+    "Brass",
+    "Dnethack",
+    "Notdnethack",
+    "Notnotdnethack",
+    "SlashemExtended",
+    "SlashTHEM",
+    "Fourk",
+    "EvilHack",
+    "XNetHack",
+    "SpliceHack",
+    "Hackem"
+  ]
+
+-- Uses configuration to filter variants.
+-- Returns triple: (enabled, disabled, unknown)
+-- where unknown is the variants found in config, that are
+-- unrecognized by variantNames above.
+filterByConf :: Configuration -> [String] -> ([String], [String], [String])
+filterByConf conf all_variants =
+  (filter (flip S.notMember disabled_variants) all_variants
+  ,filter (flip S.member disabled_variants) all_variants
+  ,filter (flip S.notMember variant_names) (S.toList disabled_variants))
+ where
+  variant_names :: Set String
+  variant_names = S.fromList variantNames
+
+  disabled_variants :: Set String
+  disabled_variants = S.fromList $ fmap T.unpack $ disabledVariants conf
+
+-- Load up variant YAML files, and uses the Pinobot config file to decide
+-- which ones to load.
+--
+-- Prints to stdout what it loaded, and what it did not load (due to disabling
+-- in pinobot_config.toml)
+variants :: Configuration -> IO [V.Variant]
+variants conf = do
+  let (enabled_variant_names, disabled_variant_names, unknown_variant_names) =
+        filterByConf conf variantNames
+
+  loaded_variants <- sequence $ variantify enabled_variant_names
+
+  putStrLn "-- Enabled variants --"
+  if null enabled_variant_names
+    then putStrLn "<nothing is enabled>"
+    else for_ (zip loaded_variants enabled_variant_names) $ \(loaded, name) ->
+           putStrLn $ name <> " (" <> (T.unpack $ V.commandPrefix loaded) <> ")"
+
+  putStrLn "-- Disabled variants --"
+  if null disabled_variant_names
+    then putStrLn "<nothing is disabled>"
+    else for_ disabled_variant_names putStrLn
+
+  unless (null unknown_variant_names) $
+    putStrLn $ "WARNING: Unknown variant names were found in the configuration and they will be ignored: " <> show unknown_variant_names
+
+  pure loaded_variants
+ where
+  variantify = fmap $ \name -> V.loadVariant $ "variants/" ++ name ++ ".yaml"
 
 -- Shamelessly stolen from HaskellWiki which in turn stole it from Lloyd
 -- Allison:
@@ -667,9 +713,9 @@ lineMonsterInformation mon =
     ircColor MD.White = "00"
     ircColor MD.Yellow = "08"
 
-message :: IO (T.Text -> IO (Maybe T.Text))
-message = do
-  vars <- variants
+message :: Configuration -> IO (T.Text -> IO (Maybe T.Text))
+message conf = do
+  vars <- variants conf
   return $ messager vars
   where
     -- This code matches @? or @x? (where x is variant) anywhere on an IRC line.

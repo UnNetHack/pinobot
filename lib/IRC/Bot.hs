@@ -19,15 +19,13 @@ import qualified Data.Text as T hiding (replace)
 import qualified Data.Text.Encoding as T
 import qualified Data.Text.Encoding.Error as T
 import Data.Time
+import IRC.ConfigFile
 import IRC.Socket
 import IRC.Types
 import qualified Network.IRC.CTCP as IRC
 import qualified Network.IRC.Client as IRC
+import Options.Applicative
 import Pipes
-import System.Environment
-import System.Exit
-import Toml (TomlCodec, (.=))
-import qualified Toml
 
 -- Listens to other processes like pinobot-monsterdb to connect to us.
 --
@@ -156,34 +154,9 @@ rootEventHandler _conf send_message_fun broadcast_to_external_chan = IRC.EventHa
         unhandled ->
           logInfo $ "[Unknown message] " <> show unhandled
 
-data Configuration = Configuration
-  { nickname :: Text,
-    username :: Text,
-    realname :: Text,
-    useTLS :: Bool,
-    host :: Text,
-    port :: Int
-  }
-  deriving (Eq, Ord, Show, Read)
-
-configurationCodec :: TomlCodec Configuration
-configurationCodec =
-  Configuration
-    <$> Toml.text "nickname"
-    .= nickname
-    <*> Toml.text "username"
-    .= username
-    <*> Toml.text "realname"
-    .= realname
-    <*> Toml.bool "use_tls"
-    .= useTLS
-    <*> Toml.text "host"
-    .= host
-    <*> Toml.int "port"
-    .= port
-
 prettyPrintConfig :: Configuration -> IO ()
 prettyPrintConfig conf = do
+  putStrLn "-- pinobot-frontend configuration --"
   putStrLn "-- User configuration --"
   putStrLn $ "Nickname:        " <> T.unpack (nickname conf)
   putStrLn $ "Username:        " <> T.unpack (username conf)
@@ -193,20 +166,22 @@ prettyPrintConfig conf = do
   putStrLn $ "Port:            " <> show (port conf)
   putStrLn $ "TLS?             " <> show (useTLS conf)
 
+-- Arguments passable to pinobot-frontend
+data FrontendCommandArgs = FrontendCommandArgs
+  { pinobotConfigTomlFile :: FilePath }
+  deriving ( Eq, Ord, Show )
+
+-- for consistency, keep in sync with parseMonsterdbCommandArgs where possible
+parseFrontendCommandArgs :: Parser FrontendCommandArgs
+parseFrontendCommandArgs = FrontendCommandArgs
+  <$> strArgument ( value "pinobot_config.toml" <> metavar "PINOBOT-TOML-CONFIG-FILE" )
+
 runIRCBot :: IO ()
 runIRCBot = withSocketsDo $ mask $ \restore -> do
-  args <- getArgs
-  let config_filepath = case args of
-        [] -> "pinobot_config.toml"
-        [path] -> path
-        _ -> error "Only one argument accepted; which is the path to configuration file toml."
-  putStrLn $ "Reading configuration from " <> config_filepath
-  conf_txt <- T.pack <$> readFile config_filepath
-  conf <- case Toml.decode configurationCodec conf_txt of
-    Left errors -> do
-      putStrLn $ "Cannot parse configuration file: " <> show errors
-      exitFailure
-    Right conf -> return (conf :: Configuration)
+  args <- execParser $ info parseFrontendCommandArgs mempty
+  let config_filepath = pinobotConfigTomlFile args
+  conf <- readConfigOrExitProgram config_filepath
+
   prettyPrintConfig conf
 
   -- Launch off listener that allows other processes to connect to
