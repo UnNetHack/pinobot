@@ -83,6 +83,7 @@ int main(int argc, char* argv[])
     // 7 Feb 2025 when I was doing an update, so I nuked it, and simply
     // put this constant string in.
     variant_str = "ReplaceThisName";
+    command_prefix = "replace_me";
     sprintf( name, "%s.yaml", variant_str );
     if (argc >= 2 && !strcmp(argv[1], "yaml"))
     {
