@@ -25079,7 +25079,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: Yes
-   attacks: [[AtTentacle, AdIntDrain, 1, 4], [AtWeapon, AdPhys, 2, 6], [AtWeapon, AdPhys, 2, 6], [AtMMagical, AdSpell, 0, 6]]
+   attacks: [[AtWeapon, AdPhys, 2, 6], [AtWeapon, AdPhys, 2, 6], [AtTentacle, AdIntDrain, 1, 4], [AtMMagical, AdSpell, 0, 6]]
    weight: 2900
    nutrition: 0
    size: medium
@@ -25103,7 +25103,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: Yes
-   attacks: [[AtTentacle, AdIntDrain, 1, 4], [AtWeapon, AdPhys, 2, 6], [AtWeapon, AdPhys, 2, 6], [AtWeapon, AdPhys, 2, 6], [AtOffOffhandedWeapon, AdPhys, 2, 6]]
+   attacks: [[AtWeapon, AdPhys, 2, 6], [AtWeapon, AdPhys, 2, 6], [AtWeapon, AdPhys, 2, 6], [AtOffOffhandedWeapon, AdPhys, 2, 6], [AtTentacle, AdIntDrain, 1, 4]]
    weight: 2900
    nutrition: 0
    size: medium

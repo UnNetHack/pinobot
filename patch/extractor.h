@@ -379,6 +379,12 @@ static void extract_monsterdata_to_yaml(
 #ifdef AT_RATH
             AT(AT_RATH, "AtRangedThorns")
 #endif
+#ifdef AT_TONG
+            AT(AT_TONG, "AtTongue")
+#endif
+#ifdef AT_VOMT
+            AT(AT_VOMT, "AtVomit")
+#endif
             else { fprintf(stderr,
                     "I don't know what attack type %d is.\n", pm->mattk[i2].aatyp);
                    abort(); }
@@ -748,6 +754,30 @@ static void extract_monsterdata_to_yaml(
 #endif
 #ifdef AD_BSTR
             AT(AD_BSTR, "AdBlackStarRapier")
+#endif
+#ifdef AD_UNRV
+            AT(AD_UNRV, "AdUnnervingGaze")
+#endif
+#ifdef AD_MADF
+            AT(AD_MADF, "AdMadnessFire")
+#endif
+#ifdef AD_FATK
+            AT(AD_FATK, "AdForcesTargetToAttack")
+#endif
+#ifdef AD_DRHP
+            AT(AD_DRHP, "AdDrainsBonusHp")
+#endif
+#ifdef AD_PUSH
+            AT(AD_PUSH, "AdPush")
+#endif
+#ifdef AD_LICK
+            AT(AD_LICK, "AdLick")
+#endif
+#ifdef AD_PFBT
+            AT(AD_PFBT, "AdPoisonRot")
+#endif
+#ifdef AD_OMUD
+            AT(AD_OMUD, "AdAcidStabBone")
 #endif
 /* dnethack, bundled together */
 #ifdef AD_UNKNWN

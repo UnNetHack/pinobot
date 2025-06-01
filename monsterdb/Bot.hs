@@ -370,6 +370,8 @@ lineMonsterInformation mon =
     attackTypeName MD.AtTailSlap = "tailslap"
     attackTypeName MD.AtVolley = "volley"
     attackTypeName MD.AtWolfHeadBite = "wolfhead-bite"
+    attackTypeName MD.AtTongue = "tongue"
+    attackTypeName MD.AtVomit = "vomit"
 
     attackDamageName MD.AdDimness = "dimness"
     attackDamageName MD.AdMapAmnesia = "map-amnesia"
@@ -668,6 +670,14 @@ lineMonsterInformation mon =
     attackDamageName MD.AdPiercingScream = "piercing-stream"
     attackDamageName MD.AdSong = "song"
     attackDamageName MD.AdGibber = "gibber"
+    attackDamageName MD.AdUnnervingGaze = "unnerving-gaze"
+    attackDamageName MD.AdMadnessFire = "madness-fire"
+    attackDamageName MD.AdForcesTargetToAttack = "forces-target-to-attack"
+    attackDamageName MD.AdDrainsBonusHp = "drains-bonus-hp"
+    attackDamageName MD.AdPush = "push"
+    attackDamageName MD.AdLick = "lick"
+    attackDamageName MD.AdPoisonRot = "poison-rot"
+    attackDamageName MD.AdAcidStabBone = "acidstabbone"
 
     confers :: [MD.Resistance] -> TL.Builder
     confers [] = "nothing "
