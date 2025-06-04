@@ -1,3 +1,4 @@
+{-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# OPTIONS_GHC -fno-warn-name-shadowing #-}
@@ -15,11 +16,15 @@ import Control.Monad hiding (mapM_)
 import Control.Monad.Trans.Writer
 import Data.List ( nub )
 import Data.Foldable
+import Data.Map.Strict ( Map )
+import qualified Data.Map.Strict as M
 import Data.Maybe
 import Data.Monoid
 import Data.Set ( Set )
 import qualified Data.Set as S
+import Data.String
 import qualified Data.Text as T
+import qualified Data.Text.IO as T
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Builder as TL
 import qualified Data.Text.Lazy.Builder as TLB
@@ -29,6 +34,7 @@ import qualified NetHack.Data.Monster as MD
 import qualified NetHack.Data.Variant as V
 import Text.Parsec
 import qualified Text.Parsec.Text as T
+import System.IO
 import Prelude hiding
   ( concatMap,
     foldl,
@@ -76,6 +82,171 @@ filterByConf conf all_variants =
   disabled_variants :: Set String
   disabled_variants = S.fromList $ fmap T.unpack $ disabledVariants conf
 
+-- Sometimes refers to Nth row or Nth column by character. Sometimes refers to
+-- Nth *table* row or Nth *table* column. Who needs consistency. Also not used
+-- at all sometimes (you see Int instead).
+type Row = Int
+type Col = Int
+
+-- | Used in renderPompousTable. HorizontalLine on any column in a row triggers
+-- creation of a horizontal line and not rendering the row otherwise.
+data TableCell = OutOfRange | Text !T.Text | HorizontalLine
+  deriving ( Eq, Ord, Show, Read )
+
+text :: String -> TableCell
+text str = Text $ T.pack str
+
+instance IsString TableCell where
+  fromString str = Text (T.pack str)
+
+cellText :: TableCell -> T.Text
+cellText (Text txt) = txt
+cellText _ = ""
+
+cellLength :: TableCell -> Int
+cellLength cell = T.length $ cellText cell
+
+-- | Render a ridiculously pompous table and return it as a string (that could
+-- then be printed to stdout).
+--
+-- Automatically sizes columns.
+renderPompousTable :: (Row -> Col -> TableCell) -- ^ Get text to be in a column.
+                                                --   Return OutOfRange if out of range
+                                                --   (critical for this
+                                                --   function to figure out the
+                                                --   size of the table). If a
+                                                --   cell exists but doesn't
+                                                --   have anything, return Text
+                                                --   "" instead. This function
+                                                --   scans by starting from (0,
+                                                --   0) (top-left) and going
+                                                --   line by line until a
+                                                --   Nothing is returned for
+                                                --   (0, y) for some y.
+                                                --
+                                                --   Zeroth row is considered
+                                                --   header.
+                   -> T.Text
+renderPompousTable get_cell_content = runTextBuilder $ unless (M.null cell_contents) $ do
+  tellHorizontalLine
+  -- Header
+  tellCells 0
+  tellHorizontalLine
+  -- Cells
+  for_ [1..n_cells_height-1] $ \row_idx ->
+    tellCells row_idx
+  tellHorizontalLine
+ where
+  -- Runs a writer monad on TextBuilder, returns a strict text in the end.
+  runTextBuilder :: Writer TL.Builder () -> T.Text
+  runTextBuilder action =
+    let final_builder = execWriter action
+     in TL.toStrict $ TL.toLazyText final_builder
+
+  tellHorizontalLine :: Writer TL.Builder ()
+  tellHorizontalLine = do
+    tell "+"
+    for_ [0..total_width - 2 - 1] $ \nth_dash -> do
+      let col = nth_dash + 1
+      if col `S.member` starry_columns
+        then tell "+"
+        else tell "-"
+    tell "+\n"
+
+  -- Renders one row, putting pipes in the right places and respecting column
+  -- widths.
+  tellCells :: Int -> Writer TL.Builder ()
+  tellCells row = do
+    if row `S.member` horizontal_lines
+      then tellHorizontalLine
+      else tellCellsLikeActualTextCellAndNotAPompousLine row
+
+  tellCellsLikeActualTextCellAndNotAPompousLine :: Int -> Writer TL.Builder ()
+  tellCellsLikeActualTextCellAndNotAPompousLine row = do
+    for_ [0..n_cells_width-1] $ \column_idx -> do
+      tell "|"
+      let text = fromMaybe "" $ fmap cellText $ M.lookup (column_idx, row) cell_contents
+          column_size = fromMaybe 0 $ M.lookup column_idx column_sizes
+          text_len = T.length text
+      tell " "
+      tell $ TL.fromText text
+      tell $ TL.fromText $ T.replicate (column_size - text_len - 1) " "
+
+    tell "|\n"
+
+  n_cells_width :: Int
+  n_cells_width = if M.null cell_contents then 0 else
+    (maximum $ fmap fst $ M.keys cell_contents) + 1
+
+  n_cells_height :: Int
+  n_cells_height = if M.null cell_contents then 0 else
+    (maximum $ fmap snd $ M.keys cell_contents) + 1
+
+  -- set of rows that should be horizontal lines
+  horizontal_lines :: Set Row
+  horizontal_lines = S.fromList $
+    fmap snd $
+    M.keys $
+    M.filter (\cell -> cell == HorizontalLine) cell_contents
+
+  -- Set of columns where we should put + instead of - in any horizontal line.
+  -- Important for the pompousness part of this function.
+  --
+  -- Should agree with the renderer part.
+  starry_columns :: Set Col
+  starry_columns = go 0 1 (S.singleton 0)
+   where
+    go :: Int -> Col -> Set Col -> Set Col
+    go column_idx !cursor !set | column_idx < n_cells_width =
+      let cell_width = fromMaybe 0 $ M.lookup column_idx column_sizes
+          new_cursor = cursor + cell_width + 1 -- the + 1 for | between table columns
+       in go (column_idx+1) new_cursor (S.insert (new_cursor-1) set)
+    go _ _ set = set
+
+  -- column_sizes: a map that tells column widths. This counts the number of
+  -- columns inside the cell (not counting cell borders).
+  --
+  -- key: column
+  -- value: how wide the column should be (max length of longest text + 2 for
+  -- padding)
+  column_sizes :: Map Int Int
+  column_sizes = if n_cells_width == 0 then mempty else go 0 mempty
+   where
+    go :: Int -> Map Int Int -> Map Int Int
+    go column !accum | column < n_cells_width =
+      let cells :: [TableCell]
+          cells = M.elems $ M.filterWithKey (\(x, _y) _ -> x == column) cell_contents
+
+          column_width :: Int
+          column_width = if null cells then 0 else maximum (fmap cellLength cells) + 2
+       in go (column+1) (M.insert column column_width accum)
+    go _ accum = accum
+
+  -- total width of the table. this accounts for all decorations.
+  --
+  -- +-----+-----+
+  -- |  x  |  y  |
+  -- +-----+-----+
+  -- ^           ^
+  -- |           |
+  -- + - - + - - +
+  --       |
+  --       +- -  "total_width"
+  --
+  -- cell widths (column_size) + 1 + n_cells_width
+  total_width = if M.null column_sizes then 0 else
+    (sum (M.elems column_sizes) + 1 + n_cells_width)
+
+  cell_contents :: Map (Col, Row) TableCell
+  cell_contents = go 0 0 mempty
+   where
+    go :: Col -> Row -> Map (Col, Row) TableCell -> Map (Col, Row) TableCell
+    go !x !y !accum = case get_cell_content y x of
+      OutOfRange | x > 0 -> go 0 (y+1) accum
+      OutOfRange | x == 0 -> accum
+      Text txt -> go (x+1) y (M.insert (x, y) (Text txt) accum)
+      HorizontalLine -> go (x+1) y (M.insert (x, y) HorizontalLine accum)
+
 -- Load up variant YAML files, and uses the Pinobot config file to decide
 -- which ones to load.
 --
@@ -86,18 +257,87 @@ variants conf = do
   let (enabled_variant_names, disabled_variant_names, unknown_variant_names) =
         filterByConf conf variantNames
 
+      n_enabled_variants = length enabled_variant_names
+      n_disabled_variants = length disabled_variant_names
+      n_unknown_variants = length unknown_variant_names
+
   loaded_variants <- sequence $ variantify enabled_variant_names
 
-  putStrLn "-- Enabled variants --"
-  if null enabled_variant_names
-    then putStrLn "<nothing is enabled>"
-    else for_ (zip loaded_variants enabled_variant_names) $ \(loaded, name) ->
-           putStrLn $ name <> " (" <> (T.unpack $ V.commandPrefix loaded) <> ")"
+  let -- ranges for the pompous table, which parts list which variants.
+      -- [start, end] (i.e. end is inclusive)
+      enabled_variants_start = 1 -- 0 is header, so first row is 1
+      enabled_variants_end = enabled_variants_start + n_enabled_variants - 1
 
-  putStrLn "-- Disabled variants --"
-  if null disabled_variant_names
-    then putStrLn "<nothing is disabled>"
-    else for_ disabled_variant_names putStrLn
+      disabled_variants_start = enabled_variants_end + 2  -- account for horizontal line
+      disabled_variants_end = disabled_variants_start + n_disabled_variants - 1
+
+      unknown_variants_start = disabled_variants_end + 2
+      unknown_variants_end = unknown_variants_start + n_unknown_variants - 1
+
+      horizontal_lines = S.fromList $
+        (if disabled_variants_end >= disabled_variants_start
+           then [enabled_variants_end + 1]
+           else []) <>
+        (if unknown_variants_end >= unknown_variants_start
+          then [disabled_variants_end+1]
+          else [])
+
+      -- TODO: reduce repetition
+      nmonsters_by_variant_name :: T.Text -> TableCell
+      nmonsters_by_variant_name name = case find (\variant -> T.toLower (V.variantName variant) == T.toLower name) loaded_variants of
+        Nothing -> "?"
+        Just variant -> text $ show $ V.numMonsters variant
+
+      source_by_variant_name :: T.Text -> TableCell
+      source_by_variant_name name = case find (\variant -> T.toLower (V.variantName variant) == T.toLower name) loaded_variants of
+        Nothing -> ""
+        Just variant -> Text $ fromMaybe "" $ V.source variant
+
+      last_updated_by_variant_name :: T.Text -> TableCell
+      last_updated_by_variant_name name = case find (\variant -> T.toLower (V.variantName variant) == T.toLower name) loaded_variants of
+        Nothing -> ""
+        Just variant -> Text $ fromMaybe "" $ V.lastUpdated variant
+
+      pompous_table = renderPompousTable $ \row column -> case (row, column) of
+        (_, col) | col >= 5 -> OutOfRange
+        (row, _) | row `S.member` horizontal_lines -> HorizontalLine
+        (0, 0) -> "Variant"
+        (0, 1) -> "Status"
+        (0, 2) -> "#Monsters"
+        (0, 3) -> "Updated"
+        (0, 4) -> "Source"
+        (0, _) -> OutOfRange
+        -- enabled variants
+        (row, _) | row >= enabled_variants_start && row <= enabled_variants_end ->
+          let variant_idx = row - enabled_variants_start
+              variant_name = enabled_variant_names !! variant_idx
+           in case column of
+                0 -> text variant_name
+                1 -> ""
+                2 -> nmonsters_by_variant_name (T.pack variant_name)
+                3 -> last_updated_by_variant_name (T.pack variant_name)
+                4 -> source_by_variant_name (T.pack variant_name)
+                _ -> OutOfRange
+        -- disabled variants
+        (row, _) | row >= disabled_variants_start && row <= disabled_variants_end ->
+          case column of
+            0 -> text $ disabled_variant_names !! (row - disabled_variants_start)
+            1 -> "DISABLED"
+            2 -> "n/a"
+            _ -> OutOfRange
+        -- unknown variants
+        (row, _) | row >= unknown_variants_start && row <= unknown_variants_end ->
+          case column of
+            0 -> text $ unknown_variant_names !! (row - unknown_variants_start)
+            1 -> "UNKNOWN"
+            2 -> "n/a"
+            _ -> OutOfRange
+        _ -> OutOfRange
+
+  unless (T.null pompous_table) $ do
+    T.putStrLn ""
+    T.putStrLn pompous_table
+    hFlush stdout
 
   unless (null unknown_variant_names) $
     putStrLn $ "WARNING: Unknown variant names were found in the configuration and they will be ignored: " <> show unknown_variant_names
