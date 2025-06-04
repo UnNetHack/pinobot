@@ -1,5 +1,7 @@
 variant: "Dnethack"
 prefix: "d"
+source: "https://github.com/Chris-plus-alphanumericgibberish/dNAO cc47be6b"
+last_updated: "2025-06-04"
 
 monsters:
  - name: "giant ant"

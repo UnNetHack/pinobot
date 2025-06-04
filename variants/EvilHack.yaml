@@ -1,5 +1,7 @@
 variant: "EvilHack"
 prefix: "e"
+source: "https://github.com/k21971/EvilHack 6279f588"
+last_updated: "2025-05-31"
 
 monsters:
  - name: "giant ant"

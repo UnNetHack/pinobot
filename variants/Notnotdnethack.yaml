@@ -1,5 +1,7 @@
 variant: "Notnotdnethack"
 prefix: "nn"
+source: "https://codeberg.org/noisytoot/notnotdnethack c83e4959"
+last_updated: "2025-06-04"
 
 monsters:
  - name: "giant ant"

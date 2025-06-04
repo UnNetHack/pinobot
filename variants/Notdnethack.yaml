@@ -1,5 +1,6 @@
 variant: "notdnethack"
 prefix: "n"
+last_updated: "2025-05-31"
 
 monsters:
  - name: "giant ant"

@@ -1,5 +1,6 @@
 variant: "Brass"
 prefix: "b"
+last_updated: "2021-02-26"
 
 monsters:
  - name: "giant ant"
