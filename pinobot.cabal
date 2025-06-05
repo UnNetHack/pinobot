@@ -12,8 +12,8 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 source-repository head
-    type:     git
-    location: git://github.com/UnNetHack/pinobot.git
+    type:     https
+    location: https://github.com/UnNetHack/pinobot.git
 
 library
   exposed-modules:     IRC.Bot
