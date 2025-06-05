@@ -1,7 +1,7 @@
-variant: "notdnethack"
+variant: "Notdnethack"
 prefix: "n"
-source: "https://github.com/demogorgon22/notdnethack 550be9ae"
-last_updated: "2025-05-31"
+source: "https://github.com/demogorgon22/notdnethack 1d94dfcf"
+last_updated: "2025-06-04"
 
 monsters:
  - name: "giant ant"
