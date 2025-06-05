@@ -1,5 +1,6 @@
 variant: "notdnethack"
 prefix: "n"
+source: "https://github.com/demogorgon22/notdnethack 550be9ae"
 last_updated: "2025-05-31"
 
 monsters:
