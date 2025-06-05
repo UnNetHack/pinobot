@@ -32,15 +32,16 @@ import IRC.ConfigFile
 import NetHack.Data.Dice
 import qualified NetHack.Data.Monster as MD
 import qualified NetHack.Data.Variant as V
+import System.IO
 import Text.Parsec
 import qualified Text.Parsec.Text as T
-import System.IO
 import Prelude hiding
   ( concatMap,
     foldl,
     foldl1,
     mapM_,
   )
+import Terminal
 
 variantNames :: [String]
 variantNames =
@@ -82,171 +83,6 @@ filterByConf conf all_variants =
   disabled_variants :: Set String
   disabled_variants = S.fromList $ fmap T.unpack $ disabledVariants conf
 
--- Sometimes refers to Nth row or Nth column by character. Sometimes refers to
--- Nth *table* row or Nth *table* column. Who needs consistency. Also not used
--- at all sometimes (you see Int instead).
-type Row = Int
-type Col = Int
-
--- | Used in renderPompousTable. HorizontalLine on any column in a row triggers
--- creation of a horizontal line and not rendering the row otherwise.
-data TableCell = OutOfRange | Text !T.Text | HorizontalLine
-  deriving ( Eq, Ord, Show, Read )
-
-text :: String -> TableCell
-text str = Text $ T.pack str
-
-instance IsString TableCell where
-  fromString str = Text (T.pack str)
-
-cellText :: TableCell -> T.Text
-cellText (Text txt) = txt
-cellText _ = ""
-
-cellLength :: TableCell -> Int
-cellLength cell = T.length $ cellText cell
-
--- | Render a ridiculously pompous table and return it as a string (that could
--- then be printed to stdout).
---
--- Automatically sizes columns.
-renderPompousTable :: (Row -> Col -> TableCell) -- ^ Get text to be in a column.
-                                                --   Return OutOfRange if out of range
-                                                --   (critical for this
-                                                --   function to figure out the
-                                                --   size of the table). If a
-                                                --   cell exists but doesn't
-                                                --   have anything, return Text
-                                                --   "" instead. This function
-                                                --   scans by starting from (0,
-                                                --   0) (top-left) and going
-                                                --   line by line until a
-                                                --   Nothing is returned for
-                                                --   (0, y) for some y.
-                                                --
-                                                --   Zeroth row is considered
-                                                --   header.
-                   -> T.Text
-renderPompousTable get_cell_content = runTextBuilder $ unless (M.null cell_contents) $ do
-  tellHorizontalLine
-  -- Header
-  tellCells 0
-  tellHorizontalLine
-  -- Cells
-  for_ [1..n_cells_height-1] $ \row_idx ->
-    tellCells row_idx
-  tellHorizontalLine
- where
-  -- Runs a writer monad on TextBuilder, returns a strict text in the end.
-  runTextBuilder :: Writer TL.Builder () -> T.Text
-  runTextBuilder action =
-    let final_builder = execWriter action
-     in TL.toStrict $ TL.toLazyText final_builder
-
-  tellHorizontalLine :: Writer TL.Builder ()
-  tellHorizontalLine = do
-    tell "+"
-    for_ [0..total_width - 2 - 1] $ \nth_dash -> do
-      let col = nth_dash + 1
-      if col `S.member` starry_columns
-        then tell "+"
-        else tell "-"
-    tell "+\n"
-
-  -- Renders one row, putting pipes in the right places and respecting column
-  -- widths.
-  tellCells :: Int -> Writer TL.Builder ()
-  tellCells row = do
-    if row `S.member` horizontal_lines
-      then tellHorizontalLine
-      else tellCellsLikeActualTextCellAndNotAPompousLine row
-
-  tellCellsLikeActualTextCellAndNotAPompousLine :: Int -> Writer TL.Builder ()
-  tellCellsLikeActualTextCellAndNotAPompousLine row = do
-    for_ [0..n_cells_width-1] $ \column_idx -> do
-      tell "|"
-      let text = fromMaybe "" $ fmap cellText $ M.lookup (column_idx, row) cell_contents
-          column_size = fromMaybe 0 $ M.lookup column_idx column_sizes
-          text_len = T.length text
-      tell " "
-      tell $ TL.fromText text
-      tell $ TL.fromText $ T.replicate (column_size - text_len - 1) " "
-
-    tell "|\n"
-
-  n_cells_width :: Int
-  n_cells_width = if M.null cell_contents then 0 else
-    (maximum $ fmap fst $ M.keys cell_contents) + 1
-
-  n_cells_height :: Int
-  n_cells_height = if M.null cell_contents then 0 else
-    (maximum $ fmap snd $ M.keys cell_contents) + 1
-
-  -- set of rows that should be horizontal lines
-  horizontal_lines :: Set Row
-  horizontal_lines = S.fromList $
-    fmap snd $
-    M.keys $
-    M.filter (\cell -> cell == HorizontalLine) cell_contents
-
-  -- Set of columns where we should put + instead of - in any horizontal line.
-  -- Important for the pompousness part of this function.
-  --
-  -- Should agree with the renderer part.
-  starry_columns :: Set Col
-  starry_columns = go 0 1 (S.singleton 0)
-   where
-    go :: Int -> Col -> Set Col -> Set Col
-    go column_idx !cursor !set | column_idx < n_cells_width =
-      let cell_width = fromMaybe 0 $ M.lookup column_idx column_sizes
-          new_cursor = cursor + cell_width + 1 -- the + 1 for | between table columns
-       in go (column_idx+1) new_cursor (S.insert (new_cursor-1) set)
-    go _ _ set = set
-
-  -- column_sizes: a map that tells column widths. This counts the number of
-  -- columns inside the cell (not counting cell borders).
-  --
-  -- key: column
-  -- value: how wide the column should be (max length of longest text + 2 for
-  -- padding)
-  column_sizes :: Map Int Int
-  column_sizes = if n_cells_width == 0 then mempty else go 0 mempty
-   where
-    go :: Int -> Map Int Int -> Map Int Int
-    go column !accum | column < n_cells_width =
-      let cells :: [TableCell]
-          cells = M.elems $ M.filterWithKey (\(x, _y) _ -> x == column) cell_contents
-
-          column_width :: Int
-          column_width = if null cells then 0 else maximum (fmap cellLength cells) + 2
-       in go (column+1) (M.insert column column_width accum)
-    go _ accum = accum
-
-  -- total width of the table. this accounts for all decorations.
-  --
-  -- +-----+-----+
-  -- |  x  |  y  |
-  -- +-----+-----+
-  -- ^           ^
-  -- |           |
-  -- + - - + - - +
-  --       |
-  --       +- -  "total_width"
-  --
-  -- cell widths (column_size) + 1 + n_cells_width
-  total_width = if M.null column_sizes then 0 else
-    (sum (M.elems column_sizes) + 1 + n_cells_width)
-
-  cell_contents :: Map (Col, Row) TableCell
-  cell_contents = go 0 0 mempty
-   where
-    go :: Col -> Row -> Map (Col, Row) TableCell -> Map (Col, Row) TableCell
-    go !x !y !accum = case get_cell_content y x of
-      OutOfRange | x > 0 -> go 0 (y+1) accum
-      OutOfRange | x == 0 -> accum
-      Text txt -> go (x+1) y (M.insert (x, y) (Text txt) accum)
-      HorizontalLine -> go (x+1) y (M.insert (x, y) HorizontalLine accum)
-
 -- Load up variant YAML files, and uses the Pinobot config file to decide
 -- which ones to load.
 --
@@ -262,6 +98,9 @@ variants conf = do
       n_unknown_variants = length unknown_variant_names
 
   loaded_variants <- sequence $ variantify enabled_variant_names
+
+  -- For rendering the table with current settings.
+  table_character_set <- getTableDrawingCharacterSet
 
   let -- ranges for the pompous table, which parts list which variants.
       -- [start, end] (i.e. end is inclusive)
@@ -298,7 +137,7 @@ variants conf = do
         Nothing -> ""
         Just variant -> Text $ fromMaybe "" $ V.lastUpdated variant
 
-      pompous_table = renderPompousTable $ \row column -> case (row, column) of
+      pompous_table = renderPompousTable table_character_set $ \row column -> case (row, column) of
         (_, col) | col >= 5 -> OutOfRange
         (row, _) | row `S.member` horizontal_lines -> HorizontalLine
         (0, 0) -> "Variant"
@@ -333,6 +172,11 @@ variants conf = do
             2 -> "n/a"
             _ -> OutOfRange
         _ -> OutOfRange
+
+  logo_txt <- renderPinobotLogo table_character_set
+
+  T.putStr logo_txt
+  hFlush stdout
 
   unless (T.null pompous_table) $ do
     T.putStrLn ""

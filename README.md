@@ -61,6 +61,19 @@ cabal new-run pinobot-join '#foobar'
 cabal new-run pinobot-part '#foobar'
 ```
 
+How to make Pinobot monsterdb less flashy at start-up
+-----------------------------------------------------
+
+Set `NO_PINOBOT_POMPOUSNESS` environment variable to any value. If it is
+defined, Pinobot will assume standard output does not understand colors,
+unicode and will not assume any terminal size.
+
+The "pompousness" is only used to make the launch of monsterdb executable very
+flashy and pompous. It does not do anything else. Normally Pinobot will try to
+determine from its environment if it is in a Unicode-locale enabled terminal.
+
+See `lib/Terminal.hs` for the implementation.
+
 Patch
 -----
 

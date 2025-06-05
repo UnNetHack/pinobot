@@ -23,9 +23,13 @@ library
                        NetHack.Data.Dice
                        NetHack.Data.Monster
                        NetHack.Data.Variant
+                       PinobotLogo
+                       Terminal
   ghc-options:         -fwarn-incomplete-patterns -Wall
   hs-source-dirs:      lib
-  build-depends:       base >=4.7.0.0 && <5.0.0.0
+  build-depends:       ansi-terminal
+                      ,base >=4.7.0.0 && <5.0.0.0
+                      ,colour
                       ,exceptions
                       ,deepseq
                       ,text >=1.3
