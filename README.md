@@ -24,6 +24,7 @@ Bot commands
     XNetHack:           @x?monster
     SpliceHack:         @sp?monster
     Hack'EM:            @h?monster
+    CrecelleHack:       @c?monster
 
 How to run
 ----------
