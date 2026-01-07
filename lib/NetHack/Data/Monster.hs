@@ -386,6 +386,10 @@ data DamageType
   | AdLick
   | AdPoisonRot
   | AdAcidStabBone
+  | AdWorm
+  | AdHoney
+  | AdSoak
+  | AdTeleportAway
   deriving (Eq, Show, Ord, Generic)
 
 instance FromJSON DamageType

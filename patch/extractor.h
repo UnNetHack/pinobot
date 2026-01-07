@@ -31,7 +31,7 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 // which determines if a monster is vulnerable to silver. Uncomment this if
 // the function exists if you want pinobot to report about silver
 // vulnerability.
-//#define HAS_HATES_SILVER
+// #define HAS_HATES_SILVER
 
 // Has "mon_hates_material" function.
 // As of writing of this, this is found in evilhack, splicehack and
@@ -41,10 +41,17 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 #define HAS_MON_HATES_MATERIAL
 
 #define HAS_RACEBOOLEAN_BITFLAGS    // Has 'mhflags' in permonst
-//#define HAS_MONST_GLOBALS_INIT
-//#define GENDERED_NAMES   // Has pmnames instead of mname
+#define HAS_MONST_GLOBALS_INIT
+#define GENDERED_NAMES   // Has pmnames instead of mname
 //#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
 #define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
+
+#define CRECELLEHACK_ENUMS // This variant decided to use enums instead of
+                           // macros. Amazing! It gets its own #define for
+                           // sure to be remembered for its audacity.
+                           //
+                           // The enums are used in some attack types.
+                           // E.g. AD_HONY
 
 //#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
 
@@ -1154,6 +1161,16 @@ static void extract_monsterdata_to_yaml(
 #endif
 #ifdef AD_RUNS
             AT(AD_RUNS, "AdSpecificNastyTrap")
+#endif
+#ifdef CRECELLEHACK_ENUMS
+            // These are not macros, but ENUMS
+            // So #ifdef won't work on them.
+            AT(AD_HONY, "AdHoney")
+            AT(AD_WORM, "AdWorm")
+            AT(AD_SOAK, "AdSoak")
+            AT(AD_TLAW, "AdTeleportAway")
+            AT(AD_TMUT, "AdTransmute")
+            AT(AD_POLY, "AdPoly")
 #endif
             else { fprintf(stderr,
                     "I don't know what attack damage type %d is. (%s) (%d/%d)\n",

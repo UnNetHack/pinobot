@@ -64,7 +64,8 @@ variantNames =
     "EvilHack",
     "XNetHack",
     "SpliceHack",
-    "Hackem"
+    "Hackem",
+    "CrecelleHack"
   ]
 
 -- Uses configuration to filter variants.
@@ -762,6 +763,10 @@ lineMonsterInformation mon =
     attackDamageName MD.AdLick = "lick"
     attackDamageName MD.AdPoisonRot = "poison-rot"
     attackDamageName MD.AdAcidStabBone = "acidstabbone"
+    attackDamageName MD.AdWorm = "worm"
+    attackDamageName MD.AdHoney = "honey"
+    attackDamageName MD.AdSoak = "soak"
+    attackDamageName MD.AdTeleportAway = "teleport-away"
 
     confers :: [MD.Resistance] -> TL.Builder
     confers [] = "nothing "
