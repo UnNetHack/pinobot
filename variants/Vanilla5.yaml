@@ -1,6 +1,7 @@
-variant: "Vanilla"
-prefix: "v36"
-last_updated: "2024-05-26"
+variant: "Vanilla5"
+prefix: "v"
+source: "https://github.com/NetHack/NetHack b773563"
+last_updated: "2026-05-05"
 
 monsters:
 
@@ -32,7 +33,7 @@ monsters:
  - name: "killer bee"
    symbol: "a"
    base-level: 1
-   difficulty: 5
+   difficulty: 6
    speed: 18
    ac: -1
    mr: 0
@@ -59,7 +60,7 @@ monsters:
  - name: "soldier ant"
    symbol: "a"
    base-level: 3
-   difficulty: 6
+   difficulty: 7
    speed: 18
    ac: 3
    mr: 0
@@ -598,7 +599,7 @@ monsters:
    speed: 12
    ac: 4
    mr: 0
-   alignment: -5
+   alignment: 0
    generates:
     - dungeons
    leaves-corpse: Yes
@@ -649,7 +650,7 @@ monsters:
    speed: 12
    ac: 4
    mr: 20
-   alignment: 0
+   alignment: -5
    generates:
     - dungeons
    leaves-corpse: Yes
@@ -675,7 +676,7 @@ monsters:
    speed: 12
    ac: 4
    mr: 20
-   alignment: -5
+   alignment: 0
    generates:
     - gehennom
    leaves-corpse: Yes
@@ -701,7 +702,7 @@ monsters:
    speed: 14
    ac: 2
    mr: 20
-   alignment: 0
+   alignment: -5
    generates:
     - gehennom
    leaves-corpse: Yes
@@ -4272,7 +4273,7 @@ monsters:
    symbol: "E"
    base-level: 8
    difficulty: 10
-   speed: 6
+   speed: 5
    ac: 2
    mr: 30
    alignment: 0
@@ -7731,7 +7732,7 @@ monsters:
    symbol: "@"
    base-level: 12
    difficulty: 15
-   speed: 18
+   speed: 16
    ac: 0
    mr: 50
    alignment: 0
@@ -9654,7 +9655,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: No
-   attacks: [[AtWeapon, AdPhys, 1, 6]]
+   attacks: [[AtWeapon, AdPhys, 1, 6], [AtCast, AdClerical, 0, 0]]
    weight: 1450
    nutrition: 400
    size: medium
@@ -9677,7 +9678,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: No
-   attacks: [[AtWeapon, AdPhys, 1, 6]]
+   attacks: [[AtWeapon, AdPhys, 1, 6], [AtCast, AdClerical, 0, 0]]
    weight: 1450
    nutrition: 400
    size: medium
@@ -9700,7 +9701,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: No
-   attacks: [[AtWeapon, AdPhys, 1, 6]]
+   attacks: [[AtWeapon, AdPhys, 1, 6], [AtCast, AdClerical, 0, 0]]
    weight: 1450
    nutrition: 400
    size: medium
@@ -9839,7 +9840,7 @@ monsters:
    appears-in-small-groups: No
    appears-in-large-groups: No
    genocidable: No
-   attacks: [[AtWeapon, AdPhys, 1, 6]]
+   attacks: [[AtWeapon, AdPhys, 1, 6], [AtCast, AdSpell, 0, 0]]
    weight: 1450
    nutrition: 400
    size: medium

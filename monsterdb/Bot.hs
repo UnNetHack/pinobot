@@ -41,13 +41,13 @@ import Prelude hiding
     foldl1,
     mapM_,
   )
-import Terminal
 
 variantNames :: [String]
 variantNames =
-  [
-    "Vanilla", -- First one is used by default,
-               -- if you query PinoBot with just @? in IRC.
+  [ "Vanilla5", -- NetHack 5, released in spring 2026.
+  -- First one is used by default,
+  -- if you query PinoBot with just @? in IRC.
+    "Vanilla", -- This was former default (NetHack 3.6), before NetHack 5.
     "Vanilla343",
     "UnNetHack",
     "UnNetHackPlus",
