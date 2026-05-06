@@ -8,7 +8,7 @@ Bot commands
 
     NetHack 5:          @?monster
     NetHack 5:          @v?monster   (alias for just @?)
-    NetHack 3.6:        @v36?monster
+    NetHack 3.7:        @v37?monster
     UnNetHack:          @u?monster
     NetHack 3.4.3:      @V?monster
     UnNetHackPlus:      @u+?monster

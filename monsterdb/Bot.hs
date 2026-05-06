@@ -33,6 +33,7 @@ import NetHack.Data.Dice
 import qualified NetHack.Data.Monster as MD
 import qualified NetHack.Data.Variant as V
 import System.IO
+import Terminal
 import Text.Parsec
 import qualified Text.Parsec.Text as T
 import Prelude hiding
@@ -47,7 +48,7 @@ variantNames =
   [ "Vanilla5", -- NetHack 5, released in spring 2026.
   -- First one is used by default,
   -- if you query PinoBot with just @? in IRC.
-    "Vanilla", -- This was former default (NetHack 3.6), before NetHack 5.
+    "Vanilla37", -- This was former default (NetHack 3.7), before NetHack 5.
     "Vanilla343",
     "UnNetHack",
     "UnNetHackPlus",
