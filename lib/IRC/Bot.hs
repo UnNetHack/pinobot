@@ -10,7 +10,6 @@ import Control.Concurrent
 import Control.Concurrent.STM
 import Control.DeepSeq
 import Control.Exception
-import Control.Lens hiding ((.=))
 import Control.Monad
 import Data.Maybe
 import Data.Serialize
@@ -20,6 +19,7 @@ import qualified Data.Text.Encoding as T
 import qualified Data.Text.Encoding.Error as T
 import Data.Time
 import IRC.ConfigFile
+import IRC.MicroLens
 import IRC.Socket
 import IRC.Types
 import qualified Network.IRC.CTCP as IRC
@@ -53,7 +53,7 @@ listener mvar chan = do
       send sock (encode next_msg)
 
 {-# INLINE logInfo #-}
-logInfo :: MonadIO m => String -> m ()
+logInfo :: (MonadIO m) => String -> m ()
 logInfo txt = liftIO $ do
   now <- getCurrentTime
   let msg = "[" <> formatTime defaultTimeLocale "%Y-%m-%dT%H:%M:%S" now <> "] " <> txt
@@ -168,13 +168,14 @@ prettyPrintConfig conf = do
 
 -- Arguments passable to pinobot-frontend
 data FrontendCommandArgs = FrontendCommandArgs
-  { pinobotConfigTomlFile :: FilePath }
-  deriving ( Eq, Ord, Show )
+  {pinobotConfigTomlFile :: FilePath}
+  deriving (Eq, Ord, Show)
 
 -- for consistency, keep in sync with parseMonsterdbCommandArgs where possible
 parseFrontendCommandArgs :: Parser FrontendCommandArgs
-parseFrontendCommandArgs = FrontendCommandArgs
-  <$> strArgument ( value "pinobot_config.toml" <> metavar "PINOBOT-TOML-CONFIG-FILE" )
+parseFrontendCommandArgs =
+  FrontendCommandArgs
+    <$> strArgument (value "pinobot_config.toml" <> metavar "PINOBOT-TOML-CONFIG-FILE")
 
 runIRCBot :: IO ()
 runIRCBot = withSocketsDo $ mask $ \restore -> do
@@ -200,9 +201,9 @@ runIRCBot = withSocketsDo $ mask $ \restore -> do
           & ( IRC.username
                 .~ (username conf)
             )
-            . ( IRC.realname
-                  .~ (realname conf)
-              )
+          . ( IRC.realname
+                .~ (realname conf)
+            )
 
       instance_conf = IRC.defaultInstanceConfig (nickname conf) & IRC.handlers %~ (rootEventHandler conf send_message_fun chan :)
 

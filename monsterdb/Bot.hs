@@ -14,13 +14,11 @@ import Control.Applicative hiding
   )
 import Control.Monad hiding (mapM_)
 import Control.Monad.Trans.Writer
-import Data.List ( nub )
 import Data.Foldable
-import Data.Map.Strict ( Map )
-import qualified Data.Map.Strict as M
+import Data.List (nub)
 import Data.Maybe
 import Data.Monoid
-import Data.Set ( Set )
+import Data.Set (Set)
 import qualified Data.Set as S
 import Data.String
 import qualified Data.Text as T
@@ -75,15 +73,16 @@ variantNames =
 -- unrecognized by variantNames above.
 filterByConf :: Configuration -> [String] -> ([String], [String], [String])
 filterByConf conf all_variants =
-  (filter (flip S.notMember disabled_variants) all_variants
-  ,filter (flip S.member disabled_variants) all_variants
-  ,filter (flip S.notMember variant_names) (S.toList disabled_variants))
- where
-  variant_names :: Set String
-  variant_names = S.fromList variantNames
+  ( filter (flip S.notMember disabled_variants) all_variants,
+    filter (flip S.member disabled_variants) all_variants,
+    filter (flip S.notMember variant_names) (S.toList disabled_variants)
+  )
+  where
+    variant_names :: Set String
+    variant_names = S.fromList variantNames
 
-  disabled_variants :: Set String
-  disabled_variants = S.fromList $ fmap T.unpack $ disabledVariants conf
+    disabled_variants :: Set String
+    disabled_variants = S.fromList $ fmap T.unpack $ disabledVariants conf
 
 -- Load up variant YAML files, and uses the Pinobot config file to decide
 -- which ones to load.
@@ -109,19 +108,22 @@ variants conf = do
       enabled_variants_start = 1 -- 0 is header, so first row is 1
       enabled_variants_end = enabled_variants_start + n_enabled_variants - 1
 
-      disabled_variants_start = enabled_variants_end + 2  -- account for horizontal line
+      disabled_variants_start = enabled_variants_end + 2 -- account for horizontal line
       disabled_variants_end = disabled_variants_start + n_disabled_variants - 1
 
       unknown_variants_start = disabled_variants_end + 2
       unknown_variants_end = unknown_variants_start + n_unknown_variants - 1
 
-      horizontal_lines = S.fromList $
-        (if disabled_variants_end >= disabled_variants_start
-           then [enabled_variants_end + 1]
-           else []) <>
-        (if unknown_variants_end >= unknown_variants_start
-          then [disabled_variants_end+1]
-          else [])
+      horizontal_lines =
+        S.fromList $
+          ( if disabled_variants_end >= disabled_variants_start
+              then [enabled_variants_end + 1]
+              else []
+          )
+            <> ( if unknown_variants_end >= unknown_variants_start
+                   then [disabled_variants_end + 1]
+                   else []
+               )
 
       -- TODO: reduce repetition
       nmonsters_by_variant_name :: T.Text -> TableCell
@@ -149,16 +151,17 @@ variants conf = do
         (0, 4) -> "Source"
         (0, _) -> OutOfRange
         -- enabled variants
-        (row, _) | row >= enabled_variants_start && row <= enabled_variants_end ->
-          let variant_idx = row - enabled_variants_start
-              variant_name = enabled_variant_names !! variant_idx
-           in case column of
-                0 -> text variant_name
-                1 -> ""
-                2 -> nmonsters_by_variant_name (T.pack variant_name)
-                3 -> last_updated_by_variant_name (T.pack variant_name)
-                4 -> source_by_variant_name (T.pack variant_name)
-                _ -> OutOfRange
+        (row, _)
+          | row >= enabled_variants_start && row <= enabled_variants_end ->
+              let variant_idx = row - enabled_variants_start
+                  variant_name = enabled_variant_names !! variant_idx
+               in case column of
+                    0 -> text variant_name
+                    1 -> ""
+                    2 -> nmonsters_by_variant_name (T.pack variant_name)
+                    3 -> last_updated_by_variant_name (T.pack variant_name)
+                    4 -> source_by_variant_name (T.pack variant_name)
+                    _ -> OutOfRange
         -- disabled variants
         (row, _) | row >= disabled_variants_start && row <= disabled_variants_end ->
           case column of
@@ -186,18 +189,19 @@ variants conf = do
     hFlush stdout
 
   unless (null unknown_variant_names) $
-    putStrLn $ "WARNING: Unknown variant names were found in the configuration and they will be ignored: " <> show unknown_variant_names
+    putStrLn $
+      "WARNING: Unknown variant names were found in the configuration and they will be ignored: " <> show unknown_variant_names
 
   pure loaded_variants
- where
-  variantify = fmap $ \name -> V.loadVariant $ "variants/" ++ name ++ ".yaml"
+  where
+    variantify = fmap $ \name -> V.loadVariant $ "variants/" ++ name ++ ".yaml"
 
 -- Shamelessly stolen from HaskellWiki which in turn stole it from Lloyd
 -- Allison:
 -- http://www.csse.monash.edu.au/~lloyd/tildeStrings/Alignment/92.IPL.html
 --
 -- Calculates the Levenshtein distance between two lists.
-dist :: Eq a => [a] -> [a] -> Int
+dist :: (Eq a) => [a] -> [a] -> Int
 dist a b =
   last
     ( if lab == 0
@@ -320,7 +324,7 @@ collapseDruidForm MD.FlDruidFormC = MD.FlDruidForm
 collapseDruidForm MD.FlDruidFormD = MD.FlDruidForm
 collapseDruidForm other = other
 
-showB :: Show a => a -> TL.Builder
+showB :: (Show a) => a -> TL.Builder
 showB = TL.fromString . show
 
 lineMonsterInformation :: MD.Monster -> T.Text
@@ -378,7 +382,9 @@ lineMonsterInformation mon =
           when isCarnivore $ tell ["carnivore"]
           when isHerbivore $ tell ["herbivore"]
       mapM_ (tell . fmap TL.fromText . catMaybes . return . relevantFlag) $
-        nub $ fmap collapseDruidForm $ MD.moFlags mon
+        nub $
+          fmap collapseDruidForm $
+            MD.moFlags mon
 
     relevantFlags :: [TL.Builder]
     relevantFlags = execWriter relevantFlagsW
@@ -846,7 +852,7 @@ filterNewLines :: String -> String
 filterNewLines = fmap (\ch -> if ch == '\n' || ch == '\r' then ' ' else ch)
 
 -- substandard parsec "string" function for texts
-stringT :: Stream s m Char => T.Text -> ParsecT s u m T.Text
+stringT :: (Stream s m Char) => T.Text -> ParsecT s u m T.Text
 stringT txt = T.pack <$> string (T.unpack txt)
 
 data NoMonster = NoMonster

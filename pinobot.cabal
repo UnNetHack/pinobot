@@ -18,6 +18,7 @@ source-repository head
 library
   exposed-modules:     IRC.Bot
                        IRC.ConfigFile
+                       IRC.MicroLens
                        IRC.Types
                        IRC.Socket
                        NetHack.Data.Dice
@@ -27,12 +28,15 @@ library
                        Terminal
   ghc-options:         -fwarn-incomplete-patterns -Wall
   hs-source-dirs:      lib
+
+  -- Known lower bounds:
+  -- text-2.1.2 introduces Data.Text.foldlM', which in turn demands base-4.11 or later, which I believe is GHC 8.4.2 (released in 2018)
   build-depends:       ansi-terminal
-                      ,base >=4.7.0.0 && <5.0.0.0
+                      ,base >=4.11.0.0 && <5.0.0.0
                       ,colour
                       ,exceptions
                       ,deepseq
-                      ,text >=1.3
+                      ,text >=2.1.2
                       ,irc-client >=1.1.2.2 && <2.0
                       ,irc-ctcp
                       ,stm >= 2.4 && <3.0
@@ -47,7 +51,7 @@ library
                       ,cereal-text
                       ,time
                       ,toml-parser>=2.0.1.0
-                      ,yaml >=0.8.10.1 && <1.0
+                      ,yaml >=0.11.11.2
                       ,zlib >=0.7
   default-language:    Haskell2010
 
