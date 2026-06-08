@@ -31,8 +31,13 @@ library
 
   -- Known lower bounds:
   -- text-2.1.2 introduces Data.Text.foldlM', which in turn demands base-4.11 or later, which I believe is GHC 8.4.2 (released in 2018)
+  --
+  -- mtl must be 2.3 or newer, because transformers tends to be installed as
+  -- 0.6 or later on GHC-9.14 (we have an allow-newer in cabal.project to work
+  -- around irc-client issues). Pinobot does not use 'mtl' directly itself. This further bumps base requirement to base-4.12
   build-depends:       ansi-terminal
-                      ,base >=4.11.0.0 && <5.0.0.0
+                      ,aeson >=2.3 && <3.0
+                      ,base >=4.12.0.0 && <5.0.0.0
                       ,colour
                       ,exceptions
                       ,deepseq
@@ -40,9 +45,10 @@ library
                       ,irc-client >=1.1.2.2 && <2.0
                       ,irc-ctcp
                       ,stm >= 2.4 && <3.0
+                      ,mtl >= 2.3 && <3.0
                       ,containers >=0.5 && <1.0
                       ,optparse-applicative >=0.18
-                      ,transformers >=0.3 && <1.0
+                      ,transformers >=0.5 && <1.0
                       ,bytestring >=0.11 && <1.0
                       ,network >=3 && <4
                       ,pipes >=4.1 && <5.0

@@ -1,6 +1,7 @@
 {-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 
 module Bot
@@ -201,8 +202,11 @@ variants conf = do
 -- http://www.csse.monash.edu.au/~lloyd/tildeStrings/Alignment/92.IPL.html
 --
 -- Calculates the Levenshtein distance between two lists.
-dist :: (Eq a) => [a] -> [a] -> Int
-dist a b =
+levenshteinDist :: forall a. (Eq a) => [a] -> [a] -> Int
+levenshteinDist [] [] = 0
+levenshteinDist [] lst_b = length lst_b
+levenshteinDist lst_a [] = length lst_a
+levenshteinDist a b =
   last
     ( if lab == 0
         then mainDiag
@@ -213,37 +217,66 @@ dist a b =
               uppers !! (-1 - lab)
     )
   where
-    mainDiag = oneDiag a b (head uppers) (-1 : head lowers)
+    mainDiag :: [Int]
+    mainDiag = oneDiag a b (uhead uppers) (-1 : uhead lowers)
+
+    uppers :: [[Int]]
     uppers = eachDiag a b (mainDiag : uppers) -- upper diagonals
+
+    lowers :: [[Int]]
     lowers = eachDiag b a (mainDiag : lowers) -- lower diagonals
+
+    eachDiag :: [a] -> [a] -> [[Int]] -> [[Int]]
     eachDiag _ [] _ = []
     eachDiag a (_ : bs) (lastDiag : diags) =
       oneDiag a bs nextDiag lastDiag : eachDiag a bs diags
       where
-        nextDiag = head (tail diags)
+        nextDiag :: [Int]
+        nextDiag = uhead (utail diags)
     eachDiag _ _ _ = undefined -- suppresses warnings
+
+    oneDiag :: [a] -> [a] -> [Int] -> [Int] -> [Int]
     oneDiag a b diagAbove diagBelow = thisdiag
       where
         doDiag [] _ _ _ _ = []
         doDiag _ [] _ _ _ = []
         doDiag (ach : as) (bch : bs) nw n w =
           me
-            : doDiag as bs me (tail n) (tail w)
+            : doDiag as bs me (utail n) (utail w)
           where
-            me = if ach == bch then nw else 1 + min3 (head w) nw (head n)
-        firstelt = 1 + head diagBelow
-        thisdiag = firstelt : doDiag a b firstelt diagAbove (tail diagBelow)
+            me = if ach == bch then nw else 1 + min3 (uhead w) nw (uhead n)
+
+        firstelt = 1 + uhead diagBelow
+        thisdiag = firstelt : doDiag a b firstelt diagAbove (utail diagBelow)
+
+    lab :: Int
     lab = length a - length b
+
+    min3 :: Int -> Int -> Int -> Int
     min3 x y z = if x < y then x else min y z
 
-distT :: T.Text -> T.Text -> Int
-distT t1 t2 = dist (T.unpack $ T.toLower t1) (T.unpack $ T.toLower t2)
+    -- The errors are not supposed to be possible.
+    uhead = unYappingHead "levenshteinDist: levensthein distance used 'head' function, on an empty list."
+    utail = unYappingTail "levenshteinDist: levensthein distance used 'tail' function, on an empty list."
+
+-- Make GHC not complain that head/tail are partial.
+unYappingHead :: forall c. String -> [c] -> c
+unYappingHead _ (x:_) = x
+unYappingHead msg _ = error msg
+
+-- Make GHC not complain that head/tail are partial.
+unYappingTail :: forall c. String -> [c] -> [c]
+unYappingTail _ (_:xs) = xs
+unYappingTail msg _ = error msg
+
+levenshteinDistT :: T.Text -> T.Text -> Int
+levenshteinDistT t1 t2 = levenshteinDist (T.unpack $ T.toLower t1) (T.unpack $ T.toLower t2)
 
 -- Returns the most similar monster name along with its levenshtein distance.
 mostSimilarMonster :: V.Variant -> T.Text -> (Int, T.Text)
 mostSimilarMonster variant name =
   minimumBy (\(a1, _) (a2, _) -> a1 `compare` a2) $
-    zip (map (distT name) all) all
+    zip (map (levenshteinDistT name) all) all
   where
     all :: [T.Text]
     all = V.allMonsterNames variant
@@ -271,7 +304,7 @@ mostSimilarMonsterHalfSane variant text
 
 decideVariant :: [V.Variant] -> T.Text -> V.Variant
 decideVariant variants name =
-  fromMaybe (head variants) $
+  fromMaybe (unYappingHead "decideVariant: There are no variants defined." variants) $
     find (\var -> V.commandPrefix var == name) variants
 
 relevantFlag :: MD.MonsterFlag -> Maybe T.Text
@@ -390,10 +423,10 @@ lineMonsterInformation mon =
     relevantFlags = execWriter relevantFlagsW
 
     flags :: TL.Builder
-    flags
-      | null relevantFlags = "none"
-      | null $ tail relevantFlags = head relevantFlags
-      | otherwise = foldl1 (\accum str -> accum <> ", " <> str) relevantFlags
+    flags = case relevantFlags of
+      [] -> "none"
+      [flag] -> flag
+      _ -> foldl1 (\accum str -> accum <> ", " <> str) relevantFlags
 
     attacks :: [MD.Attack] -> TL.Builder
     attacks [] = "none"
@@ -906,7 +939,7 @@ message' variants input'
                   then
                     monsterName
                       <> " ~"
-                      <> (T.pack $ show $ distT monsterName mon)
+                      <> (T.pack $ show $ levenshteinDistT monsterName mon)
                       <> "~ "
                   else ""
               )

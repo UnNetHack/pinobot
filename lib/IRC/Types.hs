@@ -1,4 +1,3 @@
-{-# LANGUAGE DeriveDataTypeable #-}
 {-# LANGUAGE DeriveGeneric #-}
 {-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 
@@ -18,7 +17,6 @@ import Data.IORef
 import Data.Serialize
 import Data.Serialize.Text ()
 import qualified Data.Text as T
-import Data.Typeable
 import Data.Word
 import GHC.Generics
 import IRC.Socket
@@ -33,7 +31,7 @@ data IRCMessage
       }
   | Join !T.Text
   | Part !T.Text
-  deriving (Eq, Ord, Show, Read, Typeable, Generic)
+  deriving (Eq, Ord, Show, Read, Generic)
 
 instance Serialize IRCMessage
 

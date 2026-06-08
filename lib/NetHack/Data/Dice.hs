@@ -1,5 +1,3 @@
-{-# LANGUAGE DeriveDataTypeable, MultiWayIf #-}
-
 module NetHack.Data.Dice
     ( Dice( .. )
     , d
@@ -8,10 +6,8 @@ module NetHack.Data.Dice
     , rd )
     where
 
-import Data.Typeable
-
 data Dice = Dice !Integer !Integer
-            deriving ( Eq, Show, Ord, Typeable )
+            deriving ( Eq, Show, Ord )
 
 d :: Integer -> Integer -> Dice
 d = Dice
