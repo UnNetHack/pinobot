@@ -31,7 +31,7 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 // which determines if a monster is vulnerable to silver. Uncomment this if
 // the function exists if you want pinobot to report about silver
 // vulnerability.
-// #define HAS_HATES_SILVER
+#define HAS_HATES_SILVER
 
 // Has "mon_hates_material" function.
 // As of writing of this, this is found in evilhack, splicehack and
@@ -40,25 +40,34 @@ static boolean pb_prohibited_by_generation_flags(struct permonst *ptr
 // Used to determine silver-hating.
 #define HAS_MON_HATES_MATERIAL
 
-#define HAS_RACEBOOLEAN_BITFLAGS    // Has 'mhflags' in permonst
-#define HAS_MONST_GLOBALS_INIT
-#define GENDERED_NAMES   // Has pmnames instead of mname
-//#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
-#define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
+//#define HAS_RACEBOOLEAN_BITFLAGS    // Has 'mhflags' in permonst
+//#define HAS_MONST_GLOBALS_INIT
+//#define GENDERED_NAMES   // Has pmnames instead of mname
+#define HAS_MONSTR       // has monstr[idx] instead of mons.difficulty
+//#define MONSYMS_IS_STRUCT  // def_monsyms is a structure, instead of an array of chars
 
-#define CRECELLEHACK_ENUMS // This variant decided to use enums instead of
+//#define CRECELLEHACK_ENUMS // This variant decided to use enums instead of
                            // macros. Amazing! It gets its own #define for
                            // sure to be remembered for its audacity.
                            //
                            // The enums are used in some attack types.
                            // E.g. AD_HONY
 
-//#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
+#define DNETHACK_MONFLAGS   // game uses dNetHack's refactor of monster flags
 
-#define HAS_MNUM
+//#define HAS_MNUM
 
-//#define DNETHACK_ACS        // game has three different ACs for monsters, rather than one.
-//#define HAS_DNETHACK_ID_PERMONST
+#define DNETHACK_ACS        // game has three different ACs for monsters, rather than one.
+#define HAS_DNETHACK_ID_PERMONST
+
+#define USES_POISONOUS_FCALL // uses poisonous() instead of some _POISON
+                             // flag. (seen first time in dNAO).
+#define USES_THICK_SKINNED_FCALL // uses thick_skinned()
+#define USES_UNSOLID_FCALL
+#define USES_METALLIVOROUS_FCALL
+#define USES_MAGIVOROUS_FCALL
+#define USES_CARNIVOROUS_FCALL
+#define USES_GERBIVOROUS_FCALL
 
 #ifdef GENDERED_NAMES
 #define is_valid_monster(str) ((str).pmnames[0] || (str).pmnames[1] || (str).pmnames[2])
@@ -392,6 +401,9 @@ static void extract_monsterdata_to_yaml(
 #ifdef AT_VOMT
             AT(AT_VOMT, "AtVomit")
 #endif
+#ifdef AT_JUGL
+            AT(AT_JUGL, "AtJuggle")
+#endif
             else { fprintf(stderr,
                     "I don't know what attack type %d is.\n", pm->mattk[i2].aatyp);
                    abort(); }
@@ -444,6 +456,27 @@ static void extract_monsterdata_to_yaml(
             AT(AD_RBRE, "AdRandomBreath")
             AT(AD_SAMU, "AdAmuletSteal")
             AT(AD_CURS, "AdCurse")
+#ifdef AD_PSH3
+            AT(AD_PSH3, "AdPush1To3Tiles")
+#endif
+#ifdef AD_BLED
+            AT(AD_BLED, "AdBleedingWounds")
+#endif
+#ifdef AD_UHCD
+            AT(AD_UHCD, "AdUnholyCold")
+#endif
+#ifdef AD_SONC
+            AT(AD_SONC, "AdSonicAttack")
+#endif
+#ifdef AD_SLWC
+            AT(AD_SLWC, "AdSlowingCold")
+#endif
+#ifdef AD_SMOK
+            AT(AD_SMOK, "AdSmokeAttack")
+#endif
+#ifdef AD_GMLD
+            AT(AD_GMLD, "AdGrayMoldSpores")
+#endif
 #ifdef AD_LARV
             AT(AD_LARV, "AdInjectLarva")
 #endif
@@ -1231,8 +1264,12 @@ static void extract_monsterdata_to_yaml(
         AT(M1_SWIM, "FlSwim");
         AT(M1_AMORPHOUS, "FlAmorphous");
         AT(M1_WALLWALK, "FlWallwalk");
+#ifdef M1_CLING
         AT(M1_CLING, "FlCling");
+#endif
+#ifdef M1_TUNNEL
         AT(M1_TUNNEL, "FlTunnel");
+#endif
 #ifdef M1_NEEDPICK
         AT(M1_NEEDPICK, "FlNeedPick");
 #endif
@@ -1260,19 +1297,27 @@ static void extract_monsterdata_to_yaml(
 #ifdef M1_NOHEAD
         AT(M1_NOHEAD, "FlNoHead");
 #endif
+#ifdef M1_MINDLESS
         AT(M1_MINDLESS, "FlMindless");
+#endif
 #ifdef M1_HUMANOID
         AT(M1_HUMANOID, "FlHumanoid");
 #endif
+#ifdef M1_ANIMAL
         AT(M1_ANIMAL, "FlAnimal");
+#endif
 #ifdef M1_TUNNEL
         AT(M1_TUNNEL, "FlTunnel");
 #endif
 #ifdef M1_SLITHY
         AT(M1_SLITHY, "FlSlithy");
 #endif
+#ifdef M1_UNSOLID
         AT(M1_UNSOLID, "FlUnSolid");
+#endif
+#ifdef M1_THICK_HIDE
         AT(M1_THICK_HIDE, "FlThickHide");
+#endif
 #ifdef M1_OVIPAROUS
         AT(M1_OVIPAROUS, "FlOviparous");
 #endif
@@ -1286,7 +1331,6 @@ static void extract_monsterdata_to_yaml(
         AT(M1_HERBIVORE, "FlHerbivore");
         AT(M1_METALLIVORE, "FlMetallivore");
 #undef AT
-
         if (!polyok(pm)) {
             if ( comma_set ) fprintf(f, ", ");
             comma_set = 1;
@@ -1789,6 +1833,62 @@ static void extract_monsterdata_to_yaml(
         if (vegan(pm)) fprintf(f, ", FlVegan");
         else if (vegetarian(pm)) fprintf(f, ", FlVegetarian");
 #endif // DNETHACK_MONFLAGS
+
+#ifdef USES_POISONOUS_FCALL
+        if (poisonous(pm)) {
+            if ( comma_set ) fprintf(f, ", ");
+            comma_set = 1;
+            fprintf(f, "FlPoisonous");
+        }
+#endif
+
+#ifdef USES_THICK_SKINNED_FCALL
+        if (thick_skinned(pm)) {
+            if ( comma_set ) fprintf(f, ", ");
+            comma_set = 1;
+            fprintf(f, "FlThickHide");
+        }
+#endif
+
+#ifdef USES_UNSOLID_FCALL
+        if (unsolid(pm)) {
+            if ( comma_set ) fprintf(f, ", ");
+            comma_set = 1;
+            fprintf(f, "FlUnSolid");
+        }
+#endif
+
+#ifdef USES_METALLIVOROUS_FCALL
+        if (metallivorous(pm)) {
+            if ( comma_set ) fprintf(f, ", ");
+            comma_set = 1;
+            fprintf(f, "FlMetallivore");
+        }
+#endif
+
+#ifdef USES_MAGIVOROUS_FCALL
+        if (magivorous(pm)) {
+            if ( comma_set ) fprintf(f, ", ");
+            comma_set = 1;
+            fprintf(f, "FlMagivorous");
+        }
+#endif
+
+#ifdef USES_CARNIVOROUS_FCALL
+        if (carnivorous(pm)) {
+            if ( comma_set ) fprintf(f, ", ");
+            comma_set = 1;
+            fprintf(f, "FlCarnivore");
+        }
+#endif
+
+#ifdef USES_HERBIVOROUS_FCALL
+        if (herbivorous(pm)) {
+            if ( comma_set ) fprintf(f, ", ");
+            comma_set = 1;
+            fprintf(f, "FlHerbivorous");
+        }
+#endif
 
 #define MH(a, b) if (pm->mhflags & (a)) { \
     if ( comma_set ) fprintf(f, ", "); \
